@@ -40,6 +40,14 @@ namespace ContactsManager
             _email = email;
             _notes = notes;
         }
-      
+        /// <summary>
+        /// Fucntion to return object in desired format
+        /// </summary>
+        /// <returns>Contact-details</returns>
+        public override string ToString()
+        {
+            return $"Name : {_name}\nPhone Number : {_phoneNumber}\nEmail : {_email} \nNotes : {_notes}";
+        }
+
     }
 }
