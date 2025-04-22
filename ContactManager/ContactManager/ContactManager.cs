@@ -29,5 +29,16 @@ namespace ContactManager
             Console.WriteLine("Contact Created Successfully.....");
         }
 
+        /// <summary>
+        /// Function to display contacts
+        /// </summary>
+        public void DisplayContacts()
+        {
+            foreach (Contact contact in Contacts)
+            {
+                Console.WriteLine(contact.Name);
+            }
+        }
+
     }
 }
