@@ -108,5 +108,35 @@ namespace ContactManager
             Console.WriteLine("Contact Edited Successfully");
         }
 
+        /// <summary>
+        /// Function to delete contact
+        /// </summary>
+        public void DeleteContact()
+        {
+            Contact toDelete = SearchContacts();
+            if (toDelete != null)
+            {
+                Console.WriteLine("Are you sure you want to delete this contact ? [y/n]");
+                string ConfirmDelete = Console.ReadLine();
+                while (!ConfirmDelete.Equals("y") && !ConfirmDelete.Equals("n"))
+                {
+                    Console.WriteLine("Please select from the options y/n");
+                    ConfirmDelete = Console.ReadLine();
+                }
+                if (ConfirmDelete.Equals("y"))
+                {
+                    Contacts.Remove(toDelete);
+                    Console.WriteLine("Contact Deleted SuccessFully");
+                }
+                else
+                    Console.WriteLine("Cancelling delete....");
+
+            }
+            else
+                Console.WriteLine("Cancelling delete....");
+        }
+    
+
+
     }
 }
