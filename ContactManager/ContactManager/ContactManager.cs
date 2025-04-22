@@ -60,5 +60,53 @@ namespace ContactManager
             return null;
         }
 
+        /// <summary>
+        /// Function to edit contacts
+        /// </summary>
+        public void EditContact()
+        {
+            Contact toEdit = SearchContacts();
+            bool stopEdit = false;
+            while (!stopEdit)
+            {
+                Console.WriteLine("Choose The Field To Edit :\n1.Name\n2.Phone Number\n3.Email\n4.Notes\n5.Exit");
+                bool isValidChoice = int.TryParse(Console.ReadLine(), out int _choice);
+                if (isValidChoice)
+                {
+                    switch (_choice)
+                    {
+
+                        case 1:
+                            Console.WriteLine("Enter the new name :");
+                            string name = isValid.ValidateName(Contacts, Console.ReadLine());
+                            toEdit.Name = name;
+                            break;
+                        case 2:
+                            Console.WriteLine("Enter the new Phone Number :");
+                            string phoneNumber = isValid.ValidatePhoneNumber(Console.ReadLine());
+                            toEdit.PhoneNumber = phoneNumber;
+                            break;
+                        case 3:
+                            Console.WriteLine("Enter the new Mail Id :");
+                            string email = Console.ReadLine();
+                            toEdit.Email = email;
+                            break;
+                        case 4:
+                            Console.WriteLine("Enter new notes :");
+                            string notes = isValid.ValidateEmail(Console.ReadLine());
+                            toEdit.Notes = notes;
+                            break;
+                        case 5: stopEdit = true; break;
+                        default:
+                            Console.WriteLine("Please Choose A Valid Option");
+                            break;
+                    }
+                }
+                else
+                    Console.WriteLine("Please Choose A Valid Option");
+            }
+            Console.WriteLine("Contact Edited Successfully");
+        }
+
     }
 }
