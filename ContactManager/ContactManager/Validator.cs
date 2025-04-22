@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ContactsManager;
 
@@ -37,6 +38,23 @@ namespace ContactManager
                     NameAvaialable = true;
             }
             return Name;
+
+        }
+
+        /// <summary>
+        /// Function to validate user-entered phone number.
+        /// </summary>
+        /// <param name="phoneNumber">Contact  number.</param>
+        /// <returns>Validated phone number .</returns>
+        public string ValidatePhoneNumber(string phoneNumber)
+        {
+            string pattern = @"^\+*\d{0,3}[1-9]\d{9}";
+            while (!Regex.IsMatch(phoneNumber, pattern))
+            {
+                Console.WriteLine("Please Enter A Valid Mobile Number");
+                phoneNumber = Console.ReadLine();
+            }
+            return phoneNumber;
 
         }
 
