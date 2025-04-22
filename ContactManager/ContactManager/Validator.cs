@@ -11,7 +11,7 @@ namespace ContactManager
     internal class Validator
     {
         /// <summary>
-        /// 
+        /// Function to check if the name already exists in the contacts
         /// </summary>
         /// <param name="Contacts"></param>
         /// <param name="Name"></param>
@@ -19,8 +19,15 @@ namespace ContactManager
         public string ValidateName(List<Contact> Contacts, string Name)
         {
             bool NameAvaialable = false;
+           
             while (!NameAvaialable)
             {
+                while (string.IsNullOrWhiteSpace(Name))
+                {
+                    Console.WriteLine("Name cannot be empty...\nPlease enter a valid name: ");
+                    Name = Console.ReadLine();
+
+                }
                 int Count = 0;
                 foreach (Contact contact in Contacts)
                 {
