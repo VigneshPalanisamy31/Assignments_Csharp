@@ -58,5 +58,22 @@ namespace ContactManager
 
         }
 
+        /// <summary>
+        /// Function to validate user-entered mail ID
+        /// </summary>
+        /// <param name="email">Mail ID of the contact</param>
+        /// <returns>Validated mailID</returns>
+        public string ValidateEmail(string email)
+        {
+            string pattern = "[^@]+@[^@.]+.[^@.]+";
+            while (!Regex.IsMatch(email, pattern))
+            {
+                Console.WriteLine("Please Enter A Valid Email Id");
+                email = Console.ReadLine();
+            }
+            return email;
+
+        }
+
     }
 }
