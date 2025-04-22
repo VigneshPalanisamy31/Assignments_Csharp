@@ -40,5 +40,25 @@ namespace ContactManager
             }
         }
 
+        /// <summary>
+        /// Function to search contacts
+        /// </summary>
+        /// <returns>An object of the matched contact</returns>
+        public Contact SearchContacts()
+        {
+            Console.WriteLine("Enter the Details for Search :");
+            string key = Console.ReadLine();
+            foreach (Contact contact in Contacts)
+            {
+                if (contact.Name.Equals(key) || contact.Email.Equals(key) || contact.PhoneNumber.Equals(key))
+                {
+                    Console.WriteLine(contact);
+                    return contact;
+                }
+            }
+            Console.WriteLine("No Matching Results....");
+            return null;
+        }
+
     }
 }
