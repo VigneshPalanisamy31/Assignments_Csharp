@@ -10,7 +10,6 @@ namespace ContactManager
     internal class ContactManager
     {
         List<Contact> Contacts = new List<Contact>();
-        Validator isValid = new Validator();
 
         public bool isEmpty()
         {
@@ -28,11 +27,11 @@ namespace ContactManager
         public void AddNewContact()
         {
             Console.WriteLine("Enter the Name :");
-            string Name = isValid.ValidateName(Contacts, Console.ReadLine());
+            string Name = Validator.ValidateName(Contacts, Console.ReadLine());
             Console.WriteLine("Enter the Phone Number :");
-            string PhoneNumber = isValid.ValidatePhoneNumber(Console.ReadLine(),Contacts);
+            string PhoneNumber = Validator.ValidatePhoneNumber(Console.ReadLine(),Contacts);
             Console.WriteLine("Enter the Mail id :");
-            string Email = isValid.ValidateEmail(Console.ReadLine());
+            string Email = Validator.ValidateEmail(Console.ReadLine());
             Console.WriteLine("Add Some Notes :");
             string Notes = Console.ReadLine();
             Contacts.Add(new Contact(Name, PhoneNumber, Email, Notes));
@@ -98,12 +97,12 @@ namespace ContactManager
 
                             case 1:
                                 Console.WriteLine("Enter the new name :");
-                                string name = isValid.ValidateName(Contacts, Console.ReadLine());
+                                string name = Validator.ValidateName(Contacts, Console.ReadLine());
                                 toEdit.Name = name;
                                 break;
                             case 2:
                                 Console.WriteLine("Enter the new Phone Number :");
-                                string phoneNumber = isValid.ValidatePhoneNumber(Console.ReadLine(),Contacts);
+                                string phoneNumber = Validator.ValidatePhoneNumber(Console.ReadLine(),Contacts);
                                 toEdit.PhoneNumber = phoneNumber;
                                 break;
                             case 3:
@@ -113,7 +112,7 @@ namespace ContactManager
                                 break;
                             case 4:
                                 Console.WriteLine("Enter new notes :");
-                                string notes = isValid.ValidateEmail(Console.ReadLine());
+                                string notes = Validator.ValidateEmail(Console.ReadLine());
                                 toEdit.Notes = notes;
                                 break;
                             case 5: stopEdit = true; break;
