@@ -10,28 +10,16 @@ namespace ContactsManager
     {
         string _name;
         public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
+        { get; set; }
         string _phoneNumber;
         public string PhoneNumber
-        {
-            get { return _phoneNumber; }
-            set { _phoneNumber = value; }
-        }
+        { get; set; }
         string _email;
         public string Email
-        {
-            get { return _email; }
-            set { _email = value; }
-        }
+        { get; set; }
         string _notes;
         public string Notes
-        {
-            get { return _notes; }
-            set { _notes = value; }
-        }
+        { get; set; }
 
         public Contact(string name, string phoneNumber, string email, string notes)
         {
