@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using ContactsManager;
 
 namespace ContactManager
@@ -53,13 +54,26 @@ namespace ContactManager
         /// </summary>
         /// <param name="phoneNumber">Contact  number.</param>
         /// <returns>Validated phone number .</returns>
-        public string ValidatePhoneNumber(string phoneNumber)
+        public string ValidatePhoneNumber(string phoneNumber,List<Contact> Contacts)
         {
             string pattern = @"^\+*\d{0,3}[1-9]\d{9}";
+          
             while (!Regex.IsMatch(phoneNumber, pattern))
             {
                 Console.WriteLine("Please Enter A Valid Mobile Number");
                 phoneNumber = Console.ReadLine();
+              
+            }
+            foreach (Contact contact in Contacts)
+            {
+
+                if (contact.PhoneNumber == phoneNumber)
+                {
+                    Console.WriteLine($"\nContact With Same Number Already Exists \nPlease Enter a different number :");
+                    ValidatePhoneNumber(Console.ReadLine(), Contacts);
+                    break;
+
+                }
             }
             return phoneNumber;
 

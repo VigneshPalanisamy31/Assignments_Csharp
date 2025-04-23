@@ -14,7 +14,7 @@ namespace ContactManager
 
         public bool isEmpty()
         {
-            if(Contacts.Count == 0)
+            if (Contacts.Count == 0)
             {
                 Console.WriteLine("No contacts available...");
                 return true;
@@ -30,7 +30,7 @@ namespace ContactManager
             Console.WriteLine("Enter the Name :");
             string Name = isValid.ValidateName(Contacts, Console.ReadLine());
             Console.WriteLine("Enter the Phone Number :");
-            string PhoneNumber = isValid.ValidatePhoneNumber(Console.ReadLine());
+            string PhoneNumber = isValid.ValidatePhoneNumber(Console.ReadLine(),Contacts);
             Console.WriteLine("Enter the Mail id :");
             string Email = isValid.ValidateEmail(Console.ReadLine());
             Console.WriteLine("Add Some Notes :");
@@ -73,7 +73,7 @@ namespace ContactManager
                     }
                 }
             }
-           if(Contacts.Count>0)
+            if (Contacts.Count > 0)
                 Console.WriteLine("No Matching Results....");
             return null;
         }
@@ -103,7 +103,7 @@ namespace ContactManager
                                 break;
                             case 2:
                                 Console.WriteLine("Enter the new Phone Number :");
-                                string phoneNumber = isValid.ValidatePhoneNumber(Console.ReadLine());
+                                string phoneNumber = isValid.ValidatePhoneNumber(Console.ReadLine(),Contacts);
                                 toEdit.PhoneNumber = phoneNumber;
                                 break;
                             case 3:
@@ -159,8 +159,5 @@ namespace ContactManager
                     Console.WriteLine("Contact not found....");
             }
         }
-    
-
-
     }
 }
