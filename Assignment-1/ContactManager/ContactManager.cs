@@ -100,7 +100,8 @@ namespace ContactManager
 
                                 case 1:
                                     Console.WriteLine("Enter the new name :");
-                                    string name = Validator.ValidateName(Contacts, Console.ReadLine());
+                                    string name = Console.ReadLine();
+                                    name=toEdit.Name==name?name:Validator.ValidateName(Contacts,name);
                                     toEdit.Name = name;
                                     break;
                                 case 2:
@@ -115,8 +116,7 @@ namespace ContactManager
                                     break;
                                 case 4:
                                     Console.WriteLine("Enter new notes :");
-                                    string notes = Validator.ValidateEmail(Console.ReadLine());
-                                    toEdit.Notes = notes;
+                                    toEdit.Notes = Console.ReadLine();
                                     break;
                                 case 5: stopEdit = true; break;
                                 default:
@@ -127,7 +127,7 @@ namespace ContactManager
                         else
                             Console.WriteLine("Please Choose A Valid Option");
                     }
-                    Console.WriteLine("Contact Edited Successfully");
+                   
                 }
             }
         }

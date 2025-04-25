@@ -57,7 +57,7 @@ namespace ContactManager
         /// <returns>Validated phone number .</returns>
         public static string ValidatePhoneNumber(string phoneNumber,List<Contact> Contacts)
         {
-            string pattern = @"^\+*\d{0,3}[1-9]\d{9}";
+            string pattern = @"^[1-9]\d{9}$";
           
             while (!Regex.IsMatch(phoneNumber, pattern))
             {
