@@ -67,12 +67,13 @@ namespace ContactManager
                 {
                     if (contact.Name.Equals(key) || contact.Email.Equals(key) || contact.PhoneNumber.Equals(key))
                     {
+             
                         Console.WriteLine(contact);
                         return contact;
                     }
                 }
             }
-            if (Contacts.Count > 0)
+            if (Contacts.Count>0)
                 Console.WriteLine("No Matching Results....");
             return null;
         }
@@ -86,45 +87,48 @@ namespace ContactManager
             {
                 Contact toEdit = SearchContacts();
                 bool stopEdit = false;
-                while (!stopEdit)
+                if (toEdit != null)
                 {
-                    Console.WriteLine("Choose The Field To Edit :\n1.Name\n2.Phone Number\n3.Email\n4.Notes\n5.Exit");
-                    bool isValidChoice = int.TryParse(Console.ReadLine(), out int _choice);
-                    if (isValidChoice)
+                    while (!stopEdit)
                     {
-                        switch (_choice)
+                        Console.WriteLine("Choose The Field To Edit :\n1.Name\n2.Phone Number\n3.Email\n4.Notes\n5.Exit");
+                        bool isValidChoice = int.TryParse(Console.ReadLine(), out int _choice);
+                        if (isValidChoice)
                         {
+                            switch (_choice)
+                            {
 
-                            case 1:
-                                Console.WriteLine("Enter the new name :");
-                                string name = Validator.ValidateName(Contacts, Console.ReadLine());
-                                toEdit.Name = name;
-                                break;
-                            case 2:
-                                Console.WriteLine("Enter the new Phone Number :");
-                                string phoneNumber = Validator.ValidatePhoneNumber(Console.ReadLine(),Contacts);
-                                toEdit.PhoneNumber = phoneNumber;
-                                break;
-                            case 3:
-                                Console.WriteLine("Enter the new Mail Id :");
-                                string email = Console.ReadLine();
-                                toEdit.Email = email;
-                                break;
-                            case 4:
-                                Console.WriteLine("Enter new notes :");
-                                string notes = Validator.ValidateEmail(Console.ReadLine());
-                                toEdit.Notes = notes;
-                                break;
-                            case 5: stopEdit = true; break;
-                            default:
-                                Console.WriteLine("Please Choose A Valid Option");
-                                break;
+                                case 1:
+                                    Console.WriteLine("Enter the new name :");
+                                    string name = Validator.ValidateName(Contacts, Console.ReadLine());
+                                    toEdit.Name = name;
+                                    break;
+                                case 2:
+                                    Console.WriteLine("Enter the new Phone Number :");
+                                    string phoneNumber = Validator.ValidatePhoneNumber(Console.ReadLine(), Contacts);
+                                    toEdit.PhoneNumber = phoneNumber;
+                                    break;
+                                case 3:
+                                    Console.WriteLine("Enter the new Mail Id :");
+                                    string email = Console.ReadLine();
+                                    toEdit.Email = email;
+                                    break;
+                                case 4:
+                                    Console.WriteLine("Enter new notes :");
+                                    string notes = Validator.ValidateEmail(Console.ReadLine());
+                                    toEdit.Notes = notes;
+                                    break;
+                                case 5: stopEdit = true; break;
+                                default:
+                                    Console.WriteLine("Please Choose A Valid Option");
+                                    break;
+                            }
                         }
+                        else
+                            Console.WriteLine("Please Choose A Valid Option");
                     }
-                    else
-                        Console.WriteLine("Please Choose A Valid Option");
+                    Console.WriteLine("Contact Edited Successfully");
                 }
-                Console.WriteLine("Contact Edited Successfully");
             }
         }
 

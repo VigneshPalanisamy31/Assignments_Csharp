@@ -17,18 +17,19 @@ namespace ContactManager
         /// <param name="Contacts"></param>
         /// <param name="Name"></param>
         /// <returns></returns>
-        public string ValidateName(List<Contact> Contacts, string Name)
+        public static string ValidateName(List<Contact> Contacts, string Name)
         {
             bool NameAvaialable = false;
            
             while (!NameAvaialable)
             {
-                while (string.IsNullOrWhiteSpace(Name))
+                while (string.IsNullOrWhiteSpace(Name)|| !Regex.IsMatch(Name, @"^\D+$"))
                 {
-                    Console.WriteLine("Name cannot be empty...\nPlease enter a valid name: ");
+                    Console.WriteLine("Invalid name...\nPlease enter a valid name: ");
                     Name = Console.ReadLine();
 
                 }
+            
                 int Count = 0;
                 foreach (Contact contact in Contacts)
                 {
@@ -54,7 +55,7 @@ namespace ContactManager
         /// </summary>
         /// <param name="phoneNumber">Contact  number.</param>
         /// <returns>Validated phone number .</returns>
-        public string ValidatePhoneNumber(string phoneNumber,List<Contact> Contacts)
+        public static string ValidatePhoneNumber(string phoneNumber,List<Contact> Contacts)
         {
             string pattern = @"^\+*\d{0,3}[1-9]\d{9}";
           
@@ -70,7 +71,7 @@ namespace ContactManager
                 if (contact.PhoneNumber == phoneNumber)
                 {
                     Console.WriteLine($"\nContact With Same Number Already Exists \nPlease Enter a different number :");
-                    ValidatePhoneNumber(Console.ReadLine(), Contacts);
+                    return ValidatePhoneNumber(Console.ReadLine(), Contacts);
                     break;
 
                 }
@@ -84,7 +85,7 @@ namespace ContactManager
         /// </summary>
         /// <param name="email">Mail ID of the contact</param>
         /// <returns>Validated mailID</returns>
-        public string ValidateEmail(string email)
+        public static string ValidateEmail(string email)
         {
             string pattern = "[^@]+@[^@.]+.[^@.]+";
             while (!Regex.IsMatch(email, pattern))
