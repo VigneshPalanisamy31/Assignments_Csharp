@@ -34,7 +34,7 @@ namespace ContactManager
                             ContactsHandler.DisplayContacts();
                             break;
                         case 4:
-                            ContactsHandler.SearchContacts();
+                            ContactsHandler.SearchSimilarContacts();
                             break;
                         case 5:
                             ContactsHandler.DeleteContact();

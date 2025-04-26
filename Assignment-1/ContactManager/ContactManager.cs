@@ -78,6 +78,28 @@ namespace ContactManager
             return null;
         }
 
+        public void SearchSimilarContacts()
+        {
+            int c = 0;
+            if (!isEmpty())
+            {
+                Console.WriteLine("Enter some Details for Search :");
+                string key = Console.ReadLine();
+                Console.WriteLine("\n");
+                foreach (Contact contact in Contacts)
+                {
+                    if (contact.Name.Contains(key) ||  contact.PhoneNumber.Contains(key))
+                    {
+
+                        Console.WriteLine(contact.Name);c++;
+                    }
+                }
+            }
+            if (Contacts.Count > 0&&c==0)
+                Console.WriteLine("No Matching Results....");
+            
+        }
+
         /// <summary>
         /// Function to edit contacts
         /// </summary>
