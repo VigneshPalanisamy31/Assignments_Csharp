@@ -157,7 +157,7 @@ namespace Inventory_Management
                         {
                             Console.WriteLine("Cancelling delete....");
                         }
-                    } while (!choice.Equals("y") || !choice.Equals("y"));
+                    } while (!choice.Equals("y") && !choice.Equals("Y")&& !choice.Equals("N")&&!choice.Equals("n"));
                 }
             }
         }
