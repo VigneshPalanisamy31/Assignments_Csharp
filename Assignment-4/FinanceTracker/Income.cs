@@ -1,4 +1,6 @@
+
 ﻿namespace FinanceTracker
+
 {
     internal class Income
     {
@@ -16,6 +18,7 @@
                 switch (_choice)
                 {
                     case 1:
+
                         Transaction transaction = UserInteract.GetUserInput(name, "income source");
                         if (transaction == null)
                             Console.WriteLine("Exiting...");
@@ -24,6 +27,7 @@
                             financer.AddTransaction(transaction, filepath, "Income");
                             Console.WriteLine("Income Tracked Successfully....");
                         }
+
                         break;
                     case 2:
                         financer.EditTransaction(name, filepath, "Income");

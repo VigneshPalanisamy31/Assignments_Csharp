@@ -32,6 +32,7 @@ namespace FinanceTracker
         }
 
 
+
         /// <summary>
         /// Function to view income/expense transactions of a user.
         /// </summary>
@@ -43,6 +44,7 @@ namespace FinanceTracker
 
         public bool ViewTransaction(string name, string filepath, string worksheetname, int editIndex = -1)
         {
+
 
             int c = 0;
             using (var workbook = new XLWorkbook(filepath))
@@ -80,6 +82,7 @@ namespace FinanceTracker
         }
 
 
+
         /// <summary>
         /// Function to edit income/expense transactions of a user.
         /// </summary>
@@ -101,6 +104,7 @@ namespace FinanceTracker
                         Console.WriteLine("Exiting...");
                         return;
                     }
+
                     var worksheet = workbook.Worksheet(worksheetname);
                     var rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(name, StringComparison.OrdinalIgnoreCase));
                     int count = 0;
@@ -147,7 +151,7 @@ namespace FinanceTracker
                 if (ViewTransaction(name, filepath, worksheetname))
                 {
                     int id = Validation.GetValidInteger("id of the transaction you wish to delete: \n(press -1 to exit)");
-                    if(id==-1)
+                    if (id == -1)
                     {
                         Console.WriteLine("Exiting...");
                         return;
@@ -191,7 +195,6 @@ namespace FinanceTracker
             }
 
         }
-
 
         /// <summary>
         /// Function to view all financial transactions summary of user.

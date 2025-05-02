@@ -1,4 +1,6 @@
+
 ﻿namespace FinanceTracker
+
 {
     internal class Expense
     {
@@ -23,6 +25,7 @@
                             financer.AddTransaction(transaction, filepath, "Expense");
                             Console.WriteLine("Expense Tracked Successfully....");
                         }
+
                         break;
 
                     case 2:
