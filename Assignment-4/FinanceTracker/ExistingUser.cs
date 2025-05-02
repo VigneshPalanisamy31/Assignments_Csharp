@@ -1,6 +1,15 @@
+<<<<<<< HEAD
 
 ﻿using ClosedXML.Excel;
 
+=======
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using ClosedXML.Excel;
+>>>>>>> f1ac8c4 (feat: develop finance tracker functionalities for existing user)
 
 namespace FinanceTracker
 {
@@ -40,9 +49,13 @@ namespace FinanceTracker
                 bool exit = false;
                 while (!exit)
                 {
+<<<<<<< HEAD
 
                     Console.WriteLine("1.Income Tracker\n2.Expense Tracker\n3.Finance Summary\n4.Exit");
 
+=======
+                    Console.WriteLine("1.Income Tracker\n2.Expense Tracker\n3.Finance Summarry\n4.Exit");
+>>>>>>> f1ac8c4 (feat: develop finance tracker functionalities for existing user)
 
                     int _choice = Validation.GetValidInteger("your choice");
 

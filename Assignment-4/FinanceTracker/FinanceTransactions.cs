@@ -31,6 +31,7 @@ namespace FinanceTracker
             }
         }
 
+
         /// <summary>
         /// Function to view income/expense transactions of a user.
         /// </summary>
@@ -79,6 +80,7 @@ namespace FinanceTracker
             }
         }
 
+
         /// <summary>
         /// Function to edit income/expense transactions of a user.
         /// </summary>
@@ -93,12 +95,14 @@ namespace FinanceTracker
                 if (ViewTransaction(name, filepath, worksheetname))
                 {
 
+
                     int id = Validation.GetValidInteger("id of the transaction you wish to edit :\n(press -1 to exit)");
                     if (id == -1)
                     {
                         Console.WriteLine("Exiting...");
                         return;
                     }
+
 
                     var worksheet = workbook.Worksheet(worksheetname);
                     var rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(name, StringComparison.OrdinalIgnoreCase));
@@ -137,19 +141,21 @@ namespace FinanceTracker
         /// </summary>
         /// <param name="name"></param>
         /// <param name="filepath"></param>
-        /// <param name="worksheetname"></param>
+
         public void DeleteTransaction(string name, string filepath, string worksheetname)
         {
             using (var workbook = new XLWorkbook(filepath))
             {
                 if (ViewTransaction(name, filepath, worksheetname))
                 {
+
                     int id = Validation.GetValidInteger("id of the transaction you wish to delete: \n(press -1 to exit)");
                     if (id == -1)
                     {
                         Console.WriteLine("Exiting...");
                         return;
                     }
+
                     var worksheet = workbook.Worksheet(worksheetname);
                     var rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(name, StringComparison.OrdinalIgnoreCase));
                     if (id > rows.Count() || id < 1)
@@ -189,6 +195,7 @@ namespace FinanceTracker
             }
 
         }
+
 
         /// <summary>
         /// Function to view all financial transactions summary of user.
