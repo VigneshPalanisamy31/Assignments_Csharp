@@ -34,5 +34,9 @@ namespace FinanceTracker
 
             }
         }
+        public void EditTransaction(Transaction transaction, string filepath, string worksheetname)
+        {
+            Console.WriteLine("Trying conflicts when changes made to parent branch");
+        }
     }
 }
