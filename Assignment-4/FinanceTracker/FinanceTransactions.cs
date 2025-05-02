@@ -35,6 +35,7 @@ namespace FinanceTracker
             }
         }
 
+
         /// <summary>
         /// Function to view income/expense transactions of a user.
         /// </summary>
@@ -43,6 +44,7 @@ namespace FinanceTracker
         /// <param name="worksheetname"></param>
         /// <param name="editIndex"></param>
         /// <returns>Boolean whether transactions are available are not. </returns>
+
         public bool ViewTransaction(string name, string filepath, string worksheetname, int editIndex = -1)
         {
 
@@ -81,12 +83,14 @@ namespace FinanceTracker
             }
         }
 
+
         /// <summary>
         /// Function to edit income/expense transactions of a user.
         /// </summary>
         /// <param name="name"></param>
         /// <param name="filepath"></param>
         /// <param name="worksheetname"></param>
+
 
         public void EditTransaction(string name, string filepath, string worksheetname)
         {
@@ -134,6 +138,7 @@ namespace FinanceTracker
         /// <param name="name"></param>
         /// <param name="filepath"></param>
         /// <param name="worksheetname"></param>
+
         public void DeleteTransaction(string name, string filepath, string worksheetname)
         {
             using (var workbook = new XLWorkbook(filepath))
@@ -180,6 +185,7 @@ namespace FinanceTracker
             }
 
         }
+
 
         /// <summary>
         /// Function to view all financial transactions summary of user.
