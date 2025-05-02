@@ -30,14 +30,18 @@ class TrackerUI
                     NewUser newuser = new NewUser(filepath);
                     newuser.NewUserFunctions(name, financer);
                     break;
+
                 case 2:
-                    Console.WriteLine("Yet to be developed...");
+                    string oldname = Validation.GetValidString("name");
+                    ExistingUser user = new ExistingUser(filepath);
+                    user.UserFunctions(oldname, financer);
                     break;
-               
+
                 case 3:
                     Console.WriteLine("Exiting...");
                     exit = true;
                     break;
+
                 default:
                     Console.WriteLine("Please enter a valid choice");
                     break;
@@ -45,10 +49,6 @@ class TrackerUI
 
             }
         }
-
-
-
-
 
         Console.ReadKey();
 
