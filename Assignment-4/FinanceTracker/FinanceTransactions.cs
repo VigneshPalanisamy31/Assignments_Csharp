@@ -10,6 +10,12 @@ namespace FinanceTracker
     internal class FinanceTransactions
     {
 
+        /// <summary>
+        /// Function to create a transaction and write it to the file .
+        /// </summary>
+        /// <param name="transaction"></param>
+        /// <param name="filepath"></param>
+        /// <param name="worksheetname"></param>
         public void AddTransaction(Transaction transaction, string filepath, string worksheetname)
         {
 

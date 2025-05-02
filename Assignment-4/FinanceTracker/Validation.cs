@@ -12,6 +12,10 @@ namespace FinanceTracker
     internal class Validation
     {
 
+        /// <summary>
+        /// Function to get an integer from user .
+        /// </summary>
+        /// <returns>Validated integer</returns>
         public static int GetValidInteger(string prompt)
         {
             Console.WriteLine($"Please enter {prompt} :");
@@ -23,6 +27,12 @@ namespace FinanceTracker
             }
             return choice;
         }
+
+
+        /// <summary>
+        /// Function to get a amount from user .
+        /// </summary>
+        /// <returns>Validated Amount</returns>
 
         public static double GetValidAmount()
         {
@@ -36,7 +46,10 @@ namespace FinanceTracker
             return amount;
         }
 
-
+        /// <summary>
+        /// Function to get a string from user .
+        /// </summary>
+        /// <returns>Validated string</returns>
         public static string GetValidString(string input)
         {
             Console.WriteLine($"Please enter  {input} :");
@@ -50,6 +63,10 @@ namespace FinanceTracker
             return category;
         }
 
+        /// <summary>
+        /// Function to get date from user .
+        /// </summary>
+        /// <returns>Validated date</returns>
         public static DateTime GetValidDate()
         {
             Console.WriteLine("Enter the date of the transaction (dd-MM-yyyy) :");
@@ -63,6 +80,10 @@ namespace FinanceTracker
             }
         }
 
+        /// <summary>
+        /// Function to create a file if it doen't exist .
+        /// </summary>
+        /// <param name="filepath"></param>
         public static void FileIntegrity(string filepath)
         {
             if (!File.Exists(filepath))

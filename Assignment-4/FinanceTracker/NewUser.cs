@@ -21,6 +21,11 @@ namespace FinanceTracker
             incomeSheet = workbook.Worksheet("Income");
         }
 
+        /// <summary>
+        /// Function to ensure user is not available already .
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>Bool value whether the user is new or not .</returns>
         public bool IsNewUser(string name)
         {
             int count = 0;
