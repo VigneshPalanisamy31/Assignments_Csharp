@@ -26,8 +26,16 @@ namespace ContactManager
         /// </summary>
         public void AddNewContact()
         {
-            Console.WriteLine("Enter the Name :");
-            string Name = Validator.ValidateName(Contacts, Console.ReadLine());
+           
+          
+            Console.WriteLine("Enter the Name :(press -1 to exit)");
+            string Name = Console.ReadLine();
+            if (Name.Equals("-1"))
+            {
+                Console.WriteLine("cancelling...");
+                return;
+            }
+             Name = Validator.ValidateName(Contacts, Name);
             Console.WriteLine("Enter the Phone Number :");
             string PhoneNumber = Validator.ValidatePhoneNumber(Console.ReadLine(),Contacts);
             Console.WriteLine("Enter the Mail id :");
@@ -61,42 +69,54 @@ namespace ContactManager
         {
             if (!isEmpty())
             {
-                Console.WriteLine("Enter the Details for Search :");
+                Console.WriteLine("Enter the Details for Search :  (press -1 to exit)");
+              
                 string key = Console.ReadLine();
+                if (key.Equals("-1"))
+                {
+                    Console.WriteLine("cancelling...");
+                    return null;
+                }
                 foreach (Contact contact in Contacts)
                 {
                     if (contact.Name.Equals(key) || contact.Email.Equals(key) || contact.PhoneNumber.Equals(key))
                     {
              
-                        Console.WriteLine(contact);
+                        Console.WriteLine(contact+"\n");
                         return contact;
                     }
                 }
             }
-            if (Contacts.Count>0)
+           
                 Console.WriteLine("No Matching Results....");
             return null;
         }
 
-        public void SearchSimilarContacts()
+        public void FindMatchingContacts()
         {
-            int c = 0;
+            bool matchFound = false;
             if (!isEmpty())
             {
-                Console.WriteLine("Enter some Details for Search :");
+                Console.WriteLine("Enter some Details for Search :  (press -1 to exit)");
+
                 string key = Console.ReadLine();
-                Console.WriteLine("\n");
+                if (key.Equals("-1"))
+                {
+                    Console.WriteLine("cancelling...");
+                }
                 foreach (Contact contact in Contacts)
                 {
                     if (contact.Name.Contains(key) ||  contact.PhoneNumber.Contains(key))
                     {
 
-                        Console.WriteLine(contact.Name);c++;
+                        Console.WriteLine(contact+"\n");
+                        matchFound = true;
                     }
                 }
+                if (matchFound == false)
+                    Console.WriteLine("No Matching Results....");
             }
-            if (Contacts.Count > 0&&c==0)
-                Console.WriteLine("No Matching Results....");
+           
             
         }
 
@@ -166,12 +186,12 @@ namespace ContactManager
                 {
                     Console.WriteLine("Are you sure you want to delete this contact ? [y/n]");
                     string ConfirmDelete = Console.ReadLine();
-                    while (!ConfirmDelete.Equals("y") && !ConfirmDelete.Equals("n"))
+                    while (!ConfirmDelete.Equals("y") && !ConfirmDelete.Equals("n") && !ConfirmDelete.Equals("N") && !ConfirmDelete.Equals("Y"))
                     {
                         Console.WriteLine("Please select from the options y/n");
                         ConfirmDelete = Console.ReadLine();
                     }
-                    if (ConfirmDelete.Equals("y"))
+                    if (ConfirmDelete.Equals("y")|| ConfirmDelete.Equals("Y"))
                     {
                         Contacts.Remove(toDelete);
                         Console.WriteLine("Contact Deleted SuccessFully");
@@ -180,8 +200,8 @@ namespace ContactManager
                         Console.WriteLine("Cancelling delete....");
 
                 }
-                else
-                    Console.WriteLine("Contact not found....");
+                
+                    
             }
         }
     }

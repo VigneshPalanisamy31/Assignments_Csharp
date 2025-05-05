@@ -19,32 +19,31 @@ namespace ContactManager
         /// <returns></returns>
         public static string ValidateName(List<Contact> Contacts, string Name)
         {
-            bool NameAvaialable = false;
+            bool NameAvailable = false;
            
-            while (!NameAvaialable)
+            while (!NameAvailable)
             {
-                while (string.IsNullOrWhiteSpace(Name)|| !Regex.IsMatch(Name, @"^\D+$"))
+                while (string.IsNullOrWhiteSpace(Name)|| !Regex.IsMatch(Name, @"^[A-za-z]+([ .'-][A-Za-z]+)*$"))
                 {
                     Console.WriteLine("Invalid name...\nPlease enter a valid name: ");
                     Name = Console.ReadLine();
 
                 }
-            
-                int Count = 0;
+                NameAvailable = true;
+
                 foreach (Contact contact in Contacts)
                 {
-                    Count++;
+                    
                     if (contact.Name == Name)
                     {
                         Console.WriteLine($"\nContact With Same Name Already Exists \nPlease Enter a different name :");
                         Name = Console.ReadLine();
-                        Count = 0;
+                        NameAvailable = false;
                         break;
 
                     }
                 }
-                if (Count == Contacts.Count)
-                    NameAvaialable = true;
+         
             }
             return Name;
 

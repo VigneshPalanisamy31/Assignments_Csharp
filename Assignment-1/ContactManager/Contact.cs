@@ -8,16 +8,16 @@ namespace ContactsManager
 {
     internal class Contact
     {
-        string _name;
+       private string _name;
         public string Name
         { get=> _name; set=>_name=value; }
-        string _phoneNumber;
+       private string _phoneNumber;
         public string PhoneNumber
         { get => _phoneNumber; set => _phoneNumber = value; }
-        string _email;
+       private string _email;
         public string Email
         { get => _email; set => _email = value; }
-        string _notes;
+       private string _notes;
         public string Notes
         { get => _notes; set => _notes = value; }
 
