@@ -22,7 +22,7 @@ namespace Banking_System
         public BankAccount()
         {
             Console.WriteLine("Enter the current balance");
-            Balance = Validators.getValidAmount();
+            Balance = Validator.getValidAmount();
 
         }
         public abstract void Withdraw(double amount);

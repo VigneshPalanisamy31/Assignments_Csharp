@@ -30,11 +30,11 @@ namespace Banking_System
                             {
                                 case 1:
                                     Console.WriteLine("Enter the amount");
-                                    savingsaccount.Deposit(Validators.getValidAmount());
+                                    savingsaccount.Deposit(Validator.getValidAmount());
                                     break;
                                 case 2:
                                     Console.WriteLine("Enter the amount");
-                                    savingsaccount.Withdraw(Validators.getValidAmount());
+                                    savingsaccount.Withdraw(Validator.getValidAmount());
                                     break;
                                 default: Console.WriteLine("Exiting..."); break;
                             }
@@ -46,11 +46,11 @@ namespace Banking_System
                             {
                                 case 1:
                                     Console.WriteLine("Enter the amount");
-                                    checkingaccount.Deposit(Validators.getValidAmount());
+                                    checkingaccount.Deposit(Validator.getValidAmount());
                                     break;
                                 case 2:
                                     Console.WriteLine("Enter the amount");
-                                    checkingaccount.Withdraw(Validators.getValidAmount());
+                                    checkingaccount.Withdraw(Validator.getValidAmount());
                                     break;
                                 default: Console.WriteLine("Exiting..."); break;
                             }

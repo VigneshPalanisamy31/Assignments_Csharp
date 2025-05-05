@@ -8,13 +8,7 @@ namespace Banking_System
 {
     internal class SavingsAccount : BankAccount
     {
-        //public SavingsAccount()
-        //{
-        //    Console.WriteLine("Enter the current balance:");
-        //    Balance = Validators.getValidAmount();
-        //}
-
-
+      
         public override void Withdraw(double amount)
         {
 

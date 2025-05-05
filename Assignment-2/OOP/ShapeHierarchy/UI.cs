@@ -27,19 +27,19 @@ namespace Shape_Hierarchy
                         case 1:
                             Circle circle = new Circle();
                             Console.WriteLine("Enter the color of the circle");
-                            circle.Color = Validators.getValidColor();
+                            circle.Color = Validator.getValidColor();
                             Console.WriteLine("Enter the radius of the circle");
-                            circle.Radius = Validators.getValidInput();
+                            circle.Radius = Validator.getValidInput();
                             circle.PrintDetails();
                             break;
                         case 2:
                             Rectangle rectangle = new Rectangle();
                             Console.WriteLine("Enter the color of the rectangle");
-                            rectangle.Color = Validators.getValidColor();
+                            rectangle.Color = Validator.getValidColor();
                             Console.WriteLine("Enter the length of the rectangle");
-                            rectangle.Length = Validators.getValidInput();
+                            rectangle.Length = Validator.getValidInput();
                             Console.WriteLine("Enter the breadth of the rectangle");
-                            rectangle.Breadth = Validators.getValidInput();
+                            rectangle.Breadth = Validator.getValidInput();
                             rectangle.PrintDetails();
                             break;
                         case 3: stop = true; break;

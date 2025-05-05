@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOP", "OOP\OOP.csproj", "{F45359D0-39FC-46CC-B85E-F237DBEB30BA}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapeHierarchy", "ShapeHierarchy\ShapeHierarchy.csproj", "{DBA9AF1F-2C82-4183-B949-B4D30A5D0F98}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeHierarchy", "EmployeeHierarchy\EmployeeHierarchy.csproj", "{6FE089CE-E74C-4A54-AEF4-F597EDAE2276}"
@@ -17,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F45359D0-39FC-46CC-B85E-F237DBEB30BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F45359D0-39FC-46CC-B85E-F237DBEB30BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F45359D0-39FC-46CC-B85E-F237DBEB30BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F45359D0-39FC-46CC-B85E-F237DBEB30BA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DBA9AF1F-2C82-4183-B949-B4D30A5D0F98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DBA9AF1F-2C82-4183-B949-B4D30A5D0F98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBA9AF1F-2C82-4183-B949-B4D30A5D0F98}.Release|Any CPU.ActiveCfg = Release|Any CPU

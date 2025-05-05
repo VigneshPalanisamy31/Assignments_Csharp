@@ -5,11 +5,11 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Employee_Hierarchy
+namespace Shape_Hierarchy
 {
-    internal class Validators
+    internal class Validator
     {
-        public static double getValidSalary()
+        public static double getValidInput()
         {
             while (true)
             {
@@ -21,17 +21,16 @@ namespace Employee_Hierarchy
 
             }
         }
-        public static string getValidName()
+        public static string getValidColor()
         {
 
-            string pattern = @"^\D+$";
-            string name = Console.ReadLine();
-            while (!Regex.IsMatch(name, pattern))
+            string color = Console.ReadLine();
+            while (!Regex.IsMatch(color, @"^[A-Za-z]+([-][A-Za-z]+)*$"))
             {
-                Console.WriteLine("Please enter a valid name");
-                name = Console.ReadLine();
+                Console.WriteLine("Please enter a valid color name: ");
+                color = Console.ReadLine();
             }
-            return name;
+            return color;
 
         }
     }
