@@ -14,7 +14,14 @@ namespace Inventory_Management
         public void AddNewProduct()
         {
             Console.WriteLine("--------Adding New Product-------");
-            Products.Add(inputHandler.GetProductDetails(Products));
+            Console.WriteLine("(Press -1 to exit)");
+            Product product = inputHandler.GetProductDetails(Products);
+            if (product==null)
+            {
+                Console.WriteLine("Cancelling...");
+                return;
+            }
+            Products.Add(product);
             Products = Products.OrderBy(p => p.ProductID).ToList();
             Console.WriteLine("Product added to inventory successfully....");
         }
@@ -25,11 +32,15 @@ namespace Inventory_Management
         /// <returns>an objject of matched product</returns>
         public Product SearchProduct()
         {
-            //Console.WriteLine("--------Searching Product-------");
             if (!Validator.isEmpty(Products))
             {
-                Console.WriteLine("Enter the name or id of the product :");
+                Console.WriteLine("Enter the name or id of the product :(press -1 to exit)");
                 string key = Console.ReadLine();
+                if(key.Equals("-1"))
+                {
+                    Console.WriteLine("Cancelling...");
+                    return null;
+                }
                 if (!int.TryParse(key, out int search))
                 {
                     foreach (Product p in Products)

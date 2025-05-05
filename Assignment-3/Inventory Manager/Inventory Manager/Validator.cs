@@ -34,7 +34,7 @@ namespace Inventory_Management
             do
             {
                 string name = Console.ReadLine();
-                stop = Regex.IsMatch(name, @"^\D+$");
+                stop = Regex.IsMatch(name, @"^[A-Za-z]+([ '-.][A-Za-z]+)*$");
                 if (stop)
                     return name;
                 else
