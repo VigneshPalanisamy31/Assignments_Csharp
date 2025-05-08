@@ -1,5 +1,8 @@
 ﻿using ClosedXML.Excel;
+<<<<<<< HEAD
 using DocumentFormat.OpenXml.Drawing;
+=======
+>>>>>>> c1dcfd6b0c3d5a1316e410fdb33f613723df8bdc
 
 namespace FinanceTracker
 {
@@ -94,12 +97,16 @@ namespace FinanceTracker
                 if (ViewTransaction(name, filepath, worksheetname))
                 {
 
+<<<<<<< HEAD
                     int id = Validation.GetValidInteger("id of the transaction you wish to edit :\n(press -1 to exit)");
                     if (id == -1)
                     {
                         Console.WriteLine("Exiting...");
                         return;
                     }
+=======
+                    int id = Validation.GetValidInteger("id of the transaction you wish to edit :");
+>>>>>>> c1dcfd6b0c3d5a1316e410fdb33f613723df8bdc
                     var worksheet = workbook.Worksheet(worksheetname);
                     var rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(name, StringComparison.OrdinalIgnoreCase));
                     int count = 0;
@@ -132,6 +139,10 @@ namespace FinanceTracker
 
         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c1dcfd6b0c3d5a1316e410fdb33f613723df8bdc
         /// <summary>
         /// Function to delete a transaction from user history.
         /// </summary>
@@ -145,12 +156,16 @@ namespace FinanceTracker
             {
                 if (ViewTransaction(name, filepath, worksheetname))
                 {
+<<<<<<< HEAD
                     int id = Validation.GetValidInteger("id of the transaction you wish to delete: \n(press -1 to exit)");
                     if(id==-1)
                     {
                         Console.WriteLine("Exiting...");
                         return;
                     }
+=======
+                    int id = Validation.GetValidInteger("id of the transaction you wish to delete :");
+>>>>>>> c1dcfd6b0c3d5a1316e410fdb33f613723df8bdc
                     var worksheet = workbook.Worksheet(worksheetname);
                     var rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(name, StringComparison.OrdinalIgnoreCase));
                     if (id > rows.Count() || id < 1)
@@ -198,6 +213,10 @@ namespace FinanceTracker
         /// <param name="name"></param>
         /// <param name="filepath"></param>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> c1dcfd6b0c3d5a1316e410fdb33f613723df8bdc
         public void FinanceSummary(string name, string filepath)
         {
             var FinanceList = new List<(DateTime date, string type, string source, double amount)>();
