@@ -46,15 +46,26 @@ namespace FinanceTracker
                 {
                     Console.WriteLine("1.Add Income Transaction\n2.Add Expense Tansaction\n3.Exit");
                     int _choice = Validation.GetValidInteger("your choice");
+                    Transaction transaction = null;
+                    if (_choice > 0 && _choice < 3)
+                    {
+                        transaction = UserInteract.GetUserInput(name, _choice == 1 ? "income source" : "expense category");
+                        if (transaction == null)
+                        {
+                            Console.WriteLine("Exiting....\nPress any key to continue...");
+                            Console.ReadKey(); Console.Clear();
+                            continue;
+                        }
+                    }
 
                     switch (_choice)
                     {
                         case 1:
-                            financer.AddTransaction(UserInteract.GetUserInput(name, "income source"), filepath, "Income");
+                            financer.AddTransaction(transaction, filepath, "Income");
                             Console.WriteLine("Income Tracked Successfully....");
                             break;
                         case 2:
-                            financer.AddTransaction(UserInteract.GetUserInput(name, "expense category"), filepath, "Expense");
+                            financer.AddTransaction(transaction, filepath, "Expense");
                             Console.WriteLine("Expense Tracked Successfully....");
                             break;
                         case 3:
@@ -67,10 +78,11 @@ namespace FinanceTracker
 
 
                     }
+                    Console.WriteLine("Press any key to continue.....");
+                    Console.ReadKey();
+                    Console.Clear();
                 }
-                Console.WriteLine("Press any key to continue.....");
-                Console.ReadKey();
-                Console.Clear();
+               
             }
 
 

@@ -38,7 +38,7 @@ namespace FinanceTracker
                 bool exit = false;
                 while (!exit)
                 {
-                    Console.WriteLine("1.Income Tracker\n2.Expense Tracker\n3.Finance Summarry\n4.Exit");
+                    Console.WriteLine("1.Income Tracker\n2.Expense Tracker\n3.Finance Summary\n4.Exit");
 
                     int _choice = Validation.GetValidInteger("your choice");
 
