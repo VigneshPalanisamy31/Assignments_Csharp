@@ -45,7 +45,7 @@ namespace Inventory_Management
                 {
                     foreach (Product p in Products)
                     {
-                        if (p.ProductName.Equals(key))
+                        if (p.ProductName.Equals(key,StringComparison.OrdinalIgnoreCase))
                         {
                             ViewProduct(p);
                             return p;
@@ -90,10 +90,10 @@ namespace Inventory_Management
                         switch (choice)
                         {
                             case 1:
-                                toEdit.ProductID = Validator.GetValidNumber("the new ID :");
+                                toEdit.ProductID  = Validator.IsIdAvailable(Validator.GetValidNumber("new productid :"), Products);
                                 break;
                             case 2:
-                                toEdit.ProductName = Validator.GetValidName("new product name :");
+                                toEdit.ProductName = Validator.IsNameAvailable(Validator.GetValidName("new product name :"), Products);
                                 break;
                             case 3:
                                 toEdit.Price = Validator.GetValidPrice();

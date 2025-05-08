@@ -50,7 +50,7 @@ namespace Inventory_Management
             {
                 foreach (Product p in Products)
                 {
-                    if (p.ProductName.Equals(name))
+                    if (p.ProductName.Equals(name,StringComparison.OrdinalIgnoreCase))
                     {
                         Console.WriteLine("A product with same name exists..");
                         return IsNameAvailable(GetValidName("a different product name :"), Products);
