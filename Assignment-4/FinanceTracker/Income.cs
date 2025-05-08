@@ -16,8 +16,14 @@
                 switch (_choice)
                 {
                     case 1:
-                        financer.AddTransaction(UserInteract.GetUserInput(name, "income source"), filepath, "Income");
-                        Console.WriteLine("Income Tracked Successfully....");
+                        Transaction transaction = UserInteract.GetUserInput(name, "income source");
+                        if (transaction == null)
+                            Console.WriteLine("Exiting...");
+                        else
+                        {
+                            financer.AddTransaction(transaction, filepath, "Income");
+                            Console.WriteLine("Income Tracked Successfully....");
+                        }
                         break;
                     case 2:
                         financer.EditTransaction(name, filepath, "Income");

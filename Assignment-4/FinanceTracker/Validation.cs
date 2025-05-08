@@ -62,16 +62,19 @@ namespace FinanceTracker
         /// Function to get date from user .
         /// </summary>
         /// <returns>Validated date</returns>
-        public static DateTime GetValidDate()
+        public static DateTime GetValidDate(string userInput)
         {
-            Console.WriteLine("Enter the date of the transaction (dd-MM-yyyy) :");
+            
             DateTime date;
             while (true)
             {
-                if (DateTime.TryParseExact(Console.ReadLine(), "dd-MM-yyyy", null, DateTimeStyles.None, out date))
+                if (DateTime.TryParseExact(userInput, "dd-MM-yyyy", null, DateTimeStyles.None, out date))
                     return date;
                 else
+                {
                     Console.WriteLine("Please follow the format (dd-MM-yyyy)");
+                    userInput = Console.ReadLine();
+                }
             }
         }
 
