@@ -1,12 +1,4 @@
-﻿using System;
-using System.IO;
-using ClosedXML.Excel;
-using DocumentFormat.OpenXml;
-using DocumentFormat.OpenXml.Packaging;
-using DocumentFormat.OpenXml.Spreadsheet;
-using System.Linq;
-using System.Collections;
-using DocumentFormat.OpenXml.Wordprocessing;
+﻿
 using FinanceTracker;
 class TrackerUI
 {
