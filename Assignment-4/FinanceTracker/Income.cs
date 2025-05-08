@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 ﻿namespace FinanceTracker
 
@@ -11,6 +12,9 @@ using System.Threading.Tasks;
 
 namespace FinanceTracker
 >>>>>>> f1ac8c4 (feat: develop finance tracker functionalities for existing user)
+=======
+﻿namespace FinanceTracker
+>>>>>>> f43f4a8 (refactor: maintain clean code base)
 {
     internal class Income
     {

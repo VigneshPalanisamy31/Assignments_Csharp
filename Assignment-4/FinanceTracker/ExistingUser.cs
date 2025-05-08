@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 ﻿using ClosedXML.Excel;
 
@@ -10,6 +11,9 @@ using System.Text;
 using System.Threading.Tasks;
 using ClosedXML.Excel;
 >>>>>>> f1ac8c4 (feat: develop finance tracker functionalities for existing user)
+=======
+﻿using ClosedXML.Excel;
+>>>>>>> f43f4a8 (refactor: maintain clean code base)
 
 namespace FinanceTracker
 {
