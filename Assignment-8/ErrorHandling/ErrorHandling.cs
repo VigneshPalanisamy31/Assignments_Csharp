@@ -57,10 +57,10 @@ namespace ErrorHandling
                     switch (_choice)
                     {
                         case 1:
-                            Task1.Divide();
+                            DivideByZero.Divide();
                             break;
                         case 2:
-                            Task2.AccessArrayElement(Task2.GetArrayElements());
+                            CustomException.AccessArrayElement(CustomException.GetArrayElements());
                             break;
                         case 3:exit = true;
                             break;

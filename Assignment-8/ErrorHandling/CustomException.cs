@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ErrorHandling
 {
-    internal class Task2
+    internal class CustomException
     {
         public static void AccessArrayElement(int[] array)
         {
