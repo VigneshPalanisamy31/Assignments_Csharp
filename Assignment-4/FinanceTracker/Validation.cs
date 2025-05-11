@@ -40,7 +40,7 @@ namespace FinanceTracker
             bool valid = double.TryParse(Console.ReadLine(), out double amount);
             while (!valid || amount <= 0)
             {
-                Console.WriteLine("Please enter a valid amount :");
+                Console.WriteLine("Please enter a valid amount : \n(positive numerical value)");
                 valid = double.TryParse(Console.ReadLine(), out amount);
             }
             return amount;
