@@ -30,6 +30,9 @@ class TrackerUI
                     NewUser newuser = new NewUser(filepath);
                     newuser.NewUserFunctions(name, financer);
                     break;
+                case 2:
+                    Console.WriteLine("Yet to be developed...");
+                    break;
                
                 case 3:
                     Console.WriteLine("Exiting...");
