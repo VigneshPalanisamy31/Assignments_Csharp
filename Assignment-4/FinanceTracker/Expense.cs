@@ -1,20 +1,7 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 ﻿namespace FinanceTracker
 
-=======
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace FinanceTracker
->>>>>>> f1ac8c4 (feat: develop finance tracker functionalities for existing user)
-=======
-﻿namespace FinanceTracker
->>>>>>> f43f4a8 (refactor: maintain clean code base)
 {
     internal class Expense
     {
@@ -31,7 +18,7 @@ namespace FinanceTracker
                 switch (_choice)
                 {
                     case 1:
-<<<<<<< HEAD
+
                         Transaction transaction = UserInteract.GetUserInput(name, "expense category");
                         if (transaction == null)
                             Console.WriteLine("Exiting...");
@@ -40,11 +27,6 @@ namespace FinanceTracker
                             financer.AddTransaction(transaction, filepath, "Expense");
                             Console.WriteLine("Expense Tracked Successfully....");
                         }
-
-=======
-                        financer.AddTransaction(UserInteract.GetUserInput(name, "expense category"), filepath, "Expense");
-                        Console.WriteLine("Expense Tracked Successfully....");
->>>>>>> f1ac8c4 (feat: develop finance tracker functionalities for existing user)
                         break;
 
                     case 2:
