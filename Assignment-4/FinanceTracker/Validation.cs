@@ -54,7 +54,7 @@ namespace FinanceTracker
         {
             Console.WriteLine($"Please enter  {input} :");
             string category = Console.ReadLine();
-            string pattern = @"^\D+$";
+            string pattern = @"^[A-za-z]+([ '-.][A-za-z]+)*$";
             while (!Regex.IsMatch(category, pattern) || String.IsNullOrWhiteSpace(category))
             {
                 Console.WriteLine($"Please enter a valid {input}:");
