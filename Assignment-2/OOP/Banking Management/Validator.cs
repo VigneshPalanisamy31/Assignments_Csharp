@@ -9,7 +9,11 @@ namespace Banking_System
 {
     internal class Validator
     {
-        public static double getValidAmount()
+        /// <summary>
+        /// Function to validate user-entered amount.
+        /// </summary>
+        /// <returns></returns>
+        public static double GetValidAmount()
         {
             while (true)
             {

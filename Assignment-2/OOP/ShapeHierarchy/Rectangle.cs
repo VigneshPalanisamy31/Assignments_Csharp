@@ -8,10 +8,10 @@ namespace OOP
 {
     internal class Rectangle : Shape
     {
-        double _length;
-        double _breadth;
-        public double Length { get; set; }
-        public double Breadth { get; set; }
+        private double _length;
+        private double _breadth;
+        public double Length { get=>_length; set=>_length=value; }
+        public double Breadth { get=>_breadth; set=>_breadth=value; }
 
         public override double CalculateArea()
         {

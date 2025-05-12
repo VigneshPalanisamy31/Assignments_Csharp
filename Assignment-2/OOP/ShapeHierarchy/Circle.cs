@@ -9,8 +9,8 @@ namespace OOP
 {
     internal class Circle : Shape
     {
-        double _radius;
-        public double Radius { get; set; }
+        private double _radius;
+        public double Radius { get=>_radius; set=>_radius=value; }
         public override double CalculateArea()
         {
 

@@ -9,7 +9,11 @@ namespace Employee_Hierarchy
 {
     internal class Validator
     {
-        public static double getValidSalary()
+        /// <summary>
+        /// Function to validate user entered salary
+        /// </summary>
+        /// <returns></returns>
+        public static double GetValidSalary()
         {
             while (true)
             {
@@ -29,7 +33,11 @@ namespace Employee_Hierarchy
 
             }
         }
-        public static string getValidName()
+        /// <summary>
+        /// Function to validate user entered name.
+        /// </summary>
+        /// <returns></returns>
+        public static string GetValidName()
         {
             string name = Console.ReadLine();
             while (!Regex.IsMatch(name, @"^[A-za-z]+([ '.-][A-Za-z]+)*$"))

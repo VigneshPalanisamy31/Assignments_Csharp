@@ -9,7 +9,11 @@ namespace Shape_Hierarchy
 {
     internal class Validator
     {
-        public static double getValidInput()
+        /// <summary>
+        /// Function to validate and return a valid double value
+        /// </summary>
+        /// <returns>valid value(double)</returns>
+        public static double GetValidInput()
         {
             while (true)
             {
@@ -21,7 +25,11 @@ namespace Shape_Hierarchy
 
             }
         }
-        public static string getValidColor()
+        /// <summary>
+        /// Function to validate and return a string(color)
+        /// </summary>
+        /// <returns></returns>
+        public static string GetValidColor()
         {
 
             string color = Console.ReadLine();

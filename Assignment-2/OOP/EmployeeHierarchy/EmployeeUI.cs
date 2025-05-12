@@ -27,18 +27,18 @@ namespace Employee_Hierarchy
                         case 1:
                             Manager manager = new Manager();
                             Console.WriteLine("Enter the name of the manager");
-                            manager.Name = Validator.getValidName();
+                            manager.Name = Validator.GetValidName();
                             Console.WriteLine("Enter the salary of the manager");
-                            manager.Salary = Validator.getValidSalary();
+                            manager.Salary = Validator.GetValidSalary();
                             manager.PrintDetails();
                             break;
 
                         case 2:
                             Developer developer = new Developer();
                             Console.WriteLine("Enter the name of the developer");
-                            developer.Name = Validator.getValidName();
+                            developer.Name = Validator.GetValidName();
                             Console.WriteLine("Enter the salary of the developer");
-                            developer.Salary = Validator.getValidSalary();
+                            developer.Salary = Validator.GetValidSalary();
                             developer.PrintDetails();
                             break;
 
