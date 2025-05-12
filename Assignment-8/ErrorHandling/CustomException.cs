@@ -8,6 +8,11 @@ namespace ErrorHandling
 {
     internal class CustomException
     {
+        /// <summary>
+        /// Function to print index of an array element
+        /// </summary>
+        /// <param name="array"></param>
+        /// <exception cref="IndexOutOfRangeException"></exception>
         public static void AccessArrayElement(int[] array)
         {
             Console.WriteLine("Enter the index for search :");
@@ -17,6 +22,11 @@ namespace ErrorHandling
             Console.WriteLine($"Element at index {index} : {array[index - 1]}");
         }
 
+        /// <summary>
+        /// Function to get user input for array
+        /// </summary>
+        /// <returns>integer array or exceptions if any</returns>
+        /// <exception cref="Exception"></exception>
         public static int[] GetArrayElements()
         {
             Console.WriteLine("Enter the size of array:");
@@ -30,6 +40,11 @@ namespace ErrorHandling
             return array;
         }
 
+        /// <summary>
+        /// Function to get array size from user
+        /// </summary>
+        /// <returns>array size or exceptions if any</returns>
+        /// <exception cref="InvalidUserInputException"></exception>
         public static int GetArraySize()
         {
             int.TryParse(Console.ReadLine(), out int arraySize);
@@ -39,7 +54,7 @@ namespace ErrorHandling
             }
             else
             {
-                throw new InvalidUserInputException("Custom Message : Execution interupted due to an invalid array size \n(Array size must be greater than 0)");
+                throw new InvalidUserInputException("Custom Message : Execution interrupted due to an invalid array size \n(Array size must be greater than 0)");
 
             }
         }
