@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Inventory_Management
+namespace QueryBuilder
 {
     internal class Validator
     {
@@ -16,10 +16,14 @@ namespace Inventory_Management
             do
             {
                 stop = int.TryParse(Console.ReadLine(), out int number);
-                if (stop)
+                if (stop&&number>0)
                     return number;
                 else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"Please enter a valid {value}");
+                    Console.ResetColor();
+                }
                 if (value.Contains("stock quantity"))
                     Console.WriteLine("(Quantity must be a whole number)");
 
@@ -50,9 +54,11 @@ namespace Inventory_Management
             {
                 foreach (Product p in Products)
                 {
-                    if (p.ProductName.Equals(name,StringComparison.OrdinalIgnoreCase))
+                    if (p.ProductName.Equals(name, StringComparison.OrdinalIgnoreCase))
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("A product with same name exists..");
+                        Console.ResetColor();
                         return IsNameAvailable(GetValidName("a different product name :"), Products);
 
                     }
@@ -71,7 +77,9 @@ namespace Inventory_Management
                 {
                     if (p.ProductID == id)
                     {
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("A product with same id exists..");
+                        Console.ResetColor();
                         return IsIdAvailable(GetValidNumber("different product id :"), Products);
 
                     }
@@ -90,7 +98,11 @@ namespace Inventory_Management
                 if (stop)
                     return number;
                 else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine($"Please enter a valid price:");
+                    Console.ResetColor();
+                }
 
             } while (!stop);
             return 0;
@@ -99,7 +111,9 @@ namespace Inventory_Management
         {
             if (products.Count == 0)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("No products available in the inventory");
+                Console.ResetColor();
                 return true;
             }
             return false;

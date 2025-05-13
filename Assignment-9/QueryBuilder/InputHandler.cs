@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Inventory_Management
+namespace QueryBuilder
 {
     internal class InputHandler
     {
@@ -15,8 +15,8 @@ namespace Inventory_Management
                 return null;
             string productname = Validator.IsNameAvailable(Validator.GetValidName("product name :"), Products);
             double price = Validator.GetValidPrice();
-            int quantityinstock = Validator.GetValidNumber("stock quantity :");
-            return new Product(productID, productname, price, quantityinstock);
+            string category = Validator.GetValidName("category :");
+            return new Product(productID, productname, price, category);
         }
     }
 }
