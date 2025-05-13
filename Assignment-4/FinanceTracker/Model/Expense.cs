@@ -1,3 +1,6 @@
+using FinanceTracker.Controller;
+using FinanceTracker.Utilities;
+
 namespace FinanceTracker.Model
 
 {

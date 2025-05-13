@@ -1,5 +1,7 @@
+using FinanceTracker.Controller;
+using FinanceTracker.Utilities;
 
-﻿namespace FinanceTracker
+namespace FinanceTracker.Model
 {
     internal class Income
     {

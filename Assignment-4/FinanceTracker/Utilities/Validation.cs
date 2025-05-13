@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using ClosedXML.Excel;
 
-namespace FinanceTracker
+namespace FinanceTracker.Utilities
 {
     internal class Validation
     {
@@ -54,7 +54,7 @@ namespace FinanceTracker
             Console.WriteLine($"Please enter  {input} :");
             string category = Console.ReadLine();
             string pattern = @"^[A-Za-z]+([ '-.][A-Za-z]+)*$";
-            while (!Regex.IsMatch(category, pattern) || String.IsNullOrWhiteSpace(category))
+            while (!Regex.IsMatch(category, pattern) || string.IsNullOrWhiteSpace(category))
             {
                 Console.ForegroundColor= ConsoleColor.Red;
                 Console.WriteLine($"Please enter a valid {input}:");

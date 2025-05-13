@@ -1,7 +1,9 @@
 using ClosedXML.Excel;
+using FinanceTracker.Controller;
 using FinanceTracker.Model;
+using FinanceTracker.Utilities;
 
-namespace FinanceTracker
+namespace FinanceTracker.View
 {
     internal class ExistingUser
     {

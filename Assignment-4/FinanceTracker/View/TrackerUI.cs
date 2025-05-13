@@ -1,5 +1,5 @@
-﻿
-using FinanceTracker;
+﻿using FinanceTracker.Controller;
+using FinanceTracker.Utilities;
 using FinanceTracker.View;
 class TrackerUI
 {

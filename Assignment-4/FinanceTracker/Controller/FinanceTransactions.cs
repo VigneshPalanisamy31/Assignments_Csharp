@@ -1,6 +1,8 @@
 ﻿using ClosedXML.Excel;
+using FinanceTracker.Model;
+using FinanceTracker.Utilities;
 
-namespace FinanceTracker
+namespace FinanceTracker.Controller
 {
     internal class FinanceTransactions
     {
