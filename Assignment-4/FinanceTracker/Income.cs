@@ -10,7 +10,9 @@
             bool exit = false;
             while (!exit)
             {
-                Console.WriteLine("1.Add Income Transaction\n2.Edit Income Tansaction\n3.View Income Stats\n4.Delete Income Transaction\n5.Exit");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("1.Add Income Transaction\n2.Edit Income Transaction\n3.View Income Stats\n4.Delete Income Transaction\n5.Exit\n");
+                Console.ResetColor();
                 int _choice = Validation.GetValidInteger("your choice");
 
                 switch (_choice)

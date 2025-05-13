@@ -41,7 +41,7 @@ namespace FinanceTracker
         /// <param name="editIndex"></param>
         /// <returns>Boolean whether transactions are available are not. </returns>
 
-        public bool ViewTransaction(string name, string filepath, string worksheetname, int editIndex = -1)
+        public bool ViewTransaction(string name, string filepath, string worksheetname, Transaction edited = null)
         {
             int c = 0;
             using (var workbook = new XLWorkbook(filepath))
@@ -59,7 +59,7 @@ namespace FinanceTracker
                         string date = row.Cell(1).GetDateTime().ToString();
                         string sourceORcategory = row.Cell(3).GetString();
                         double amount = row.Cell(4).GetDouble();
-                        if (c == editIndex)
+                        if (edited!=null&&edited.date.ToString().Equals(date)&&edited.amount==amount&&edited.category.Equals(sourceORcategory))
                         {
                             Console.ForegroundColor = ConsoleColor.DarkYellow;
                             Console.WriteLine($"{c,-10}{date,-30}{sourceORcategory,10}{amount,20}  (edited)");
@@ -101,7 +101,7 @@ namespace FinanceTracker
                         Console.WriteLine("Exiting...");
                         return;
                     }
-
+                    Transaction edited=null;
                     var worksheet = workbook.Worksheet(worksheetname);
                     var rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(name, StringComparison.OrdinalIgnoreCase));
                     int count = 0;
@@ -116,16 +116,18 @@ namespace FinanceTracker
                             count++;
                             if (count == id)
                             {
-
-                                row.Cell(3).Value = Validation.GetValidString($"{(worksheetname.Equals("Income") ? "revised income source" : "revised expense category")}");
+                                Console.WriteLine("Enter the revised date:(dd-MM-yyyy)");
+                                row.Cell(1).Value = Validation.GetValidDate(Console.ReadLine());
+                                row.Cell(3).Value = worksheetname.Equals("Income") ? UserInteract.SelectIncomeSource() : UserInteract.SelectExpenseCategory();
                                 row.Cell(4).Value = Validation.GetValidAmount();
+                                edited = new Transaction(row.Cell(1).Value, row.Cell(2).Value.ToString(), row.Cell(3).Value.ToString(), double.Parse(row.Cell(4).Value.ToString()));
                                 break;
                             }
                         }
                         var range = worksheet.Range(2, 1, worksheet.LastRowUsed().RowNumber(), worksheet.LastColumnUsed().ColumnNumber());
                         range.Sort("A", XLSortOrder.Ascending);
                         workbook.Save();
-                        ViewTransaction(name, filepath, worksheetname, id);
+                        ViewTransaction(name, filepath, worksheetname, edited);
 
                         Console.WriteLine("\nEdited Succesfully......!!!");
                     }
@@ -152,47 +154,47 @@ namespace FinanceTracker
                     {
                         Console.WriteLine("Exiting...");
                         return;
-
-                        var worksheet = workbook.Worksheet(worksheetname);
-                        var rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(name, StringComparison.OrdinalIgnoreCase));
-                        if (id > rows.Count() || id < 1)
-                        {
-                            Console.WriteLine("Sorry id not found....");
-                        }
-                        else
-                        {
-                            int count = 0;
-                            foreach (var row in rows)
-                            {
-                                count++;
-                                if (count == id)
-                                {
-                                    Console.WriteLine($"{row.Cell(1).GetDateTime(),-30}{row.Cell(3).GetString(),10}{row.Cell(4).GetDouble(),20}\n");
-                                    string ch = "a";
-                                    while (!ch.Equals("y") && !ch.Equals("Y") && !ch.Equals("n") && !ch.Equals("N"))
-                                    {
-                                        Console.WriteLine($"Do you wish to delete this {worksheetname} transaction?[y/n]");
-                                        ch = Validation.GetValidString("choice");
-                                    }
-                                    if (ch.Equals("y") || ch.Equals("Y"))
-                                    {
-                                        row.Delete();
-                                        Console.WriteLine("Deletion Successful...");
-                                    }
-                                    else
-                                        Console.WriteLine("Cancelling Delete...");
-                                    break;
-                                }
-                            }
-                            workbook.Save();
-                            ViewTransaction(name, filepath, worksheetname);
-                        }
                     }
-
+                    var worksheet = workbook.Worksheet(worksheetname);
+                    var rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(name, StringComparison.OrdinalIgnoreCase));
+                    if (id > rows.Count() || id < 1)
+                    {
+                        Console.WriteLine("Sorry id not found....");
+                    }
+                    else
+                    {
+                        int count = 0;
+                        foreach (var row in rows)
+                        {
+                            count++;
+                            if (count == id)
+                            {
+                                Console.WriteLine($"{row.Cell(1).GetDateTime(),-30}{row.Cell(3).GetString(),10}{row.Cell(4).GetDouble(),20}\n");
+                                string ch = "a";
+                                while (!ch.Equals("y") && !ch.Equals("Y") && !ch.Equals("n") && !ch.Equals("N"))
+                                {
+                                    Console.WriteLine($"Do you wish to delete this {worksheetname} transaction?[y/n]");
+                                    ch = Validation.GetValidString("choice");
+                                }
+                                if (ch.Equals("y") || ch.Equals("Y"))
+                                {
+                                    row.Delete();
+                                    Console.WriteLine("Deletion Successful...");
+                                }
+                                else
+                                    Console.WriteLine("Cancelling Delete...");
+                                break;
+                            }
+                        }
+                        workbook.Save();
+                        ViewTransaction(name, filepath, worksheetname);
+                    }
                 }
 
             }
+
         }
+
 
 
         /// <summary>

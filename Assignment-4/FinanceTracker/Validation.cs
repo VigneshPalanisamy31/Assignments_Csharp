@@ -17,7 +17,9 @@ namespace FinanceTracker
             bool valid = int.TryParse(Console.ReadLine(), out int choice);
             while (!valid)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Please enter a valid input :");
+                Console.ResetColor();
                 valid = int.TryParse(Console.ReadLine(), out choice);
             }
             return choice;
@@ -35,7 +37,9 @@ namespace FinanceTracker
             bool valid = double.TryParse(Console.ReadLine(), out double amount);
             while (!valid || amount <= 0)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Please enter a valid amount :");
+                Console.ResetColor();
                 valid = double.TryParse(Console.ReadLine(), out amount);
             }
             return amount;
@@ -53,7 +57,9 @@ namespace FinanceTracker
 
             while (!Regex.IsMatch(category, pattern) || String.IsNullOrWhiteSpace(category))
             {
+                Console.ForegroundColor= ConsoleColor.Red;
                 Console.WriteLine($"Please enter a valid {input}:");
+                Console.ResetColor();
                 category = Console.ReadLine();
             }
             return category;
@@ -73,14 +79,16 @@ namespace FinanceTracker
                     return date;
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Please follow the format (dd-MM-yyyy)");
+                    Console.ResetColor();
                     userInput = Console.ReadLine();
                 }
             }
         }
 
         /// <summary>
-        /// Function to create a file if it doen't exist .
+        /// Function to create a file if it doesn't exist .
         /// </summary>
         /// <param name="filepath"></param>
         public static void FileIntegrity(string filepath)

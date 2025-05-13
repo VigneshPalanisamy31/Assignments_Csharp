@@ -22,7 +22,9 @@ namespace FinanceTracker
             bool expenseAvailable = expenseSheet.RowsUsed().Skip(1).Any(row => row.Cell(2).GetString().Equals(name, StringComparison.OrdinalIgnoreCase));
             if (!incomeAvailable && !expenseAvailable)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("User Not Found");
+                Console.ResetColor();
                 return false;
             }
             return true;
@@ -38,7 +40,9 @@ namespace FinanceTracker
                 bool exit = false;
                 while (!exit)
                 {
-                    Console.WriteLine("1.Income Tracker\n2.Expense Tracker\n3.Finance Summary\n4.Exit");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("\n1.Income Tracker\n2.Expense Tracker\n3.Finance Summary\n4.Exit\n");
+                    Console.ResetColor();
 
 
                     int _choice = Validation.GetValidInteger("your choice");

@@ -13,7 +13,9 @@ class TrackerUI
         while (!exit)
         {
             Console.WriteLine("------------Welcome to Expense Tracker-----------");
-            Console.WriteLine("1.New User\n2.Existing User\n3.Exit");
+            Console.ForegroundColor= ConsoleColor.Yellow;
+            Console.WriteLine("1.New User\n2.Existing User\n3.Exit\n");
+            Console.ResetColor();
             int _choice = Validation.GetValidInteger("your choice");
             switch (_choice)
             {
@@ -35,11 +37,14 @@ class TrackerUI
                     break;
 
                 default:
+                    Console.ForegroundColor= ConsoleColor.Red;
                     Console.WriteLine("Please enter a valid choice");
+                    Console.ResetColor();
                     break;
 
 
             }
+          
         }
 
         Console.ReadKey();

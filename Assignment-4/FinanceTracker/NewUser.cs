@@ -28,7 +28,9 @@ namespace FinanceTracker
             bool expenseAvailable = expenseSheet.RowsUsed().Skip(1).Any(row => row.Cell(2).GetString().Equals(name, StringComparison.OrdinalIgnoreCase));
             if (incomeAvailable || expenseAvailable)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("User Already Exists");
+                Console.ResetColor();
                 return false;
             }
             return true;
@@ -44,7 +46,9 @@ namespace FinanceTracker
                 bool exit = false;
                 while (!exit)
                 {
-                    Console.WriteLine("1.Add Income Transaction\n2.Add Expense Tansaction\n3.Exit");
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("\n1.Add Income Transaction\n2.Add Expense Transaction\n3.Exit\n");
+                    Console.ResetColor();
                     int _choice = Validation.GetValidInteger("your choice");
                     Transaction transaction = null;
                     if (_choice > 0 && _choice < 3)
@@ -62,14 +66,20 @@ namespace FinanceTracker
                     {
                         case 1:
                             financer.AddTransaction(transaction, filepath, "Income");
+                            Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine("Income Tracked Successfully....");
+                            Console.ResetColor();
                             break;
                         case 2:
                             financer.AddTransaction(transaction, filepath, "Expense");
+                            Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine("Expense Tracked Successfully....");
+                            Console.ResetColor();
                             break;
                         case 3:
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Exiting....");
+                            Console.ResetColor();
                             exit = true;
                             break;
                         default:
