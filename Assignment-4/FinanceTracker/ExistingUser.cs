@@ -38,11 +38,8 @@ namespace FinanceTracker
                 bool exit = false;
                 while (!exit)
                 {
-<<<<<<< HEAD
                     Console.WriteLine("1.Income Tracker\n2.Expense Tracker\n3.Finance Summary\n4.Exit");
-=======
-                    Console.WriteLine("1.Income Tracker\n2.Expense Tracker\n3.Finance Summarry\n4.Exit");
->>>>>>> c1dcfd6b0c3d5a1316e410fdb33f613723df8bdc
+
 
                     int _choice = Validation.GetValidInteger("your choice");
 

@@ -15,7 +15,6 @@
                 switch (_choice)
                 {
                     case 1:
-<<<<<<< HEAD
                         Transaction transaction = UserInteract.GetUserInput(name, "expense category");
                         if (transaction == null)
                             Console.WriteLine("Exiting...");
@@ -24,10 +23,7 @@
                             financer.AddTransaction(transaction, filepath, "Expense");
                             Console.WriteLine("Expense Tracked Successfully....");
                         }
-=======
-                        financer.AddTransaction(UserInteract.GetUserInput(name, "expense category"), filepath, "Expense");
-                        Console.WriteLine("Expense Tracked Successfully....");
->>>>>>> c1dcfd6b0c3d5a1316e410fdb33f613723df8bdc
+
                         break;
 
                     case 2:

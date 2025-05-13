@@ -1,8 +1,5 @@
 ﻿using ClosedXML.Excel;
-<<<<<<< HEAD
-using DocumentFormat.OpenXml.Drawing;
-=======
->>>>>>> c1dcfd6b0c3d5a1316e410fdb33f613723df8bdc
+
 
 namespace FinanceTracker
 {
@@ -97,16 +94,14 @@ namespace FinanceTracker
                 if (ViewTransaction(name, filepath, worksheetname))
                 {
 
-<<<<<<< HEAD
+
                     int id = Validation.GetValidInteger("id of the transaction you wish to edit :\n(press -1 to exit)");
                     if (id == -1)
                     {
                         Console.WriteLine("Exiting...");
                         return;
                     }
-=======
-                    int id = Validation.GetValidInteger("id of the transaction you wish to edit :");
->>>>>>> c1dcfd6b0c3d5a1316e410fdb33f613723df8bdc
+
                     var worksheet = workbook.Worksheet(worksheetname);
                     var rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(name, StringComparison.OrdinalIgnoreCase));
                     int count = 0;
@@ -139,10 +134,6 @@ namespace FinanceTracker
 
         }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> c1dcfd6b0c3d5a1316e410fdb33f613723df8bdc
         /// <summary>
         /// Function to delete a transaction from user history.
         /// </summary>
@@ -156,54 +147,51 @@ namespace FinanceTracker
             {
                 if (ViewTransaction(name, filepath, worksheetname))
                 {
-<<<<<<< HEAD
                     int id = Validation.GetValidInteger("id of the transaction you wish to delete: \n(press -1 to exit)");
-                    if(id==-1)
+                    if (id == -1)
                     {
                         Console.WriteLine("Exiting...");
                         return;
-                    }
-=======
-                    int id = Validation.GetValidInteger("id of the transaction you wish to delete :");
->>>>>>> c1dcfd6b0c3d5a1316e410fdb33f613723df8bdc
-                    var worksheet = workbook.Worksheet(worksheetname);
-                    var rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(name, StringComparison.OrdinalIgnoreCase));
-                    if (id > rows.Count() || id < 1)
-                    {
-                        Console.WriteLine("Sorry id not found....");
-                    }
-                    else
-                    {
-                        int count = 0;
-                        foreach (var row in rows)
+
+                        var worksheet = workbook.Worksheet(worksheetname);
+                        var rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(name, StringComparison.OrdinalIgnoreCase));
+                        if (id > rows.Count() || id < 1)
                         {
-                            count++;
-                            if (count == id)
-                            {
-                                Console.WriteLine($"{row.Cell(1).GetDateTime(),-30}{row.Cell(3).GetString(),10}{row.Cell(4).GetDouble(),20}\n");
-                                string ch = "a";
-                                while (!ch.Equals("y") && !ch.Equals("Y") && !ch.Equals("n") && !ch.Equals("N"))
-                                {
-                                    Console.WriteLine($"Do you wish to delete this {worksheetname} transaction?[y/n]");
-                                    ch = Validation.GetValidString("choice");
-                                }
-                                if (ch.Equals("y") || ch.Equals("Y"))
-                                {
-                                    row.Delete();
-                                    Console.WriteLine("Deletion Successful...");
-                                }
-                                else
-                                    Console.WriteLine("Cancelling Delete...");
-                                break;
-                            }
+                            Console.WriteLine("Sorry id not found....");
                         }
-                        workbook.Save();
-                        ViewTransaction(name, filepath, worksheetname);
+                        else
+                        {
+                            int count = 0;
+                            foreach (var row in rows)
+                            {
+                                count++;
+                                if (count == id)
+                                {
+                                    Console.WriteLine($"{row.Cell(1).GetDateTime(),-30}{row.Cell(3).GetString(),10}{row.Cell(4).GetDouble(),20}\n");
+                                    string ch = "a";
+                                    while (!ch.Equals("y") && !ch.Equals("Y") && !ch.Equals("n") && !ch.Equals("N"))
+                                    {
+                                        Console.WriteLine($"Do you wish to delete this {worksheetname} transaction?[y/n]");
+                                        ch = Validation.GetValidString("choice");
+                                    }
+                                    if (ch.Equals("y") || ch.Equals("Y"))
+                                    {
+                                        row.Delete();
+                                        Console.WriteLine("Deletion Successful...");
+                                    }
+                                    else
+                                        Console.WriteLine("Cancelling Delete...");
+                                    break;
+                                }
+                            }
+                            workbook.Save();
+                            ViewTransaction(name, filepath, worksheetname);
+                        }
                     }
+
                 }
 
             }
-
         }
 
 
@@ -213,10 +201,6 @@ namespace FinanceTracker
         /// <param name="name"></param>
         /// <param name="filepath"></param>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> c1dcfd6b0c3d5a1316e410fdb33f613723df8bdc
         public void FinanceSummary(string name, string filepath)
         {
             var FinanceList = new List<(DateTime date, string type, string source, double amount)>();
