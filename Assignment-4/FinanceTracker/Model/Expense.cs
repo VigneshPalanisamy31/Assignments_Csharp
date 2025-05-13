@@ -1,5 +1,4 @@
-
-﻿namespace FinanceTracker
+namespace FinanceTracker.Model
 
 {
     internal class Expense

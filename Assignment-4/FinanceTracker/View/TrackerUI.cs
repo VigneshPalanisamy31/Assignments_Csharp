@@ -1,5 +1,6 @@
 ﻿
 using FinanceTracker;
+using FinanceTracker.View;
 class TrackerUI
 {
 

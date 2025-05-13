@@ -1,4 +1,5 @@
 using ClosedXML.Excel;
+using FinanceTracker.Model;
 
 namespace FinanceTracker
 {

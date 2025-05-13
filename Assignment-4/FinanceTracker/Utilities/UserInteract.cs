@@ -1,5 +1,7 @@
 ﻿
 
+using FinanceTracker.Model;
+
 namespace FinanceTracker
 {
     internal class UserInteract
