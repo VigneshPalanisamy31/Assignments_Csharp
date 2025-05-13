@@ -1,6 +1,6 @@
 ﻿using ConsoleTables;
 
-namespace QueryBuilder
+namespace LINQ
 {
     internal class ProductManager
     {

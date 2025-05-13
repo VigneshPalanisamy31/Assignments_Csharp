@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QueryBuilder
+namespace LINQ
 {
     internal class QueryTask3
     {
@@ -25,8 +25,12 @@ namespace QueryBuilder
             int target = Validator.GetValidNumber("Target sum:");
             var TargetPairs=array.SelectMany((value,index)=>array.Skip(index+1),
                                              (first,second)=>new { first, second }).Where(pair=>pair.first+pair.second==target).Distinct().ToList();
-            Console.WriteLine("Second Highest Number" + secondHighest);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Second Highest Number : " + secondHighest);
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Pairs summing up to target :");
+            Console.ResetColor();
             foreach (var pair in TargetPairs)
             {
                 Console.WriteLine($"({pair.first},{pair.second})");

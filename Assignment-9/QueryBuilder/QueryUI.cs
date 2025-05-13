@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QueryBuilder
+namespace LINQ
 {
     internal class QueryUI
     {
@@ -16,6 +16,7 @@ namespace QueryBuilder
             Console.WriteLine("3.Products along with suppliers");
             Console.WriteLine("4.Second Highest element in an array and pairs summing up to target");
             Console.WriteLine("5.All books sorted by price");
+            Console.WriteLine("6.QueryBuilder");
             int _choice = Validator.GetValidNumber("your choice :");
             switch (_choice)
             {
@@ -35,6 +36,9 @@ namespace QueryBuilder
                     QueryTask4.Execute(products);
                     break;
                 case 6:
+                    QueryTask5.ProductsGreaterThan50000SortByPrice(products,suppliers);
+                    break;
+                case 7:
                     Console.WriteLine("Exiting....");
                     break;
             }
