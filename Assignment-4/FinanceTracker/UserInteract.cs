@@ -27,6 +27,11 @@ namespace FinanceTracker
 
             return new Transaction(date, name, category, amount);
         }
+
+        /// <summary>
+        /// Function to allow user to view income sources and make selection
+        /// </summary>
+        /// <returns>income source (string)</returns>
         public static string SelectIncomeSource()
         {
             Console.WriteLine("\nSelect your income source");
@@ -49,10 +54,18 @@ namespace FinanceTracker
                 _=>GetCustomIncome()
             };
         }
+        /// <summary>
+        /// Function to get custom income source from user
+        /// </summary>
+        /// <returns>custom income source(string)</returns>
         public static string GetCustomIncome()
         {
             return Validation.GetValidString("income source");
         }
+        /// <summary>
+        /// Function to allow user to view expense categories and make selection
+        /// </summary>
+        /// <returns>expense category (string)</returns>
         public static string SelectExpenseCategory()
         {
             Console.WriteLine("\nSelect your expense category");
@@ -78,6 +91,10 @@ namespace FinanceTracker
                 _ => GetCustomExpense()
             };
         }
+        /// <summary>
+        /// Function to get custom expense category from user
+        /// </summary>
+        /// <returns>expense category (string)</returns>
         public static string GetCustomExpense()
         {
             return Validation.GetValidString("expense category");
