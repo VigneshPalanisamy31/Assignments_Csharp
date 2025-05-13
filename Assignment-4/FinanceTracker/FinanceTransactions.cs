@@ -1,6 +1,5 @@
 ﻿using ClosedXML.Excel;
 
-
 namespace FinanceTracker
 {
     internal class FinanceTransactions
@@ -43,6 +42,7 @@ namespace FinanceTracker
 
         public bool ViewTransaction(string name, string filepath, string worksheetname, Transaction edited = null)
         {
+
             int c = 0;
             using (var workbook = new XLWorkbook(filepath))
             {
@@ -59,7 +59,8 @@ namespace FinanceTracker
                         string date = row.Cell(1).GetDateTime().ToString();
                         string sourceORcategory = row.Cell(3).GetString();
                         double amount = row.Cell(4).GetDouble();
-                        if (edited!=null&&edited.date.ToString().Equals(date)&&edited.amount==amount&&edited.category.Equals(sourceORcategory))
+                        if (edited != null && edited.date.ToString().Equals(date) && edited.amount == amount && edited.category.Equals(sourceORcategory))
+
                         {
                             Console.ForegroundColor = ConsoleColor.DarkYellow;
                             Console.WriteLine($"{c,-10}{date,-30}{sourceORcategory,10}{amount,20}  (edited)");
@@ -86,7 +87,6 @@ namespace FinanceTracker
         /// <param name="filepath"></param>
         /// <param name="worksheetname"></param>
 
-
         public void EditTransaction(string name, string filepath, string worksheetname)
         {
             using (var workbook = new XLWorkbook(filepath))
@@ -101,7 +101,7 @@ namespace FinanceTracker
                         Console.WriteLine("Exiting...");
                         return;
                     }
-                    Transaction edited=null;
+                    Transaction edited = null;
                     var worksheet = workbook.Worksheet(worksheetname);
                     var rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(name, StringComparison.OrdinalIgnoreCase));
                     int count = 0;
@@ -127,7 +127,9 @@ namespace FinanceTracker
                         var range = worksheet.Range(2, 1, worksheet.LastRowUsed().RowNumber(), worksheet.LastColumnUsed().ColumnNumber());
                         range.Sort("A", XLSortOrder.Ascending);
                         workbook.Save();
+
                         ViewTransaction(name, filepath, worksheetname, edited);
+
 
                         Console.WriteLine("\nEdited Succesfully......!!!");
                     }
@@ -142,6 +144,7 @@ namespace FinanceTracker
         /// <param name="name"></param>
         /// <param name="filepath"></param>
         /// <param name="worksheetname"></param>
+
 
         public void DeleteTransaction(string name, string filepath, string worksheetname)
         {
@@ -182,7 +185,7 @@ namespace FinanceTracker
                                     Console.WriteLine("Deletion Successful...");
                                 }
                                 else
-                                    Console.WriteLine("Cancelling Delete...");
+                                    Console.WriteLine("Canceling Delete...");
                                 break;
                             }
                         }
@@ -194,8 +197,6 @@ namespace FinanceTracker
             }
 
         }
-
-
 
         /// <summary>
         /// Function to view all financial transactions summary of user.

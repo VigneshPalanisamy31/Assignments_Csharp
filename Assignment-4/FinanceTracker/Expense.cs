@@ -1,4 +1,6 @@
+
 ﻿namespace FinanceTracker
+
 {
     internal class Expense
     {
@@ -12,6 +14,7 @@
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("\n1.Add Expense Transaction\n2.Edit Expense Transaction\n3.View Expense Stats\n4.Delete Expense Transaction\n5.Exit\n");
                 Console.ResetColor();
+
                 int _choice = Validation.GetValidInteger("your choice");
 
                 switch (_choice)
@@ -25,7 +28,6 @@
                             financer.AddTransaction(transaction, filepath, "Expense");
                             Console.WriteLine("Expense Tracked Successfully....");
                         }
-
                         break;
 
                     case 2:

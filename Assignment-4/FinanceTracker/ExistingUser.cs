@@ -1,4 +1,4 @@
-﻿using ClosedXML.Excel;
+using ClosedXML.Excel;
 
 namespace FinanceTracker
 {
@@ -40,6 +40,7 @@ namespace FinanceTracker
                 bool exit = false;
                 while (!exit)
                 {
+
                     Console.ForegroundColor = ConsoleColor.Yellow;
                     Console.WriteLine("\n1.Income Tracker\n2.Expense Tracker\n3.Finance Summary\n4.Exit\n");
                     Console.ResetColor();

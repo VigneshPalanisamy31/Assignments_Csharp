@@ -22,6 +22,7 @@ namespace FinanceTracker
                 category = SelectIncomeSource();
             else
                 category = SelectExpenseCategory();
+
             double amount = Validation.GetValidAmount();
 
             return new Transaction(date, name, category, amount);

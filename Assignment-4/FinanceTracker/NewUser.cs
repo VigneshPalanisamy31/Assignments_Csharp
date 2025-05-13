@@ -67,12 +67,14 @@ namespace FinanceTracker
                         case 1:
                             financer.AddTransaction(transaction, filepath, "Income");
                             Console.ForegroundColor = ConsoleColor.Green;
+
                             Console.WriteLine("Income Tracked Successfully....");
                             Console.ResetColor();
                             break;
                         case 2:
                             financer.AddTransaction(transaction, filepath, "Expense");
                             Console.ForegroundColor = ConsoleColor.Green;
+
                             Console.WriteLine("Expense Tracked Successfully....");
                             Console.ResetColor();
                             break;
