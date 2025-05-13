@@ -37,13 +37,9 @@ namespace FinanceTracker
             bool valid = double.TryParse(Console.ReadLine(), out double amount);
             while (!valid || amount <= 0)
             {
-<<<<<<< HEAD
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Please enter a valid amount :");
                 Console.ResetColor();
-=======
-                Console.WriteLine("Please enter a valid amount : \n(positive numerical value)");
->>>>>>> 3c5bdac973b88377f8fb1ae527c76cbcd30236e0
                 valid = double.TryParse(Console.ReadLine(), out amount);
             }
             return amount;
@@ -58,10 +54,6 @@ namespace FinanceTracker
             Console.WriteLine($"Please enter  {input} :");
             string category = Console.ReadLine();
             string pattern = @"^[A-Za-z]+([ '-.][A-Za-z]+)*$";
-<<<<<<< HEAD
-
-=======
->>>>>>> 3c5bdac973b88377f8fb1ae527c76cbcd30236e0
             while (!Regex.IsMatch(category, pattern) || String.IsNullOrWhiteSpace(category))
             {
                 Console.ForegroundColor= ConsoleColor.Red;
@@ -86,13 +78,10 @@ namespace FinanceTracker
                     return date;
                 else
                 {
-<<<<<<< HEAD
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Please follow the format (dd-MM-yyyy)");
                     Console.ResetColor();
-=======
-                    Console.WriteLine("Please follow the format (dd-MM-yyyy)");
->>>>>>> 3c5bdac973b88377f8fb1ae527c76cbcd30236e0
+
                     userInput = Console.ReadLine();
                 }
             }
