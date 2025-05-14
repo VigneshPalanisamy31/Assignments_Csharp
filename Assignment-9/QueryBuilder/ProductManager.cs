@@ -135,6 +135,12 @@ namespace LINQ
                 productTable.AddRow(product.ProductID, product.ProductName, product.Price, product.Category);
             }
             productTable.Write(Format.Alternative);
+            var supplierTable = new ConsoleTable("ProductId", "SupplierId","Supplier Name");
+            foreach (Supplier supplier in Suppliers)
+            {
+                productTable.AddRow(supplier.ProductID, supplier.SupplierID, supplier.SupplierName);
+            }
+            supplierTable.Write(Format.Alternative);
         }
 
         /// <summary>

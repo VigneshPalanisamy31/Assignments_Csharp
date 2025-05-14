@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +17,8 @@ namespace LINQ
                 return null;
             string productname = Validator.IsNameAvailable(Validator.GetValidName("product name :"), Products);
             double price = Validator.GetValidPrice();
-            string category = Validator.GetValidName("category :");
+            TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
+            string category = textInfo.ToTitleCase(Validator.GetValidName("category :"));
             return new Product(productID, productname, price, category);
         }
     }

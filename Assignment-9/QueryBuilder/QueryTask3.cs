@@ -21,6 +21,11 @@ namespace LINQ
                     return;
                 }
             }
+            if (arraySize < 2)
+            {
+                Console.WriteLine("Insufficient Elements to find second highest element");
+                return;
+            }
             int secondHighest = array.OrderByDescending(n => n).Distinct().Skip(1).First();
             int target = Validator.GetValidNumber("Target sum:");
             var TargetPairs=array.SelectMany((value,index)=>array.Skip(index+1),

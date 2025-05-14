@@ -24,7 +24,9 @@ namespace LINQ
                 tableObj.AddRow(product.ProductName,product.Price);
             }
             tableObj.Write(Format.Alternative);
-            Console.WriteLine("\n\nAverage Price = "+avgPrice);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("\nAverage Price = "+avgPrice);
+            Console.ResetColor();
         }
     }
 }
