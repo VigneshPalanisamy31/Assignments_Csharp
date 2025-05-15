@@ -107,9 +107,7 @@ namespace LINQ
                         break;
 
                     case 3:
-                        Console.ForegroundColor= ConsoleColor.Green;
-                        Console.WriteLine("\nJoined Suppliers Successfully");
-                        Console.ResetColor();
+                       
                         var result=resultBuilder.Execute();
                         var joinedResult=result.Join(
                               suppliers,
@@ -118,15 +116,24 @@ namespace LINQ
                               (p, s) => new { p.ProductName, p.Price, p.Category, s.SupplierName }
 
                         );
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("\nExecuting all added queries..... ");
-                        Console.ResetColor();
                         var joinedtable = new ConsoleTable("Product Name", "Price", "Category","Supplier Name");
-                        foreach (var product in joinedResult)
+                        if (joinedResult.Any())
                         {
-                            joinedtable.AddRow(product.ProductName,product.Price,product.Category,product.SupplierName);
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("\nJoined Suppliers Successfully");
+                            Console.ResetColor();
+                            foreach (var product in joinedResult)
+                            {
+                                joinedtable.AddRow(product.ProductName, product.Price, product.Category, product.SupplierName);
+                            }
+                            joinedtable.Write(Format.Alternative);
                         }
-                        joinedtable.Write(Format.Alternative);
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\nNo matching products...");
+                            Console.ResetColor();
+                        }
                         exit = true;
 
                         break;
@@ -137,12 +144,21 @@ namespace LINQ
                         Console.ResetColor();
                         result=resultBuilder.Execute();
                         var table = new ConsoleTable("Product Name", "Price", "Category");
+                        if (result.Any())
+                        {
                             foreach (var product in result)
                             {
-                                table.AddRow(product.ProductName,product.Price,product.Category);
+                                table.AddRow(product.ProductName, product.Price, product.Category);
                             }
-                        table.Write(Format.Alternative);
-                        exit = true;
+                            table.Write(Format.Alternative);
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("No matching products...");
+                            Console.ResetColor();
+                        }
+                            exit = true;
                         break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Red;
