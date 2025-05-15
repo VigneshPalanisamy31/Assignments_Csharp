@@ -2,27 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using LINQ.Controller.ProductHandler;
+using LINQ.Model;
+using LINQ.Utilities;
 
-namespace Inventory_Management
+namespace LINQ.View
 {
-    internal class UI
+    internal class ProductHandlerUI
     {
-        public static void Main(string[] args)
+        public static void ProductHandlingFunctions(List<Product> products,List<Supplier> suppliers)
         {
-            ProductManager inventory = new ProductManager();
 
             bool stop = false;
             do
             {
-                Console.WriteLine("------------Welcome to Inventory Manager -------------");
+                ProductManager inventory = new ProductManager(products,suppliers);
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("1.Add Product");
                 Console.WriteLine("2.Edit Product");
                 Console.WriteLine("3.Search Product");
                 Console.WriteLine("4.Delete Product");
                 Console.WriteLine("5.View Inventory");
                 Console.WriteLine("6.Exit");
+                Console.ResetColor();
 
                 int _choice = Validator.GetValidNumber("your choice :");
                 switch (_choice)
@@ -46,7 +49,9 @@ namespace Inventory_Management
                         stop = true;
                         break;
                     default:
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Please enter a valid input");
+                        Console.ResetColor();
                         break;
 
                 }
