@@ -9,7 +9,11 @@ namespace LINQ
 {
     internal class QueryTask5
     {
-
+        /// <summary>
+        /// Function to handle all querying tasks (filter,sort,join)
+        /// </summary>
+        /// <param name="products"></param>
+        /// <param name="suppliers"></param>
         public static void QueryBuilderFunctions(List<Product> products,List<Supplier>suppliers)
         {
             var resultBuilder = new QueryBuilder<Product>(products);

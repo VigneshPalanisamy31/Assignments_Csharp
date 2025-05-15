@@ -8,6 +8,9 @@ namespace LINQ
 {
     internal class QueryTask3
     {
+        /// <summary>
+        /// Function to display second highest number and pairs that sum up to given target .
+        /// </summary>
         public static void Execute()
         {
             int arraySize = Validator.GetValidNumber("array size ");

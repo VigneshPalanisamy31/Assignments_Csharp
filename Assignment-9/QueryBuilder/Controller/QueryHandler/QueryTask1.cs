@@ -9,6 +9,10 @@ namespace LINQ
 {
     internal class QueryTask1
     {
+        /// <summary>
+        /// Function to display electronics with price greater than 500$ .
+        /// </summary>
+        /// <param name="products"></param>
         public static void Execute(List<Product> products)
         {
             

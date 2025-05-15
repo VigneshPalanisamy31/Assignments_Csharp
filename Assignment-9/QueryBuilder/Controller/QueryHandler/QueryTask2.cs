@@ -8,6 +8,11 @@ namespace LINQ
 {
     internal class QueryTask2
     {
+        /// <summary>
+        /// Function to display products grouped by category along with most expensive product of each category .
+        /// </summary>
+        /// <param name="products"></param>
+        /// <param name="suppliers"></param>
         public static void Execute1(List<Product> products,List<Supplier>suppliers)
         {
             var productGroup = products.GroupBy(p => p.Category)
