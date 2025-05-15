@@ -36,9 +36,10 @@ namespace LINQ
             while(!exit)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("\n1.ProductHandler\n2.QueryHandler\n3.Exit");
+                Console.WriteLine("===========Inventory Querying Console Application==========");
+                Console.WriteLine("\n1.ProductHandler\n2.QueryHandler\n3.Exit\n");
                 Console.ResetColor();
-                int _choice = Validator.GetValidNumber("your choice :");
+                int _choice = Validator.GetValidNumber(" choice :");
                 switch (_choice)
                 {
                     case 1:
@@ -51,6 +52,11 @@ namespace LINQ
                         Console.WriteLine("Press any key to continue...");
                         Console.ReadKey();
                         exit = true;
+                        break;
+                    default:
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("\nPlease enter a valid choice from given choices");
+                        Console.ResetColor();
                         break;
 
                 }
