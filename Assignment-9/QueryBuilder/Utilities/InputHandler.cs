@@ -5,8 +5,9 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LINQ.Model;
 
-namespace LINQ
+namespace LINQ.Utilities
 {
     internal class InputHandler
     {

@@ -1,6 +1,8 @@
 ﻿using ConsoleTables;
+using LINQ.Model;
+using LINQ.Utilities;
 
-namespace LINQ
+namespace LINQ.Controller.ProductHandler
 {
     internal class ProductManager
     {

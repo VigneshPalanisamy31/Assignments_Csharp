@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleTables;
+using LINQ.Model;
 
-namespace LINQ
+namespace LINQ.Controller.QueryHandler
 {
     internal class QueryTask4
     {

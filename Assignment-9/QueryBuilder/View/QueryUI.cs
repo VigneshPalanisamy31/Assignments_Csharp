@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LINQ.Controller.QueryHandler;
+using LINQ.Model;
+using LINQ.Utilities;
 
-namespace LINQ
+namespace LINQ.View
 {
     internal class QueryUI
     {

@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleTables;
-namespace LINQ
+using LINQ.Model;
+namespace LINQ.Controller.QueryHandler
 {
     internal class QueryTask2
     {
@@ -41,9 +42,9 @@ namespace LINQ
                                    on product.ProductID equals supplier.ProductID
                                    select new
                                    {
-                                       ProductID = product.ProductID,
-                                       ProductName = product.ProductName,
-                                       SupplierName = supplier.SupplierName,
+                                       product.ProductID,
+                                       product.ProductName,
+                                       supplier.SupplierName,
                                    };
             var table = new ConsoleTable("ProductId", "Product Name", "Supplier Name");
             foreach (var product in productSuppliers)
