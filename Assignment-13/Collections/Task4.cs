@@ -41,7 +41,9 @@ namespace Collections
 
 
         }
-
+        /// <summary>
+        /// Function to add student marks to the mark list dictionary.
+        /// </summary>
         public void AddStudentMark()
         {
             int bookCount = Validator.GetValidInt("number of students");
@@ -53,6 +55,9 @@ namespace Collections
             Console.WriteLine("\nStudents added successfully");
             Console.ResetColor();
         }
+        /// <summary>
+        /// Function to remove student marks from the mark list dictionary.
+        /// </summary>
         public void RemoveStudent()
         {
             string nameToBeRemoved = Validator.GetValidString("name to be removed");
@@ -72,6 +77,9 @@ namespace Collections
             }
 
         }
+        /// <summary>
+        /// Function to display student marks from the mark list dictionary.
+        /// </summary>
         public void DisplayMarks()
         {
             if (markList.Count == 0)

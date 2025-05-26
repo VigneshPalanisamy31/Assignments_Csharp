@@ -41,6 +41,9 @@ namespace Collections
 
 
         }
+        /// <summary>
+        /// Function to add people to the queue
+        /// </summary>
         public void Enqueue()
         {
             Console.WriteLine("Enter the number of people to be queued...");
@@ -54,6 +57,9 @@ namespace Collections
             Console.WriteLine("\nQueue created successfully..");
             Console.ResetColor();
         }
+        /// <summary>
+        /// Function to remove people from queue
+        /// </summary>
 
         public void Dequeue()
         {
@@ -73,6 +79,9 @@ namespace Collections
             }
 
         }
+        /// <summary>
+        /// Function to display people in the queue
+        /// </summary>
 
         public void DisplayPeople()
         {

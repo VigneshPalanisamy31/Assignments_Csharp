@@ -8,10 +8,18 @@ namespace Collections
 {
     public class Task6
     {
+        /// <summary>
+        /// Function that calculates the sum of elements in the given collection.
+        /// </summary>
+        /// <param name="numbers"></param>
+        /// <returns>sum of elements</returns>
         public static int SumOfElements(IEnumerable<int> numbers)
         {
             return numbers.Sum();
         }
+        /// <summary>
+        /// Function to test the SumOfElements() for various collection inputs.
+        /// </summary>
        public static void TestSumOfElements()
         {
             List<int> list = new List<int> { 1, 2, 3, 4 };
@@ -35,7 +43,10 @@ namespace Collections
             Console.WriteLine("Queue Sum: " + SumOfElements(queue));
         }
        
-
+        /// <summary>
+        /// Function to generate a read-only dictionary
+        /// </summary>
+        /// <returns>IReadOnlyDictionary object</returns>
         public static IReadOnlyDictionary<string, int> GenerateDictionary()
         {
             var dict = new Dictionary<string, int>
@@ -47,7 +58,10 @@ namespace Collections
 
             return new System.Collections.ObjectModel.ReadOnlyDictionary<string, int>(dict);
         }
-
+        /// <summary>
+        /// Function to print a read-only dictionary
+        /// </summary>
+        /// <param name="dictionary"></param>
         public static void PrintDictionary(IReadOnlyDictionary<string, int> dictionary)
         {
             foreach (var kvp in dictionary)

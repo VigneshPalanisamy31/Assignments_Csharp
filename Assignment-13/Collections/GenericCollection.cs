@@ -32,7 +32,10 @@ namespace Collections
                     throw new ArgumentException("Invalid collection type. Choose 'list', 'queue', or 'stack'.");
             }
         }
-
+        /// <summary>
+        /// Function to add items to the generic collections.
+        /// </summary>
+        /// <param name="item"></param>
         public void Add(T item)
         {
             switch (activeType)
@@ -51,6 +54,9 @@ namespace Collections
                     break;
             }
         }
+        /// <summary>
+        /// Function to display the elements of the generic collections.
+        /// </summary>
         public void Display()
         {
             Console.WriteLine($"\nActive collection: {activeType.ToUpper()}");
@@ -68,6 +74,9 @@ namespace Collections
             }
         }
 
+        /// <summary>
+        /// Function to remove elements from the generic collections.
+        /// </summary>
         public void Remove()
         {
             switch (activeType)

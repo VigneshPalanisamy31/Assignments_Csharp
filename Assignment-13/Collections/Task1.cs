@@ -41,6 +41,9 @@ namespace Collections
 
 
         }
+        /// <summary>
+        /// Function to add books to the list
+        /// </summary>
         public void AddBooks()
         {
             int bookCount = Validator.GetValidInt("number of books");
@@ -52,6 +55,10 @@ namespace Collections
             Console.WriteLine("\nBooks added successfully");
             Console.ResetColor();
         }
+        /// <summary>
+        /// Function to search for a book in the list
+        /// </summary>
+        /// <returns></returns>
         public string SearchBook()
         {
             string bookToSearch = Validator.GetValidString("name of the book");
@@ -70,6 +77,9 @@ namespace Collections
                 return "";
             }
         }
+        /// <summary>
+        /// Function to remove a book from the list.
+        /// </summary>
         public void RemoveBook()
         {
             if (!SearchBook().Equals(""))
@@ -86,7 +96,9 @@ namespace Collections
             }
 
         }
-
+        /// <summary>
+        /// Function to display all books in the list
+        /// </summary>
         public void DisplayBooks()
         {
             if (books.Count == 0)
