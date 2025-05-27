@@ -18,7 +18,7 @@ namespace ImproveMemoryEater_2
                 Thread.Sleep(10);
             }
             memAlloc.Clear();
-            Console.WriteLine("Improving memory by restring loop to a finite limit...");
+            Console.WriteLine("Improving memory by restricting loop to a finite limit...");
             Console.ReadKey();
 
         }
