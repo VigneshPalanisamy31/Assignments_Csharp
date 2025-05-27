@@ -66,7 +66,7 @@ namespace LINQ.Controller.QueryHandler
                                     break;
                                 case 4:
                                     double lessThanAmt = Validator.GetValidPrice();
-                                    resultBuilder.Filter(p => p.Price >= lessThanAmt);
+                                    resultBuilder.Filter(p => p.Price <= lessThanAmt);
                                     Console.ForegroundColor = ConsoleColor.Green;
                                     Console.WriteLine("Filter Added Successfully");
                                     Console.ResetColor();
