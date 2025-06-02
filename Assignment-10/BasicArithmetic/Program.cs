@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,7 +9,12 @@ namespace BasicArithmetic
 {
     internal class Program
     {
-        public static int ValidInt(string input) 
+        /// <summary>
+        /// Function to return a valid integer from the user-end.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns>validated integer</returns>
+        public static int GetValidatedInteger(string input) 
         {
             int result;
             while(!int.TryParse(input, out result))
@@ -29,12 +35,12 @@ namespace BasicArithmetic
             {
                 Console.WriteLine("========Basic ArithMetics========");
                 Console.WriteLine("\n\nEnter Number 1: ");
-                int firstNum = ValidInt(Console.ReadLine());
+                int firstNum = GetValidatedInteger(Console.ReadLine());
                 Console.WriteLine("\nEnter Number 2: ");
-                int secondNum = ValidInt(Console.ReadLine());
+                int secondNum = GetValidatedInteger(Console.ReadLine());
                 Console.WriteLine("\n\n1.Add\n2.Subtract\n3.Multiply\n4.Divide\n5.Exit\n");
                 Console.WriteLine("Enter your choice:");
-                int _choice = ValidInt(Console.ReadLine());
+                int _choice = GetValidatedInteger(Console.ReadLine());
                 switch (_choice)
                 {
                     case 1:
@@ -55,6 +61,10 @@ namespace BasicArithmetic
                         break;
 
                     case 5:
+                        exit = true;
+                        Console.WriteLine("Exiting ....");
+                        break;
+                    default:
                         Console.WriteLine("Please enter a valid choice\n");
                         break;
                 }
@@ -62,12 +72,6 @@ namespace BasicArithmetic
                 Console.ReadKey();
                 Console.Clear();
             }
-
-
-
-
-
-        }
-        
+        }     
     }
 }
