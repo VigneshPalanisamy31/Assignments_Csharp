@@ -3,18 +3,18 @@
     internal class Transaction
     {
 
-        public DateTime date;
-        public string name;
-        public string category;
-        public double amount;
+        public DateOnly Date { get; set; }
+        public string Name { get; set; }
+        public string Category { get; set; }
+        public decimal Amount { get; set; }
 
 
-        public Transaction(DateTime date, string name, string category, double amount)
+        public Transaction(DateOnly date, string name, string category, decimal amount)
         {
-            this.date = date;
-            this.name = name;
-            this.category = category;
-            this.amount = amount;
+            Date = date;
+            Name = name;
+            Category = category;
+            Amount = amount;
         }
     }
 }

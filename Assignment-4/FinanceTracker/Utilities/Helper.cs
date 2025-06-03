@@ -2,7 +2,7 @@
 
 namespace FinanceTracker.Utilities
 {
-    internal class UserInteract
+    internal class Helper
     {
         /// <summary>
         /// Function to get required details from the user .
@@ -10,20 +10,20 @@ namespace FinanceTracker.Utilities
         /// <param name="name"></param>
         /// <param name="sourceOrCategory"></param>
         /// <returns>A transaction object with user details</returns>
-        public static Transaction GetUserInput(string name, string sourceOrCategory)
+        public static Transaction? GetUserInput(string name, string sourceOrCategory)
         {
             Console.WriteLine("Enter the date (dd-MM-yyyy):\n(press -1 to exit)");
-            string userInput = Console.ReadLine();
-            if (userInput.Equals("-1"))
+            string? userInput = Console.ReadLine();
+            if (userInput!=null&&userInput.Equals("-1"))
                 return null;
-            DateTime date = Validation.GetValidDate(userInput);
+            DateOnly date = Validator.GetValidDate(userInput);
             string category;
             if (sourceOrCategory.Equals("income source"))
                 category = SelectIncomeSource();
             else
                 category = SelectExpenseCategory();
 
-            double amount = Validation.GetValidAmount();
+            decimal amount = Validator.GetValidAmount();
 
             return new Transaction(date, name, category, amount);
         }
@@ -38,11 +38,11 @@ namespace FinanceTracker.Utilities
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("1.Salary\n2.Business Income\n3.Rental Income\n4.Investment returns\n5.Royalties\n6.Other sources");
             Console.ResetColor();
-            int _choice = Validation.GetValidInteger("your choice");
+            int _choice = Validator.GetValidInteger("your choice");
             while(_choice<=0||_choice>6)
             {
                 Console.WriteLine("Please choose from given choice");
-                _choice = Validation.GetValidInteger("your choice");
+                _choice = Validator.GetValidInteger("your choice");
             }
             return _choice switch
             {
@@ -60,7 +60,7 @@ namespace FinanceTracker.Utilities
         /// <returns>custom income source(string)</returns>
         public static string GetCustomIncome()
         {
-            return Validation.GetValidString("income source");
+            return Validator.GetValidString("income source");
         }
         /// <summary>
         /// Function to allow user to view expense categories and make selection
@@ -72,11 +72,11 @@ namespace FinanceTracker.Utilities
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("1.Housing\n2.Utilities\n3.Transportation\n4.Groceries\n5.Health-care\n6.Education\n7.Entertainment\n8.Savings & Investments\n9.Other expenses\n");
             Console.ResetColor();
-            int _choice = Validation.GetValidInteger("your choice");
+            int _choice = Validator.GetValidInteger("your choice");
             while (_choice <= 0 || _choice > 9)
             {
                 Console.WriteLine("Please choose from given choice");
-                _choice = Validation.GetValidInteger("your choice");
+                _choice = Validator.GetValidInteger("your choice");
             }
             return _choice switch
             {
@@ -97,10 +97,29 @@ namespace FinanceTracker.Utilities
         /// <returns>expense category (string)</returns>
         public static string GetCustomExpense()
         {
-            return Validation.GetValidString("expense category");
+            return Validator.GetValidString("expense category");
+        }
+        public static void WriteInRed(string displayMessage)
+        {
+            Console.ForegroundColor= ConsoleColor.Red;
+            Console.WriteLine(displayMessage + "\n");
+            Console.ResetColor();
+        }
+        public static void WriteInGreen(string displayMessage)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(displayMessage + "\n");
+            Console.ResetColor();
         }
 
-    
+        public static void WriteInYellow(string displayMessage)
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(displayMessage + "\n");
+            Console.ResetColor();
+        }
 
-}
+
+
+    }
 }

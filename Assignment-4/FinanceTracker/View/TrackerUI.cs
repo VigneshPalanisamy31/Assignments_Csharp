@@ -1,55 +1,45 @@
-﻿using FinanceTracker.Controller;
-using FinanceTracker.Utilities;
-using FinanceTracker.View;
-class TrackerUI
+﻿using FinanceTracker.Utilities;
+namespace FinanceTracker.View
 {
-
-    static void Main(string[] args)
+    class TrackerUI
     {
-        string filepath = Path.Combine(Environment.CurrentDirectory, "FinanceTracker.xlsx");
-        Validation.FileIntegrity(filepath);
-        FinanceTransactions financer = new FinanceTransactions();
-        bool exit = false;
-
-        while (!exit)
+        static void Main(string[] args)
         {
-            Console.WriteLine("------------Welcome to Expense Tracker-----------");
-            Console.ForegroundColor= ConsoleColor.Yellow;
-            Console.WriteLine("1.New User\n2.Existing User\n3.Exit\n");
-            Console.ResetColor();
-            int _choice = Validation.GetValidInteger("your choice");
-            switch (_choice)
+            Validator.CreateFileIfMissing();
+            bool exit = false;
+            while (!exit)
             {
-                case 1:
-                    string name = Validation.GetValidString("name");
-                    NewUser newuser = new NewUser(filepath);
-                    newuser.NewUserFunctions(name, financer);
-                    break;
+                Console.WriteLine("------------Welcome to Expense Tracker-----------");
+                Helper.WriteInYellow("1.Register User\n2.Login\n3.Exit");
+                UserMenu user = new UserMenu();
+                int _choice = Validator.GetValidInteger("your choice");
+                switch (_choice)
+                {
+                    case 1:
+                        string name = Validator.GetValidString("name");
+                        user.RegisterNewUser(name);
+                        break;
 
-                case 2:
-                    string oldname = Validation.GetValidString("name");
-                    ExistingUser user = new ExistingUser(filepath);
-                    user.UserFunctions(oldname, financer);
-                    break;
+                    case 2:
+                        string oldname = Validator.GetValidString("name");
+                        user.LoginExistingUser(oldname);
+                        break;
 
-                case 3:
-                    Console.WriteLine("Exiting...");
-                    exit = true;
-                    break;
+                    case 3:
+                        Helper.WriteInRed("Exiting...");
+                        Thread.Sleep(1000);
+                        exit = true;
+                        break;
 
-                default:
-                    Console.ForegroundColor= ConsoleColor.Red;
-                    Console.WriteLine("Please enter a valid choice");
-                    Console.ResetColor();
-                    break;
+                    default:
+                        Helper.WriteInRed("Invalid Choice");
+                        Helper.WriteInYellow("Please enter a valid choice");
+                        Thread.Sleep(1000);
+                        Console.Clear();
+                        break;
 
-
+                }
             }
-          
         }
-
-        Console.ReadKey();
-
     }
-
 }

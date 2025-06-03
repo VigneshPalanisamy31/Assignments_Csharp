@@ -1,10 +1,11 @@
 ﻿using System.Globalization;
 using System.Text.RegularExpressions;
 using ClosedXML.Excel;
+using FinanceTracker.Controller;
 
 namespace FinanceTracker.Utilities
 {
-    internal class Validation
+    internal class Validator
     {
 
         /// <summary>
@@ -31,16 +32,16 @@ namespace FinanceTracker.Utilities
         /// </summary>
         /// <returns>Validated Amount</returns>
 
-        public static double GetValidAmount()
+        public static decimal GetValidAmount()
         {
             Console.WriteLine("Please enter the amount :");
-            bool valid = double.TryParse(Console.ReadLine(), out double amount);
-            while (!valid || amount <= 0)
+            bool isValid = decimal.TryParse(Console.ReadLine(), out decimal amount);
+            while (!isValid || amount <= 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Please enter a valid amount :");
                 Console.ResetColor();
-                valid = double.TryParse(Console.ReadLine(), out amount);
+                isValid = decimal.TryParse(Console.ReadLine(), out amount);
             }
             return amount;
         }
@@ -51,37 +52,38 @@ namespace FinanceTracker.Utilities
         /// <returns>Validated string</returns>
         public static string GetValidString(string input)
         {
+            int wrongAttemptCount = 0;
             Console.WriteLine($"Please enter  {input} :");
-            string category = Console.ReadLine();
-            string pattern = @"^[A-Za-z]+([ '-.][A-Za-z]+)*$";
-            while (!Regex.IsMatch(category, pattern) || string.IsNullOrWhiteSpace(category))
-            {
+            string? userInput = Console.ReadLine();
+            //Regex pattern to ensure the string starts with an alphabet ends with an alphabet and may contain specified special characters ( '-.)
+            string? pattern = @"^[A-Za-z]+([ '-.][A-Za-z]+)*$";
+            while (string.IsNullOrWhiteSpace(userInput) || !Regex.IsMatch(userInput, pattern))
+            { wrongAttemptCount++;
                 Console.ForegroundColor= ConsoleColor.Red;
                 Console.WriteLine($"Please enter a valid {input}:");
                 Console.ResetColor();
-                category = Console.ReadLine();
+                userInput = Console.ReadLine();
             }
-            return category;
+            return userInput;
         }
 
         /// <summary>
         /// Function to get date from user .
         /// </summary>
         /// <returns>Validated date</returns>
-        public static DateTime GetValidDate(string userInput)
+        public static DateOnly GetValidDate(string? userInput)
         {
             
-            DateTime date;
+            DateOnly date;
             while (true)
             {
-                if (DateTime.TryParseExact(userInput, "dd-MM-yyyy", null, DateTimeStyles.None, out date))
+                if (DateOnly.TryParseExact(userInput, "dd-MM-yyyy", null, DateTimeStyles.None, out date))
                     return date;
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Please follow the format (dd-MM-yyyy)");
                     Console.ResetColor();
-
                     userInput = Console.ReadLine();
                 }
             }
@@ -91,9 +93,9 @@ namespace FinanceTracker.Utilities
         /// Function to create a file if it doesn't exist .
         /// </summary>
         /// <param name="filepath"></param>
-        public static void FileIntegrity(string filepath)
+        public static void CreateFileIfMissing()
         {
-            if (!File.Exists(filepath))
+            if (!File.Exists(TransactionManager.filepath))
             {
                 var workbook = new XLWorkbook();
                 var incomeWorksheet = workbook.Worksheets.Add("Income");
@@ -102,16 +104,13 @@ namespace FinanceTracker.Utilities
                 incomeWorksheet.Cell(1, 3).Value = "Source";
                 incomeWorksheet.Cell(1, 4).Value = "Income";
 
-
                 var expenseWorksheet = workbook.Worksheets.Add("Expense");
                 expenseWorksheet.Cell(1, 1).Value = "Date";
                 expenseWorksheet.Cell(1, 2).Value = "Name";
                 expenseWorksheet.Cell(1, 3).Value = "Category";
                 expenseWorksheet.Cell(1, 4).Value = "Expense";
 
-
-
-                workbook.SaveAs(filepath);
+                workbook.SaveAs(TransactionManager.filepath);
             }
         }
     }

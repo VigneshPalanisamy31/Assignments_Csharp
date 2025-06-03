@@ -1,58 +1,55 @@
 using FinanceTracker.Controller;
+using FinanceTracker.Model;
 using FinanceTracker.Utilities;
 
-namespace FinanceTracker.Model
+namespace FinanceTracker.View
 
 {
-    internal class Expense
+    internal class ExpenseMenu
     {
-        public static void ExpenseFunctions(FinanceTransactions financer, string name, string filepath)
+        public static void ExpenseTransactionManager(string userName)
         {
-
-
-            bool exit = false;
-            while (!exit)
+            bool isExit = false;
+            while (!isExit)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("\n1.Add Expense Transaction\n2.Edit Expense Transaction\n3.View Expense Stats\n4.Delete Expense Transaction\n5.Exit\n");
                 Console.ResetColor();
 
-                int _choice = Validation.GetValidInteger("your choice");
+                int _choice = Validator.GetValidInteger("your choice");
 
                 switch (_choice)
                 {
                     case 1:
-                        Transaction transaction = UserInteract.GetUserInput(name, "expense category");
+                        Transaction? transaction = Helper.GetUserInput(userName, "expense category");
                         if (transaction == null)
                             Console.WriteLine("Exiting...");
                         else
                         {
-                            financer.AddTransaction(transaction, filepath, "Expense");
-                            Console.WriteLine("Expense Tracked Successfully....");
+                            TransactionManager.AddTransaction(transaction,"Expense");
+                            Helper.WriteInGreen("Expense Tracked Successfully....");
                         }
                         break;
 
                     case 2:
-                        financer.EditTransaction(name, filepath, "Expense");
+                        TransactionManager.EditTransaction(userName,"Expense");
                         break;
 
                     case 3:
-                        financer.ViewTransaction(name, filepath, "Expense");
+                        TransactionManager.ViewTransaction(userName,"Expense");
                         break;
 
                     case 4:
-                        financer.DeleteTransaction(name, filepath, "Expense");
+                        TransactionManager.DeleteTransaction(userName,"Expense");
                         break;
 
                     case 5:
-                        Console.WriteLine("Exiting....");
-                        exit = true;
+                        Helper.WriteInRed("<<<back");
+                        isExit = true;
                         break;
                     default:
-                        Console.WriteLine("Please choose from given options");
+                        Helper.WriteInRed("Please choose from given options");
                         break;
-
-
                 }
                 Console.WriteLine("Press any key to continue.....");
                 Console.ReadKey();
