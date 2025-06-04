@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LINQ.Model;
 
-namespace Inventory_Management
+namespace LINQ.Utilities
 {
     internal class InputHandler
     {
@@ -15,8 +18,9 @@ namespace Inventory_Management
                 return null;
             string productname = Validator.IsNameAvailable(Validator.GetValidName("product name :"), Products);
             double price = Validator.GetValidPrice();
-            int quantityinstock = Validator.GetValidNumber("stock quantity :");
-            return new Product(productID, productname, price, quantityinstock);
+            TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
+            string category = textInfo.ToTitleCase(Validator.GetValidName("category :"));
+            return new Product(productID, productname, price, category);
         }
     }
 }
