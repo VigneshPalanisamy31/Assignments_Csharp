@@ -12,13 +12,12 @@ Features:
 
  File Structure
   Finance Tracker/
-     ExistingUser.cs            #class with display and function calls for existing users.
-     Expence.cs                 #class that interacts with user and calls expense tracking functionalities.
-     FinanceTransactions.cs     #class that handles all mentioned functionalities.(New User)
-     FinanceTracker.csproj      #project file defining build settings,dependencies etc..
-     Income.cs                  #class that interacts with user and calls income tracking functionalities.
-     NewUser.cs                 #class with display and function calls for new users.
-     Transaction.cs             #a template for transaction with required fields and properties.
+     ExpenseMenu.cs             #class that interacts with user and calls expense tracking functionalities.
+     IncomeMenu.cs              #class that interacts with user and calls income tracking functionalities.
+     UserMenu.cs                #class with display and function calls for users.
      TrackerUI.cs               #class that interacts with user and calls functionalitites accordingly.
-     UserInteract.cs            #class with helper functions to handle user entered inputs.
-     Validation.cs              #class with validation functions to avoid duplicate entries, validate user inputs and ensure integrity.
+     Transaction.cs             #a template for transaction with required fields and properties.
+     TransactionManager.cs      #class that handles all mentioned functionalities.
+     Helper.cs                  #class with helper functions to handle user entered inputs.
+     Validator.cs               #class with validation functions to avoid duplicate entries, validate user inputs and ensure integrity.
+     FinanceTracker.csproj      #project file defining build settings,dependencies etc..

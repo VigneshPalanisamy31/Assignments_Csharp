@@ -1,9 +1,7 @@
 using FinanceTracker.Controller;
 using FinanceTracker.Model;
 using FinanceTracker.Utilities;
-
 namespace FinanceTracker.View
-
 {
     internal class ExpenseMenu
     {
@@ -12,16 +10,13 @@ namespace FinanceTracker.View
             bool isExit = false;
             while (!isExit)
             {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("\n1.Add Expense Transaction\n2.Edit Expense Transaction\n3.View Expense Summary\n4.Delete Expense Transaction\n5.Exit\n");
-                Console.ResetColor();
+                Helper.WriteInYellow("\n1.Add Expense Transaction\n2.Edit Expense Transaction\n3.View Expense Summary\n4.Delete Expense Transaction\n5.Exit\n");
+                int choice = Validator.GetValidInteger("your choice");
 
-                int _choice = Validator.GetValidInteger("your choice");
-
-                switch (_choice)
+                switch (choice)
                 {
                     case 1:
-                        Transaction? transaction = Helper.GetUserInput(userName, "expense category");
+                        Transaction? transaction = Helper.FetchUserData(userName, "expense category");
                         if (transaction == null)
                             Console.WriteLine("Canceling...");
                         else
@@ -37,9 +32,8 @@ namespace FinanceTracker.View
 
                     case 3:
                         TransactionManager.ViewTransaction(userName,"Expense");
-                        Console.WriteLine("Press any key to continue.....");
+                        Console.WriteLine("\nPress any key to continue.....");
                         Console.ReadKey();
-                        Console.Clear();
                         break;
 
                     case 4:
@@ -50,6 +44,7 @@ namespace FinanceTracker.View
                         Helper.WriteInRed("");
                         isExit = true;
                         break;
+
                     default:
                         Helper.WriteInRed("Please choose from given options");
                         break;

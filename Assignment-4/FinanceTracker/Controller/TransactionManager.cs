@@ -15,7 +15,6 @@ namespace FinanceTracker.Controller
         /// <param name="worksheetname">Name of the Worksheet to work with </param>
         public static void AddTransaction(Transaction transaction, string worksheetname)
         {
-
             using (XLWorkbook workbook = new(filepath))
             {
                 IXLWorksheet worksheet = workbook.Worksheet(worksheetname);
@@ -33,11 +32,10 @@ namespace FinanceTracker.Controller
                 int lastColumn = lastColumnUsed == null ? 1 : lastColumnUsed.ColumnNumber() + 1;
                 var range = worksheet.Range(2, 1, lastRow, lastColumn);
                 range.Sort("A", XLSortOrder.Ascending);
-
                 workbook.Save();
-
             }
         }
+
         /// <summary>
         /// Function to view income/expense transactions of a user.
         /// </summary>
@@ -45,10 +43,8 @@ namespace FinanceTracker.Controller
         /// <param name="worksheetname">name of the worksheet</param>
         /// <param name="editIndex"></param>
         /// <returns>Boolean whether transactions are available are not. </returns>
-
         public static bool ViewTransaction(string userName, string worksheetname, Transaction? edited = null)
         {
-
             int transactionCount = 0;
             using (var workbook = new XLWorkbook(filepath))
             {
@@ -78,19 +74,18 @@ namespace FinanceTracker.Controller
                             Console.ForegroundColor = worksheetname.Equals("Income") ? ConsoleColor.Green : ConsoleColor.Red;
                             Console.WriteLine($"{transactionCount,-10}{date,-30}{sourceORcategory,10}{amount,20}");
                         }
-
                         Console.ResetColor();
                     }
                     return true;
                 }
             }
         }
+
         /// <summary>
         /// Function to edit income/expense transactions of a user.
         /// </summary>
         /// <param name="userName">Name of the user</param>
         /// <param name="worksheetname">Name of the worksheet to work with</param>
-
         public static void EditTransaction(string userName, string worksheetname)
         {
             using (var workbook = new XLWorkbook(filepath))
@@ -98,18 +93,15 @@ namespace FinanceTracker.Controller
                 if (ViewTransaction(userName, worksheetname))
                 {
                     int id = Validator.GetValidInteger("id of the transaction you wish to edit :\n(press -1 to exit)");
-
                     if (id == -1)
                     {
                         Console.WriteLine("Canceling...");
                         return;
                     }
-
                     Transaction? edited = null;
                     var worksheet = workbook.Worksheet(worksheetname);
                     var rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase));
                     int count = 0;
-
                     if (id > rows.Count() || id < 1)
                     {
                         Console.WriteLine("Sorry id not found....");
@@ -139,7 +131,6 @@ namespace FinanceTracker.Controller
                         var range = worksheet.Range(2, 1, lastRow, lastColumn);
                         range.Sort("A", XLSortOrder.Ascending);
                         workbook.Save();
-
                         ViewTransaction(userName, worksheetname, edited);
                         Helper.WriteInGreen("\nEdited Succesfully......!!!");
                     }
@@ -153,8 +144,6 @@ namespace FinanceTracker.Controller
         /// <param name="userName"></param>
         /// <param name="filepath"></param>
         /// <param name="worksheetname"></param>
-
-
         public static void DeleteTransaction(string userName, string worksheetname)
         {
             using (var workbook = new XLWorkbook(filepath))
@@ -164,7 +153,6 @@ namespace FinanceTracker.Controller
                     int id = Validator.GetValidInteger("id of the transaction you wish to delete: \n(press -1 to exit)");
                     if (id == -1)
                     {
-                        Helper.WriteInRed("<<<back");
                         return;
                     }
                     var worksheet = workbook.Worksheet(worksheetname);
@@ -210,7 +198,6 @@ namespace FinanceTracker.Controller
         /// </summary>
         /// <param name="userName"></param>
         /// <param name="filepath"></param>
-
         public static void FinanceSummary(string userName, string filepath)
         {
             var FinanceList = new List<(string date, string type, string source, double amount)>();

@@ -2,73 +2,62 @@
 using System.Text.RegularExpressions;
 using ClosedXML.Excel;
 using FinanceTracker.Controller;
-
 namespace FinanceTracker.Utilities
 {
     internal class Validator
     {
-
         /// <summary>
-        /// Function to get an integer from user .
+        /// Function to get a valid integer from user .
         /// </summary>
         /// <returns>Validated integer</returns>
         public static int GetValidInteger(string prompt)
         {
             Console.WriteLine($"Please enter {prompt} :");
-            bool valid = int.TryParse(Console.ReadLine(), out int choice);
-            while (!valid)
+            bool isValid = int.TryParse(Console.ReadLine(), out int validNumber);
+            while (!isValid)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Please enter a valid input :");
-                Console.ResetColor();
-                valid = int.TryParse(Console.ReadLine(), out choice);
+                Helper.WriteInRed($"Please enter a valid input :");
+                isValid = int.TryParse(Console.ReadLine(), out validNumber);
             }
-            return choice;
+            return validNumber;
         }
 
-
         /// <summary>
-        /// Function to get a amount from user .
+        /// Function to get a valid amount from user .
         /// </summary>
         /// <returns>Validated Amount</returns>
-
         public static decimal GetValidAmount()
         {
             Console.WriteLine("Please enter the amount :");
-            bool isValid = decimal.TryParse(Console.ReadLine(), out decimal amount);
-            while (!isValid || amount <= 0)
+            bool isValid = decimal.TryParse(Console.ReadLine(), out decimal validAmount);
+            while (!isValid || validAmount <= 0)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Please enter a valid amount :");
-                Console.ResetColor();
-                isValid = decimal.TryParse(Console.ReadLine(), out amount);
+                Helper.WriteInRed("Please enter a valid amount (Rs and Paise):");
+                isValid = decimal.TryParse(Console.ReadLine(), out validAmount);
             }
-            return amount;
+            return validAmount;
         }
 
         /// <summary>
-        /// Function to get a string from user .
+        /// Function to get a valid string from user .
         /// </summary>
         /// <returns>Validated string</returns>
         public static string GetValidString(string input)
         {
-            int wrongAttemptCount = 0;
             Console.WriteLine($"Please enter  {input} :");
             string? userInput = Console.ReadLine();
             //Regex pattern to ensure the string starts with an alphabet ends with an alphabet and may contain specified special characters ( '-.)
             string? pattern = @"^[A-Za-z]+([ '-.][A-Za-z]+)*$";
             while (string.IsNullOrWhiteSpace(userInput) || !Regex.IsMatch(userInput, pattern))
-            { wrongAttemptCount++;
-                Console.ForegroundColor= ConsoleColor.Red;
-                Console.WriteLine($"Please enter a valid {input}:");
-                Console.ResetColor();
+            {
+                Helper.WriteInRed($"Please enter a valid {input}:");
                 userInput = Console.ReadLine();
             }
             return userInput;
         }
 
         /// <summary>
-        /// Function to get date from user .
+        /// Function to get a valid date from user .
         /// </summary>
         /// <returns>Validated date</returns>
         public static DateOnly GetValidDate(string? userInput)
@@ -81,9 +70,7 @@ namespace FinanceTracker.Utilities
                     return date;
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Please follow the format (dd-MM-yyyy)");
-                    Console.ResetColor();
+                    Helper.WriteInRed("Please follow the format (dd-MM-yyyy)");
                     userInput = Console.ReadLine();
                 }
             }

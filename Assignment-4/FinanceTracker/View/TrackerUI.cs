@@ -37,7 +37,6 @@ namespace FinanceTracker.View
                         Thread.Sleep(1000);
                         Console.Clear();
                         break;
-
                 }
             }
         }

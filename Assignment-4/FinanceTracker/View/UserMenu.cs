@@ -1,7 +1,6 @@
 using ClosedXML.Excel;
 using FinanceTracker.Controller;
 using FinanceTracker.Utilities;
-
 namespace FinanceTracker.View
 {
      class UserMenu
@@ -10,7 +9,6 @@ namespace FinanceTracker.View
          XLWorkbook? workbook;
          IXLWorksheet? incomeSheet;
          IXLWorksheet? expenseSheet;
-
         /// <summary>
         /// Function to check if user already exits 
         /// </summary>

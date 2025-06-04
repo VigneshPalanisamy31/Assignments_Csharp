@@ -1,7 +1,6 @@
 using FinanceTracker.Controller;
 using FinanceTracker.Model;
 using FinanceTracker.Utilities;
-
 namespace FinanceTracker.View
 {
     internal class IncomeMenu
@@ -17,14 +16,13 @@ namespace FinanceTracker.View
                 switch (choice)
                 {
                     case 1:
-                        Transaction? transaction = Helper.GetUserInput(userName, "income source");
+                        Transaction? transaction = Helper.FetchUserData(userName, "income source");
                         if (transaction == null)
                             Console.WriteLine("Going Back to menu...");
                         else
                         {
                             TransactionManager.AddTransaction(transaction, "Income");
                             Helper.WriteInGreen("Income Tracked Successfully...");
-
                         }
                         break;
 
@@ -37,6 +35,7 @@ namespace FinanceTracker.View
                         Console.WriteLine("\nPress any key to continue...");
                         Console.ReadKey();
                         break;
+
                     case 4:
                         TransactionManager.DeleteTransaction(userName, "Income");
                         break;
@@ -51,7 +50,6 @@ namespace FinanceTracker.View
                 }
                 Thread.Sleep(1000);
                 Console.Clear();
-
             }
         }
     }
