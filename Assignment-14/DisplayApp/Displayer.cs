@@ -1,60 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UtilityApp;
+﻿using UtilityApp;
 using MathApp;
-
 namespace DisplayApp
 {
     public class Displayer
     {
      public static void ConsoleDisplay()
         {
-            bool exit = false;
-            while (!exit)
+            bool isExit = false;
+            float firstNumber;
+            float secondNumber;
+            while (!isExit)
             {
                 Console.WriteLine("========Basic ArithMetics========");
-                Console.WriteLine("\n\nEnter Number 1: ");
-                int firstNum = Helper.ValidInt(Console.ReadLine());
-                Console.WriteLine("\nEnter Number 2: ");
-                int secondNum = Helper.ValidInt(Console.ReadLine());
                 Console.WriteLine("\n\n1.Add\n2.Subtract\n3.Multiply\n4.Divide\n5.Exit\n");
                 Console.WriteLine("Enter your choice:");
-                int _choice = Helper.ValidInt(Console.ReadLine());
-                switch (_choice)
+                int choice = Helper.GetValidChoice(Console.ReadLine());
+                if (choice > 0 && choice < 5)
                 {
-                    case 1:
-                        Console.WriteLine($"The sum of {firstNum} and {secondNum} is {MathUtils.Add(firstNum, secondNum)}");
-                        break;
+                    Console.WriteLine("\n\nEnter Number 1: ");
+                    firstNumber = Helper.GetValidNumber(Console.ReadLine());
+                    Console.WriteLine("\nEnter Number 2: ");
+                    secondNumber = Helper.GetValidNumber(Console.ReadLine());
+                    switch (choice)
+                    {
+                        case 1:
+                            Console.WriteLine($"The sum of {firstNumber} and {secondNumber} is {MathUtils.CalculateSum(firstNumber, secondNumber)}");
+                            break;
 
-                    case 2:
-                        Console.WriteLine($"The difference between {firstNum} and {secondNum} is {MathUtils.Subtract(firstNum, secondNum)}");
-                        break;
+                        case 2:
+                            Console.WriteLine($"The difference between {firstNumber} and {secondNumber} is {MathUtils.CalculateDifference(firstNumber, secondNumber)}");
+                            break;
 
-                    case 3:
-                        Console.WriteLine($"The product of {firstNum} and {secondNum} is {MathUtils.Multiply(firstNum, secondNum)}");
-                        break;
+                        case 3:
+                            Console.WriteLine($"The product of {firstNumber} and {secondNumber} is {MathUtils.CalculateProduct(firstNumber, secondNumber)}");
+                            break;
 
-                    case 4:
-                        if (MathUtils.Divide(firstNum, secondNum) != 0)
-                            Console.WriteLine($"The quotient of {firstNum} and {secondNum} is {MathUtils.Divide(firstNum, secondNum)}");
-                        break;
-
-                    case 5:
-                        Console.WriteLine("Please enter a valid choice\n");
-                        break;
+                        case 4:
+                            if (MathUtils.CalculateQuotient(firstNumber, secondNumber) != 0)
+                                Console.WriteLine($"The quotient of {firstNumber} and {secondNumber} is {MathUtils.CalculateQuotient(firstNumber, secondNumber)}");
+                            break;
+                    }
                 }
+                else if(choice==5)
+                   isExit = true;
+                else
+                   Console.WriteLine("Please enter a valid choice\n");
                 Console.WriteLine("\nPress any key to continue...");
                 Console.ReadKey();
                 Console.Clear();
             }
-
-
-
-
-
         }
     }
 }

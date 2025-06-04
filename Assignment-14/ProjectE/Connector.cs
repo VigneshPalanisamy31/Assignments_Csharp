@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DisplayApp;
+﻿using DisplayApp;
 namespace ProjectE
 {
     public class Connector
     {
+        /// <summary>
+        /// Function to connect the displayer.
+        /// </summary>
         public static void DisplayConnector()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -20,8 +18,6 @@ namespace ProjectE
             Console.ResetColor();
             Console.WriteLine("\n");
             Displayer.ConsoleDisplay();
-
-
         }
     }
 }
