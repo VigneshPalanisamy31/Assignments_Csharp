@@ -101,7 +101,7 @@ namespace FinanceTracker.Controller
 
                     if (id == -1)
                     {
-                        Console.WriteLine("Exiting...");
+                        Console.WriteLine("Canceling...");
                         return;
                     }
 

@@ -11,7 +11,7 @@ namespace FinanceTracker.View
             bool isExit = false;
             while (!isExit)
             {
-                Helper.WriteInYellow("1.Add Income Transaction\n2.Edit Income Transaction\n3.View Income Stats\n4.Delete Income Transaction\n5.Back To Menu\n");
+                Helper.WriteInYellow("1.Add Income Transaction\n2.Edit Income Transaction\n3.View Income Summary\n4.Delete Income Transaction\n5.Back To Menu\n");
                 int choice = Validator.GetValidInteger("your choice");
 
                 switch (choice)

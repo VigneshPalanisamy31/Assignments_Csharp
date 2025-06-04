@@ -14,7 +14,7 @@ namespace FinanceTracker.Utilities
         {
             Console.WriteLine("Enter the date (dd-MM-yyyy):\n(press -1 to exit)");
             string? userInput = Console.ReadLine();
-            if (userInput!=null&&userInput.Equals("-1"))
+            if (userInput==null||userInput.Equals("-1"))
                 return null;
             DateOnly date = Validator.GetValidDate(userInput);
             string category;

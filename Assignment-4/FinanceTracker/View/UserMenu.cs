@@ -68,7 +68,7 @@ namespace FinanceTracker.View
             else
             {
                 Helper.WriteInRed("User Name Not Found");
-                Helper.WriteInYellow("Try Registering in...");
+                Helper.WriteInYellow("Try Registering new user...");
                 Thread.Sleep(1000);
                 Console.Clear();
             }

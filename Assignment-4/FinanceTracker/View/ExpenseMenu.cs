@@ -13,7 +13,7 @@ namespace FinanceTracker.View
             while (!isExit)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("\n1.Add Expense Transaction\n2.Edit Expense Transaction\n3.View Expense Stats\n4.Delete Expense Transaction\n5.Exit\n");
+                Console.WriteLine("\n1.Add Expense Transaction\n2.Edit Expense Transaction\n3.View Expense Summary\n4.Delete Expense Transaction\n5.Exit\n");
                 Console.ResetColor();
 
                 int _choice = Validator.GetValidInteger("your choice");
@@ -23,7 +23,7 @@ namespace FinanceTracker.View
                     case 1:
                         Transaction? transaction = Helper.GetUserInput(userName, "expense category");
                         if (transaction == null)
-                            Console.WriteLine("Exiting...");
+                            Console.WriteLine("Canceling...");
                         else
                         {
                             TransactionManager.AddTransaction(transaction,"Expense");
@@ -37,6 +37,9 @@ namespace FinanceTracker.View
 
                     case 3:
                         TransactionManager.ViewTransaction(userName,"Expense");
+                        Console.WriteLine("Press any key to continue.....");
+                        Console.ReadKey();
+                        Console.Clear();
                         break;
 
                     case 4:
@@ -44,15 +47,14 @@ namespace FinanceTracker.View
                         break;
 
                     case 5:
-                        Helper.WriteInRed("<<<back");
+                        Helper.WriteInRed("");
                         isExit = true;
                         break;
                     default:
                         Helper.WriteInRed("Please choose from given options");
                         break;
                 }
-                Console.WriteLine("Press any key to continue.....");
-                Console.ReadKey();
+                Thread.Sleep(1000);
                 Console.Clear();
             }
         }
