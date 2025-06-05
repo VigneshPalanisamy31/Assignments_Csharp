@@ -23,7 +23,6 @@ namespace FinanceTracker.Utilities
                 category = SelectExpenseCategory();
 
             decimal amount = Validator.GetValidAmount();
-
             return new Transaction(date, name, category, amount);
         }
 
@@ -50,17 +49,8 @@ namespace FinanceTracker.Utilities
                 3=>"Rental Income",
                 4=>"Investment Returns",
                 5=>"Royalties",
-                _=>GetCustomIncomeSource()
+                _=> Validator.GetValidString("income source")
             };
-        }
-
-        /// <summary>
-        /// Function to get custom income source from user
-        /// </summary>
-        /// <returns>custom income source(string)</returns>
-        public static string GetCustomIncomeSource()
-        {
-            return Validator.GetValidString("income source");
         }
 
         /// <summary>
@@ -87,17 +77,8 @@ namespace FinanceTracker.Utilities
                 6 => "Education",
                 7 => "Entertainment",
                 8 => "Savings & Investments",
-                _ => GetCustomExpenseCategory()
+                _ => Validator.GetValidString("expense category")
             };
-        }
-
-        /// <summary>
-        /// Function to get custom expense category from user
-        /// </summary>
-        /// <returns>expense category (string)</returns>
-        public static string GetCustomExpenseCategory()
-        {
-            return Validator.GetValidString("expense category");
         }
 
         /// <summary>

@@ -5,7 +5,7 @@ namespace FinanceTracker.View
 {
     internal class IncomeMenu
     {    
-        public static void IncomeTransactionManager(string userName)
+        public static void IncomeTransactionManager(string userName,string password,TransactionManager transactionManager)
         {
             bool isExit = false;
             while (!isExit)
@@ -21,23 +21,23 @@ namespace FinanceTracker.View
                             Console.WriteLine("Going Back to menu...");
                         else
                         {
-                            TransactionManager.AddTransaction(transaction, "Income");
+                            transactionManager.AddTransaction(transaction, "Income",password);
                             Helper.WriteInGreen("Income Tracked Successfully...");
                         }
                         break;
 
                     case 2:
-                        TransactionManager.EditTransaction(userName, "Income");
+                        transactionManager.EditTransaction(userName, "Income",password);
                         break;
 
                     case 3:
-                        TransactionManager.ViewTransaction(userName, "Income");
+                        transactionManager.ViewTransaction(userName, "Income",password);
                         Console.WriteLine("\nPress any key to continue...");
                         Console.ReadKey();
                         break;
 
                     case 4:
-                        TransactionManager.DeleteTransaction(userName, "Income");
+                        transactionManager.DeleteTransaction(userName, "Income",password);
                         break;
 
                     case 5:

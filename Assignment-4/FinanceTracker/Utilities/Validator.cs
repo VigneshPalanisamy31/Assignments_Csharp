@@ -6,6 +6,9 @@ namespace FinanceTracker.Utilities
 {
     internal class Validator
     {
+        //Regex pattern to ensure the string starts with an alphabet ends with an alphabet and may contain specified special characters ( '-.)
+        static string pattern = @"^[A-Za-z]+([ '-.][A-Za-z]+)*$";
+        static string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$";
         /// <summary>
         /// Function to get a valid integer from user .
         /// </summary>
@@ -46,8 +49,7 @@ namespace FinanceTracker.Utilities
         {
             Console.WriteLine($"Please enter  {input} :");
             string? userInput = Console.ReadLine();
-            //Regex pattern to ensure the string starts with an alphabet ends with an alphabet and may contain specified special characters ( '-.)
-            string? pattern = @"^[A-Za-z]+([ '-.][A-Za-z]+)*$";
+
             while (string.IsNullOrWhiteSpace(userInput) || !Regex.IsMatch(userInput, pattern))
             {
                 Helper.WriteInRed($"Please enter a valid {input}:");
@@ -74,6 +76,57 @@ namespace FinanceTracker.Utilities
                     userInput = Console.ReadLine();
                 }
             }
+        }
+
+        /// <summary>
+        /// Function to get a valid password from user
+        /// </summary>
+        /// <returns>Validated password</returns>
+        public static string GetValidPassword()
+        {
+            Console.WriteLine("Enter the password:");
+            string? password = ReadPassword();
+            while (!Regex.IsMatch(password,passwordPattern))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Invalid PassWord");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("Password must have atleast one uppercase letter,one lowercase letter,one digit and length must be within 8 to 15");
+                Console.ResetColor();
+                Console.WriteLine("Enter the password:");
+                password = ReadPassword();
+
+            }
+            return password;
+        }
+
+        /// <summary>
+        /// Function to read password from console without exposing it 
+        /// </summary>
+        /// <returns></returns>
+        public static string ReadPassword()
+        {
+            string password = string.Empty;
+            ConsoleKey key;
+
+            do
+            {
+                var keyInfo = Console.ReadKey(intercept: true);
+                key = keyInfo.Key;
+
+                if (key == ConsoleKey.Backspace && password.Length > 0)
+                {
+                    Console.Write("\b \b");
+                    password = password[0..^1];
+                }
+                else if (!char.IsControl(keyInfo.KeyChar))
+                {
+                    Console.Write("*");
+                    password += keyInfo.KeyChar;
+                }
+            } while (key != ConsoleKey.Enter);
+
+            return password;
         }
 
         /// <summary>

@@ -5,12 +5,12 @@ namespace FinanceTracker.View
 {
     internal class ExpenseMenu
     {
-        public static void ExpenseTransactionManager(string userName)
+        public static void ExpenseTransactionManager(string userName,string password,TransactionManager transactionManager)
         {
             bool isExit = false;
             while (!isExit)
             {
-                Helper.WriteInYellow("\n1.Add Expense Transaction\n2.Edit Expense Transaction\n3.View Expense Summary\n4.Delete Expense Transaction\n5.Exit\n");
+                Helper.WriteInYellow("\n1.Add Expense Transaction\n2.Edit Expense Transaction\n3.View Expense Summary\n4.Delete Expense Transaction\n5.Back to Menu\n");
                 int choice = Validator.GetValidInteger("your choice");
 
                 switch (choice)
@@ -21,23 +21,23 @@ namespace FinanceTracker.View
                             Console.WriteLine("Canceling...");
                         else
                         {
-                            TransactionManager.AddTransaction(transaction,"Expense");
+                            transactionManager.AddTransaction(transaction,"Expense",password);
                             Helper.WriteInGreen("Expense Tracked Successfully....");
                         }
                         break;
 
                     case 2:
-                        TransactionManager.EditTransaction(userName,"Expense");
+                        transactionManager.EditTransaction(userName,"Expense",password);
                         break;
 
                     case 3:
-                        TransactionManager.ViewTransaction(userName,"Expense");
+                        transactionManager.ViewTransaction(userName,"Expense",password);
                         Console.WriteLine("\nPress any key to continue.....");
                         Console.ReadKey();
                         break;
 
                     case 4:
-                        TransactionManager.DeleteTransaction(userName,"Expense");
+                        transactionManager.DeleteTransaction(userName,"Expense",password);
                         break;
 
                     case 5:

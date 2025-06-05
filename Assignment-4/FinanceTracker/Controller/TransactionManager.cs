@@ -1,6 +1,7 @@
 ﻿using ClosedXML.Excel;
 using FinanceTracker.Model;
 using FinanceTracker.Utilities;
+using System.ComponentModel;
 
 namespace FinanceTracker.Controller
 {
@@ -13,7 +14,7 @@ namespace FinanceTracker.Controller
         /// </summary>
         /// <param name="transaction">object of type transaction</param>
         /// <param name="worksheetname">Name of the Worksheet to work with </param>
-        public static void AddTransaction(Transaction transaction, string worksheetname)
+        public  void AddTransaction(Transaction transaction, string worksheetname,string password)
         {
             using (XLWorkbook workbook = new(filepath))
             {
@@ -26,6 +27,7 @@ namespace FinanceTracker.Controller
                 worksheet.Cell(lastRow, 2).Value = transaction.Name;
                 worksheet.Cell(lastRow, 3).Value = transaction.Category;
                 worksheet.Cell(lastRow, 4).Value = transaction.Amount;
+                worksheet.Cell(lastRow, 5).Value = password;
 
                 //worksheet.LastColumnUsed() could possibly be null if the worksheet is empty
                 var lastColumnUsed = worksheet.LastColumnUsed();
@@ -43,13 +45,14 @@ namespace FinanceTracker.Controller
         /// <param name="worksheetname">name of the worksheet</param>
         /// <param name="editIndex"></param>
         /// <returns>Boolean whether transactions are available are not. </returns>
-        public static bool ViewTransaction(string userName, string worksheetname, Transaction? edited = null)
+        public  bool ViewTransaction(string userName, string worksheetname,string password,Transaction? edited = null)
         {
             int transactionCount = 0;
             using (var workbook = new XLWorkbook(filepath))
             {
                 var worksheet = workbook.Worksheet(worksheetname);
-                var rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase));
+                var rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase)
+                                                                && r.Cell(5).GetString().Equals(password));
                 if (!rows.Any())
                 { Helper.WriteInRed($"Sorry there are no {worksheetname} Transactions for {userName} ."); return false; }
                 else
@@ -86,11 +89,11 @@ namespace FinanceTracker.Controller
         /// </summary>
         /// <param name="userName">Name of the user</param>
         /// <param name="worksheetname">Name of the worksheet to work with</param>
-        public static void EditTransaction(string userName, string worksheetname)
+        public  void EditTransaction(string userName, string worksheetname,string password)
         {
             using (var workbook = new XLWorkbook(filepath))
             {
-                if (ViewTransaction(userName, worksheetname))
+                if (ViewTransaction(userName, worksheetname,password))
                 {
                     int id = Validator.GetValidInteger("id of the transaction you wish to edit :\n(press -1 to exit)");
                     if (id == -1)
@@ -98,9 +101,10 @@ namespace FinanceTracker.Controller
                         Console.WriteLine("Canceling...");
                         return;
                     }
-                    Transaction? edited = null;
+                    Transaction? editedTransaction = null;
                     var worksheet = workbook.Worksheet(worksheetname);
-                    var rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase));
+                    var rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase)
+                                                                    && r.Cell(5).GetString().Equals(password));
                     int count = 0;
                     if (id > rows.Count() || id < 1)
                     {
@@ -117,7 +121,7 @@ namespace FinanceTracker.Controller
                                 row.Cell(1).Value = Validator.GetValidDate(Console.ReadLine()).ToString();
                                 row.Cell(3).Value = worksheetname.Equals("Income") ? Helper.SelectIncomeSource() : Helper.SelectExpenseCategory();
                                 row.Cell(4).Value = Validator.GetValidAmount();
-                                edited = new Transaction(DateOnly.Parse(row.Cell(1).Value.ToString()), row.Cell(2).Value.ToString(), row.Cell(3).Value.ToString(),decimal.Parse(row.Cell(4).Value.ToString()));
+                                editedTransaction = new Transaction(DateOnly.Parse(row.Cell(1).Value.ToString()), row.Cell(2).Value.ToString(), row.Cell(3).Value.ToString(),decimal.Parse(row.Cell(4).Value.ToString()));
                                 break;
                             }
                         }   
@@ -131,7 +135,7 @@ namespace FinanceTracker.Controller
                         var range = worksheet.Range(2, 1, lastRow, lastColumn);
                         range.Sort("A", XLSortOrder.Ascending);
                         workbook.Save();
-                        ViewTransaction(userName, worksheetname, edited);
+                        ViewTransaction(userName, worksheetname,password,editedTransaction);
                         Helper.WriteInGreen("\nEdited Succesfully......!!!");
                     }
                 }
@@ -144,11 +148,11 @@ namespace FinanceTracker.Controller
         /// <param name="userName"></param>
         /// <param name="filepath"></param>
         /// <param name="worksheetname"></param>
-        public static void DeleteTransaction(string userName, string worksheetname)
+        public  void DeleteTransaction(string userName, string worksheetname,string password)
         {
             using (var workbook = new XLWorkbook(filepath))
             {
-                if (ViewTransaction(userName, worksheetname))
+                if (ViewTransaction(userName, worksheetname,password))
                 {
                     int id = Validator.GetValidInteger("id of the transaction you wish to delete: \n(press -1 to exit)");
                     if (id == -1)
@@ -156,7 +160,8 @@ namespace FinanceTracker.Controller
                         return;
                     }
                     var worksheet = workbook.Worksheet(worksheetname);
-                    var rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase));
+                    var rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase)
+                                                                    && r.Cell(5).GetString().Equals(password));
                     if (id > rows.Count() || id < 1)
                     {
                         Helper.WriteInRed("Sorry id not found....");
@@ -169,7 +174,7 @@ namespace FinanceTracker.Controller
                             count++;
                             if (count == id)
                             {
-                                Console.WriteLine($"{row.Cell(1).GetDateTime(),-30}{row.Cell(3).GetString(),10}{row.Cell(4).GetDouble(),20}\n");
+                                Console.WriteLine($"{row.Cell(1).GetString(),-30}{row.Cell(3).GetString(),10}{row.Cell(4).GetString(),20}\n");
                                 string ch = "a";
                                 while (!ch.Equals("y") && !ch.Equals("Y") && !ch.Equals("n") && !ch.Equals("N"))
                                 {
@@ -187,7 +192,8 @@ namespace FinanceTracker.Controller
                             }
                         }
                         workbook.Save();
-                        ViewTransaction(userName, worksheetname);
+                        if(rows.Count()>0)
+                          ViewTransaction(userName, worksheetname,password);
                     }
                 }
             }
@@ -198,16 +204,18 @@ namespace FinanceTracker.Controller
         /// </summary>
         /// <param name="userName"></param>
         /// <param name="filepath"></param>
-        public static void FinanceSummary(string userName, string filepath)
+        public  void FinanceSummary(string userName, string filepath,string password)
         {
             var FinanceList = new List<(string date, string type, string source, double amount)>();
             double netBalance = 0;
             using (var workbook = new XLWorkbook(filepath))
             {
                 var incomeworksheet = workbook.Worksheet("Income");
-                var incomerows = incomeworksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase));
+                var incomerows = incomeworksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase)
+                                                                            && r.Cell(5).GetString().Equals(password));
                 var expenseworksheet = workbook.Worksheet("Expense");
-                var expenserows = expenseworksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase));
+                var expenserows = expenseworksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase)
+                                                                              && r.Cell(5).GetString().Equals(password));
 
                 foreach (var row in incomerows)
                 {

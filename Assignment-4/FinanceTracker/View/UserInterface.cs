@@ -1,34 +1,36 @@
 ﻿using FinanceTracker.Utilities;
 namespace FinanceTracker.View
 {
-    class TrackerUI
+    class UserInterface
     {
         static void Main(string[] args)
         {
             Validator.CreateFileIfMissing();
-            bool exit = false;
-            while (!exit)
+            bool isExit = false;
+            while (!isExit)
             {
                 Console.WriteLine("------------Welcome to Expense Tracker-----------");
                 Helper.WriteInYellow("1.Register User\n2.Login\n3.Exit");
-                UserMenu user = new UserMenu();
-                int _choice = Validator.GetValidInteger("your choice");
-                switch (_choice)
+                UserService userService = new UserService();
+                int choice = Validator.GetValidInteger("your choice");
+                switch (choice)
                 {
                     case 1:
-                        string name = Validator.GetValidString("name");
-                        user.RegisterNewUser(name);
+                        string newUserName = Validator.GetValidString("name");
+                        string newPassword = Validator.GetValidPassword();
+                        userService.RegisterNewUser(newUserName, newPassword);
                         break;
 
                     case 2:
-                        string oldname = Validator.GetValidString("name");
-                        user.LoginExistingUser(oldname);
+                        string userName = Validator.GetValidString("name");
+                        string password = Validator.GetValidPassword();
+                        userService.LoginExistingUser(userName, password);
                         break;
 
                     case 3:
                         Helper.WriteInRed("Exiting...");
                         Thread.Sleep(1000);
-                        exit = true;
+                        isExit = true;
                         break;
 
                     default:
