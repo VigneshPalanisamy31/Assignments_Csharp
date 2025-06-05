@@ -36,13 +36,13 @@ namespace FinanceTracker.Utilities
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("1.Salary\n2.Business Income\n3.Rental Income\n4.Investment returns\n5.Royalties\n6.Other sources");
             Console.ResetColor();
-            int _choice = Validator.GetValidInteger("your choice");
-            while(_choice<=0||_choice>6)
+            int choice = Validator.GetValidInteger("your choice");
+            while(choice<=0||choice>6)
             {
                 Console.WriteLine("Please choose from given choice");
-                _choice = Validator.GetValidInteger("your choice");
+                choice = Validator.GetValidInteger("your choice");
             }
-            return _choice switch
+            return choice switch
             {
                 1=>"Salary",
                 2=>"Business Income",

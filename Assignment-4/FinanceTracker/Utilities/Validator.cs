@@ -63,8 +63,7 @@ namespace FinanceTracker.Utilities
         /// </summary>
         /// <returns>Validated date</returns>
         public static DateOnly GetValidDate(string? userInput)
-        {
-            
+        {           
             DateOnly date;
             while (true)
             {
@@ -108,24 +107,21 @@ namespace FinanceTracker.Utilities
         {
             string password = string.Empty;
             ConsoleKey key;
-
             do
             {
-                var keyInfo = Console.ReadKey(intercept: true);
-                key = keyInfo.Key;
-
+                var keyInformation = Console.ReadKey(intercept: true);
+                key = keyInformation.Key;
                 if (key == ConsoleKey.Backspace && password.Length > 0)
                 {
                     Console.Write("\b \b");
                     password = password[0..^1];
                 }
-                else if (!char.IsControl(keyInfo.KeyChar))
+                else if (!char.IsControl(keyInformation.KeyChar))
                 {
                     Console.Write("*");
-                    password += keyInfo.KeyChar;
+                    password += keyInformation.KeyChar;
                 }
             } while (key != ConsoleKey.Enter);
-
             return password;
         }
 

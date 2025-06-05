@@ -1,8 +1,6 @@
 ﻿using ClosedXML.Excel;
 using FinanceTracker.Model;
 using FinanceTracker.Utilities;
-using System.ComponentModel;
-
 namespace FinanceTracker.Controller
 {
     internal class TransactionManager
@@ -45,13 +43,13 @@ namespace FinanceTracker.Controller
         /// <param name="worksheetname">name of the worksheet</param>
         /// <param name="editIndex"></param>
         /// <returns>Boolean whether transactions are available are not. </returns>
-        public  bool ViewTransaction(string userName, string worksheetname,string password,Transaction? edited = null)
+        public  bool ViewTransaction(string userName, string worksheetname,string password,Transaction? editedTransaction = null)
         {
             int transactionCount = 0;
-            using (var workbook = new XLWorkbook(filepath))
+            using (XLWorkbook workbook = new(filepath))
             {
-                var worksheet = workbook.Worksheet(worksheetname);
-                var rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase)
+                IXLWorksheet? worksheet = workbook.Worksheet(worksheetname);
+                IEnumerable<IXLRow> rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase)
                                                                 && r.Cell(5).GetString().Equals(password));
                 if (!rows.Any())
                 { Helper.WriteInRed($"Sorry there are no {worksheetname} Transactions for {userName} ."); return false; }
@@ -65,15 +63,13 @@ namespace FinanceTracker.Controller
                         string sourceORcategory = row.Cell(3).GetString();
                         decimal amount = (decimal)row.Cell(4).GetDouble();
 
-                        if (edited != null && edited.Date.ToString().ToString().Equals(date) && edited.Amount == amount && edited.Category.Equals(sourceORcategory))
-
+                        if (editedTransaction != null && editedTransaction.Date.ToString().ToString().Equals(date) && editedTransaction.Amount == amount && editedTransaction.Category.Equals(sourceORcategory))
                         {
                             Console.ForegroundColor = ConsoleColor.DarkYellow;
                             Console.WriteLine($"{transactionCount,-10}{date,-30}{sourceORcategory,10}{amount,20}  (edited)");
                         }
                         else
                         {
-
                             Console.ForegroundColor = worksheetname.Equals("Income") ? ConsoleColor.Green : ConsoleColor.Red;
                             Console.WriteLine($"{transactionCount,-10}{date,-30}{sourceORcategory,10}{amount,20}");
                         }
@@ -91,7 +87,7 @@ namespace FinanceTracker.Controller
         /// <param name="worksheetname">Name of the worksheet to work with</param>
         public  void EditTransaction(string userName, string worksheetname,string password)
         {
-            using (var workbook = new XLWorkbook(filepath))
+            using (XLWorkbook workbook = new(filepath))
             {
                 if (ViewTransaction(userName, worksheetname,password))
                 {
@@ -102,8 +98,8 @@ namespace FinanceTracker.Controller
                         return;
                     }
                     Transaction? editedTransaction = null;
-                    var worksheet = workbook.Worksheet(worksheetname);
-                    var rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase)
+                    IXLWorksheet worksheet = workbook.Worksheet(worksheetname);
+                    IEnumerable<IXLRow> rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase)
                                                                     && r.Cell(5).GetString().Equals(password));
                     int count = 0;
                     if (id > rows.Count() || id < 1)
@@ -124,15 +120,14 @@ namespace FinanceTracker.Controller
                                 editedTransaction = new Transaction(DateOnly.Parse(row.Cell(1).Value.ToString()), row.Cell(2).Value.ToString(), row.Cell(3).Value.ToString(),decimal.Parse(row.Cell(4).Value.ToString()));
                                 break;
                             }
-                        }   
+                        }
                         //worksheet.LastRowUsed() and worksheet.LastColumnUsed() could possibly be null if the worksheet is empty
-                        var lastRowUsed = worksheet.LastRowUsed();
+                        IXLRow? lastRowUsed = worksheet.LastRowUsed();
                         int lastRow = lastRowUsed == null ? 1 : lastRowUsed.RowNumber();
                         //worksheet.LastColumnUsed() could possibly be null if the worksheet is empty
-                        var lastColumnUsed = worksheet.LastColumnUsed();
+                        IXLColumn? lastColumnUsed = worksheet.LastColumnUsed();
                         int lastColumn = lastColumnUsed == null ? 1 : lastColumnUsed.ColumnNumber() + 1;
-
-                        var range = worksheet.Range(2, 1, lastRow, lastColumn);
+                        IXLRange? range = worksheet.Range(2, 1, lastRow, lastColumn);
                         range.Sort("A", XLSortOrder.Ascending);
                         workbook.Save();
                         ViewTransaction(userName, worksheetname,password,editedTransaction);
@@ -150,7 +145,7 @@ namespace FinanceTracker.Controller
         /// <param name="worksheetname"></param>
         public  void DeleteTransaction(string userName, string worksheetname,string password)
         {
-            using (var workbook = new XLWorkbook(filepath))
+            using (XLWorkbook workbook = new(filepath))
             {
                 if (ViewTransaction(userName, worksheetname,password))
                 {
@@ -159,8 +154,8 @@ namespace FinanceTracker.Controller
                     {
                         return;
                     }
-                    var worksheet = workbook.Worksheet(worksheetname);
-                    var rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase)
+                    IXLWorksheet worksheet = workbook.Worksheet(worksheetname);
+                    IEnumerable<IXLRow> rows = worksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase)
                                                                     && r.Cell(5).GetString().Equals(password));
                     if (id > rows.Count() || id < 1)
                     {
@@ -206,17 +201,16 @@ namespace FinanceTracker.Controller
         /// <param name="filepath"></param>
         public  void FinanceSummary(string userName, string filepath,string password)
         {
-            var FinanceList = new List<(string date, string type, string source, double amount)>();
+            List<(string date, string type, string source, double amount)> FinanceList = new();
             double netBalance = 0;
-            using (var workbook = new XLWorkbook(filepath))
+            using (XLWorkbook workbook = new(filepath))
             {
-                var incomeworksheet = workbook.Worksheet("Income");
-                var incomerows = incomeworksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase)
+                IXLWorksheet incomeworksheet = workbook.Worksheet("Income");
+                IEnumerable<IXLRow> incomerows = incomeworksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase)
                                                                             && r.Cell(5).GetString().Equals(password));
-                var expenseworksheet = workbook.Worksheet("Expense");
-                var expenserows = expenseworksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase)
+                IXLWorksheet expenseworksheet = workbook.Worksheet("Expense");
+                IEnumerable<IXLRow> expenserows = expenseworksheet.RowsUsed().Skip(1).Where(r => r.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase)
                                                                               && r.Cell(5).GetString().Equals(password));
-
                 foreach (var row in incomerows)
                 {
                     FinanceList.Add(new(row.Cell(1).GetString(), "Income", row.Cell(3).GetString(), row.Cell(4).GetDouble()));
@@ -227,10 +221,8 @@ namespace FinanceTracker.Controller
                     FinanceList.Add(new(row.Cell(1).GetString(), "Expense", row.Cell(3).GetString(), row.Cell(4).GetDouble()));
                     netBalance -= row.Cell(4).GetDouble();
                 }
-
-                var sortedTransactions = FinanceList.OrderBy(t => t.date);
+                IOrderedEnumerable<(string date, string type, string source, double amount)> sortedTransactions = FinanceList.OrderBy(t => t.date);
                 Console.WriteLine($"{"Date",-30}{"Type",-10}{"Category",10}{"Amount",25}");
-
                 foreach (var t in sortedTransactions)
                 {
                     Console.ForegroundColor = t.type == "Income" ? ConsoleColor.Green : ConsoleColor.Red;
