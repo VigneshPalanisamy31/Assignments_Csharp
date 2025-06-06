@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilityApp", "UtilityApp\UtilityApp.csproj", "{C84778A2-D1F0-4483-8971-358D8C6CAA30}"
 EndProject
@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisplayApp", "DisplayApp\Di
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathApp", "MathApp\MathApp.csproj", "{CF513F7B-8678-40D5-A1D6-4762DD6BB8DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectE", "ProjectE\ProjectE.csproj", "{A32834DC-3F84-4DA2-ADF2-6B08EEEB0A33}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectE", "ProjectE\ProjectE.csproj", "{762F8DA4-F58F-496B-9D3E-B094FE39DE8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{CF513F7B-8678-40D5-A1D6-4762DD6BB8DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF513F7B-8678-40D5-A1D6-4762DD6BB8DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF513F7B-8678-40D5-A1D6-4762DD6BB8DF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A32834DC-3F84-4DA2-ADF2-6B08EEEB0A33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A32834DC-3F84-4DA2-ADF2-6B08EEEB0A33}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A32834DC-3F84-4DA2-ADF2-6B08EEEB0A33}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A32834DC-3F84-4DA2-ADF2-6B08EEEB0A33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{762F8DA4-F58F-496B-9D3E-B094FE39DE8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{762F8DA4-F58F-496B-9D3E-B094FE39DE8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{762F8DA4-F58F-496B-9D3E-B094FE39DE8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{762F8DA4-F58F-496B-9D3E-B094FE39DE8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

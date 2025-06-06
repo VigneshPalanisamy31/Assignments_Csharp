@@ -1,16 +1,22 @@
 ﻿using UtilityApp;
-using MathApp;
+using ProjectE;
 namespace DisplayApp
 {
     public class Displayer
     {
-     public static void ConsoleDisplay()
+        public IMathHelper mathUtilHelper;
+        public Displayer(IMathHelper mathHelper)
+        {
+            mathUtilHelper = mathHelper;
+            ConsoleDisplay();
+        }
+        public void ConsoleDisplay()
         {
             bool isExit = false;
             float firstNumber;
             float secondNumber;
             while (!isExit)
-            {
+            { 
                 Console.WriteLine("========Basic ArithMetics========");
                 Console.WriteLine("\n\n1.Add\n2.Subtract\n3.Multiply\n4.Divide\n5.Exit\n");
                 Console.WriteLine("Enter your choice:");
@@ -24,20 +30,20 @@ namespace DisplayApp
                     switch (choice)
                     {
                         case 1:
-                            Console.WriteLine($"The sum of {firstNumber} and {secondNumber} is {MathUtils.CalculateSum(firstNumber, secondNumber)}");
+                            Console.WriteLine($"The sum of {firstNumber} and {secondNumber} is {mathUtilHelper.CalculateSum(firstNumber, secondNumber)}");
                             break;
 
                         case 2:
-                            Console.WriteLine($"The difference between {firstNumber} and {secondNumber} is {MathUtils.CalculateDifference(firstNumber, secondNumber)}");
+                            Console.WriteLine($"The difference between {firstNumber} and {secondNumber} is {mathUtilHelper.CalculateDifference(firstNumber, secondNumber)}");
                             break;
 
                         case 3:
-                            Console.WriteLine($"The product of {firstNumber} and {secondNumber} is {MathUtils.CalculateProduct(firstNumber, secondNumber)}");
+                            Console.WriteLine($"The product of {firstNumber} and {secondNumber} is {mathUtilHelper.CalculateProduct(firstNumber, secondNumber)}");
                             break;
 
                         case 4:
-                            if (MathUtils.CalculateQuotient(firstNumber, secondNumber) != 0)
-                                Console.WriteLine($"The quotient of {firstNumber} and {secondNumber} is {MathUtils.CalculateQuotient(firstNumber, secondNumber)}");
+                            if (mathUtilHelper.CalculateQuotient(firstNumber, secondNumber) != 0)
+                                Console.WriteLine($"The quotient of {firstNumber} and {secondNumber} is {mathUtilHelper.CalculateQuotient(firstNumber, secondNumber)}");
                             break;
                     }
                 }

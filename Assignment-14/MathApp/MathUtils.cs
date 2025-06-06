@@ -1,48 +1,54 @@
-﻿namespace MathApp
+﻿using ProjectE;
+using DisplayApp;
+namespace MathApp
 {
-    public class MathUtils
+    public class MathUtils:IMathHelper
     {
+        public MathUtils()
+        {
+            Displayer displayer = new Displayer(this);
+        }
         /// <summary>
         /// Function to calculate sum of two numbers
         /// </summary>
-        /// <param name="a">First number</param>
-        /// <param name="b">Second number</param>
+        /// <param name="firstNumber">First number</param>
+        /// <param name="secondNumber">Second number</param>
         /// <returns>Sum of given two numbers</returns>
-        public static float CalculateSum(float a, float b)
+        public float CalculateSum(float firstNumber, float secondNumber)
         {
-            return a + b;
+            return firstNumber + secondNumber;
         }
         /// <summary>
         /// Function to calculate difference of two numbers
         /// </summary>
-        /// <param name="a">First number</param>
-        /// <param name="b">Second number</param>
+        /// <param name="firstNumber">First number</param>
+        /// <param name="secondNumber">Second number</param>
         /// <returns>Difference of given two numbers</returns>
-        public static float CalculateDifference(float a, float b)
+        public float CalculateDifference(float firstNumber, float secondNumber)
         {
-            return a - b;
+            return firstNumber - secondNumber;
         }
         /// <summary>
         /// Function to calculate product of two numbers
         /// </summary>
-        /// <param name="a">First number</param>
-        /// <param name="b">Second number</param>
+        /// <param name="firstNumber">First number</param>
+        /// <param name="secondNumber">Second number</param>
         /// <returns>product of given two numbers</returns>
-        public static float CalculateProduct(float a, float b)
+        public float CalculateProduct(float firstNumber, float secondNumber)
         {
-            return a * b;
+            return firstNumber * secondNumber;
         }
         /// <summary>
         /// Function to divide given two numbers
         /// </summary>
-        /// <param name="a">First number</param>
-        /// <param name="b">Second number</param>
+        /// <param name="firstNumber">First number</param>
+        /// <param name="secondNumber">Second number</param>
         /// <returns> Quotient after division</returns>
-        public static float CalculateQuotient(float a, float b)
+        public float CalculateQuotient(float firstNumber, float secondNumber)
         {
             try
             {
-                return a / b;
+                return firstNumber / secondNumber;
             }
             catch (Exception e)
             {

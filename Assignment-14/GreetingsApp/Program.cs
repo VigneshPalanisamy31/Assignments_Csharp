@@ -1,4 +1,4 @@
-﻿using ProjectE;
+﻿using MathApp;
 namespace GreetingApp
 {
     public class Program
@@ -10,16 +10,12 @@ namespace GreetingApp
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("\nWelcome to our application\n");
                 Console.ResetColor();
-                Connector.DisplayConnector();
+                MathUtils mathUtils = new MathUtils();
+               
             }
             catch (Exception e)
             {
                 Console.WriteLine($"Execution interrupted due to an unexpected error.\n{e.Message}");
-            }
-            finally
-            {
-                Console.WriteLine("Thank you...");
-                Thread.Sleep(1000);
             }
         }
     }
