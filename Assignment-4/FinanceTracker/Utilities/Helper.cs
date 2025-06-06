@@ -9,9 +9,9 @@ namespace FinanceTracker.Utilities
         /// <param name="name"></param>
         /// <param name="sourceOrCategory"></param>
         /// <returns>A transaction object with user details</returns>
-        public static Transaction? FetchUserData(string name, string sourceOrCategory)
+        public static Transaction? FetchUserData(string userID, string sourceOrCategory)
         {
-            Console.WriteLine("Enter the date (dd-MM-yyyy):\n(press -1 to exit)");
+            Console.WriteLine("Enter the date (yyyy-mm-dd):\n(press -1 to exit)");
             string? userInput = Console.ReadLine();
             if (userInput==null||userInput.Equals("-1"))
                 return null;
@@ -23,7 +23,7 @@ namespace FinanceTracker.Utilities
                 category = SelectExpenseCategory();
 
             decimal amount = Validator.GetValidAmount();
-            return new Transaction(date, name, category, amount);
+            return new Transaction(date, userID, category, amount);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace FinanceTracker.Utilities
             int choice = Validator.GetValidInteger("your choice");
             while(choice<=0||choice>6)
             {
-                Console.WriteLine("Please choose from given choice");
+                Console.WriteLine("Choose from given choice");
                 choice = Validator.GetValidInteger("your choice");
             }
             return choice switch
@@ -64,7 +64,7 @@ namespace FinanceTracker.Utilities
             int choice = Validator.GetValidInteger("your choice");
             while (choice <= 0 || choice > 9)
             {
-                Console.WriteLine("Please choose from given choice");
+                Console.WriteLine("Choose from given choice");
                 choice = Validator.GetValidInteger("your choice");
             }
             return choice switch

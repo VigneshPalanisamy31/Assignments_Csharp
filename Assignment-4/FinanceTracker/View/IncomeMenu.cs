@@ -5,7 +5,7 @@ namespace FinanceTracker.View
 {
     internal class IncomeMenu
     {    
-        public static void IncomeTransactionManager(string userName,string password,TransactionManager transactionManager)
+        public static void IncomeTransactionManager(string userID,TransactionManager transactionManager)
         {
             bool isExit = false;
             while (!isExit)
@@ -16,28 +16,28 @@ namespace FinanceTracker.View
                 switch (choice)
                 {
                     case 1:
-                        Transaction? transaction = Helper.FetchUserData(userName, "income source");
+                        Transaction? transaction = Helper.FetchUserData(userID, "income source");
                         if (transaction == null)
                             Console.WriteLine("Going Back to menu...");
                         else
                         {
-                            transactionManager.AddTransaction(transaction, "Income",password);
+                            transactionManager.AddTransaction(transaction, "Income", userID);
                             Helper.WriteInGreen("Income Tracked Successfully...");
                         }
                         break;
 
                     case 2:
-                        transactionManager.EditTransaction(userName, "Income",password);
+                        transactionManager.EditTransaction(userID, "Income");  
                         break;
 
                     case 3:
-                        transactionManager.ViewTransaction(userName, "Income",password);
+                        transactionManager.ViewTransaction(userID, "Income");
                         Console.WriteLine("\nPress any key to continue...");
                         Console.ReadKey();
                         break;
 
                     case 4:
-                        transactionManager.DeleteTransaction(userName, "Income",password);
+                        transactionManager.DeleteTransaction(userID, "Income");
                         break;
 
                     case 5:
@@ -45,7 +45,7 @@ namespace FinanceTracker.View
                         break;
 
                     default:
-                        Helper.WriteInRed("Please choose from given options");
+                        Helper.WriteInRed("Choose from given options");
                         break;
                 }
                 Thread.Sleep(1000);

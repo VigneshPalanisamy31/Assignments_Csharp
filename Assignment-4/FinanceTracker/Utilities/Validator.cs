@@ -1,25 +1,27 @@
-﻿using System.Globalization;
-using System.Text.RegularExpressions;
-using ClosedXML.Excel;
+﻿using ClosedXML.Excel;
 using FinanceTracker.Controller;
+using System.Globalization;
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.RegularExpressions;
 namespace FinanceTracker.Utilities
 {
     internal class Validator
     {
         //Regex pattern to ensure the string starts with an alphabet ends with an alphabet and may contain specified special characters ( '-.)
         static string pattern = @"^[A-Za-z]+([ '-.][A-Za-z]+)*$";
-        static string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$";
+        static string passwordPattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$#!%*?&^])[A-Za-z\d@$#!%*?&^]{8,}$";
         /// <summary>
         /// Function to get a valid integer from user .
         /// </summary>
         /// <returns>Validated integer</returns>
         public static int GetValidInteger(string prompt)
         {
-            Console.WriteLine($"Please enter {prompt} :");
+            Console.WriteLine($"Enter {prompt} :");
             bool isValid = int.TryParse(Console.ReadLine(), out int validNumber);
             while (!isValid)
             {
-                Helper.WriteInRed($"Please enter a valid input :");
+                Helper.WriteInRed($"Enter a valid input :");
                 isValid = int.TryParse(Console.ReadLine(), out validNumber);
             }
             return validNumber;
@@ -31,11 +33,11 @@ namespace FinanceTracker.Utilities
         /// <returns>Validated Amount</returns>
         public static decimal GetValidAmount()
         {
-            Console.WriteLine("Please enter the amount :");
+            Console.WriteLine("Enter the amount:");
             bool isValid = decimal.TryParse(Console.ReadLine(), out decimal validAmount);
             while (!isValid || validAmount <= 0)
             {
-                Helper.WriteInRed("Please enter a valid amount (Rs and Paise):");
+                Helper.WriteInRed("Enter a valid amount (Rs and Paise):");
                 isValid = decimal.TryParse(Console.ReadLine(), out validAmount);
             }
             return validAmount;
@@ -47,12 +49,12 @@ namespace FinanceTracker.Utilities
         /// <returns>Validated string</returns>
         public static string GetValidString(string input)
         {
-            Console.WriteLine($"Please enter  {input} :");
+            Console.WriteLine($"Enter {input}:");
             string? userInput = Console.ReadLine();
 
             while (string.IsNullOrWhiteSpace(userInput) || !Regex.IsMatch(userInput, pattern))
             {
-                Helper.WriteInRed($"Please enter a valid {input}:");
+                Helper.WriteInRed($"Enter a valid {input}:");
                 userInput = Console.ReadLine();
             }
             return userInput;
@@ -67,13 +69,25 @@ namespace FinanceTracker.Utilities
             DateOnly date;
             while (true)
             {
-                if (DateOnly.TryParseExact(userInput, "dd-MM-yyyy", null, DateTimeStyles.None, out date))
+                if (DateOnly.TryParseExact(userInput, "yyyy-MM-dd", null, DateTimeStyles.None, out date))
                     return date;
                 else
                 {
-                    Helper.WriteInRed("Please follow the format (dd-MM-yyyy)");
+                    Helper.WriteInRed("Please follow the format (yyyy-mm-dd)");
                     userInput = Console.ReadLine();
                 }
+            }
+        }
+
+        public static string GetHashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())  
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder sb = new StringBuilder(); 
+                foreach (byte b in bytes)
+                    sb.Append(b.ToString("x2")); 
+                return sb.ToString();
             }
         }
 
@@ -133,18 +147,23 @@ namespace FinanceTracker.Utilities
         {
             if (!File.Exists(TransactionManager.filepath))
             {
-                var workbook = new XLWorkbook();
-                var incomeWorksheet = workbook.Worksheets.Add("Income");
+                XLWorkbook workbook = new();
+                IXLWorksheet incomeWorksheet = workbook.Worksheets.Add("Income");
                 incomeWorksheet.Cell(1, 1).Value = "Date";
-                incomeWorksheet.Cell(1, 2).Value = "Name";
+                incomeWorksheet.Cell(1, 2).Value = "UserID";
                 incomeWorksheet.Cell(1, 3).Value = "Source";
                 incomeWorksheet.Cell(1, 4).Value = "Income";
 
-                var expenseWorksheet = workbook.Worksheets.Add("Expense");
+                IXLWorksheet expenseWorksheet = workbook.Worksheets.Add("Expense");
                 expenseWorksheet.Cell(1, 1).Value = "Date";
-                expenseWorksheet.Cell(1, 2).Value = "Name";
+                expenseWorksheet.Cell(1, 2).Value = "UserID";
                 expenseWorksheet.Cell(1, 3).Value = "Category";
                 expenseWorksheet.Cell(1, 4).Value = "Expense";
+
+                IXLWorksheet UserList = workbook.Worksheets.Add("Users");
+                UserList.Cell(1, 1).Value = "ID";
+                UserList.Cell(1, 2).Value = "Name";
+                UserList.Cell(1, 3).Value = "Password";
 
                 workbook.SaveAs(TransactionManager.filepath);
             }

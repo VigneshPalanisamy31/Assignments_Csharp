@@ -9,7 +9,7 @@ namespace FinanceTracker.View
         /// Function to display user menu and call the required functionalities
         /// </summary>
         /// <param name="name"></param>
-        public static void DisplayUserMenu(string name,string password)
+        public static void DisplayUserMenu(string userID)
         {
                 bool isExit = false;
                 TransactionManager transactionManager = new TransactionManager();
@@ -21,15 +21,15 @@ namespace FinanceTracker.View
                     switch (choice)
                     {
                         case 1:
-                            IncomeMenu.IncomeTransactionManager(name,password, transactionManager);
+                            IncomeMenu.IncomeTransactionManager(userID, transactionManager);
                             break;
 
                         case 2:
-                            ExpenseMenu.ExpenseTransactionManager(name,password, transactionManager);
+                            ExpenseMenu.ExpenseTransactionManager(userID, transactionManager);
                             break;
 
                         case 3:
-                            transactionManager.FinanceSummary(name, TransactionManager.filepath, password);
+                            transactionManager.FinanceSummary(userID, TransactionManager.filepath);
                             break;
 
                         case 4:
@@ -41,7 +41,7 @@ namespace FinanceTracker.View
 
                         default:
                              Helper.WriteInRed("Invalid Choice");
-                             Helper.WriteInYellow("Please enter a valid choice");
+                             Helper.WriteInYellow("Enter a valid choice");
                              Thread.Sleep(1000);
                              Console.Clear();
                         break;

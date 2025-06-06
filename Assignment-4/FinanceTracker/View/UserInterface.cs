@@ -17,13 +17,13 @@ namespace FinanceTracker.View
                 {
                     case 1:
                         string newUserName = Validator.GetValidString("name");
-                        string newPassword = Validator.GetValidPassword();
+                        string newPassword = Validator.GetHashPassword(Validator.GetValidPassword());
                         userService.RegisterNewUser(newUserName, newPassword);
                         break;
 
                     case 2:
                         string userName = Validator.GetValidString("name");
-                        string password = Validator.GetValidPassword();
+                        string password = Validator.GetHashPassword(Validator.GetValidPassword());
                         userService.LoginExistingUser(userName, password);
                         break;
 
@@ -35,7 +35,7 @@ namespace FinanceTracker.View
 
                     default:
                         Helper.WriteInRed("Invalid Choice");
-                        Helper.WriteInYellow("Please enter a valid choice");
+                        Helper.WriteInYellow("Enter a valid choice");
                         Thread.Sleep(1000);
                         Console.Clear();
                         break;
