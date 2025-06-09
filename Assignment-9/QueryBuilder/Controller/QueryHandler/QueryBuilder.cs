@@ -4,9 +4,7 @@
     {
         List<Func<T, bool>> filters = new List<Func<T, bool>>();
         Func<IEnumerable<T>, IOrderedEnumerable<T>>? sorter;
-        IEnumerable<T>? joins = null;
         List<T> products;
-        private List<Func<IQueryable<T>, IQueryable<T>>> _joins = new List<Func<IQueryable<T>, IQueryable<T>>>();
         public QueryBuilder(List<T>Products)
         {
             products = Products;
