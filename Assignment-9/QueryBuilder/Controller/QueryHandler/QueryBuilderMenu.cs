@@ -86,7 +86,6 @@ namespace LINQ.Controller.QueryHandler
                         break;
 
                     case 3:
-                       
                         IEnumerable<Product>? result=resultBuilder.Execute();
                         var joinedResult=result.Join(
                               suppliers,
