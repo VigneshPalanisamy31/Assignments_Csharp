@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-
+﻿using System.Text.RegularExpressions;
 namespace Collections
 {
     internal class Validator
@@ -19,7 +13,7 @@ namespace Collections
             while(true)
             {
                 Console.WriteLine($"\nEnter the {displaymsg} :");
-                string input=Console.ReadLine();
+                string? input=Console.ReadLine();
                 if(int.TryParse(input, out int value)&&value>0 )
                     return value;
                 else
@@ -42,8 +36,8 @@ namespace Collections
             while (true)
             {
                 Console.WriteLine($"\nEnter the {input}");
-                string validName=Console.ReadLine();
-                if (Regex.IsMatch(validName,@"^[A-Za-z][A-Za-z0-9]{2,}"))
+                string? validName=Console.ReadLine();
+                if (validName!=null&&Regex.IsMatch(validName,@"^[A-Za-z][A-Za-z0-9]{2,}"))
                     return validName;
                 else
                 {
@@ -52,7 +46,6 @@ namespace Collections
                     Console.ResetColor();
                 }
             }
-
         }
     }
 }

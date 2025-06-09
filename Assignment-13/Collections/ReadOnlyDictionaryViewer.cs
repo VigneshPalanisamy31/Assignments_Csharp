@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Collections
+﻿namespace Collections
 {
-    public class Task6
+    public class ReadOnlyDictionaryViewer
     {
         /// <summary>
         /// Function that calculates the sum of elements in the given collection.
@@ -22,14 +16,14 @@ namespace Collections
         /// </summary>
        public static void TestSumOfElements()
         {
-            List<int> list = new List<int> { 1, 2, 3, 4 };
+            List<int> integerList = new List<int> { 1, 2, 3, 4 };
             int[] array = { 5, 6, 7 };
             Queue<int> queue = new Queue<int>();
             queue.Enqueue(8);
             queue.Enqueue(9);
             queue.Enqueue(10);
             Console.WriteLine("List Elements :");
-            foreach (var item in list)
+            foreach (var item in integerList)
                 Console.Write(item + " ");
             Console.WriteLine("Array Elements :");
             foreach (var item in array)
@@ -37,8 +31,7 @@ namespace Collections
             Console.WriteLine("Queue Elements :");
             foreach (var item in queue)
                 Console.Write(item + " ");
-
-            Console.WriteLine("List Sum: " + SumOfElements(list));
+            Console.WriteLine("List Sum: " + SumOfElements(integerList));
             Console.WriteLine("Array Sum: " + SumOfElements(array));
             Console.WriteLine("Queue Sum: " + SumOfElements(queue));
         }
@@ -55,9 +48,9 @@ namespace Collections
             { "BMW", 200 },
             { "Chevrolet", 50 }
         };
-
             return new System.Collections.ObjectModel.ReadOnlyDictionary<string, int>(dict);
         }
+
         /// <summary>
         /// Function to print a read-only dictionary
         /// </summary>
@@ -70,13 +63,13 @@ namespace Collections
             }
         }
 
+        /// <summary>
+        /// Function to display message that readonly dictionary cannot be modified
+        /// </summary>
+        /// <param name="dictionary"></param>
         public static void AttemptToModifyDictionary(IReadOnlyDictionary<string, int> dictionary)
         {
-            
-              //  dictionary["BMW"] = 10;
-            
-
-           
+            //try { dictionary["BMW"] = 10; }
             Console.WriteLine("Cannot modify IReadOnlyDictionary directly.");
         }
     }

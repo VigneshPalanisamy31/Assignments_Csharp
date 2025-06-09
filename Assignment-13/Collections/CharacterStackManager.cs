@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Collections
+﻿namespace Collections
 {
-    internal class Task2
+    internal class CharacterStackManager
     {
         public void UsingStacks()
         {
             Console.WriteLine("Enter the string to be reversed :");
-            string inputString =Console.ReadLine();
+            string? inputString =Console.ReadLine();
             Stack<char> characters = new Stack<char>();
             Console.WriteLine("\nPushing characters onto the stack..");
             Console.ForegroundColor = ConsoleColor.Green;

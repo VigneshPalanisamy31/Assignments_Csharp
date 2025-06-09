@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-
-namespace Collections
+﻿namespace Collections
 {
     public class GenericCollection<T>
     {
         private List<T> list;
         private Queue<T> queue;
         private Stack<T> stack;
-
         private string activeType;
-
         public GenericCollection(string collectionType)
         {
             switch (collectionType.ToLower())
@@ -102,6 +96,5 @@ namespace Collections
                     break;
             }
         }
-
     }
 }

@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Reflection.Metadata.BlobBuilder;
-
-namespace Collections
+﻿namespace Collections
 {
-    public  class Task1
+    public  class BookListManager
     {
         List<string> books = new List<string>();
         public void WorkingWithLists()

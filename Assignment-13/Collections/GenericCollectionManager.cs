@@ -1,23 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Collections
+﻿namespace Collections
 {
-    internal class Task5
+    internal class GenericCollectionManager
     {
         public void GenericCollectionOperations()
         {
             while (true)
             {
                 Console.WriteLine("Choose the generic collection :\n");
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("1.List\n2.Stack\n3.Queue\n4.Dictionary\n5.Exit\n");
-                Console.ResetColor();
-                int _choice = Validator.GetValidInt("choice");
-                switch (_choice)
+               Helper.WriteinYellow("1.List\n2.Stack\n3.Queue\n4.Dictionary\n5.Exit\n");
+                int choice = Validator.GetValidInt("choice");
+                switch (choice)
                 {
                     case 1:
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -36,35 +28,26 @@ namespace Collections
                         list.Add("Book_4");
                         list.Add("Book_5");
                         Thread.Sleep(1000);
-                        Console.ForegroundColor= ConsoleColor.Yellow;
-                        Console.WriteLine("\nDisplaying books:\n");
-                        Console.ResetColor ();
+                        Helper.WriteinYellow("\nDisplaying books:\n");
                         list.Display();
                         Thread.Sleep(1000);
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("\nRemoving books:\n");
-                        Console.ResetColor();
+                        Helper.WriteinYellow("\nRemoving books:\n");
                         list.Remove();
                         break;
                     case 2:
-                        Console.ForegroundColor = ConsoleColor.Green; 
-                        Console.WriteLine("Adding characters to the generic stack");
+                        Helper.WriteinGreen("Adding characters to the generic stack");
                         for (int i = 0; i < 3; i++)
                         {
                             Thread.Sleep(500);
                             Console.Write(".");
                         }
-                            GenericCollection<char> stack = new GenericCollection<char>("stack");
+                        GenericCollection<char> stack = new GenericCollection<char>("stack");
                         stack.Add('G'); stack.Add('e'); stack.Add('n'); stack.Add('e'); stack.Add('r'); stack.Add('i'); stack.Add('c'); stack.Add('s');
                         Thread.Sleep(1000);
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("\nDisplaying characters:\n");
-                        Console.ResetColor();
+                        Helper.WriteinYellow("\nDisplaying characters:\n");
                         stack.Display();
                         Thread.Sleep(1000);
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("\nRemoving books:\n");
-                        Console.ResetColor();
+                        Helper.WriteinYellow("\nRemoving books:\n");
                         stack.Remove();
                         break;
                     case 3:
@@ -83,14 +66,10 @@ namespace Collections
                         queue.Add("Person_4");
                         queue.Add("Person_5");
                         Thread.Sleep(1000);
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("\nDisplaying people in queue:\n");
-                        Console.ResetColor();
+                        Helper.WriteinYellow("\nDisplaying people in queue:\n");
                         queue.Display();
                         Thread.Sleep(1000);
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("\nDequeuing people:\n");
-                        Console.ResetColor();
+                        Helper.WriteinYellow("\nDequeuing people:\n");
                         queue.Remove();
                         break;
                     case 4:
@@ -109,9 +88,7 @@ namespace Collections
                         dict.Add("Student_4", 97);
                         dict.Add("Student_5", 96);
                         Thread.Sleep(1000);
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("\nDisplaying marks of students:\n");
-                        Console.ResetColor();
+                        Helper.WriteinYellow("\nDisplaying marks of students:\n");
                         dict.Display();
                         Thread.Sleep(1000);
                         dict.Remove(Validator.GetValidString("student name to be removed.."));
@@ -119,12 +96,8 @@ namespace Collections
                         break;
                     case 5:return;
                     default:
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("\nInvalid choice");
-                        Console.ResetColor();
+                        Helper.WriteinRed("\nInvalid choice");
                         break;
-
-
                 }
                 Console.WriteLine("\n\nPress any key to continue");
                 Console.ReadKey();
