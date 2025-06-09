@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35931.197 d17.13
+VisualStudioVersion = 17.13.35931.197
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryManagementProfiling", "MemoryManagementProfiling\MemoryManagementProfiling.csproj", "{E6921D5C-20A0-4886-AEB5-CD97C1ADFBD8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfiniteMemoryEater", "InfiniteMemoryEater\InfiniteMemoryEater.csproj", "{E6921D5C-20A0-4886-AEB5-CD97C1ADFBD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImproveMemoryEater_1", "ImproveMemoryEater_1\ImproveMemoryEater_1.csproj", "{70BCFF71-9DCC-4D1F-AC32-1806A6D8C632}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestrictedInfiniteMemoryEater", "RestrictedInfiniteMemoryEater\RestrictedInfiniteMemoryEater.csproj", "{70BCFF71-9DCC-4D1F-AC32-1806A6D8C632}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImproveMemoryEater_2", "ImproveMemoryEater_2\ImproveMemoryEater_2.csproj", "{ABA0BD5C-6761-4D27-A198-E01287E5777E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FiniteMemoryEater", "FiniteMemoryEater\FiniteMemoryEater.csproj", "{ABA0BD5C-6761-4D27-A198-E01287E5777E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
