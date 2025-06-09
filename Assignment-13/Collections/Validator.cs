@@ -17,11 +17,7 @@ namespace Collections
                 if(int.TryParse(input, out int value)&&value>0 )
                     return value;
                 else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"\nInvalid {displaymsg} (required format:positive integer");
-                    Console.ResetColor();
-                }
+                   Helper.WriteinRed($"\nInvalid {displaymsg} (required format:positive integer");
            }
         }
 
@@ -30,7 +26,6 @@ namespace Collections
         /// </summary>
         /// <param name="displaymsg"></param>
         /// <returns>valid string</returns>
-
         public static string GetValidString(string input)
         {
             while (true)
