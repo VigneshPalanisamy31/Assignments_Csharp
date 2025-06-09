@@ -4,7 +4,6 @@ namespace LINQ.View
 {
     internal class ApplicationMenu
     {
-
         public static void Main(string[] args)
         {
             try
@@ -65,6 +64,6 @@ namespace LINQ.View
             {
                 Console.WriteLine($"Execution interrupted!!!\nException:{e.Message}");
             }
-          }
+        }
     }
 }

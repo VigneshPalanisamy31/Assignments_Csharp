@@ -1,7 +1,8 @@
 ﻿using ConsoleTables;
+using LINQ.Controller.QueryHandler;
 using LINQ.Model;
 using LINQ.Utilities;
-namespace LINQ.Controller.QueryHandler
+namespace LINQ.View
 {
     internal class QueryBuilderMenu
     {
