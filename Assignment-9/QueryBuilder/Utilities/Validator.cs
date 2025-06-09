@@ -1,120 +1,153 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 using LINQ.Model;
-
 namespace LINQ.Utilities
 {
     internal class Validator
     {
-        public static int GetValidNumber(string value)
+        /// <summary>
+        /// Function to get a number from user
+        /// </summary>
+        /// <param name="displayMessage"></param>
+        /// <returns>Valid Number</returns>
+        public static float GetValidFloat(string displayMessage)
         {
-            bool stop = false;
-            Console.WriteLine($"Enter {value}");
-            do
+            bool isExit = false;
+            Console.WriteLine($"Enter {displayMessage}");
+            while (!isExit)
             {
-                stop = int.TryParse(Console.ReadLine(), out int number);
-                if (stop&&number>0)
+                isExit = float.TryParse(Console.ReadLine(), out float validNumber);
+                if (isExit && validNumber > 0)
+                    return validNumber;
+                else
+                {
+                    Helper.WriteInRed($"Please enter a valid {displayMessage}");
+                }
+            }
+            return 0;
+        }
+        /// <summary>
+        /// Function to get a valid integer input from user.
+        /// </summary>
+        /// <param name="displayMessage"></param>
+        /// <returns>Valid Integer</returns>
+        public static int GetValidNumber(string displayMessage)
+        {
+            bool isExit = false;
+            Console.WriteLine($"Enter {displayMessage}");
+            while (!isExit)
+            {
+                isExit = int.TryParse(Console.ReadLine(), out int number);
+                if (isExit&&number>0)
                     return number;
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"Please enter a valid {value}");
-                    Console.ResetColor();
+                    Helper.WriteInRed($"Please enter a valid {displayMessage}");
                 }
-                if (value.Contains("stock quantity"))
-                    Console.WriteLine("(Quantity must be a whole number)");
-
-            } while (!stop);
+                if (displayMessage.Contains("stock quantity"))
+                    Helper.WriteInYellow("(Quantity must be a whole number)");
+            }
             return 0;
         }
 
-        public static string GetValidName(string value)
+        /// <summary>
+        /// Function to get a valid name from user.
+        /// </summary>
+        /// <param name="displayMessage"></param>
+        /// <returns></returns>
+        public static string GetValidName(string displayMessage)
         {
-            bool stop = false;
-            Console.WriteLine($"Enter {value}");
-            do
+            bool isExit = false;
+            Console.WriteLine($"Enter {displayMessage}");
+            while (!isExit)
             {
-                string name = Console.ReadLine();
-                stop = Regex.IsMatch(name, @"^[A-Za-z]+([ '-.][A-Za-z]+)*$");
-                if (stop)
+                string? name = Console.ReadLine();
+                isExit = Regex.IsMatch(name, @"^[A-Za-z]+([ '-.][A-Za-z0-9]+)*$");
+                if (isExit)
                     return name;
                 else
-                    Console.WriteLine($"Please enter a valid {value}");
-
-            } while (!stop);
+                    Helper.WriteInRed($"Please enter a valid {displayMessage}");
+            }
             return "";
         }
-        public static string IsNameAvailable(string name, List<Product> Products)
+
+        /// <summary>
+        /// Function to check if product name is already available in the inventory.
+        /// </summary>
+        /// <param name="productName"></param>
+        /// <param name="Products"></param>
+        /// <returns>New unique product name</returns>
+        public static string IsProductNameAvailable(string productName, List<Product> Products)
         {
-            bool stop = false;
-            while (!stop)
+            while (true)
             {
+                bool isUniqueProduct = true;
                 foreach (Product p in Products)
                 {
-                    if (p.ProductName.Equals(name, StringComparison.OrdinalIgnoreCase))
+                    if (p.ProductName.Equals(productName, StringComparison.OrdinalIgnoreCase))
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("A product with same name exists..");
-                        Console.ResetColor();
-                        return IsNameAvailable(GetValidName("a different product name :"), Products);
-
+                        isUniqueProduct = false;
+                        break;
                     }
                 }
-                stop = true;
+                if (isUniqueProduct)
+                    return productName;
+                else
+                    productName = GetValidName("a different product name :");
             }
-            return name;
         }
-
-        public static int IsIdAvailable(int id, List<Product> Products)
+        /// <summary>
+        /// Function to check if product id is already available in inventory.
+        /// </summary>
+        /// <param name="productID"></param>
+        /// <param name="Products"></param>
+        /// <returns>New unique product id</returns>
+        public static int IsProductIdAvailable(int productID, List<Product> Products)
         {
-            bool stop = false;
-            while (!stop)
+            bool isExit = false;
+            while (!isExit)
             {
                 foreach (Product p in Products)
                 {
-                    if (p.ProductID == id)
+                    if (p.ProductID == productID)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("A product with same id exists..");
-                        Console.ResetColor();
-                        return IsIdAvailable(GetValidNumber("different product id :"), Products);
-
+                        return IsProductIdAvailable(GetValidNumber("different product id :"), Products);
                     }
                 }
-                stop = true;
+                isExit = true;
             }
-            return id;
+            return productID;
         }
-        public static double GetValidPrice()
+
+        /// <summary>
+        /// Function to validate price given by user.
+        /// </summary>
+        /// <returns>Valid Price</returns>
+        public static decimal GetValidPrice()
         {
-            bool stop = false;
+            bool isExit = false;
             Console.WriteLine($"Enter the price :");
             do
             {
-                stop = double.TryParse(Console.ReadLine(), out double number);
-                if (stop)
-                    return number;
+                isExit = decimal.TryParse(Console.ReadLine(), out decimal validPrice);
+                if (isExit)
+                    return validPrice;
                 else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"Please enter a valid price:");
-                    Console.ResetColor();
-                }
-
-            } while (!stop);
+                    Helper.WriteInRed($"Please enter a valid price:");
+            } while (!isExit);
             return 0;
         }
+        /// <summary>
+        /// Funntion to check if the inventory is empty.
+        /// </summary>
+        /// <param name="products"></param>
+        /// <returns>True if inventory is is empty and false if not</returns>
         public static bool isEmpty(List<Product> products)
         {
             if (products.Count == 0)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("No products available in the inventory");
-                Console.ResetColor();
+                Helper.WriteInRed("No products available in the inventory");
                 return true;
             }
             return false;

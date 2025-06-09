@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ConsoleTables;
+﻿using ConsoleTables;
 using LINQ.Model;
+using LINQ.Utilities;
 namespace LINQ.Controller.QueryHandler
 {
-    internal class QueryTask2
+    internal class ComplexLINQ
     {
         /// <summary>
         /// Function to display products grouped by category along with most expensive product of each category .
         /// </summary>
         /// <param name="products"></param>
         /// <param name="suppliers"></param>
-        public static void Execute1(List<Product> products,List<Supplier>suppliers)
+        public static void GroupProductsByCategory(List<Product> products,List<Supplier>suppliers)
         {
             var productGroup = products.GroupBy(p => p.Category)
                 .Select(grp => new
@@ -22,20 +18,21 @@ namespace LINQ.Controller.QueryHandler
                     Category=grp.Key,
                     Count=grp.Count(),
                     MostExpensiveProduct=grp.OrderByDescending(p=>p.Price).FirstOrDefault()
-                });
-           
-            var table = new ConsoleTable("Category", "Count", "MostExpensive Product", "Highest Price");
+                });          
+            ConsoleTable table = new("Category", "Count", "MostExpensive Product", "Highest Price");
             foreach(var group in productGroup)
             {
                 table.AddRow(group.Category, group.Count,group.MostExpensiveProduct.ProductName,group.MostExpensiveProduct.Price);
             }
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Products grouped based on categories along with the most expensive product");
-            Console.ResetColor();
+            Helper.WriteInYellow("Products grouped based on categories along with the most expensive product");
             table.Write(Format.Alternative);
-
         }
-        public static void Execute2(List<Product> products, List<Supplier> suppliers)
+        /// <summary>
+        /// Function to join and display products with suppliers 
+        /// </summary>
+        /// <param name="products"></param>
+        /// <param name="suppliers"></param>
+        public static void JoinProductsWithSuppliers(List<Product> products, List<Supplier> suppliers)
         {
             var productSuppliers = from product in products
                                    join supplier in suppliers
@@ -46,15 +43,11 @@ namespace LINQ.Controller.QueryHandler
                                        product.ProductName,
                                        supplier.SupplierName,
                                    };
-            var table = new ConsoleTable("ProductId", "Product Name", "Supplier Name");
+            ConsoleTable table = new("ProductId", "Product Name", "Supplier Name");
             foreach (var product in productSuppliers)
-                table.AddRow(product.ProductID, product.ProductName, product.SupplierName);
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("\nProducts along with their suppliers");
-            Console.ResetColor();
+                table.AddRow(product.ProductID, product.ProductName, product.SupplierName);;
+            Helper.WriteInYellow("\nProducts along with their suppliers");
             table.Write(Format.Alternative);
-
-
         }
     }
 }
