@@ -2,6 +2,10 @@
 {
     public class Program
     {
+        /// <summary>
+        /// Function to display countdown.
+        /// </summary>
+        /// <param name="displayMessage"></param>
         public static void CountDown(string displayMessage)
         {
             Console.Write($"\nCount down to complete {displayMessage} : ");
@@ -11,6 +15,10 @@
                 Console.Write($"{time} ");
             }
         }
+        /// <summary>
+        /// Function to display the completion of the file operation.
+        /// </summary>
+        /// <param name="fileOperation"></param>
         public static void DisplaySuccessMessage(string fileOperation)
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -19,36 +27,34 @@
         }
         public static void Main(string[] args)
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("-------- Handling File Operations --------");
-            Console.ResetColor();
-            string filename = "file.txt";
-            string text = "File Writing Success!!";
-
-            Console.WriteLine("\nWriting file...");
-            CountDown("Writing ");
-          
-            using (FileWriter fileWriter = new FileWriter(filename))
+            try
             {
-                fileWriter.Write(text);
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("-------- Handling File Operations --------");
+                Console.ResetColor();
+                string filename = "file.txt";
+                string text = "File Writing Success!!";
+                Console.WriteLine("\nWriting file...");
+                CountDown("Writing ");
+                using (FileWriter fileWriter = new FileWriter(filename))
+                {
+                    fileWriter.Write(text);
+                }
+                DisplaySuccessMessage("Writing");
+                Console.WriteLine("\nReading from a file...");
+                CountDown("Reading");
+                // Display message for the contents read from file
+                Console.WriteLine("\nFile Contents: ");
+                Console.WriteLine("\n-------- Contents from the file --------\n");
+                StreamReader streamReader = new StreamReader(filename);
+                Console.WriteLine(streamReader.ReadToEnd());
+                DisplaySuccessMessage("Reading");
+                Console.ReadKey();
             }
-
-            DisplaySuccessMessage("Writing");
-
-
-            Console.WriteLine("\nReading from a file...");
-            CountDown("Reading");
-
-            // Display message for the contents read from file
-            Console.WriteLine("\nFile Contents: ");
-            Console.WriteLine("\n-------- Contents from the file --------\n");
-   
-            StreamReader streamReader = new StreamReader(filename);
-            Console.WriteLine(streamReader.ReadToEnd());
-       
-            DisplaySuccessMessage("Reading");
-
-            Console.ReadKey();
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Exception:{ex.Message}");
+            }
         }
     }
 }

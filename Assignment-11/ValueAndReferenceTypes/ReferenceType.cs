@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ValueAndReferenceTypes
+﻿namespace ValueAndReferenceTypes
 {
     internal class ReferenceType
     {
-        public string referenceString;
+        public string ReferenceString { get; set; }
         public ReferenceType(string name)
         {
-            this.referenceString = name;
+            ReferenceString = name;
         }
     }
 }

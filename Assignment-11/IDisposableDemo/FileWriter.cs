@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IDisposableDemo
+﻿namespace IDisposableDemo
 {
     public class FileWriter : IDisposable
     {
-        private readonly StreamWriter _streamWriter;
+         readonly StreamWriter streamWriter;
 
         /// <summary>
         /// Create a new stream writer for the specific file
@@ -16,7 +10,7 @@ namespace IDisposableDemo
         /// <param name="filePath"></param>
         public FileWriter(string filePath)
         {
-            _streamWriter = new StreamWriter(filePath, true);
+            streamWriter = new StreamWriter(filePath, true);
         }
 
         /// <summary>
@@ -25,8 +19,8 @@ namespace IDisposableDemo
         /// <param name="text"> Represents the content to be written to the file </param>
         public void Write(string text)
         {
-            _streamWriter.WriteLine(text);
-            _streamWriter.Flush();
+            streamWriter.WriteLine(text);
+            streamWriter.Flush();
         }
 
         /// <summary>
@@ -34,8 +28,8 @@ namespace IDisposableDemo
         /// </summary>
         public void Dispose()
         {
-            _streamWriter.Close();
-            _streamWriter.Dispose();
+            streamWriter.Close();
+            streamWriter.Dispose();
         }
     }
 }
