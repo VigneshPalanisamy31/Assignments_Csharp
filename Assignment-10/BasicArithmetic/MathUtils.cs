@@ -1,33 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BasicArithmetic
+﻿namespace BasicArithmetic
 {
     internal class MathUtils
     {
-        public static int Add(int a, int b)
+        /// <summary>
+        /// Function to return sum of two numbers.
+        /// </summary>
+        /// <param name="firstNumber"></param>
+        /// <param name="secondNumber"></param>
+        /// <returns>Sunm of two numbers</returns>
+        public static float Add(float firstNumber, float secondNumber)
         {
-            return a + b;
+            return firstNumber + secondNumber;
         }
 
-        public static int Subtract(int a, int b)
+        /// <summary>
+        /// Function to return difference between two numbers.
+        /// </summary>
+        /// <param name="secondNumber"></param>
+        /// <param name="firstNumber"></param>
+        /// <returns></returns>
+        public static float Subtract(float secondNumber, float firstNumber)
         {
-            return a > b ? a - b : b - a;
+            return firstNumber - firstNumber;
         }
 
-        public static int Multiply(int a, int b) 
+        /// <summary>
+        /// Function to return product of two numbers
+        /// </summary>
+        /// <param name="firstNumber"></param>
+        /// <param name="secondNumber"></param>
+        /// <returns></returns>
+        public static float Multiply(float firstNumber, float secondNumber) 
         { 
-            return a * b;
+            return firstNumber * secondNumber;
         }
 
-        public static int Divide(int a, int b)
+        /// <summary>
+        /// Function to return quotient after division
+        /// </summary>
+        /// <param name="firstNumber"></param>
+        /// <param name="secondNumber"></param>
+        /// <returns></returns>
+        public static float Divide(float firstNumber, float secondNumber)
         {
             try
             {
-                return a > b ? a / b : b / a;
+                return firstNumber / secondNumber;
             }
             catch(Exception e)
             {
