@@ -17,9 +17,7 @@
                 Console.WriteLine($"Added: [{key}] = {value}");
             }
             else
-            {
                 Console.WriteLine($"Key already exists: {key}");
-            }
         }
         /// <summary>
         /// Function to remove an entry from the generic dictionary.
