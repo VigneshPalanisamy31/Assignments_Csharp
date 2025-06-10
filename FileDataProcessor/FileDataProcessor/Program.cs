@@ -1,5 +1,9 @@
-﻿
-using Spectre.Console;
+﻿using Spectre.Console;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace FileDataProcessor
 {
@@ -7,7 +11,7 @@ namespace FileDataProcessor
     {
         static void Main(string[] args)
         {
-            SynchronousFileHandler fileHandler = new SynchronousFileHandler();
+            FileDataHandler fileHandler = new FileDataHandler();
             string sourceFile = ValidateFilePath(GetFilePath());
             fileHandler.CreateLargeFile(1, sourceFile);
             Console.WriteLine("File created successfully!!!");

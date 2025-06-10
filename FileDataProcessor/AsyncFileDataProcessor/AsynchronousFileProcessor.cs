@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Text;
-using System.Threading.Tasks;
-
 namespace AsyncFileDataProcessor
 {
-    internal class AsynchronousFileHandler
+    internal class AsynchronousFileProcessor
     {
-        private const int ChunkSize = 4 * 1024;
-
+         static int ChunkSize = 4 * 1024;
         public async Task<long> ConvertToUpperCaseAsync(string sourcePath, string destinationPath)
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
@@ -35,14 +29,11 @@ namespace AsyncFileDataProcessor
         public async Task ProcessMultipleFilesAsync(List<(string sourcePath, string destinationPath)> filePairs)
         {
             List<Task<long>> processingTasks = new List<Task<long>>();
-
             foreach (var (source, dest) in filePairs)
             {
                 processingTasks.Add(ConvertToUpperCaseAsync(source, dest));
             }
-
             long[] durations = await Task.WhenAll(processingTasks);
-
             for (int i = 0; i < filePairs.Count; i++)
             {
                 Console.WriteLine($"Processed file {filePairs[i].sourcePath} to {filePairs[i].destinationPath} in {durations[i]} ms");
@@ -69,7 +60,6 @@ namespace AsyncFileDataProcessor
         {
             byte[] buffer = new byte[ChunkSize];
             int bytesRead;
-
             while ((bytesRead = await sourceStream.ReadAsync(buffer, 0, buffer.Length)) > 0)
             {
                 string chunkString = Encoding.ASCII.GetString(buffer, 0, bytesRead);
