@@ -1,56 +1,61 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ConsoleTables;
-
-namespace Inventory_Management
+﻿using ConsoleTables;
+using LINQ.Model;
+using LINQ.Utilities;
+namespace LINQ.Controller.ProductHandler
 {
     internal class ProductManager
     {
-        List<Product> Products = new List<Product>();
-        InputHandler inputHandler = new InputHandler();
+        List<Product> Products;
+        List<Supplier> Suppliers;
+        public ProductManager(List<Product>products, List<Supplier> suppliers)
+        {
+            Products = products;
+            Suppliers = suppliers;
+        }
+        FetchUserData inputHandler = new FetchUserData();
+        /// <summary>
+        /// Function to add new products
+        /// </summary>
         public void AddNewProduct()
         {
             Console.WriteLine("--------Adding New Product-------");
             Console.WriteLine("(Press -1 to exit)");
-            Product product = inputHandler.GetProductDetails(Products);
-            if (product==null)
+            Product? product = inputHandler.GetProductDetails(Products);
+            if (product == null)
             {
-                Console.WriteLine("Cancelling...");
+                Console.WriteLine("Canceling...");
                 return;
             }
             Products.Add(product);
+            Suppliers.Add(new Supplier(product.ProductID, $"Supplier_{product.ProductID}",product.ProductID));
             Products = Products.OrderBy(p => p.ProductID).ToList();
-            Console.WriteLine("Product added to inventory successfully....");
+            Helper.WriteInGreen("Product added to inventory successfully....");
         }
 
         /// <summary>
         /// Function to search a product in the inventory
         /// </summary>
-        /// <returns>an objject of matched product</returns>
-        public Product SearchProduct()
+        /// <returns>an object of matched product</returns>
+        public Product? SearchProduct()
         {
             if (!Validator.isEmpty(Products))
             {
                 Console.WriteLine("Enter the name or id of the product :(press -1 to exit)");
-                string key = Console.ReadLine();
-                if(key.Equals("-1"))
+                string? key = Console.ReadLine();
+                if (key.Equals("-1"))
                 {
-                    Console.WriteLine("Cancelling...");
+                    Console.WriteLine("Canceling...");
                     return null;
                 }
                 if (!int.TryParse(key, out int search))
                 {
                     foreach (Product p in Products)
                     {
-                        if (p.ProductName.Equals(key,StringComparison.OrdinalIgnoreCase))
+                        if (p.ProductName.Equals(key, StringComparison.OrdinalIgnoreCase))
                         {
                             ViewProduct(p);
                             return p;
                         }
-
                     }
                 }
                 else
@@ -85,21 +90,26 @@ namespace Inventory_Management
                         Console.WriteLine("--------Editing Product-------");
                         ViewProduct(toEdit);
                         Console.WriteLine("Choose the field to edit: ");
-                        Console.WriteLine("1.ID\n2.Name\n3.Price\n4.Quantity in stock\n5.Exit");
+                        Helper.WriteInYellow("1.ID\n2.Name\n3.Price\n4.Quantity in stock\n5.Exit");
                         int choice = Validator.GetValidNumber("your choice :");
                         switch (choice)
                         {
                             case 1:
-                                toEdit.ProductID  = Validator.IsIdAvailable(Validator.GetValidNumber("new productid :"), Products);
+                                Supplier? supplierToEdit = FindSupplier(toEdit);
+                                toEdit.ProductID = Validator.IsProductIdAvailable(Validator.GetValidNumber("new productid :"), Products);
+                                supplierToEdit.SupplierID=toEdit.ProductID;
+                                supplierToEdit.SupplierName = $"Supplier_{toEdit.ProductID}";
+                                supplierToEdit.ProductID=toEdit.ProductID ;
+                                
                                 break;
                             case 2:
-                                toEdit.ProductName = Validator.IsNameAvailable(Validator.GetValidName("new product name :"), Products);
+                                toEdit.ProductName = Validator.IsProductNameAvailable(Validator.GetValidName("new product name :"), Products);
                                 break;
                             case 3:
                                 toEdit.Price = Validator.GetValidPrice();
                                 break;
                             case 4:
-                                toEdit.QuantityInStock = Validator.GetValidNumber("the new stock quantity :");
+                                toEdit.Category = Validator.GetValidName("the new category :");
                                 break;
                             case 5:
                                 exit = "n";
@@ -114,23 +124,30 @@ namespace Inventory_Management
                         }
                         Products = Products.OrderBy(p => p.ProductID).ToList();
                     } while (exit != "n");
-
                 }
             }
-
         }
+        /// <summary>
+        /// Function to view all products in inventory
+        /// </summary>
         public void ViewProducts()
         {
-            var productTable = new ConsoleTable("ProductId", "Product Name", "Price", "Quantity");
+            ConsoleTable productTable = new("ProductId", "Product Name", "Price", "Category");
             foreach (Product product in Products)
             {
-                productTable.AddRow(product.ProductID, product.ProductName, product.Price, product.QuantityInStock);
+                productTable.AddRow(product.ProductID, product.ProductName, product.Price, product.Category);
             }
             productTable.Write(Format.Alternative);
+            ConsoleTable supplierTable = new("ProductId", "SupplierId","Supplier Name");
+            foreach (Supplier supplier in Suppliers)
+            {
+                productTable.AddRow(supplier.ProductID, supplier.SupplierID, supplier.SupplierName);
+            }
+            supplierTable.Write(Format.Alternative);
         }
 
         /// <summary>
-        /// function to view the product details
+        /// Function to view the product details
         /// </summary>
         /// <param name="toView"></param>
         public void ViewProduct(Product toView)
@@ -139,7 +156,7 @@ namespace Inventory_Management
             Console.WriteLine($"Product Id : {toView.ProductID}");
             Console.WriteLine($"Product Name : {toView.ProductName}");
             Console.WriteLine($"Price : {toView.Price}");
-            Console.WriteLine($"Quantity in stock : {toView.QuantityInStock}");
+            Console.WriteLine($"Category : {toView.Category}");
         }
 
         /// <summary>
@@ -150,7 +167,7 @@ namespace Inventory_Management
             Console.WriteLine("--------Deleting Product-------");
             if (!Validator.isEmpty(Products))
             {
-                Product toDelete = SearchProduct();
+                Product? toDelete = SearchProduct();
                 if (toDelete != null)
                 {
                     string choice;
@@ -163,14 +180,24 @@ namespace Inventory_Management
                         {
                             Console.WriteLine("Product deleted from inventory successfully");
                             Products.Remove(toDelete);
+                            Suppliers.Remove(FindSupplier(toDelete));
                         }
                         else if (choice.Equals("n") || choice.Equals("N"))
                         {
-                            Console.WriteLine("Cancelling delete....");
+                            Console.WriteLine("Canceling delete....");
                         }
-                    } while (!choice.Equals("y") && !choice.Equals("Y")&& !choice.Equals("N")&&!choice.Equals("n"));
+                    } while (!choice.Equals("y") && !choice.Equals("Y") && !choice.Equals("N") && !choice.Equals("n"));
                 }
             }
+        }
+        public Supplier? FindSupplier(Product product)
+        {
+            foreach(Supplier sp in Suppliers)
+            {
+                if (sp.ProductID == product.ProductID)
+                    return sp;
+            }
+            return null;
         }
     }
 }
