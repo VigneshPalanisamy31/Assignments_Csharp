@@ -1,5 +1,4 @@
-﻿using System;
-namespace EventsAndDelegates
+﻿namespace EventsAndDelegates
 {
     public delegate void Notify(string message);
     internal class Notifier
@@ -20,6 +19,10 @@ namespace EventsAndDelegates
                 Console.WriteLine("Press any key to exit...");
                 Console.ReadKey();
             }
+        /// <summary>
+        /// Function to display notification messages
+        /// </summary>
+        /// <param name="message"></param>
             static void DisplayMessage(string message)
             {
                 Console.WriteLine($"Notification: {message}");

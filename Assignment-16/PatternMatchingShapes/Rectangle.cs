@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PatternMatchingShapes
+﻿namespace PatternMatchingShapes
 {
     public class Rectangle : Shape
     {
@@ -18,7 +11,6 @@ namespace PatternMatchingShapes
             Height = height;
             Colour = colour;
         }
-
         public override double CalculateArea() => Width * Height;
     }
 }

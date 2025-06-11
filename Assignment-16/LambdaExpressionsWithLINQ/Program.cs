@@ -11,6 +11,7 @@ namespace LambdaExpressionsWithLINQ
             {
                 integerList.Add(Helper.GetValidInteger($"number{i + 1}"));
             }
+            //Using where to filter out even numbers and select to square the odd numbers
             List<int>squaredOddList=integerList.Where(i=>i%2!=0).Select(i=>i*i).ToList(); 
             foreach (int number in squaredOddList)
                 Console.WriteLine(number);

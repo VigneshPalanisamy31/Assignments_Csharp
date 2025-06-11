@@ -11,7 +11,6 @@
                 new Triangle(3, 7, "Green"),
                 null 
             };
-
             foreach (Shape shape in shapes)
             {
                 DisplayShapeDetails(shape);
@@ -19,7 +18,10 @@
             }
             Console.ReadKey();
         }
-
+        /// <summary>
+        /// Function to display shape details based on object
+        /// </summary>
+        /// <param name="shape"></param>
         static void DisplayShapeDetails(Shape shape)
         {
             switch (shape)

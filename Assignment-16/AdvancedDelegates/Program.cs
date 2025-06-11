@@ -3,7 +3,6 @@
     internal class Program
     {
      public delegate int SortDelegate(Product firstProduct,Product secondProduct);
-
         static void Main(string[] args)
         {
             List<Product> products = new List<Product>
@@ -27,23 +26,23 @@
             Console.WriteLine("\nPress any key to exit...");
             Console.ReadKey();
         }
-        static int SortByName(Product a, Product b)
+        static int SortByName(Product product_A, Product product_B)
         {
-            return a.Name.CompareTo(b.Name);
+            return product_A.Name.CompareTo(product_B.Name);
         }
-        static int SortByCategory(Product a, Product b)
+        static int SortByCategory(Product product_A, Product product_B)
         {
-            return a.Category.CompareTo(b.Category);
+            return product_A.Category.CompareTo(product_B.Category);
         }
-        static int SortByPrice(Product a, Product b)
+        static int SortByPrice(Product product_A, Product product_B)
         {
-            return a.Price.CompareTo(b.Price);
+            return product_A.Price.CompareTo(product_B.Price);
         }
 
         static void SortAndDisplay(SortDelegate sorter, List<Product> products)
         {
-            products.Sort((a, b) => sorter(a, b));
-            foreach (var product in products)
+            products.Sort((product_A, product_B) => sorter(product_A, product_B));
+            foreach (Product product in products)
             {
                 Console.WriteLine(product);
             }
