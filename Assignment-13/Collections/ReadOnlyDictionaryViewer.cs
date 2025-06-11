@@ -22,18 +22,18 @@
             queue.Enqueue(8);
             queue.Enqueue(9);
             queue.Enqueue(10);
-            Console.WriteLine("List Elements :");
+            Console.Write("List Elements :");
             foreach (var item in integerList)
                 Console.Write(item + " ");
-            Console.WriteLine("Array Elements :");
+            Console.Write("\nArray Elements :");
             foreach (var item in array)
                 Console.Write(item + " ");
-            Console.WriteLine("Queue Elements :");
+            Console.Write("\nQueue Elements :");
             foreach (var item in queue)
                 Console.Write(item + " ");
-            Console.WriteLine("List Sum: " + SumOfElements(integerList));
-            Console.WriteLine("Array Sum: " + SumOfElements(array));
-            Console.WriteLine("Queue Sum: " + SumOfElements(queue));
+            Console.WriteLine($"\nList Sum: {SumOfElements(integerList)}");
+            Console.WriteLine($"Array Sum: {SumOfElements(array)}");
+            Console.WriteLine($"Queue Sum: {SumOfElements(queue)}");
         }
        
         /// <summary>

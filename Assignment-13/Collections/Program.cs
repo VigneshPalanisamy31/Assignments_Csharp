@@ -45,6 +45,7 @@
                             ReadOnlyDictionaryViewer.PrintDictionary(dict);
                             Thread.Sleep(2000);
                             ReadOnlyDictionaryViewer.AttemptToModifyDictionary(dict);
+                            Console.ReadKey();
                             break;
 
                         case 7: return;
@@ -52,8 +53,6 @@
                             Helper.WriteinRed("\nInvalid choice");
                             break;
                     }
-                    Console.WriteLine("\n\nPress any key to continue");
-                    Console.ReadKey();
                     Console.Clear();
                 }
             }
