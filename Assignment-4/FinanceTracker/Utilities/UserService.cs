@@ -17,13 +17,7 @@ namespace FinanceTracker.Utilities
         public bool IsExisitingUser(string userName,string password)
         {
             workbook = new XLWorkbook(filepath);
-            //expenseSheet = workbook.Worksheet("Expense");
-            //incomeSheet = workbook.Worksheet("Income");
             userSheet = workbook.Worksheet("Users");
-            //bool incomeAvailable = incomeSheet.RowsUsed().Skip(1).Any(row => row.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase)
-            //                                                              && row.Cell(5).GetString().Equals(password));
-            //bool expenseAvailable = expenseSheet.RowsUsed().Skip(1).Any(row => row.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase)
-            //                                                                && row.Cell(5).GetString().Equals(password));
             bool isUserAvailable = userSheet.RowsUsed().Skip(1).Any(row=>row.Cell(2).GetString().Equals(userName, StringComparison.OrdinalIgnoreCase)
                                                                        &&row.Cell(3).GetString().Equals(password));
             if (isUserAvailable)

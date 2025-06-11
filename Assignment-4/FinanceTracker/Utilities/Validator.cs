@@ -1,5 +1,6 @@
 ﻿using ClosedXML.Excel;
 using FinanceTracker.Controller;
+using FinanceTracker.View;
 using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
@@ -166,6 +167,34 @@ namespace FinanceTracker.Utilities
                 UserList.Cell(1, 3).Value = "Password";
 
                 workbook.SaveAs(TransactionManager.filepath);
+            }
+            else
+            {
+                XLWorkbook workbook = new(TransactionManager.filepath);
+                if (!workbook.Worksheets.Contains("Users"))
+                    {
+                    IXLWorksheet UserList = workbook.Worksheets.Add("Users");
+                    UserList.Cell(1, 1).Value = "ID";
+                    UserList.Cell(1, 2).Value = "Name";
+                    UserList.Cell(1, 3).Value = "Password";
+                }
+                if (!workbook.Worksheets.Contains("Income"))
+                {
+                    IXLWorksheet incomeWorksheet = workbook.Worksheets.Add("Income");
+                    incomeWorksheet.Cell(1, 1).Value = "Date";
+                    incomeWorksheet.Cell(1, 2).Value = "UserID";
+                    incomeWorksheet.Cell(1, 3).Value = "Source";
+                    incomeWorksheet.Cell(1, 4).Value = "Income";
+                }
+                if(!workbook.Worksheets.Contains("Expense"))
+                {
+                    IXLWorksheet expenseWorksheet = workbook.Worksheets.Add("Expense");
+                    expenseWorksheet.Cell(1, 1).Value = "Date";
+                    expenseWorksheet.Cell(1, 2).Value = "UserID";
+                    expenseWorksheet.Cell(1, 3).Value = "Category";
+                    expenseWorksheet.Cell(1, 4).Value = "Expense";
+                }
+                workbook.Save();
             }
         }
     }
