@@ -27,7 +27,7 @@ namespace LINQ.Controller.ProductHandler
                 return;
             }
             Products.Add(product);
-            Suppliers.Add(new Supplier(product.ProductID, $"Supplier_{product.ProductID}",product.ProductID));
+            Suppliers.Add(new Supplier(Suppliers.Count+1, $"Supplier_{product.ProductID}",product.ProductID));
             Products = Products.OrderBy(p => p.ProductID).ToList();
             Helper.WriteInGreen("Product added to inventory successfully....");
         }
@@ -80,8 +80,9 @@ namespace LINQ.Controller.ProductHandler
         {
             if (!Validator.isEmpty(Products))
             {
+                ViewProducts(0);
                 Product toEdit = SearchProduct();
-                string exit = "y";
+                string isExit = "y";
                 if (toEdit != null)
                 {
                     do
@@ -90,7 +91,7 @@ namespace LINQ.Controller.ProductHandler
                         Console.WriteLine("--------Editing Product-------");
                         ViewProduct(toEdit);
                         Console.WriteLine("Choose the field to edit: ");
-                        Helper.WriteInYellow("1.ID\n2.Name\n3.Price\n4.Quantity in stock\n5.Exit");
+                        Helper.WriteInYellow("1.ID\n2.Name\n3.Price\n4.Category\n5.Exit");
                         int choice = Validator.GetValidNumber("your choice :");
                         switch (choice)
                         {
@@ -112,25 +113,25 @@ namespace LINQ.Controller.ProductHandler
                                 toEdit.Category = Validator.GetValidName("the new category :");
                                 break;
                             case 5:
-                                exit = "n";
+                                isExit = "n";
                                 break;
                             default: Console.WriteLine("Please enter a valid choice"); break;
                         }
-                        if (exit.Equals("y"))
+                        if (isExit.Equals("y",StringComparison.OrdinalIgnoreCase))
                         {
                             Console.WriteLine("Product details edited successfully..");
                             Console.WriteLine("Do you wish to continue editing?");
-                            exit = Validator.GetValidName("[y/n]");
+                            isExit = Validator.GetValidName("[y/n]");
                         }
                         Products = Products.OrderBy(p => p.ProductID).ToList();
-                    } while (exit != "n");
+                    } while (!isExit.Equals("n",StringComparison.OrdinalIgnoreCase));
                 }
             }
         }
         /// <summary>
         /// Function to view all products in inventory
         /// </summary>
-        public void ViewProducts()
+        public void ViewProducts(int isSupplierRequired = -1)
         {
             ConsoleTable productTable = new("ProductId", "Product Name", "Price", "Category");
             foreach (Product product in Products)
@@ -138,12 +139,15 @@ namespace LINQ.Controller.ProductHandler
                 productTable.AddRow(product.ProductID, product.ProductName, product.Price, product.Category);
             }
             productTable.Write(Format.Alternative);
-            ConsoleTable supplierTable = new("ProductId", "SupplierId","Supplier Name");
-            foreach (Supplier supplier in Suppliers)
+            if (isSupplierRequired == -1)
             {
-                productTable.AddRow(supplier.ProductID, supplier.SupplierID, supplier.SupplierName);
+                ConsoleTable supplierTable = new("ProductId", "SupplierId", "Supplier Name");
+                foreach (Supplier supplier in Suppliers)
+                {
+                    supplierTable.AddRow(supplier.ProductID, supplier.SupplierID, supplier.SupplierName);
+                }
+                supplierTable.Write(Format.Alternative);
             }
-            supplierTable.Write(Format.Alternative);
         }
 
         /// <summary>
@@ -166,6 +170,7 @@ namespace LINQ.Controller.ProductHandler
         {
             Console.WriteLine("--------Deleting Product-------");
             if (!Validator.isEmpty(Products))
+                ViewProducts(0);
             {
                 Product? toDelete = SearchProduct();
                 if (toDelete != null)

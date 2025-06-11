@@ -17,7 +17,8 @@ namespace LINQ.View
                 Helper.WriteInYellow("3.Products along with suppliers");
                 Helper.WriteInYellow("4.Second Highest element in an array and pairs summing up to target");
                 Helper.WriteInYellow("5.All books sorted by price");
-                Helper.WriteInYellow("6.QueryBuilder\n7.Exit\n");
+                Helper.WriteInYellow("6.QueryBuilder");
+                Helper.WriteInYellow("7.Exit");
                 int choice = Validator.GetValidNumber("your choice :");
                 switch (choice)
                 {

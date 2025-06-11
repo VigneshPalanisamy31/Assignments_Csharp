@@ -61,7 +61,7 @@ namespace LINQ.Utilities
             while (!isExit)
             {
                 string? name = Console.ReadLine();
-                isExit = Regex.IsMatch(name, @"^[A-Za-z]+([ '-.][A-Za-z0-9]+)*$");
+                isExit = Regex.IsMatch(name, @"^[A-Za-z]+([ '-.]*[A-Za-z0-9]+)*$");
                 if (isExit)
                     return name;
                 else

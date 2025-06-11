@@ -9,28 +9,28 @@ namespace LINQ.View
             try
             {
                 List<Product> products = new List<Product>();
-                products.Add(new Product(1, "Laptop", 70000, "Electronics"));
-                products.Add(new Product(2, "AC", 20000, "Electronics"));
-                products.Add(new Product(3, "BookA", 2000, "books"));
-                products.Add(new Product(4, "BookB", 3000, "books"));
-                products.Add(new Product(5, "T-Shirt", 1000, "Clothing"));
-                products.Add(new Product(6, "Jeans", 2000, "Clothing"));
-                products.Add(new Product(7, "Sofa", 25000, "Furniture"));
-                products.Add(new Product(8, "Dining Table", 18000, "Furniture"));
-                products.Add(new Product(9, "Rice", 800, "Groceries"));
-                products.Add(new Product(10, "Cooking Oil", 1200, "Groceries"));
+                products.Add(new Product(1000, "Laptop", 70000, "Electronics"));
+                products.Add(new Product(2000, "AC", 20000, "Electronics"));
+                products.Add(new Product(3000, "BookA", 2000, "books"));
+                products.Add(new Product(4000, "BookB", 3000, "books"));
+                products.Add(new Product(5000, "T-Shirt", 1000, "Clothing"));
+                products.Add(new Product(6000, "Jeans", 2000, "Clothing"));
+                products.Add(new Product(7000, "Sofa", 25000, "Furniture"));
+                products.Add(new Product(8000, "Dining Table", 18000, "Furniture"));
+                products.Add(new Product(9000, "Rice", 800, "Groceries"));
+                products.Add(new Product(10000, "Cooking Oil", 1200, "Groceries"));
 
                 List<Supplier> suppliers = new List<Supplier>();
-                suppliers.Add(new Supplier(1, "Supplier_1", 1));
-                suppliers.Add(new Supplier(2, "Supplier_2", 2));
-                suppliers.Add(new Supplier(3, "Supplier_3", 3));
-                suppliers.Add(new Supplier(4, "Supplier_4", 4));
-                suppliers.Add(new Supplier(5, "Supplier_5", 5));
-                suppliers.Add(new Supplier(6, "Supplier_6", 6));
-                suppliers.Add(new Supplier(7, "Supplier_7", 7));
-                suppliers.Add(new Supplier(8, "Supplier_8", 8));
-                suppliers.Add(new Supplier(9, "Supplier_9", 9));
-                suppliers.Add(new Supplier(10, "Supplier_10", 10));
+                suppliers.Add(new Supplier(1, "Supplier_1", 1000));
+                suppliers.Add(new Supplier(2, "Supplier_2", 2000));
+                suppliers.Add(new Supplier(3, "Supplier_3", 3000));
+                suppliers.Add(new Supplier(4, "Supplier_4", 4000));
+                suppliers.Add(new Supplier(5, "Supplier_5", 5000));
+                suppliers.Add(new Supplier(6, "Supplier_6", 6000));
+                suppliers.Add(new Supplier(7, "Supplier_7", 7000));
+                suppliers.Add(new Supplier(8, "Supplier_8", 8000));
+                suppliers.Add(new Supplier(9, "Supplier_9", 9000));
+                suppliers.Add(new Supplier(10, "Supplier_10", 10000));
                 bool isExit = false;
                 while (!isExit)
                 {
@@ -63,6 +63,7 @@ namespace LINQ.View
             catch (Exception e)
             {
                 Console.WriteLine($"Execution interrupted!!!\nException:{e.Message}");
+                Console.ReadKey();
             }
         }
     }
