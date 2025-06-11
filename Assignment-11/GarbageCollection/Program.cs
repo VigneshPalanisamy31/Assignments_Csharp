@@ -2,8 +2,8 @@
 {
     class SampleObject
     {
-        int[] array = new int[10];
-        String[] stringarray = new String[10];
+        public int[] array = new int[10];
+        public String[] stringarray = new String[10];
     }
     class Program
     {

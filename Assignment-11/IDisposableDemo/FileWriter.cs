@@ -2,7 +2,7 @@
 {
     public class FileWriter : IDisposable
     {
-         readonly StreamWriter streamWriter;
+         StreamWriter streamWriter;
 
         /// <summary>
         /// Create a new stream writer for the specific file
