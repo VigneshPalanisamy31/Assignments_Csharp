@@ -4,7 +4,10 @@ namespace DynamicObjectInspector
 {
     public class ObjectInspector
     {
-        // Display properties and their current values
+        /// <summary>
+        ///  Function to display properties and their current values
+        /// </summary>
+        /// <param name="obj"></param>
         public static void Inspect(object obj)
         {
             Type type = obj.GetType();
@@ -19,7 +22,12 @@ namespace DynamicObjectInspector
             }
         }
 
-        // Set a property value dynamically by name
+        /// <summary>
+        /// Function to set a property value dynamically by name
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="propertyName"></param>
+        /// <param name="newValue"></param>
         public static void SetProperty(object obj, string propertyName, string newValue)
         {
             Type type = obj.GetType();
