@@ -14,9 +14,7 @@
                 Console.WriteLine("\nbook1 == book3? " + (book1 == book3)); // True
             //book1.Title = "New Title"; 
             //(record properties are init-only and can only be assigned in an object initializer)
-
             Book updatedBook = book1 with { Title = "KGF-1951" };
-
                 Console.WriteLine("\nOriginal and Updated Books (with expression):");
                 DisplayBook(book1);
                 DisplayBook(updatedBook);
@@ -24,8 +22,7 @@
             }
             static void DisplayBook(Book book)
             {
-                var (title, author, isbn) = book;
-                Console.WriteLine($"Title: {title}, Author: {author}, ISBN: {isbn}");
+                Console.WriteLine($"Title: {book.Title}, Author: {book.Author}, ISBN: {book.ISBN}");
             }
         }
     }
