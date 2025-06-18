@@ -6,6 +6,9 @@
         public static float Age { get; set; }
         public static string Address {  get; set; }
         public static string Email {  get; set; }
+        /// <summary>
+        /// Function to fetch user-details
+        /// </summary>
         public static void GetUserDetails()
         {
             Console.WriteLine("Enter Your Name:");
@@ -16,8 +19,10 @@
             Address = Console.ReadLine();
             Console.WriteLine("Enter Your Email:");
             Email = Console.ReadLine();
-
         }
+        /// <summary>
+        /// Function to display user-details
+        /// </summary>
         public static void PrintUserDetails()
         {
             Console.WriteLine($"Name: {UserName}\nAge: {Age}\nAddress: {Address}\nEmail:{Email}");

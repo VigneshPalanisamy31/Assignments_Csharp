@@ -6,11 +6,10 @@
         {
             Person person = new Person
             {
-                Name = "Alice",
-                Age = 30,
-                Email = "alice@example.com"
+                Name = "Vicky",
+                Age = 22,
+                Email = "Vicky@Solin.com"
             };
-
             Console.WriteLine("Original object:");
             ObjectInspector.Inspect(person);
             Console.WriteLine("\nEnter property to update:");

@@ -20,10 +20,6 @@ namespace DynamicMethodInvoker
                     Console.WriteLine($"Result: {result}");
                 }
             }
-            catch (TargetParameterCountException)
-            {
-                Console.WriteLine("Incorrect number of parameters.");
-            }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error invoking method: {ex.Message}");
