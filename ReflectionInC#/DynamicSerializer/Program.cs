@@ -5,20 +5,20 @@ namespace DynamicSerializer
     {
         static void Main(string[] args)
         {
+            Product product = new("Bat", 10, "Sports", 10000);
             Stopwatch serializerTimer = Stopwatch.StartNew();
-            for (int i = 0; i < 1000; i++)
-                Console.WriteLine(Serializer.Serialize(new Product("Bat", i, "Sports", 10000)));
+            for (int i = 0; i < 100000; i++)
+                Serializer.Serialize(product);
             serializerTimer.Stop();
 
 
             Stopwatch emitSerializerTimer = Stopwatch.StartNew();
             Func<Product,string> serializer = EmitSerializer.CreateSerializer<Product>();
-            for (int i = 0; i < 1000; i++)
-                Console.WriteLine(serializer(new Product("Bat",i,"Sports",10000)));
+            for (int i = 0; i < 100000; i++)
+              serializer(product);
             emitSerializerTimer.Stop();
-
-            Console.WriteLine($"Reflection: {(double)serializerTimer.ElapsedMilliseconds/1000}s");
-            Console.WriteLine($"Emit: {(double)emitSerializerTimer.ElapsedMilliseconds/1000}s");
+            Console.WriteLine($"Reflection Serializer: {(double)serializerTimer.ElapsedMilliseconds/1000}s");
+            Console.WriteLine($"Emit Serializer: {(double)emitSerializerTimer.ElapsedMilliseconds/1000}s");
             Console.ReadKey();
         }
     }
