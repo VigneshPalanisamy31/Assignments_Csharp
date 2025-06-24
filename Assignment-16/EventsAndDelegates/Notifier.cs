@@ -13,14 +13,22 @@
         {
             static void Main(string[] args)
             {
+            try
+            {
                 Notifier notifier = new Notifier();
                 notifier.OnAction += DisplayMessage;
                 notifier.PerformAction("Action performed! You have been notified.");
                 Console.WriteLine("Press any key to exit...");
                 Console.ReadKey();
             }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.ReadKey();
+            }
+        }
         /// <summary>
-        /// Function to display notification messages
+        /// Displays notification messages
         /// </summary>
         /// <param name="message"></param>
             static void DisplayMessage(string message)

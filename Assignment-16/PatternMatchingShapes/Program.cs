@@ -4,22 +4,29 @@
     {
         static void Main(string[] args)
         {
-            List<Shape> shapes = new()
+            try {
+                List<Shape> shapes = new()
             {
                 new Circle(5, "Red"),
                 new Rectangle(4, 6, "Blue"),
                 new Triangle(3, 7, "Green"),
-                null 
+                null
             };
-            foreach (Shape shape in shapes)
-            {
-                DisplayShapeDetails(shape);
-                Console.WriteLine(new string('-', 50));
+                foreach (Shape shape in shapes)
+                {
+                    DisplayShapeDetails(shape);
+                    Console.WriteLine(new string('-', 50));
+                }
+                Console.ReadKey();
             }
-            Console.ReadKey();
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.ReadKey();
+            }
         }
         /// <summary>
-        /// Function to display shape details based on object
+        /// Displays shape details based on object
         /// </summary>
         /// <param name="shape"></param>
         static void DisplayShapeDetails(Shape shape)

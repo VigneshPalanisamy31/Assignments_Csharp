@@ -2,6 +2,11 @@
 {
     public class Helper
     {
+        /// <summary>
+        /// Gets valid number from user
+        /// </summary>
+        /// <param name="displayMessage"></param>
+        /// <returns></returns>
         public static int GetValidInteger(string displayMessage)
         {
             Console.WriteLine($"Enter{displayMessage}:");

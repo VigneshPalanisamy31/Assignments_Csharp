@@ -4,25 +4,33 @@
     {
         static void Main(string[] args)
         {
-            int arraySize = Helper.GetValidInteger("array size");
-            int[] numbers=new int[arraySize];
-            for(int i=0;i<arraySize;i++)
+            try
             {
-                numbers[i] = Helper.GetValidInteger($"number{i + 1}");
+                int arraySize = Helper.GetValidInteger("array size");
+                int[] numbers = new int[arraySize];
+                for (int i = 0; i < arraySize; i++)
+                {
+                    numbers[i] = Helper.GetValidInteger($"number{i + 1}");
+                }
+                Console.WriteLine("Original Array:");
+                PrintArray(numbers);
+                Array.Sort(numbers, delegate (int a, int b)
+                {
+                    return a.CompareTo(b);
+                });
+                Console.WriteLine("\nSorted Array (Ascending):");
+                PrintArray(numbers);
+                Console.WriteLine("\nPress any key to exit...");
+                Console.ReadKey();
             }
-            Console.WriteLine("Original Array:");
-            PrintArray(numbers);
-            Array.Sort(numbers, delegate (int a, int b)
+            catch (Exception e)
             {
-                return a.CompareTo(b); 
-            });
-            Console.WriteLine("\nSorted Array (Ascending):");
-            PrintArray(numbers);
-            Console.WriteLine("\nPress any key to exit...");
-            Console.ReadKey();
+                Console.WriteLine(e.Message);
+                Console.ReadKey();
+            }
         } 
         /// <summary>
-        /// Function to print the array elements
+        /// Prints the array elements
         /// </summary>
         /// <param name="array"></param>
         static void PrintArray(int[] array)
