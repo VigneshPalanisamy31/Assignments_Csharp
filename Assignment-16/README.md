@@ -1,5 +1,5 @@
 # Assignment-16 Events, Delegates, Lambda, Anonymous Methods  
-Involves the understanding of working with files and streams in C#.
+Involves the understanding of working with Events, Delegates, Lambda, Anonymous Methods in C#.
 ### Task 1: Understanding and Implementing Events and Delegates in C#
  Implement a program that uses events and delegates to notify the user when an action is performed.  
  1. Define a delegate
