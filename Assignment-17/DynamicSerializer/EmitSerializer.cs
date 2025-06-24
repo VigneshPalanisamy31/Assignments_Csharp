@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
-using System.Threading.Tasks;
-
 namespace DynamicSerializer
 {
     internal class EmitSerializer
     {
+        /// <summary>
+        /// Dynamically creates a serializer for the given type .
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public static Func<T,string>CreateSerializer<T>()
         {
             Type type = typeof(T);

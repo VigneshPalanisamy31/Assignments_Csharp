@@ -3,6 +3,12 @@ namespace DynamicMethodInvoker
 {
     internal class MethodInvoker
     {
+        /// <summary>
+        /// Invokes a method
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="methodName"></param>
+        /// <param name="parameters"></param>
         public static void InvokeMethod(object obj, string methodName, params object[] parameters)
         {
             Type type = obj.GetType();

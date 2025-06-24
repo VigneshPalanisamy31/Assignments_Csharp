@@ -5,7 +5,7 @@ namespace GreetingsPlugin
     {
         public string Name => "GreetingsPlugin";
         /// <summary>
-        /// Function that prints greeting message (Implementation of interface Iplugin
+        /// Prints greeting message (Implementation of interface Iplugin
         /// </summary>
         public void Execute()
         {

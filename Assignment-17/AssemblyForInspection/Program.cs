@@ -2,12 +2,12 @@
 {
     public class Program
     {
-        public static string UserName { get; set; }
-        public static float Age { get; set; }
-        public static string Address {  get; set; }
-        public static string Email {  get; set; }
+        public static string? UserName { get; set; }
+        public static float? Age { get; set; }
+        public static string? Address {  get; set; }
+        public static string? Email {  get; set; }
         /// <summary>
-        /// Function to fetch user-details
+        /// Fetches user-details
         /// </summary>
         public static void GetUserDetails()
         {
@@ -21,7 +21,7 @@
             Email = Console.ReadLine();
         }
         /// <summary>
-        /// Function to display user-details
+        /// Displays user-details
         /// </summary>
         public static void PrintUserDetails()
         {
@@ -29,9 +29,17 @@
         }
         public static void Main(string[] args)
         {
-            GetUserDetails();
-            PrintUserDetails();
-            Console.ReadKey();
+            try
+            {
+                GetUserDetails();
+                PrintUserDetails();
+                Console.ReadKey();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Exception occured!!!"+e.Message);
+                Console.ReadKey();
+            }
         }
     }
 }

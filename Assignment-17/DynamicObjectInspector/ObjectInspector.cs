@@ -4,7 +4,7 @@ namespace DynamicObjectInspector
     public class ObjectInspector
     {
         /// <summary>
-        ///  Function to display properties and their current values
+        /// Displays properties and their current values
         /// </summary>
         /// <param name="obj"></param>
         public static void Inspect(object obj)
@@ -19,7 +19,7 @@ namespace DynamicObjectInspector
             }
         }
         /// <summary>
-        /// Function to set a property value dynamically by name
+        /// Sets a property value dynamically by name
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="propertyName"></param>

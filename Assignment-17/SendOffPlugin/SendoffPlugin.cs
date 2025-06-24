@@ -1,11 +1,11 @@
 ﻿using Plugin;
 namespace SendOffPlugin
 {
-    public class SenodoffPlugin:IPlugin
+    public class SendoffPlugin:IPlugin
     {
         public string Name => "SendoffPlugin";
         /// <summary>
-        /// Function that prints sendoff message (implementation of IPlugin interface
+        /// Prints sendoff message (implementation of IPlugin interface)
         /// </summary>
         public void Execute()
         {

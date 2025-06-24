@@ -2,6 +2,9 @@
 {
     internal class InvokableMethods
     {
+        /// <summary>
+        /// Displays a greeting message
+        /// </summary>
         public void Greet()
         {
             Console.WriteLine("Hello from Class With Methods!");

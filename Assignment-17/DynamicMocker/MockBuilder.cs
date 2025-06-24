@@ -4,6 +4,12 @@ namespace DynamicMocker
 {
     internal class MockBuilder
     {
+        /// <summary>
+        /// Dynamically mocks an interface
+        /// </summary>
+        /// <param name="interfaceType"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         public static object CreateMock(Type interfaceType)
         {
             if (!interfaceType.IsInterface)

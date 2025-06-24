@@ -4,6 +4,11 @@ namespace DynamicSerializer
 {
     internal class Serializer
     {
+        /// <summary>
+        /// Serializes a given object and returns a string
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public static string Serialize(object obj)
         {
             if (obj == null)

@@ -39,7 +39,7 @@ namespace AssemblyInspector
             Console.ReadKey();
         }
         /// <summary>
-        /// Function to print all members of a type along with their names.
+        /// Prints all members of a type along with their names.
         /// </summary>
         /// <param name="label"></param>
         /// <param name="members"></param>
