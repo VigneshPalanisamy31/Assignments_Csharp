@@ -5,6 +5,11 @@ namespace LINQ.View
 {
     internal class ProductManagerMenu
     {
+        /// <summary>
+        /// Displays Product Manager Menu
+        /// </summary>
+        /// <param name="products">List of products</param>
+        /// <param name="suppliers">List of suppliers</param>
         public static void DisplayProductManagerMenu(List<Product> products,List<Supplier> suppliers)
         {
             bool isExit = false;

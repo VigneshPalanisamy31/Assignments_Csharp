@@ -5,6 +5,11 @@ namespace LINQ.View
 {
     internal class QueryMenu
     {
+        /// <summary>
+        /// Displays the Query Tasks.
+        /// </summary>
+        /// <param name="products">List of products</param>
+        /// <param name="suppliers">List of suppliers</param>
         public static void QueryTasks(List<Product> products, List<Supplier> suppliers)
         {
             bool isExit = false;

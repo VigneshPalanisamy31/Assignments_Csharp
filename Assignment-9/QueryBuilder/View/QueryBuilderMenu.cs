@@ -9,8 +9,8 @@ namespace LINQ.View
         /// <summary>
         /// Function to handle all querying tasks (filter,sort,join)
         /// </summary>
-        /// <param name="products"></param>
-        /// <param name="suppliers"></param>
+        /// <param name="products">List of prodducts</param>
+        /// <param name="suppliers">List of suppliers</param>
         public static void DisplayQueryMenu(List<Product> products,List<Supplier>suppliers)
         {
             QueryBuilder<Product> resultBuilder = new(products);

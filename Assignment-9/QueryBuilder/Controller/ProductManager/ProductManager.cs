@@ -195,6 +195,11 @@ namespace LINQ.Controller.ProductHandler
                 }
             }
         }
+        /// <summary>
+        /// Finds the supplier of the given product
+        /// </summary>
+        /// <param name="product">Product object whose supplier is to be found</param>
+        /// <returns>Supplier of the given product</returns>
         public Supplier? FindSupplier(Product product)
         {
             foreach(Supplier sp in Suppliers)

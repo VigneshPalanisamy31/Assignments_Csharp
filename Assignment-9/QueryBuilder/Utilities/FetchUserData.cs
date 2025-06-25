@@ -7,8 +7,8 @@ namespace LINQ.Utilities
         /// <summary>
         /// Function to get product details from user
         /// </summary>
-        /// <param name="Products"></param>
-        /// <returns></returns>
+        /// <param name="Products">List of products</param>
+        /// <returns>A new product with user ggiven details</returns>
         public Product? GetProductDetails(List<Product> Products)
         {
             int productID = Validator.IsProductIdAvailable(Validator.GetValidNumber("productid :"), Products);

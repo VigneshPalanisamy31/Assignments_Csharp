@@ -5,7 +5,7 @@
         /// <summary>
         /// Function to print the given statement in red color.
         /// </summary>
-        /// <param name="displayMessage"></param>
+        /// <param name="displayMessage">Message that is to be printed in colors</param>
         public static void WriteInRed(string displayMessage)
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -16,7 +16,7 @@
         /// <summary>
         /// Function to print the given statement in green color.
         /// </summary>
-        /// <param name="displayMessage"></param>
+        /// <param name="displayMessage">Message that is to be printed in colors</param>
         public static void WriteInGreen(string displayMessage)
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -27,7 +27,7 @@
         /// <summary>
         /// Function to print the given statement in yellow color.
         /// </summary>
-        /// <param name="displayMessage"></param>
+        /// <param name="displayMessage">Message that is to be printed in colors</param>
         public static void WriteInYellow(string displayMessage)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;

@@ -11,7 +11,7 @@ namespace LINQ.Controller.QueryHandler
         /// <summary>
         /// Function to display electronics with price greater than 500$ .
         /// </summary>
-        /// <param name="products"></param>
+        /// <param name="products">List of products</param>
         public static void FilterProductsWithPriceGreaterThan500(List<Product> products)
         {           
             IEnumerable<Product> result = products.Where(product => product.Category.Equals("Electronics", StringComparison.OrdinalIgnoreCase)&&product.Price>500)

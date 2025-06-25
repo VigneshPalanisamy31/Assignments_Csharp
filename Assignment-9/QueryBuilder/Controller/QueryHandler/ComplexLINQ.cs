@@ -8,8 +8,8 @@ namespace LINQ.Controller.QueryHandler
         /// <summary>
         /// Function to display products grouped by category along with most expensive product of each category .
         /// </summary>
-        /// <param name="products"></param>
-        /// <param name="suppliers"></param>
+        /// <param name="products">List of products</param>
+        /// <param name="suppliers">List of suppliers</param>
         public static void GroupProductsByCategory(List<Product> products,List<Supplier>suppliers)
         {
             var productGroup = products.GroupBy(p => p.Category)

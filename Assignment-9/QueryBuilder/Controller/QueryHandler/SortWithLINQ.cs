@@ -8,7 +8,7 @@ namespace LINQ.Controller.QueryHandler
         /// <summary>
         /// Function to display all books sorted by price (high to low) .
         /// </summary>
-        /// <param name="products"></param>
+        /// <param name="products">List of products</param>
         public static void SortAllBooksByPrice(List<Product> products)
         {
             List<Product>?books=products.Where(p=>p.Category.Equals("Books",StringComparison.OrdinalIgnoreCase)).OrderByDescending(p=>p.Price).ToList();

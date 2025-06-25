@@ -7,7 +7,7 @@ namespace LINQ.Utilities
         /// <summary>
         /// Function to get a number from user
         /// </summary>
-        /// <param name="displayMessage"></param>
+        /// <param name="displayMessage">Message that is to be printed in console</param>
         /// <returns>Valid Number</returns>
         public static float GetValidFloat(string displayMessage)
         {
@@ -28,7 +28,7 @@ namespace LINQ.Utilities
         /// <summary>
         /// Function to get a valid integer input from user.
         /// </summary>
-        /// <param name="displayMessage"></param>
+        /// <param name="displayMessage">Message that is to be printed in console</param>
         /// <returns>Valid Integer</returns>
         public static int GetValidNumber(string displayMessage)
         {
@@ -53,8 +53,8 @@ namespace LINQ.Utilities
         /// <summary>
         /// Function to get a valid name from user.
         /// </summary>
-        /// <param name="displayMessage"></param>
-        /// <returns></returns>
+        /// <param name="displayMessage">Message that is to be printed in console</param>
+        /// <returns>Validated name</returns>
         public static string GetValidName(string displayMessage)
         {
             bool isExit = false;
@@ -74,8 +74,8 @@ namespace LINQ.Utilities
         /// <summary>
         /// Function to check if product name is already available in the inventory.
         /// </summary>
-        /// <param name="productName"></param>
-        /// <param name="Products"></param>
+        /// <param name="productName">Product name to be checked</param>
+        /// <param name="Products">List of products to check from</param>
         /// <returns>New unique product name</returns>
         public static string IsProductNameAvailable(string productName, List<Product> Products)
         {
@@ -100,8 +100,8 @@ namespace LINQ.Utilities
         /// <summary>
         /// Function to check if product id is already available in inventory.
         /// </summary>
-        /// <param name="productID"></param>
-        /// <param name="Products"></param>
+        /// <param name="productID">Product ID to be checked</param>
+        /// <param name="Products">List of products to check from</param>
         /// <returns>New unique product id</returns>
         public static int IsProductIdAvailable(int productID, List<Product> Products)
         {
@@ -142,7 +142,7 @@ namespace LINQ.Utilities
         /// <summary>
         /// Funntion to check if the inventory is empty.
         /// </summary>
-        /// <param name="products"></param>
+        /// <param name="products">List of products</param>
         /// <returns>True if inventory is is empty and false if not</returns>
         public static bool isEmpty(List<Product> products)
         {
