@@ -5,7 +5,7 @@
         /// <summary>
         /// Function to return a valid integer from the user-end.
         /// </summary>
-        /// <param name="displayMessage"></param>
+        /// <param name="displayMessage">Message to be displayed in the console</param>
         /// <returns>validated integer</returns>
         public static float GetValidatedNumber(string? displayMessage) 
         {
@@ -21,6 +21,11 @@
             return validNumber; 
         
         }
+        /// <summary>
+        /// Gets the valid choice from user
+        /// </summary>
+        /// <param name="displayMessage">Message to be displayed in the console</param>
+        /// <returns>Valid choice from user</returns>
         public static int GetValidChoice(string? displayMessage)
         {
             int validNumber;
@@ -37,8 +42,8 @@
         public static void Main(string[] args)
         {
             try {
-                bool exit = false;
-                while (!exit)
+                bool isExit = false;
+                while (!isExit)
                 {
                     Console.WriteLine("========Basic ArithMetics========");
                     Console.WriteLine("\n\nEnter Number 1: ");
@@ -68,7 +73,7 @@
                             break;
 
                         case 5:
-                            exit = true;
+                            isExit = true;
                             Console.WriteLine("Exiting ....");
                             break;
                         default:
