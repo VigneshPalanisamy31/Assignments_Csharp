@@ -10,10 +10,10 @@ namespace LINQ.View
         /// </summary>
         /// <param name="products">List of products</param>
         /// <param name="suppliers">List of suppliers</param>
-        public static void DisplayProductManagerMenu(List<Product> products,List<Supplier> suppliers)
+        public void DisplayProductManagerMenu(List<Product> products,List<Supplier> suppliers)
         {
-            bool isExit = false;
-            while(!isExit)
+            bool canExit = false;
+            while(!canExit)
             {
                 ProductManager inventory = new ProductManager(products,suppliers);
                 Helper.WriteInYellow("1.Add Product");
@@ -22,7 +22,7 @@ namespace LINQ.View
                 Helper.WriteInYellow("4.Delete Product");
                 Helper.WriteInYellow("5.View Inventory");
                 Helper.WriteInYellow("6.Exit");
-                int choice = Validator.GetValidNumber("your choice :");
+                int choice = Helper.GetValidNumber("your choice :");
                 switch (choice)
                 {
                     case 1:
@@ -42,11 +42,11 @@ namespace LINQ.View
                         break;
 
                     case 5:
-                        inventory.ViewProducts(true);
+                        inventory.DisplayProductWithSuppliers();
                         break;
 
                     case 6:
-                        isExit = true;
+                        canExit = true;
                         break;
 
                     default:

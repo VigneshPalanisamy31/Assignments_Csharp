@@ -31,15 +31,16 @@ namespace LINQ.View
                 suppliers.Add(new Supplier(8, "Supplier_8", 8000));
                 suppliers.Add(new Supplier(9, "Supplier_9", 9000));
                 suppliers.Add(new Supplier(10, "Supplier_10", 10000));
-                bool isExit = false;
-                while (!isExit)
+                bool canExit = false;
+                while (!canExit)
                 {
                     Helper.WriteInYellow("===========Inventory Querying Console Application==========" + "\n1.Product Manager\n2.QueryHandler\n3.Exit");
-                    int choice = Validator.GetValidNumber(" choice:");
+                    int choice = Helper.GetValidNumber(" choice:");
                     switch (choice)
                     {
                         case 1:
-                            ProductManagerMenu.DisplayProductManagerMenu(products, suppliers);
+                            ProductManagerMenu productMenu = new ProductManagerMenu();
+                                productMenu.DisplayProductManagerMenu(products, suppliers);
                             break;
 
                         case 2:
@@ -50,7 +51,7 @@ namespace LINQ.View
                             Helper.WriteInRed("Exiting......");
                             Console.WriteLine("Press any key to continue...");
                             Console.ReadKey();
-                            isExit = true;
+                            canExit = true;
                             break;
 
                         default:

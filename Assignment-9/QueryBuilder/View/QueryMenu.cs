@@ -12,8 +12,8 @@ namespace LINQ.View
         /// <param name="suppliers">List of suppliers</param>
         public static void QueryTasks(List<Product> products, List<Supplier> suppliers)
         {
-            bool isExit = false;
-            while (!isExit)
+            bool canExit = false;
+            while (!canExit)
             {
                 Console.Clear();
                 Helper.WriteInYellow("\nQuerying Tasks");
@@ -24,27 +24,28 @@ namespace LINQ.View
                 Helper.WriteInYellow("5.All books sorted by price");
                 Helper.WriteInYellow("6.QueryBuilder");
                 Helper.WriteInYellow("7.Exit");
-                int choice = Validator.GetValidNumber("your choice :");
+                int choice = Helper.GetValidNumber("your choice :");
+                QueryManager queryManager = new QueryManager();
                 switch (choice)
                 {
                     case 1:
-                        BasicLINQ.FilterProductsWithPriceGreaterThan500(products);
+                        queryManager.FilterProductsWithGreaterPrice(products,"Electronics",500);
                         break;
 
                     case 2:
-                        ComplexLINQ.GroupProductsByCategory(products, suppliers);
+                        queryManager.GroupProductsByCategory(products, suppliers);
                         break;
 
                     case 3:
-                        ComplexLINQ.JoinProductsWithSuppliers(products, suppliers);
+                        queryManager.JoinProductsWithSuppliers(products, suppliers);
                         break;
 
                     case 4:
-                        LINQonArray.DisplayPairsSummingUptoTarget();
+                        queryManager.DisplayPairsSummingUptoTarget();
                         break;
 
                     case 5:
-                        SortWithLINQ.SortAllBooksByPrice(products);
+                        queryManager.SortProductsOfCategoryByKey(products,"Books",p=>p.Price);
                         break;
 
                     case 6:
@@ -53,7 +54,7 @@ namespace LINQ.View
 
                     case 7:
                         Console.WriteLine("Exiting....");
-                        isExit = true;
+                        canExit = true;
                         break;
 
                     default:
