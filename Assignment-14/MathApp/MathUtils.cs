@@ -8,6 +8,7 @@ namespace MathApp
         {
             Displayer displayer = new Displayer(this);
         }
+
         /// <summary>
         /// Function to calculate sum of two numbers
         /// </summary>
@@ -18,6 +19,7 @@ namespace MathApp
         {
             return firstNumber + secondNumber;
         }
+
         /// <summary>
         /// Function to calculate difference of two numbers
         /// </summary>
@@ -28,6 +30,7 @@ namespace MathApp
         {
             return firstNumber - secondNumber;
         }
+
         /// <summary>
         /// Function to calculate product of two numbers
         /// </summary>
@@ -38,6 +41,7 @@ namespace MathApp
         {
             return firstNumber * secondNumber;
         }
+
         /// <summary>
         /// Function to divide given two numbers
         /// </summary>
@@ -52,7 +56,7 @@ namespace MathApp
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Execution interrupted due to an attempt to divide by 0 +\n{e.Message}");
+                Console.WriteLine($"Execution interrupted !+\n{e.Message}");
                 return 0;
             }
         }

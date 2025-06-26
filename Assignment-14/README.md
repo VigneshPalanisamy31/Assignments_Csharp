@@ -1,65 +1,85 @@
-# Assignment-14 | Project, Solutions and Build Orders .
+# Assignment-14 | Project, Solutions and Build Orders
 
-# Summary Report
-## 1. Importance of project organisation
+---
+
+## Summary Report
+
+### 1. Importance of Project Organisation
 
 Proper project organization involves separating different functionalities into different projects.
+
 In this solution:
-- GreetingApp provided the Greetings.(Project A)
-- ProjectE provided an interface to handle cyclic dependency between MathApp and DisplayApp.(Additional project to handle dependencies)
-- DisplayApp was responsible for managing console display and user interaction.(Project C)
-- MathApp included mathematical logic.(Project B)
-- UtilityApp provided common helper functions like user input validation.(Project D)
 
-This modular approach made the solution easier to understand, maintain, and extend.Now the functions can be used accross various projects ensuring reusability. 
+- **GreetingsApp** provided the greeting logic. *(Project A)*
+- **ProjectE** provided an interface to handle cyclic dependency between MathApp and DisplayApp. *(Interface Project)*
+- **DisplayApp** managed console display and user interaction. *(Project C)*
+- **MathApp** included the mathematical logic. *(Project B)*
+- **UtilityApp** provided helper functions like user input validation. *(Project D)*
 
-## 2. Solution Management
+>  This modular approach made the solution easier to understand, maintain, and extend.  
+>  Functions can now be reused across multiple projects.
 
-Solution management includes adding references and configuring project properties. 
-Managing the solution well ensures:
+---
 
-- Proper encapsulation of logic.
-- Reusability of code across projects.
-- Improves code readability and team collaboration.
+### 2. Solution Management
 
-Manually setting up project references using Add Reference and checking dependencies in Project Dependencies allowed to understand how projects rely on each other.
+Effective solution management includes adding references and configuring project properties.
 
-## 3. Build Order
+Benefits of proper solution management:
 
-Build order determines which projects are compiled first based on their dependencies. If not configured correctly, it can lead to build-time errors such as missing types or unresolved references.
-In this project:
-- UtilityApp and ProjectE were built first since they required by other projects.
-- DisplayApp was built next because it relied on the previous two.
-- MathApp was built next as it relied on DisplayApp
-- GreetingApp with the main entry point was built at last .
+-  Better encapsulation of logic
+-  Reusability of code across projects
+-  Improved code readability and collaboration
 
-Configuring the build order ensured that all dependencies were satisfied during the build process, leading to a smooth and error-free compilation.
+Manually setting project references using **"Add Reference"** and inspecting **"Project Dependencies"** helped understand the inter-project relationships.
 
-## Before ProjectE
-    Project A: "GreetingsApp" 
-    Project B: "MathApp" 
-    Project C: "DisplayApp" 
-    Project D: "UtilityApp" 
-Set Project B as a dependency for Project A, Project C as a dependency for Project B, and Project D as a dependency for Project C.
-The solution wasn't built properly as DisplayApp uses MathApp's functionalities but MathApp has reference of DisplayApp.
-This causes a cyclic dependency restricting the solution from building.
+---
 
+### 3. Build Order
 
-## Build order after modification
-![Build Order After Handling Dependencies](image.png)
+Build order determines the sequence in which projects are compiled based on dependencies.
 
-Here
-I've understood working with multiple projects , their references and dependencies for a clean and collaborative working experience.
-### Project Structure
- Assignment-14/
-    CSharpConsoleSolution/
-        DisplayApp/
-          Displayer.cs
-        GreetingsApp/
-          Program.cs
-        MathApp/
-          MathUtils.cs
-        ProjectE/
-          IMathHelper.cs
-        UtilityApp/
-          Helper.cs
+If incorrectly configured, it can lead to:
+
+-  Missing types  
+-  Unresolved references  
+-  Build-time errors
+
+####  Final Build Order:
+
+1. **UtilityApp**  
+2. **ProjectE**  
+3. **DisplayApp**  
+4. **MathApp**  
+5. **GreetingsApp** (Main entry point)
+
+>  This order ensures that all dependencies are resolved during build, allowing a clean and successful compilation.
+
+---
+
+###  Before Using ProjectE (Cyclic Dependency Issue)
+
+- **Project A:** GreetingsApp  
+- **Project B:** MathApp  
+- **Project C:** DisplayApp  
+- **Project D:** UtilityApp  
+
+Scenario:
+
+- Project A depends on Project B  
+- Project B depends on Project C  
+- Project C depends on Project D  
+- **But:** Project C also needs Project B, which creates a **cyclic dependency**.
+
+ This cyclic reference caused the build to fail.
+
+---
+
+###  After Adding ProjectE (Fixed Build Order)
+
+By introducing **ProjectE** (interface-only project), the cyclic dependency was broken and the solution built successfully.
+
+![Build Order After Handling Dependencies](BuildOrder.png)
+
+---
+
