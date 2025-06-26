@@ -23,6 +23,7 @@
             for (int i = 0;i < size;i++)
                 arrray[i]=i;
         }
+
         /// <summary>
         /// Function to perform calculations with local value types.
         /// </summary>
