@@ -15,10 +15,10 @@ namespace DisplayApp
         /// </summary>
         public void ConsoleDisplay()
         {
-            bool isExit = false;
+            bool canExit = false;
             float firstNumber;
             float secondNumber;
-            while (!isExit)
+            while (!canExit)
             { 
                 Console.WriteLine("========Basic ArithMetics========");
                 Console.WriteLine("\n\n1.Add\n2.Subtract\n3.Multiply\n4.Divide\n5.Exit\n");
@@ -51,7 +51,7 @@ namespace DisplayApp
                     }
                 }
                 else if(choice==5)
-                   isExit = true;
+                   canExit = true;
                 else
                    Console.WriteLine("Please enter a valid choice\n");
                 Console.WriteLine("\nPress any key to continue...");
