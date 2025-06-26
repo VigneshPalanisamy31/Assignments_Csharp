@@ -1,36 +1,46 @@
+
 ### Memory Management Profiling
-### A simple memory management profiling to understand the working of memory
 
-## Profiling for given infinite memory eater:
+## A Simple Memory Management Profiling to Understand the Working of Memory
 
-### Initial memory usage (10.80s)
+---
 
-![initial memory usage](Profiling/InfiniteMemoryEater/initial_memory_usage.png) 
-### Memory usage after some time (73.84s)
+## Profiling for Infinite Memory Eater
 
-![final memory usage](Profiling/InfiniteMemoryEater/final_memory_usage.png)
-  
+### Initial Memory Usage (10.80s)  
+![Initial Memory Usage](Profiling/InfiniteMemoryEater/initial_memory_usage.png)
+
+### Memory Usage After Some Time (73.84s)  
+![Final Memory Usage](Profiling/InfiniteMemoryEater/final_memory_usage.png)
+
+---
+
 ## Objective
- - To fix the memory issue in the provided code snippet and implement memory management best practices. 
 
-## Profiling for restricted infinite memory eater:
- - Improving memory management by clearing the memory when list exceeds 1000 entires.
+- To fix the memory issue in the provided code snippet and implement memory management best practices.
 
- ### Initial memory usage (4.45s)
+---
 
-![initial memory usage](Profiling/RestrictedInfiniteMemoryEater/initial_memory_usage.png)
-### Memory usage after some time (23.34s)
+## Profiling for Restricted Infinite Memory Eater
 
-![final memory usage](Profiling/RestrictedInfiniteMemoryEater/final_memory_usage.png)
+- Improved memory management by clearing the memory when the list exceeds 1000 entries.
 
-## Profiling for improved memory eater-II:
- - Improving memory management by setting a condition and making it a finite while loop.(count<1000)
+### Initial Memory Usage (4.45s)  
+![Initial Memory Usage](Profiling/RestrictedInfiniteMemoryEater/initial_memory_usage.png)
 
- 
- ### Initial memory usage (4.68s)
+### Memory Usage After Some Time (23.34s)  
+![Final Memory Usage](Profiling/RestrictedInfiniteMemoryEater/final_memory_usage.png)
 
-![initial memory usage](Profiling/FiniteMemoryEater/initial_memory_usage.png)
-### Memory usage after some time (20.35s)
+---
 
-![final memory usage](Profiling/FiniteMemoryEater/final_memory_usage.png)
+## Profiling for Improved Memory Eater-II
 
+- Further improved memory management by converting to a finite while loop with a condition (`count < 1000`).
+
+### Initial Memory Usage (4.68s)  
+![Initial Memory Usage](Profiling/FiniteMemoryEater/initial_memory_usage.png)
+
+### Memory Usage After Some Time (20.35s)  
+![Final Memory Usage](Profiling/FiniteMemoryEater/final_memory_usage.png)
+
+---

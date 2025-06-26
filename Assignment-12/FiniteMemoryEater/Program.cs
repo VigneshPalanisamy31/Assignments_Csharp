@@ -3,6 +3,7 @@
     public class MemoryEater
     {
         List<int[]> memoryAllocator = new List<int[]>();
+
         /// <summary>
         /// Function to create a list of 1000 arrays and then trigger garbage collection.
         /// </summary>
