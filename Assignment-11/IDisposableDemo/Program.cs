@@ -5,16 +5,17 @@
         /// <summary>
         /// Function to display countdown.
         /// </summary>
-        /// <param name="displayMessage">Message to display to the console</param>
-        public static void CountDown(string displayMessage)
+        /// <param name="fileOperation">File operation (Reading/Writing)</param>
+        public static void CountDown(string fileOperation)
         {
-            Console.Write($"\nCount down to complete {displayMessage} : ");
-            for (int time = 3; time > 0; time--)
+            Console.Write($"\nCount down to complete {fileOperation} : ");
+            for (int count = 3; count > 0; count--)
             {
                 Thread.Sleep(1000);
-                Console.Write($"{time} ");
+                Console.Write($"{count} ");
             }
         }
+
         /// <summary>
         /// Function to display the completion of the file operation.
         /// </summary>
@@ -25,6 +26,7 @@
             Console.WriteLine($"\nFile {fileOperation} completed successfully!!");
             Console.ResetColor();
         }
+
         public static void Main(string[] args)
         {
             try

@@ -1,27 +1,44 @@
 ### Understanding Memory Management
- 
+
 ## Implementation Details
- 
 
-# 1.Value And Reference Types
-  -  allows to understand the behaviour of value types and reference types 
-  -  understanding usage of stack and heap memory
+---
 
-  - heap size for array creation of 100 elements (GC Heap Size 2Mib)
+## 1. Value and Reference Types
 
+* Demonstrates the behavior of **value types** and **reference types**.
+* Helps understand memory allocation differences between **stack** and **heap**.
 
-  ![Heap size for 100 elements](intialHeap.png)
+### Heap Usage Example:
 
-  - heap size for array creation of 1000000 elements (GC Heap Size 6Mib)
+* **Heap size with 100 element array**: \~2 MiB
 
-  
+  ![Heap size for 100 elements](initialHeap.png)
+
+* **Heap size with 1,000,000 element array**: \~6 MiB
+
   ![Heap size for 1000000 elements](finalHeap.png)
-# 2.Garbage Collection
-  -  allows to understand the memory usage
-  -  using GC.Collect to manually trigger garbage collection
-# 3.IDisposable
-  -  file reading
-  -  file writing
-  implementing the IDisposable interface to dispose the unmanaged memory usage
-  
 
+---
+
+## 2. Garbage Collection
+
+* Explores memory usage and reclaiming of unused resources.
+* Demonstrates how to use `GC.Collect()` to manually trigger the garbage collector.
+* Observes impact on heap memory and system behavior.
+
+---
+
+## 3. IDisposable
+
+* Covers how unmanaged memory is handled explicitly.
+
+### Examples:
+
+* **File Reading** using `StreamReader`
+* **File Writing** using `StreamWriter`
+* **Custom Resource Management** by implementing the `IDisposable` interface to clean up unmanaged resources.
+
+> Implementing IDisposable ensures proper release of file handles, database connections, or any unmanaged memory.
+
+---
