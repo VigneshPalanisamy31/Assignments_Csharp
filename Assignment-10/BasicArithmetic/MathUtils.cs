@@ -49,7 +49,7 @@
             }
             catch(Exception e)
             {
-                Console.WriteLine("Execution interrupted due to an attempt to divide by 0 ");
+                Console.WriteLine($"Execution interrupted\n{e.Message}");
                 return 0;
             }
         }
