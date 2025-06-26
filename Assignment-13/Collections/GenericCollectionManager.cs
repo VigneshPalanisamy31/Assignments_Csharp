@@ -54,6 +54,7 @@
                         Helper.WriteinYellow("\nRemoving books:\n");
                         characterStack.Remove();
                         break;
+
                     case 3:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Adding people to the generic queue");
@@ -76,6 +77,7 @@
                         Helper.WriteinYellow("\nDequeuing people:\n");
                         peopleQueue.Remove();
                         break;
+
                     case 4:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Adding marks to the generic dictionary");
@@ -98,7 +100,9 @@
                         studentDictionary.Remove(Validator.GetValidString("student name to be removed.."));
                         studentDictionary.Search(Validator.GetValidString("student name to be searched.."));
                         break;
+
                     case 5:return;
+
                     default:
                         Helper.WriteinRed("\nInvalid choice");
                         break;

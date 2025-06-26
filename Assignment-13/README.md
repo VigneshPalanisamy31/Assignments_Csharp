@@ -1,33 +1,70 @@
-# Assignment-13 Understanding and Practicing Collections and Generics in C# 
-A simple console based application to understand and work with lists, stacks ,queues ,dictionaries and generics .
-## Task 1
- Implement a program that uses a List to store a collection of book titles. (LIST)
- - Created a List of strings.
- 1. Add - add books to the list.
- 2. Remove - remove books from the list.
- 3. Search - search a book in the list.
- 4. Display - display all books in the list.
+# Assignment-13: Understanding and Practicing Collections and Generics in C#
 
- ## Task 2
-  Implemented a program that uses a Stack to reverse a string. (STACK)
+A simple console-based application to understand and work with **Lists**, **Stacks**, **Queues**, **Dictionaries**, and **Generics** in C#.
 
-## Task 3
-  Implemented a program that simulates a queue of people waiting in line. (QUEUE)
-  1. Enqueue
-  2. Dequeue
-  3. Display
+---
 
-## Task 4
-  Implemented a program that maps a student's name to their grade. (DICTIONARY)
+## Task 1 – List of Book Titles
 
-## Task 5
-  Implemented the previous tasks using generic collections.
+Implemented a program that uses a **List** to store a collection of book titles.
 
-## Task 6
- 1. IEnumerable
-  - Implemented a function named SumOfElements that accepts IEnumerable<int> as a parameter.
-  - Tested it with different collections like array, list and queue.
- 2. IReadOnlyDictionary
-  - Generated a dictionary and returned as IReadOnlyDictionary<string,int>.
-  - Printed the dictionary
-  - Tried modifying and understood the concept of IReadOnlyDictionary<>.
+- Created a `List<string>` to hold book titles.
+- Operations:
+  1. **Add** – Add books to the list.
+  2. **Remove** – Remove books from the list.
+  3. **Search** – Search for a book in the list.
+  4. **Display** – Display all books in the list.
+
+---
+
+## Task 2 – Reverse a String Using Stack
+
+Implemented a program that uses a **Stack** to reverse a given string.
+
+- Utilized `Stack<char>` for reversing string characters.
+
+---
+
+## Task 3 – Queue Simulation
+
+Implemented a program that simulates a queue of people waiting in line.
+
+- Used `Queue<string>` to represent people in a line.
+- Operations:
+  1. **Enqueue** – Add a person to the queue.
+  2. **Dequeue** – Remove the first person from the queue.
+  3. **Display** – Display all people currently in the queue.
+
+---
+
+## Task 4 – Student Grade Mapping
+
+Implemented a program that maps a student's name to their grade using a **Dictionary**.
+
+- Used `Dictionary<string, char>` where key = student name and value = grade.
+
+---
+
+## Task 5 – Generic Collections
+
+Reimplemented all the above tasks using **Generic Collections** for better type safety and flexibility.
+
+---
+
+## Task 6 – Working with Interfaces
+
+### 1. IEnumerable
+
+- Implemented a function `SumOfElements(IEnumerable<int> numbers)` to calculate the sum of elements.
+- Tested this function with:
+  - An array
+  - A list
+  - A queue
+
+### 2. IReadOnlyDictionary
+
+- Created and returned a `Dictionary<string, int>` as an `IReadOnlyDictionary<string, int>`.
+- Displayed the dictionary contents.
+- Attempted modifications and observed compile-time safety, understanding the **read-only** behavior.
+
+---

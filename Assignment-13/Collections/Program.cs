@@ -49,6 +49,7 @@
                             break;
 
                         case 7: return;
+
                         default:
                             Helper.WriteinRed("\nInvalid choice");
                             break;

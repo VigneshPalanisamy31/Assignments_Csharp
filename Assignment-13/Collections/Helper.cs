@@ -12,6 +12,7 @@
             Console.WriteLine(displayMessage);
             Console.ResetColor();
         }
+
         /// <summary>
         /// Function to display message in green color
         /// </summary>
@@ -22,6 +23,7 @@
             Console.WriteLine(displayMessage);
             Console.ResetColor();
         }
+
         /// <summary>
         /// Function to display message in yellow color
         /// </summary>

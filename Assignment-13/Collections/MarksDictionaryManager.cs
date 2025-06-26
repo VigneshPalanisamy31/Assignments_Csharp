@@ -8,8 +8,8 @@
         /// </summary>
         public void UnderstandingDictionaries()
         {
-            bool isExit = false;
-            while (!isExit)
+            bool canExit = false;
+            while (!canExit)
             {
                 Console.Clear();
                 Helper.WriteinYellow("============Marks of Students============");
@@ -21,7 +21,7 @@
                     case 2: RemoveStudent(); break;
                     case 3: DisplayMarks(); break;
                     case 4:
-                        isExit = true;
+                        canExit = true;
                         Console.WriteLine("Exiting"); break;
                     default:
                         Helper.WriteinRed("\nInvalid choice");

@@ -26,6 +26,7 @@
                     throw new ArgumentException("Invalid collection type. Choose 'list', 'queue', or 'stack'.");
             }
         }
+
         /// <summary>
         /// Function to add items to the generic collections.
         /// </summary>
@@ -48,6 +49,7 @@
                     break;
             }
         }
+
         /// <summary>
         /// Function to display the elements of the generic collections.
         /// </summary>
