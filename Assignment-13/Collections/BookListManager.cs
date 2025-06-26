@@ -8,8 +8,8 @@
         /// </summary>
         public void WorkingWithLists()
         {
-            bool isExit = false;
-            while (!isExit)
+            bool canExit = false;
+            while (!canExit)
             {
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -23,7 +23,7 @@
                     case 2: RemoveBook(); break;
                     case 3: SearchBook(); break;
                     case 4: DisplayBooks(); break;
-                    case 5: isExit = true; 
+                    case 5: canExit = true; 
                            Console.WriteLine("Exiting"); break;
                     default:
                         Helper.WriteinRed("\nInvalid choice");

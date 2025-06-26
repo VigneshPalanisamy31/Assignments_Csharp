@@ -8,8 +8,8 @@
         /// </summary>
         public void WorkingWithQueues()
         {
-            bool isExit = false;
-            while (!isExit)
+            bool canExit = false;
+            while (!canExit)
             {
                 Console.Clear();
                 Helper.WriteinYellow("============Queue of People============");
@@ -21,7 +21,7 @@
                     case 2: Dequeue(); break;
                     case 3: DisplayPeople(); break;
                     case 4:
-                        isExit = true;
+                        canExit = true;
                         Console.WriteLine("Exiting"); break;
                     default:
                         Helper.WriteinRed("\nInvalid choice");
@@ -31,6 +31,7 @@
                 Console.ReadKey();
             }
         }
+
         /// <summary>
         /// Function to add people to the queue
         /// </summary>
@@ -63,7 +64,7 @@
         public void DisplayPeople()
         {
             if (people.Count == 0)
-                Helper.WriteinRed("\nQueue Empty");
+                Helper.WriteinRed("\nQueue is empty");
             else
                 Helper.WriteinYellow("Queue Of People\n");
                 foreach (var person in people)

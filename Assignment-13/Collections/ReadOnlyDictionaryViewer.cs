@@ -11,6 +11,7 @@
         {
             return numbers.Sum();
         }
+
         /// <summary>
         /// Function to test the SumOfElements() for various collection inputs.
         /// </summary>
@@ -57,9 +58,9 @@
         /// <param name="dictionary"></param>
         public static void PrintDictionary(IReadOnlyDictionary<string, int> dictionary)
         {
-            foreach (var kvp in dictionary)
+            foreach (var keyValuePair in dictionary)
             {
-                Console.WriteLine($"{kvp.Key} = {kvp.Value}");
+                Console.WriteLine($"{keyValuePair.Key} = {keyValuePair.Value}");
             }
         }
 

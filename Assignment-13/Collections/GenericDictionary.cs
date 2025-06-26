@@ -19,6 +19,7 @@
             else
                 Console.WriteLine($"Key already exists: {key}");
         }
+
         /// <summary>
         /// Function to remove an entry from the generic dictionary.
         /// </summary>
@@ -30,6 +31,7 @@
             else
                 Console.WriteLine($"Key not found: {key}");
         }
+
         /// <summary>
         /// Function to search for a key in the generic dictionary.
         /// </summary>
@@ -41,6 +43,7 @@
             else
                 Console.WriteLine($"Key not found: {key}");
         }
+
         /// <summary>
         /// Function to display all the key value pairs in the generic dictionary.
         /// </summary>

@@ -6,32 +6,32 @@ namespace Collections
         /// <summary>
         /// Function to validate user-entered integer value.
         /// </summary>
-        /// <param name="displaymsg">Message to display to the console</param>
+        /// <param name="displayMessage">Message to display to the console</param>
         /// <returns>valid integer</returns>
-        public static int GetValidInt(string displaymsg)
+        public static int GetValidInt(string displayMessage)
         {
             while(true)
             {
-                Console.WriteLine($"\nEnter the {displaymsg} :");
+                Console.WriteLine($"\nEnter the {displayMessage} :");
                 string? input=Console.ReadLine();
                 if(int.TryParse(input, out int value)&&value>0 )
                     return value;
                 else
-                   Helper.WriteinRed($"\nInvalid {displaymsg} (required format:positive integer");
+                   Helper.WriteinRed($"\nInvalid {displayMessage} (required format:positive integer");
            }
         }
 
         /// <summary>
         /// Function to validate user-entered string value.
         /// </summary>
-        /// <param name="input">Input string</param>
+        /// <param name="displayMessage">Message to display to the console</param>
         /// <returns>valid string</returns>
 
-        public static string GetValidString(string input)
+        public static string GetValidString(string displayMessage)
         {
             while (true)
             {
-                Console.WriteLine($"\nEnter the {input}");
+                Console.WriteLine($"\nEnter the {displayMessage}");
                 string? validName=Console.ReadLine();
                 if (validName!=null&&Regex.IsMatch(validName,@"^[A-Za-z][A-Za-z0-9]{2,}"))
                     return validName;
