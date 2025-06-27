@@ -45,7 +45,7 @@
                 DisplaySuccessMessage("Writing");
                 Console.WriteLine("\nReading from a file...");
                 CountDown("Reading");
-                // Display message for the contents read from file
+
                 Console.WriteLine("\nFile Contents: ");
                 Console.WriteLine("\n-------- Contents from the file --------\n");
                 StreamReader streamReader = new StreamReader(filename);
