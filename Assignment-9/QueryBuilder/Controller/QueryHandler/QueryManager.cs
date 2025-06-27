@@ -14,15 +14,15 @@ namespace LINQ.Controller.QueryHandler
         {
             IEnumerable<Product> result = products.Where(product => product.Category.Equals("Electronics", StringComparison.OrdinalIgnoreCase) && product.Price > 500)
                                                   .OrderByDescending(product => product.Price);
-            decimal avgPrice = result.Average(product => product.Price);
-            Helper.WriteInYellow("Electronics with price greater than 500$\n\n");
+            decimal averagePrice = result.Average(product => product.Price);
+            Helper.WriteInColor("Electronics with price greater than 500$\n\n",ConsoleColor.Yellow);
             ConsoleTable table = new("Product Name", "Price");
             foreach (Product product in result)
             {
                 table.AddRow(product.ProductName, product.Price);
             }
             table.Write(Format.Alternative);
-            Console.WriteLine("\nAverage Price = " + avgPrice);
+            Console.WriteLine("\nAverage Price = " + averagePrice);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace LINQ.Controller.QueryHandler
             {
                 table.AddRow(productGroup.Category, productGroup.Count, productGroup.MostExpensiveProduct.ProductName, productGroup.MostExpensiveProduct.Price);
             }
-            Helper.WriteInYellow("Products grouped based on categories along with the most expensive product");
+            Helper.WriteInColor("Products grouped based on categories along with the most expensive product",ConsoleColor.Yellow);
             table.Write(Format.Alternative);
         }
 
@@ -67,7 +67,7 @@ namespace LINQ.Controller.QueryHandler
             ConsoleTable table = new("ProductId", "Product Name", "Supplier Name");
             foreach (var product in productSuppliers)
                 table.AddRow(product.ProductID, product.ProductName, product.SupplierName); ;
-            Helper.WriteInYellow("\nProducts along with their suppliers");
+            Helper.WriteInColor("\nProducts along with their suppliers", ConsoleColor.Yellow);
             table.Write(Format.Alternative);
         }
 
@@ -95,7 +95,7 @@ namespace LINQ.Controller.QueryHandler
             try
             {
                 float secondHighest = array.OrderByDescending(n => n).Distinct().Skip(1).First();
-                Helper.WriteInGreen("Second Highest Number : " + secondHighest);
+                Helper.WriteInColor("Second Highest Number : " + secondHighest,ConsoleColor.Green);
             }
             catch (Exception e)
             {
@@ -104,7 +104,7 @@ namespace LINQ.Controller.QueryHandler
             float target = Helper.GetValidFloat("Target sum:");
             var TargetPairs = array.SelectMany((value, index) => array.Skip(index + 1),
                                              (first, second) => new { first, second }).Where(pair => pair.first + pair.second == target).Distinct().ToList();
-            Helper.WriteInYellow("Pairs summing up to target :");
+            Helper.WriteInColor("Pairs summing up to target :", ConsoleColor.Yellow);
             foreach (var pair in TargetPairs)
             {
                 Console.WriteLine($"({pair.first},{pair.second})");
@@ -121,11 +121,11 @@ namespace LINQ.Controller.QueryHandler
         public void SortProductsOfCategoryByKey<TKey>(List<Product> products,string category,Func<Product,TKey>KeyField)
         {
             List<Product>? books = products.Where(p => p.Category.Equals(category, StringComparison.OrdinalIgnoreCase)).OrderByDescending(KeyField).ToList();
-            Helper.WriteInYellow("Books sorted by price (Highest to Lowest)\n");
+            Helper.WriteInColor("Books sorted by price (Highest to Lowest)\n", ConsoleColor.Yellow);
             ConsoleTable table = new("Book Name", "Price");
-            foreach (Product p in books)
+            foreach (Product book in books)
             {
-                table.AddRow(p.ProductName, p.Price);
+                table.AddRow(book.ProductName, book.Price);
             }
             table.Write(Format.Alternative);
         }

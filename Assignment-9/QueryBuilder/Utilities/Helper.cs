@@ -5,38 +5,16 @@ namespace LINQ.Utilities
     internal class Helper
     {
         /// <summary>
-        /// Function to print the given statement in red color.
+        /// Prints the given message in the specified console color.
         /// </summary>
-        /// <param name="displayMessage">Message that is to be printed in colors</param>
-        public static void WriteInRed(string displayMessage)
+        /// <param name="displayMessage">The message to display.</param>
+        /// <param name="color">The ConsoleColor to use.</param>
+        public static void WriteInColor(string displayMessage, ConsoleColor color)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = color;
             Console.WriteLine(displayMessage + "\n");
             Console.ResetColor();
         }
-
-        /// <summary>
-        /// Function to print the given statement in green color.
-        /// </summary>
-        /// <param name="displayMessage">Message that is to be printed in colors</param>
-        public static void WriteInGreen(string displayMessage)
-        {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(displayMessage + "\n");
-            Console.ResetColor();
-        }
-
-        /// <summary>
-        /// Function to print the given statement in yellow color.
-        /// </summary>
-        /// <param name="displayMessage">Message that is to be printed in colors</param>
-        public static void WriteInYellow(string displayMessage)
-        {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(displayMessage + "\n");
-            Console.ResetColor();
-        }
-
         /// <summary>
         /// Function to get a valid integer input from user.
         /// </summary>
@@ -53,11 +31,11 @@ namespace LINQ.Utilities
                     return number;
                 else
                 {
-                    Helper.WriteInRed($"Please enter a valid {displayMessage}");
+                    Helper.WriteInColor($"Please enter a valid {displayMessage}",ConsoleColor.Red);
                     canExit = false;
                 }
                 if (displayMessage.Contains("stock quantity"))
-                    Helper.WriteInYellow("(Quantity must be a whole number)");
+                    Helper.WriteInColor("(Quantity must be a whole number)",ConsoleColor.Yellow);
             }
             return 0;
         }
@@ -78,13 +56,13 @@ namespace LINQ.Utilities
                 if (canExit)
                     return name;
                 else
-                    Helper.WriteInRed($"Please enter a valid {displayMessage}");
+                    Helper.WriteInColor($"Please enter a valid {displayMessage}", ConsoleColor.Red);
             }
             return string.Empty;
         }
 
         /// <summary>
-        /// Function to validate price given by user.
+        /// Function to get valid price from user
         /// </summary>
         /// <returns>Valid Price</returns>
         public static decimal GetValidPrice()
@@ -97,13 +75,13 @@ namespace LINQ.Utilities
                 if (canExit)
                     return validPrice;
                 else
-                    Helper.WriteInRed($"Please enter a valid price:");
+                    Helper.WriteInColor($"Please enter a valid price:", ConsoleColor.Red);
             } while (!canExit);
             return 0;
         }
 
         /// <summary>
-        /// Function to get a number from user
+        /// Function to get a valid number from user
         /// </summary>
         /// <param name="displayMessage">Message that is to be printed in console</param>
         /// <returns>Valid Number</returns>
@@ -118,7 +96,7 @@ namespace LINQ.Utilities
                     return validNumber;
                 else
                 {
-                    Helper.WriteInRed($"Please enter a valid {displayMessage}");
+                    Helper.WriteInColor($"Please enter a valid {displayMessage}", ConsoleColor.Red);
                 }
             }
             return 0;

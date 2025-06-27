@@ -20,17 +20,11 @@ namespace LINQ.Controller.ProductHandler
         public void AddNewProduct()
         {
             Console.WriteLine("--------Adding New Product-------");
-            Console.WriteLine("(Press -1 to exit)");
             Product? product = inputHandler.GetProductDetails(Products);
-            if (product == null)
-            {
-                Console.WriteLine("Canceling...");
-                return;
-            }
             Products.Add(product);
             Suppliers.Add(new Supplier(Suppliers.Count+1, $"Supplier_{product.ProductID}",product.ProductID));
             Products = Products.OrderBy(p => p.ProductID).ToList();
-            Helper.WriteInGreen("Product added to inventory successfully....");
+            Helper.WriteInColor("Product added to inventory successfully....",ConsoleColor.Green);
         }
 
         /// <summary>
@@ -61,12 +55,12 @@ namespace LINQ.Controller.ProductHandler
                 }
                 else
                 {
-                    foreach (Product p in Products)
+                    foreach (Product product in Products)
                     {
-                        if (p.ProductID == search)
+                        if (product.ProductID == search)
                         {
-                            ViewProduct(p);
-                            return p;
+                            ViewProduct(product);
+                            return product;
                         }
                     }
                 }
@@ -93,20 +87,20 @@ namespace LINQ.Controller.ProductHandler
                         Console.WriteLine("--------Editing Product-------");
                         ViewProduct(productToEdit);
                         Console.WriteLine("Choose the field to edit: ");
-                        Helper.WriteInYellow("1.ID\n2.Name\n3.Price\n4.Category\n5.Exit");
+                        Helper.WriteInColor("1.ID\n2.Name\n3.Price\n4.Category\n5.Exit",ConsoleColor.Yellow);
                         int choice = Helper.GetValidNumber("your choice :");
                         switch (choice)
                         {
                             case 1:
                                 Supplier? supplierToEdit = FindSupplier(productToEdit);
-                                productToEdit.ProductID = Validator.IsProductIdAvailable(Helper.GetValidNumber("new productid :"), Products);
+                                productToEdit.ProductID = Validator.GetUniqueProductID(Helper.GetValidNumber("new productid :"), Products);
                                 supplierToEdit.SupplierID=productToEdit.ProductID;
                                 supplierToEdit.SupplierName = $"Supplier_{productToEdit.ProductID}";
                                 supplierToEdit.ProductID=productToEdit.ProductID ;
                                 
                                 break;
                             case 2:
-                                productToEdit.ProductName = Validator.IsProductNameAvailable(Helper.GetValidName("new product name :"), Products);
+                                productToEdit.ProductName = Validator.GetUniqueProductName(Helper.GetValidName("new product name :"), Products);
                                 break;
                             case 3:
                                 productToEdit.Price = Helper.GetValidPrice();

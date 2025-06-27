@@ -15,12 +15,12 @@ namespace LINQ.View
         {
             QueryBuilder<Product> resultBuilder = new(products);
             Console.Clear();
-            Helper.WriteInGreen("Building queries....");
+            Helper.WriteInColor("Building queries....", ConsoleColor.Green);
             bool canExit = false;
             bool isJoinApplied = false;
             while (!canExit)
             {
-                Helper.WriteInYellow("\n1.Filter Conditions\n2.Sort Conditions\n3.Join Suppliers\n4.Execute");
+                Helper.WriteInColor("\n1.Filter Conditions\n2.Sort Conditions\n3.Join Suppliers\n4.Execute", ConsoleColor.Yellow);
                 int choice = Helper.GetValidNumber("choice :");
                 switch (choice)
                 {
@@ -28,41 +28,41 @@ namespace LINQ.View
                         bool exitFilter = false;
                         while (!exitFilter)
                         {
-                            Helper.WriteInYellow("\n1.Starts With(Product Name)\n2.Ends With(Product Name)\n3.Greater Than or Equal To(price)\n4.Less Than Or Equal To(price)\n5.Exit\n");
+                            Helper.WriteInColor("\n1.Starts With(Product Name)\n2.Ends With(Product Name)\n3.Greater Than or Equal To(price)\n4.Less Than Or Equal To(price)\n5.Exit\n", ConsoleColor.Yellow);
                             int filterChoice = Helper.GetValidNumber("choice for filtering:");
                             switch (filterChoice)
                             {
                                 case 1:
                                     string startsWith = Helper.GetValidName("start string for filtering products :");
                                     resultBuilder.Filter(p => p.ProductName.StartsWith(startsWith,StringComparison.OrdinalIgnoreCase));
-                                    Helper.WriteInGreen("Filter Added Successfully");
+                                    Helper.WriteInColor("Filter Added Successfully", ConsoleColor.Green);
                                     break;
 
                                 case 2:
                                     string endsWith = Helper.GetValidName("end string for filtering products :");
                                     resultBuilder.Filter(p => p.ProductName.EndsWith(endsWith,StringComparison.OrdinalIgnoreCase));
-                                    Helper.WriteInGreen("Filter Added Successfully");
+                                    Helper.WriteInColor("Filter Added Successfully", ConsoleColor.Green);
                                     break;
 
                                 case 3:
                                     decimal minimumAmount = Helper.GetValidPrice();
                                     resultBuilder.Filter(p => p.Price >= minimumAmount);
-                                    Helper.WriteInGreen("Filter Added Successfully");
+                                    Helper.WriteInColor("Filter Added Successfully", ConsoleColor.Green);
                                     break;
 
                                 case 4:
                                     decimal maximumAmount = Helper.GetValidPrice();
                                     resultBuilder.Filter(p => p.Price <= maximumAmount);
-                                    Helper.WriteInGreen("Filter Added Successfully");
+                                    Helper.WriteInColor("Filter Added Successfully", ConsoleColor.Green);
                                     break;
 
                                 case 5:
-                                    Helper.WriteInRed("Exiting Filters....");
+                                    Helper.WriteInColor("Exiting Filters....", ConsoleColor.Red);
                                     exitFilter = true;
                                     break;
 
                                 default:
-                                    Helper.WriteInRed("Please enter a valid choice");
+                                    Helper.WriteInColor("Please enter a valid choice", ConsoleColor.Red);
                                     break;
 
                             }
@@ -81,23 +81,23 @@ namespace LINQ.View
                             if (sortChoice == 2)
                                 resultBuilder.SortBy(p => p.ProductName);
                             resultBuilder.SortBy(p => p.Price);
-                            Helper.WriteInGreen("Filter Added Successfully");
+                            Helper.WriteInColor("Filter Added Successfully", ConsoleColor.Green);
                         }
                         else
-                            Helper.WriteInRed("Sorry Invalid Choice");
+                            Helper.WriteInColor("Sorry Invalid Choice", ConsoleColor.Red);
                         break;
 
                     case 3:
-                        Helper.WriteInGreen("Join Added Successfully");
+                        Helper.WriteInColor("Join Added Successfully", ConsoleColor.Green);
                         isJoinApplied = true;
                         break;
 
                     case 4:
-                        Helper.WriteInGreen("Executing all added queries..... ");
+                        Helper.WriteInColor("Executing all added queries..... ", ConsoleColor.Green);
                         var result=resultBuilder.Execute();
                         if(!result.Any())
                         {
-                            Helper.WriteInRed("No matching products...");
+                            Helper.WriteInColor("No matching products...", ConsoleColor.Red);
                         }
                         else if (isJoinApplied == true)
                         {
@@ -123,7 +123,7 @@ namespace LINQ.View
                             ConsoleTable table = new("Product Name", "Price", "Category");
                             if (result.Any())
                             {
-                                foreach (var product in result)
+                                foreach (Product product in result)
                                 {
                                     table.AddRow(product.ProductName, product.Price, product.Category);
                                 }
@@ -134,7 +134,7 @@ namespace LINQ.View
                         break;
 
                     default:
-                        Helper.WriteInRed("Please enter a valid choice");
+                        Helper.WriteInColor("Please enter a valid choice", ConsoleColor.Red);
                         break;
                 }
             }

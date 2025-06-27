@@ -34,7 +34,7 @@ namespace LINQ.View
                 bool canExit = false;
                 while (!canExit)
                 {
-                    Helper.WriteInYellow("===========Inventory Querying Console Application==========" + "\n1.Product Manager\n2.QueryHandler\n3.Exit");
+                    Helper.WriteInColor("===========Inventory Querying Console Application==========" + "\n1.Product Manager\n2.QueryHandler\n3.Exit",ConsoleColor.Yellow);
                     int choice = Helper.GetValidNumber(" choice:");
                     switch (choice)
                     {
@@ -48,14 +48,14 @@ namespace LINQ.View
                             break;
 
                         case 3:
-                            Helper.WriteInRed("Exiting......");
+                            Helper.WriteInColor("Exiting......", ConsoleColor.Red);
                             Console.WriteLine("Press any key to continue...");
                             Console.ReadKey();
                             canExit = true;
                             break;
 
                         default:
-                            Helper.WriteInRed("\nPlease enter a valid choice from given choices");
+                            Helper.WriteInColor("\nPlease enter a valid choice from given choices", ConsoleColor.Red);
                             break;
 
                     }

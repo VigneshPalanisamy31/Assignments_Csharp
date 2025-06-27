@@ -16,12 +16,12 @@ namespace LINQ.View
             while(!canExit)
             {
                 ProductManager inventory = new ProductManager(products,suppliers);
-                Helper.WriteInYellow("1.Add Product");
-                Helper.WriteInYellow("2.Edit Product");
-                Helper.WriteInYellow("3.Search Product");
-                Helper.WriteInYellow("4.Delete Product");
-                Helper.WriteInYellow("5.View Inventory");
-                Helper.WriteInYellow("6.Exit");
+                Helper.WriteInColor("1.Add Product",ConsoleColor.Yellow);
+                Helper.WriteInColor("2.Edit Product",ConsoleColor.Yellow);
+                Helper.WriteInColor("3.Search Product",ConsoleColor.Yellow);
+                Helper.WriteInColor("4.Delete Product", ConsoleColor.Yellow);
+                Helper.WriteInColor("5.View Inventory", ConsoleColor.Yellow);
+                Helper.WriteInColor("6.Exit", ConsoleColor.Yellow);
                 int choice = Helper.GetValidNumber("your choice :");
                 switch (choice)
                 {
@@ -50,7 +50,7 @@ namespace LINQ.View
                         break;
 
                     default:
-                        Helper.WriteInRed("Please enter a valid input");
+                        Helper.WriteInColor("Please enter a valid input", ConsoleColor.Red);
                         break;
                 }
                 Console.WriteLine("\n\nPress any key to continue..");
