@@ -10,7 +10,7 @@
             while (true)
             {
                 Console.WriteLine("Choose the generic collection :\n");
-                Helper.WriteinYellow("1.List\n2.Stack\n3.Queue\n4.Dictionary\n5.Exit\n");
+                Helper.WriteInColor("1.List\n2.Stack\n3.Queue\n4.Dictionary\n5.Exit\n",ConsoleColor.Yellow);
                 int choice = Validator.GetValidInt("choice");
                 switch (choice)
                 {
@@ -31,15 +31,15 @@
                         bookList.Add("Book_4");
                         bookList.Add("Book_5");
                         Thread.Sleep(1000);
-                        Helper.WriteinYellow("\nDisplaying books:\n");
+                        Helper.WriteInColor("\nDisplaying books:\n", ConsoleColor.Yellow);
                         bookList.Display();
                         Thread.Sleep(1000);
-                        Helper.WriteinYellow("\nRemoving books:\n");
+                        Helper.WriteInColor("\nRemoving books:\n", ConsoleColor.Yellow);
                         bookList.Remove();
                         break;
 
                     case 2:
-                        Helper.WriteinGreen("Adding characters to the generic stack");
+                        Helper.WriteInColor("Adding characters to the generic stack", ConsoleColor.Green);
                         for (int i = 0; i < 3; i++)
                         {
                             Thread.Sleep(500);
@@ -48,10 +48,10 @@
                         GenericCollection<char> characterStack = new GenericCollection<char>("stack");
                         characterStack.Add('G'); characterStack.Add('e'); characterStack.Add('n'); characterStack.Add('e'); characterStack.Add('r'); characterStack.Add('i'); characterStack.Add('c'); characterStack.Add('s');
                         Thread.Sleep(1000);
-                        Helper.WriteinYellow("\nDisplaying characters:\n");
+                        Helper.WriteInColor("\nDisplaying characters:\n", ConsoleColor.Yellow);
                         characterStack.Display();
                         Thread.Sleep(1000);
-                        Helper.WriteinYellow("\nRemoving books:\n");
+                        Helper.WriteInColor("\nRemoving books:\n", ConsoleColor.Yellow);
                         characterStack.Remove();
                         break;
 
@@ -71,10 +71,10 @@
                         peopleQueue.Add("Person_4");
                         peopleQueue.Add("Person_5");
                         Thread.Sleep(1000);
-                        Helper.WriteinYellow("\nDisplaying people in queue:\n");
+                        Helper.WriteInColor("\nDisplaying people in queue:\n", ConsoleColor.Yellow);
                         peopleQueue.Display();
                         Thread.Sleep(1000);
-                        Helper.WriteinYellow("\nDequeuing people:\n");
+                        Helper.WriteInColor("\nDequeuing people:\n", ConsoleColor.Yellow);
                         peopleQueue.Remove();
                         break;
 
@@ -94,7 +94,7 @@
                         studentDictionary.Add("Student_4", 97);
                         studentDictionary.Add("Student_5", 96);
                         Thread.Sleep(1000);
-                        Helper.WriteinYellow("\nDisplaying marks of students:\n");
+                        Helper.WriteInColor("\nDisplaying marks of students:\n", ConsoleColor.Yellow);
                         studentDictionary.Display();
                         Thread.Sleep(1000);
                         studentDictionary.Remove(Validator.GetValidString("student name to be removed.."));
@@ -104,7 +104,7 @@
                     case 5:return;
 
                     default:
-                        Helper.WriteinRed("\nInvalid choice");
+                        Helper.WriteInColor("\nInvalid choice", ConsoleColor.Red);
                         break;
                 }
                 Console.WriteLine("\n\nPress any key to continue");

@@ -17,7 +17,7 @@ namespace Collections
                 if(int.TryParse(input, out int value)&&value>0 )
                     return value;
                 else
-                   Helper.WriteinRed($"\nInvalid {displayMessage} (required format:positive integer");
+                   Helper.WriteInColor($"\nInvalid {displayMessage} (required format:positive integer",ConsoleColor.Red);
            }
         }
 
@@ -37,9 +37,7 @@ namespace Collections
                     return validName;
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\nInvalid Name");
-                    Console.ResetColor();
+                    Helper.WriteInColor("\nInvalid Name", ConsoleColor.Red);
                 }
             }
         }

@@ -12,8 +12,8 @@
             while (!canExit)
             {
                 Console.Clear();
-                Helper.WriteinYellow("============Marks of Students============");
-                Helper.WriteinYellow("\n1.Add\n2.Remove\n3.Display\n4.Exit");
+                Helper.WriteInColor("============Marks of Students============", ConsoleColor.Yellow);
+                Helper.WriteInColor("\n1.Add\n2.Remove\n3.Display\n4.Exit", ConsoleColor.Yellow);
                 int choice = Validator.GetValidInt("choice");
                 switch (choice)
                 {
@@ -24,7 +24,7 @@
                         canExit = true;
                         Console.WriteLine("Exiting"); break;
                     default:
-                        Helper.WriteinRed("\nInvalid choice");
+                        Helper.WriteInColor("\nInvalid choice", ConsoleColor.Red);
                         break;
                 }
                 Console.WriteLine("\nPress any key to continue..");
@@ -42,7 +42,7 @@
             {
                 marks.Add(Validator.GetValidString($"name of student {i + 1}"),Validator.GetValidInt("mark"));
             }
-           Helper.WriteinGreen("\nStudents added successfully");
+           Helper.WriteInColor("\nStudents added successfully", ConsoleColor.Green);
         }
 
         /// <summary>
@@ -53,12 +53,12 @@
             string nameToBeRemoved = Validator.GetValidString("name to be removed");
             if (marks.TryGetValue(nameToBeRemoved,out int mark))
             {
-                Helper.WriteinGreen($"\n{nameToBeRemoved}  :  {mark}");
-                Helper.WriteinGreen("\nStudent deleted from List successfully..");
+                Helper.WriteInColor($"\n{nameToBeRemoved}  :  {mark}",ConsoleColor.Green);
+                Helper.WriteInColor("\nStudent deleted from List successfully..", ConsoleColor.Green);
                 marks.Remove(nameToBeRemoved);
             }
             else
-                Helper.WriteinRed("\nStudent not found\nDelete failed...");
+                Helper.WriteInColor("\nStudent not found\nDelete failed...", ConsoleColor.Red);
         }
 
         /// <summary>
@@ -67,11 +67,11 @@
         public void DisplayMarks()
         {
             if (marks.Count == 0)
-               Helper.WriteinRed("\nNo marks available");
+               Helper.WriteInColor("\nNo marks available", ConsoleColor.Red);
             else
             {
-               Helper.WriteinYellow("Marks of students\n");
-               Helper.WriteinYellow("\nStudent name :  Mark");
+               Helper.WriteInColor("Marks of students\n", ConsoleColor.Yellow);
+               Helper.WriteInColor("\nStudent name :  Mark", ConsoleColor.Yellow);
                 foreach (var mark in marks)
                 {
                     Console.WriteLine($"{mark.Key}  :  {mark.Value}");

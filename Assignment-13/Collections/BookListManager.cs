@@ -12,10 +12,8 @@
             while (!canExit)
             {
                 Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("============List of Books============");
-                Console.WriteLine("\n1.Add\n2.Remove\n3.Search\n4.Display\n5.Exit");
-                Console.ResetColor();
+                Helper.WriteInColor("============List of Books============", ConsoleColor.Yellow);
+                Helper.WriteInColor("\n1.Add\n2.Remove\n3.Search\n4.Display\n5.Exit", ConsoleColor.Yellow);
                 int choice = Validator.GetValidInt("choice");
                 switch (choice)
                 {
@@ -26,7 +24,7 @@
                     case 5: canExit = true; 
                            Console.WriteLine("Exiting"); break;
                     default:
-                        Helper.WriteinRed("\nInvalid choice");
+                        Helper.WriteInColor("\nInvalid choice", ConsoleColor.Red);
                         break;
                 }
                 Console.WriteLine("\nPress any key to continue..");
@@ -44,7 +42,7 @@
             {
                 books.Add(Validator.GetValidString($"name of book{i + 1}"));
             }
-            Helper.WriteinGreen("\nBooks added successfully");
+            Helper.WriteInColor("\nBooks added successfully", ConsoleColor.Green);
         }
 
         /// <summary>
@@ -56,12 +54,12 @@
             string bookToSearch = Validator.GetValidString("name of the book");
             if (books.Contains(bookToSearch))
             {
-                Helper.WriteinGreen("\nBook name available in the list");
+                Helper.WriteInColor("\nBook name available in the list", ConsoleColor.Green);
                 return bookToSearch;
             }
             else
             {
-               Helper.WriteinRed("\nBook name is not available in the list");
+               Helper.WriteInColor("\nBook name is not available in the list", ConsoleColor.Red);
                 return "";
             }
         }
@@ -72,9 +70,9 @@
         public void RemoveBook()
         {
             if (!SearchBook().Equals(""))
-                Helper.WriteinGreen("\nBook deleted from List successfully..");
+                Helper.WriteInColor("\nBook deleted from List successfully..", ConsoleColor.Green);
             else
-                Helper.WriteinRed("\nDelete failed..");
+                Helper.WriteInColor("\nDelete failed..", ConsoleColor.Red);
         }
 
         /// <summary>
@@ -83,10 +81,10 @@
         public void DisplayBooks()
         {
             if (books.Count == 0)
-                Helper.WriteinRed("\nNo Books Available");
+                Helper.WriteInColor("\nNo Books Available", ConsoleColor.Yellow);
             else
             {
-                Helper.WriteinYellow("List Of Books\n");
+                Helper.WriteInColor("List Of Books\n", ConsoleColor.Yellow);
                 for(int i=0;i<books.Count;i++) 
                 {
                     Console.WriteLine($"{i+1}. {books[i]}");
