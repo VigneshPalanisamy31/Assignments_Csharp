@@ -3,7 +3,7 @@
     internal class Program
     {
         /// <summary>
-        /// Function to return a valid integer from the user-end.
+        ///  Gets a valid integer from the user.
         /// </summary>
         /// <param name="userEnteredNumber">Number to be validated</param>
         /// <returns>validated integer</returns>
