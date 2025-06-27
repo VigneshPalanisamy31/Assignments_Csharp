@@ -35,13 +35,13 @@
                             genericsManager.GenericCollectionOperations(); break;
 
                         case 6:
-                            Helper.WriteinYellow("Testing sum of elements..\n");
+                            Helper.WriteInColor("Testing sum of elements..\n", ConsoleColor.Yellow);
                             ReadOnlyDictionaryViewer.TestSumOfElements();
                             Thread.Sleep(2000);
-                            Helper.WriteinYellow("Generate Dictionary...\n");
+                            Helper.WriteInColor("Generate Dictionary...\n", ConsoleColor.Yellow);
                             IReadOnlyDictionary<string, int> dict = ReadOnlyDictionaryViewer.GenerateDictionary();
                             Thread.Sleep(2000);
-                            Helper.WriteinYellow("Print Dictionary...\n");
+                            Helper.WriteInColor("Print Dictionary...\n", ConsoleColor.Yellow);
                             ReadOnlyDictionaryViewer.PrintDictionary(dict);
                             Thread.Sleep(2000);
                             ReadOnlyDictionaryViewer.AttemptToModifyDictionary(dict);
@@ -51,7 +51,7 @@
                         case 7: return;
 
                         default:
-                            Helper.WriteinRed("\nInvalid choice");
+                            Helper.WriteInColor("\nInvalid choice", ConsoleColor.Red);
                             break;
                     }
                     Console.Clear();

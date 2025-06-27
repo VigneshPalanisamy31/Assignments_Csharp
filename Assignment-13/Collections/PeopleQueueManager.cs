@@ -12,8 +12,8 @@
             while (!canExit)
             {
                 Console.Clear();
-                Helper.WriteinYellow("============Queue of People============");
-                Helper.WriteinYellow("\n1.Add\n2.Remove\n3.Display\n4.Exit");
+                Helper.WriteInColor("============Queue of People============", ConsoleColor.Yellow);
+                Helper.WriteInColor("\n1.Add\n2.Remove\n3.Display\n4.Exit", ConsoleColor.Yellow);
                 int choice = Validator.GetValidInt("choice");
                 switch (choice)
                 {
@@ -24,7 +24,7 @@
                         canExit = true;
                         Console.WriteLine("Exiting"); break;
                     default:
-                        Helper.WriteinRed("\nInvalid choice");
+                        Helper.WriteInColor("\nInvalid choice", ConsoleColor.Red);
                         break;
                 }
                 Console.WriteLine("\nPress any key to continue..");
@@ -41,9 +41,9 @@
             int queueSize = Validator.GetValidInt("size");
             for (int i = 0; i < queueSize; i++)
             {
-                people.Enqueue(Validator.GetValidString($"name of person {i+1}"));
+                people.Enqueue(Validator.GetValidString($"name of person {i + 1}"));
             }
-            Helper.WriteinGreen("\nQueue created successfully..");
+            Helper.WriteInColor("\nQueue created successfully..", ConsoleColor.Green);
         }
 
         /// <summary>
@@ -52,10 +52,12 @@
         public void Dequeue()
         {
             if (people.Count == 0)
-                Helper.WriteinRed("\nQueue is empty..");
+                Helper.WriteInColor("\nQueue is empty..", ConsoleColor.Red);
             else
-                Helper.WriteinGreen($"Dequeued person : {people.Dequeue().ToString()}");
-                Helper.WriteinGreen("\nDequeue successful..");
+            {
+                Helper.WriteInColor($"Dequeued person : {people.Dequeue().ToString()}", ConsoleColor.Green);
+                Helper.WriteInColor("\nDequeue successful..", ConsoleColor.Green);
+            }
         }
 
         /// <summary>
@@ -64,13 +66,13 @@
         public void DisplayPeople()
         {
             if (people.Count == 0)
-                Helper.WriteinRed("\nQueue is empty");
+                Helper.WriteInColor("\nQueue is empty", ConsoleColor.Red);
             else
-                Helper.WriteinYellow("Queue Of People\n");
-                foreach (var person in people)
-                {
-                    Console.WriteLine($"\n{person}");
-                }
+                Helper.WriteInColor("Queue Of People\n", ConsoleColor.Yellow);
+            foreach (var person in people)
+            {
+                Console.WriteLine($"\n{person}");
+            }
         }
     }
 }
