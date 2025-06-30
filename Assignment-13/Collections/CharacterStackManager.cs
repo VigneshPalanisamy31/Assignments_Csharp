@@ -8,11 +8,11 @@
         public void UsingStacks()
         {
             Console.WriteLine("Enter the string to be reversed :");
-            string? inputString =Console.ReadLine();
+            string? inputString = Console.ReadLine();
             Stack<char> characters = new Stack<char>();
             Console.WriteLine("\nPushing characters onto the stack..");
             Console.ForegroundColor = ConsoleColor.Green;
-            foreach(char character in inputString)
+            foreach (char character in inputString)
             {
                 characters.Push(character);
                 Console.Write(character + " ");
@@ -21,9 +21,9 @@
             Console.ResetColor();
             Console.WriteLine("\nPopping characters from the stack..(reversing string)");
             Console.ForegroundColor = ConsoleColor.Green;
-            while (characters.Count > 0) 
+            while (characters.Count > 0)
             {
-                Console.Write(characters.Pop()+" ");
+                Console.Write(characters.Pop() + " ");
                 Thread.Sleep(200);
             }
             Console.ResetColor();

@@ -2,7 +2,7 @@
 {
     internal class MarksDictionaryManager
     {
-        Dictionary<string,int> marks = new Dictionary<string,int>();
+        Dictionary<string, int> marks = new Dictionary<string, int>();
         /// <summary>
         /// Display menu to work with dictionaries
         /// </summary>
@@ -14,7 +14,7 @@
                 Console.Clear();
                 Helper.WriteInColor("============Marks of Students============", ConsoleColor.Yellow);
                 Helper.WriteInColor("\n1.Add\n2.Remove\n3.Display\n4.Exit", ConsoleColor.Yellow);
-                int choice = Validator.GetValidInt("choice");
+                int choice = Validator.GetValidInt("Enter the choice :");
                 switch (choice)
                 {
                     case 1: AddStudentMark(); break;
@@ -33,27 +33,27 @@
         }
 
         /// <summary>
-        /// Function to add student marks to the mark list dictionary.
+        /// Adds student marks to the mark list dictionary.
         /// </summary>
         public void AddStudentMark()
         {
-            int studentsCount = Validator.GetValidInt("number of students");
+            int studentsCount = Validator.GetValidInt("Enter the number of students :");
             for (int i = 0; i < studentsCount; i++)
             {
-                marks.Add(Validator.GetValidString($"name of student {i + 1}"),Validator.GetValidInt("mark"));
+                marks.Add(Validator.GetValidString($"Enter the name of student {i + 1} :"), Validator.GetValidInt("Enter the mark :"));
             }
-           Helper.WriteInColor("\nStudents added successfully", ConsoleColor.Green);
+            Helper.WriteInColor("\nStudents added successfully", ConsoleColor.Green);
         }
 
         /// <summary>
-        /// Function to remove student marks from the mark list dictionary.
+        /// Removes student marks from the mark list dictionary.
         /// </summary>
         public void RemoveStudent()
         {
-            string nameToBeRemoved = Validator.GetValidString("name to be removed");
-            if (marks.TryGetValue(nameToBeRemoved,out int mark))
+            string nameToBeRemoved = Validator.GetValidString("Enter the name to be removed :");
+            if (marks.TryGetValue(nameToBeRemoved, out int mark))
             {
-                Helper.WriteInColor($"\n{nameToBeRemoved}  :  {mark}",ConsoleColor.Green);
+                Helper.WriteInColor($"\n{nameToBeRemoved}  :  {mark}", ConsoleColor.Green);
                 Helper.WriteInColor("\nStudent deleted from List successfully..", ConsoleColor.Green);
                 marks.Remove(nameToBeRemoved);
             }
@@ -62,16 +62,16 @@
         }
 
         /// <summary>
-        /// Function to display student marks from the mark list dictionary.
+        /// Displays student marks from the mark list dictionary.
         /// </summary>
         public void DisplayMarks()
         {
             if (marks.Count == 0)
-               Helper.WriteInColor("\nNo marks available", ConsoleColor.Red);
+                Helper.WriteInColor("\nNo marks available", ConsoleColor.Red);
             else
             {
-               Helper.WriteInColor("Marks of students\n", ConsoleColor.Yellow);
-               Helper.WriteInColor("\nStudent name :  Mark", ConsoleColor.Yellow);
+                Helper.WriteInColor("Marks of students\n", ConsoleColor.Yellow);
+                Helper.WriteInColor("\nStudent name :  Mark", ConsoleColor.Yellow);
                 foreach (var mark in marks)
                 {
                     Console.WriteLine($"{mark.Key}  :  {mark.Value}");

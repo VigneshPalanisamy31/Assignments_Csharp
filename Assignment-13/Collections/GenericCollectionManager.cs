@@ -10,14 +10,14 @@
             while (true)
             {
                 Console.WriteLine("Choose the generic collection :\n");
-                Helper.WriteInColor("1.List\n2.Stack\n3.Queue\n4.Dictionary\n5.Exit\n",ConsoleColor.Yellow);
-                int choice = Validator.GetValidInt("choice");
+                Helper.WriteInColor("1.List\n2.Stack\n3.Queue\n4.Dictionary\n5.Exit\n", ConsoleColor.Yellow);
+                int choice = Validator.GetValidInt("Enter the choice :");
                 switch (choice)
                 {
                     case 1:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.Write("Adding books to the generic list");
-                        for(int i=0;i<3;i++)
+                        for (int i = 0; i < 3; i++)
                         {
                             Thread.Sleep(500);
                             Console.Write(".");
@@ -97,11 +97,11 @@
                         Helper.WriteInColor("\nDisplaying marks of students:\n", ConsoleColor.Yellow);
                         studentDictionary.Display();
                         Thread.Sleep(1000);
-                        studentDictionary.Remove(Validator.GetValidString("student name to be removed.."));
-                        studentDictionary.Search(Validator.GetValidString("student name to be searched.."));
+                        studentDictionary.Remove(Validator.GetValidString("Enter the student name to be removed :"));
+                        studentDictionary.Search(Validator.GetValidString("Enter the student name to be searched :"));
                         break;
 
-                    case 5:return;
+                    case 5: return;
 
                     default:
                         Helper.WriteInColor("\nInvalid choice", ConsoleColor.Red);

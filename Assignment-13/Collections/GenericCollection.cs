@@ -28,7 +28,7 @@
         }
 
         /// <summary>
-        /// Function to add items to the generic collections.
+        /// Adds items to the generic collections.
         /// </summary>
         /// <param name="item">Item to add to the collection</param>
         public void Add(T item)
@@ -51,7 +51,7 @@
         }
 
         /// <summary>
-        /// Function to display the elements of the generic collections.
+        /// Displays the elements of the generic collections.
         /// </summary>
         public void Display()
         {
@@ -71,7 +71,7 @@
         }
 
         /// <summary>
-        /// Function to remove elements from the generic collections.
+        /// Removes elements from the generic collections.
         /// </summary>
         public void Remove()
         {
