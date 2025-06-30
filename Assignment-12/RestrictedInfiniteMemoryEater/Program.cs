@@ -5,7 +5,7 @@
         List<int[]> memoryAllocator = new List<int[]>();
 
         /// <summary>
-        /// Function to create List of Arrays infinitely and trigger garbage collection after every 1000 arrays
+        /// Create List of Arrays infinitely but triggers garbage collection after every 1000 arrays
         /// </summary>
         public void Allocate()
         {

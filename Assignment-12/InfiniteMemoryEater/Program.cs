@@ -6,7 +6,7 @@ namespace InfiniteMemoryEater
         List<int[]> memoryAllocator = new List<int[]>();
 
         /// <summary>
-        /// Function to create arrays infinitely
+        /// Creates arrays infinitely
         /// </summary>
         public void Allocate()
         {
