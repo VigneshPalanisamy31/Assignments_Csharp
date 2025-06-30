@@ -7,16 +7,17 @@
         /// </summary>
         /// <param name="userEnteredNumber">user entered number</param>
         /// <returns>Validated number</returns>
-        public static float GetValidNumber(string? userEnteredNumber)
+        public static float GetValidNumber()
         {
+            string inputNumber=Console.ReadLine();
             float validNumber;
-            while (!float.TryParse(userEnteredNumber, out validNumber))
+            while (!float.TryParse(inputNumber, out validNumber))
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Please enter a valid number");
                 Console.ResetColor();
                 Console.WriteLine("Enter a number :");
-                userEnteredNumber = Console.ReadLine();
+                inputNumber = Console.ReadLine();
             }
             return validNumber;
         }
@@ -26,16 +27,17 @@
         /// </summary>
         /// <param name="userEnteredChoice">User entered choice</param>
         /// <returns>Validated choice(Integer)</returns>
-        public static int GetValidChoice(string? userEnteredChoice)
+        public static int GetValidChoice()
         {
+            string choice=Console.ReadLine();
             int validChoice;
-            while (!int.TryParse(userEnteredChoice, out validChoice))
+            while (!int.TryParse(choice, out validChoice))
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Please enter a valid choice");
                 Console.ResetColor();
                 Console.WriteLine("Enter a number :");
-                userEnteredChoice = Console.ReadLine();
+                choice = Console.ReadLine();
             }
             return validChoice;
         }

@@ -2,7 +2,7 @@
 using DisplayApp;
 namespace MathApp
 {
-    public class MathUtils:IMathHelper
+    public class MathUtils : IMathHelper
     {
         public MathUtils()
         {
@@ -10,7 +10,7 @@ namespace MathApp
         }
 
         /// <summary>
-        /// Function to calculate sum of two numbers
+        /// Calculates sum of two numbers
         /// </summary>
         /// <param name="firstNumber">First number</param>
         /// <param name="secondNumber">Second number</param>
@@ -21,7 +21,7 @@ namespace MathApp
         }
 
         /// <summary>
-        /// Function to calculate difference of two numbers
+        /// Calculates difference of two numbers
         /// </summary>
         /// <param name="firstNumber">First number</param>
         /// <param name="secondNumber">Second number</param>
@@ -32,7 +32,7 @@ namespace MathApp
         }
 
         /// <summary>
-        /// Function to calculate product of two numbers
+        /// Calculates product of two numbers
         /// </summary>
         /// <param name="firstNumber">First number</param>
         /// <param name="secondNumber">Second number</param>
@@ -43,7 +43,7 @@ namespace MathApp
         }
 
         /// <summary>
-        /// Function to divide given two numbers
+        /// Divides given two numbers
         /// </summary>
         /// <param name="firstNumber">First number</param>
         /// <param name="secondNumber">Second number</param>
