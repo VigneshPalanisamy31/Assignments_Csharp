@@ -7,8 +7,8 @@ namespace LoggingSystem
         {
             try
             {
-                bool isExit = false;
-                while (!isExit)
+                bool canExit = false;
+                while (!canExit)
                 {
 
                     Console.WriteLine("Choose Logging Method:");
@@ -16,7 +16,7 @@ namespace LoggingSystem
                     Console.WriteLine("2. Independent Log File Per User");
                     Console.WriteLine("3. Compare Sync and Async Logging");
                     Console.WriteLine("4. Exit");
-                    Console.Write("Enter choice (1 or 2): ");
+                    Console.Write("Enter your choice: ");
                     int choice = LoggerUtils.GetValidInt();
                     if (choice > 0 && choice < 3)
                     {
@@ -47,19 +47,19 @@ namespace LoggingSystem
                     else if (choice == 3)
                         CompareSyncAndAsyncLoggers();
                     else if (choice == 4)
-                        isExit = true;
+                        canExit = true;
                     else
                     {
                         Console.WriteLine("Choose from given choices.");
                     }
                     Console.WriteLine("\nPress any key to continue...");
                     Console.ReadKey();
-                    Console.WriteLine("\n\n=========================================================================================\n\n");
+                    Console.Clear();
                 }
             }
            catch (Exception e)
             {
-                Console.WriteLine("Excecution interupted!!!\n" + e.Message);
+                Console.WriteLine("Execution interrupted!!!\n" + e.Message);
                 Console.ReadKey();
             }
         }
@@ -78,13 +78,13 @@ namespace LoggingSystem
             stopwatch.Start();
             logger.LogErrorInefficiently(errorMessage);
             stopwatch.Stop();
-            Console.WriteLine("TimeTake: " + stopwatch.ElapsedMilliseconds + "ms");
+            Console.WriteLine("TimeTaken: " + stopwatch.ElapsedMilliseconds + "ms");
             Console.WriteLine("---Async logger---");
             Stopwatch stopwatch2 = Stopwatch.StartNew();
             stopwatch2.Start();
-            logger.LogErrorInefficiently(errorMessage);
+            logger.LogErrorEfficiently(errorMessage);
             stopwatch2.Stop();
-            Console.WriteLine("TimeTake: " + stopwatch2.ElapsedMilliseconds + "ms");
+            Console.WriteLine("TimeTaken: " + stopwatch2.ElapsedMilliseconds + "ms");
 
         }
     }

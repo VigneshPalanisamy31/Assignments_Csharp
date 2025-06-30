@@ -18,7 +18,7 @@ namespace FileUsageIssues
             }
             catch (Exception e)
             {
-                Console.WriteLine("Excecution interupted!!!\n"+e.Message);
+                Console.WriteLine("Execution interrupted!!!\n"+e.Message);
                 Console.ReadKey();
             }
         }
@@ -91,7 +91,7 @@ namespace FileUsageIssues
         /// Function to get text from user.
         /// </summary>
         /// <returns>User entered string</returns>
-        private static string GetTextFromUser()
+        private static string? GetTextFromUser()
         {
             Console.Write("Enter a string to write in the file: ");
             return Console.ReadLine();
@@ -99,10 +99,10 @@ namespace FileUsageIssues
         /// <summary>
         /// Function to get file path from user.
         /// </summary>
-        /// <returns>valid filepath(.txt)</returns>
+        /// <returns>valid file_path(.txt)</returns>
         private static string GetFilePath()
         {
-            Console.Write($"Enter relative file path (Eg: MainFile.txt): ");
+            Console.Write($"Enter relative file path (Ex: MainFile.txt): ");
             string filePath = Console.ReadLine();
             if (filePath.Contains(".txt"))
                 return filePath;
