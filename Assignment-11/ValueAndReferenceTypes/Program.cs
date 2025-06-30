@@ -7,7 +7,7 @@
         /// </summary>
         /// <param name="valueType">A value type parameter(int)</param>
         /// <param name="referenceType">A reference type </param>
-        public static void Modify(int valueType,ReferenceType referenceType)
+        public static void Modify(int valueType, ReferenceType referenceType)
         {
             valueType = 200;
             referenceType.ReferenceString = "Double Century";
@@ -19,9 +19,9 @@
         /// <param name="size">Size of an array</param>
         public static void CreateArray(int size)
         {
-            int []arrray=new int[size];
-            for (int i = 0;i < size;i++)
-                arrray[i]=i;
+            int[] arrray = new int[size];
+            for (int i = 0; i < size; i++)
+                arrray[i] = i;
         }
 
         /// <summary>
@@ -29,7 +29,7 @@
         /// </summary>
         public static void PerformCalculations()
         {
-            float num1 = 11, num2 = 22, num3 = 33, num4 = 44, num5 = 555, num6 = 66, num7 = 77, num8 = 88, num9 = 99, num10=111;
+            float num1 = 11, num2 = 22, num3 = 33, num4 = 44, num5 = 555, num6 = 66, num7 = 77, num8 = 88, num9 = 99, num10 = 111;
             float product = num1 * num2 * num3 * num4 * num5 * num6 * num7 * num8 * num9 * num10;
         }
         public static void Main(string[] args)

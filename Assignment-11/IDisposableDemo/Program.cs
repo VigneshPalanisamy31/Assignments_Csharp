@@ -31,21 +31,22 @@
         {
             try
             {
+                string filename = "file.txt";
+                string text = "File Writing Success!!";
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("-------- Handling File Operations --------");
                 Console.ResetColor();
-                string filename = "file.txt";
-                string text = "File Writing Success!!";
                 Console.WriteLine("\nWriting file...");
                 CountDown("Writing ");
+
                 using (FileWriter fileWriter = new FileWriter(filename))
                 {
                     fileWriter.Write(text);
                 }
+
                 DisplaySuccessMessage("Writing");
                 Console.WriteLine("\nReading from a file...");
                 CountDown("Reading");
-
                 Console.WriteLine("\nFile Contents: ");
                 Console.WriteLine("\n-------- Contents from the file --------\n");
                 StreamReader streamReader = new StreamReader(filename);
