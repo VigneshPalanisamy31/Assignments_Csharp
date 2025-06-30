@@ -15,7 +15,7 @@ namespace LINQ.Controller.QueryHandler
             IEnumerable<Product> result = products.Where(product => product.Category.Equals("Electronics", StringComparison.OrdinalIgnoreCase) && product.Price > 500)
                                                   .OrderByDescending(product => product.Price);
             decimal averagePrice = result.Average(product => product.Price);
-            Helper.WriteInColor("Electronics with price greater than 500$\n\n",ConsoleColor.Yellow);
+            Helper.WriteInColor("Electronics with price greater than 500$\n\n", ConsoleColor.Yellow);
             ConsoleTable table = new("Product Name", "Price");
             foreach (Product product in result)
             {
@@ -44,7 +44,7 @@ namespace LINQ.Controller.QueryHandler
             {
                 table.AddRow(productGroup.Category, productGroup.Count, productGroup.MostExpensiveProduct.ProductName, productGroup.MostExpensiveProduct.Price);
             }
-            Helper.WriteInColor("Products grouped based on categories along with the most expensive product",ConsoleColor.Yellow);
+            Helper.WriteInColor("Products grouped based on categories along with the most expensive product", ConsoleColor.Yellow);
             table.Write(Format.Alternative);
         }
 
@@ -95,7 +95,7 @@ namespace LINQ.Controller.QueryHandler
             try
             {
                 float secondHighest = array.OrderByDescending(n => n).Distinct().Skip(1).First();
-                Helper.WriteInColor("Second Highest Number : " + secondHighest,ConsoleColor.Green);
+                Helper.WriteInColor("Second Highest Number : " + secondHighest, ConsoleColor.Green);
             }
             catch (Exception e)
             {
@@ -111,14 +111,14 @@ namespace LINQ.Controller.QueryHandler
             }
         }
 
-       /// <summary>
-       /// Function to sort products of given category by given key.
-       /// </summary>
-       /// <typeparam name="TKey"></typeparam>
-       /// <param name="products">List of products</param>
-       /// <param name="category">Category of products to sort</param>
-       /// <param name="KeyField">Key to sort by</param>
-        public void SortProductsOfCategoryByKey<TKey>(List<Product> products,string category,Func<Product,TKey>KeyField)
+        /// <summary>
+        /// Function to sort products of given category by given key.
+        /// </summary>
+        /// <typeparam name="TKey"></typeparam>
+        /// <param name="products">List of products</param>
+        /// <param name="category">Category of products to sort</param>
+        /// <param name="KeyField">Key to sort by</param>
+        public void SortProductsOfCategoryByKey<TKey>(List<Product> products, string category, Func<Product, TKey> KeyField)
         {
             List<Product>? books = products.Where(p => p.Category.Equals(category, StringComparison.OrdinalIgnoreCase)).OrderByDescending(KeyField).ToList();
             Helper.WriteInColor("Books sorted by price (Highest to Lowest)\n", ConsoleColor.Yellow);

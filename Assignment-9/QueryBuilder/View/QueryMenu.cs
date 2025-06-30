@@ -29,7 +29,7 @@ namespace LINQ.View
                 switch (choice)
                 {
                     case 1:
-                        queryManager.FilterProductsWithGreaterPrice(products,"Electronics",500);
+                        queryManager.FilterProductsWithGreaterPrice(products, "Electronics", 500);
                         break;
 
                     case 2:
@@ -45,7 +45,7 @@ namespace LINQ.View
                         break;
 
                     case 5:
-                        queryManager.SortProductsOfCategoryByKey(products,"Books",p=>p.Price);
+                        queryManager.SortProductsOfCategoryByKey(products, "Books", p => p.Price);
                         break;
 
                     case 6:

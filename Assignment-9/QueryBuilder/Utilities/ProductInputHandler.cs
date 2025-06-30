@@ -1,5 +1,5 @@
-﻿using System.Globalization;
-using LINQ.Model;
+﻿using LINQ.Model;
+using System.Globalization;
 namespace LINQ.Utilities
 {
     internal class ProductInputHandler

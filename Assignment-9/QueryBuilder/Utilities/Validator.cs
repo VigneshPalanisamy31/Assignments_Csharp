@@ -1,10 +1,9 @@
-﻿using System.Text.RegularExpressions;
-using LINQ.Model;
+﻿using LINQ.Model;
 namespace LINQ.Utilities
 {
     internal class Validator
     {
-        
+
         /// <summary>
         /// Function to get unique product name.
         /// </summary>
@@ -47,7 +46,7 @@ namespace LINQ.Utilities
                 {
                     if (p.ProductID == productID)
                     {
-                        Helper.WriteInColor("A product with same id exists..",ConsoleColor.Red);
+                        Helper.WriteInColor("A product with same id exists..", ConsoleColor.Red);
                         return GetUniqueProductID(Helper.GetValidNumber("different product id :"), Products);
                     }
                 }

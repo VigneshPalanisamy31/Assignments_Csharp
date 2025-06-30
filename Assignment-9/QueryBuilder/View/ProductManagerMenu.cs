@@ -10,15 +10,15 @@ namespace LINQ.View
         /// </summary>
         /// <param name="products">List of products</param>
         /// <param name="suppliers">List of suppliers</param>
-        public void DisplayProductManagerMenu(List<Product> products,List<Supplier> suppliers)
+        public void DisplayProductManagerMenu(List<Product> products, List<Supplier> suppliers)
         {
             bool canExit = false;
-            while(!canExit)
+            while (!canExit)
             {
-                ProductManager inventory = new ProductManager(products,suppliers);
-                Helper.WriteInColor("1.Add Product",ConsoleColor.Yellow);
-                Helper.WriteInColor("2.Edit Product",ConsoleColor.Yellow);
-                Helper.WriteInColor("3.Search Product",ConsoleColor.Yellow);
+                ProductManager inventory = new ProductManager(products, suppliers);
+                Helper.WriteInColor("1.Add Product", ConsoleColor.Yellow);
+                Helper.WriteInColor("2.Edit Product", ConsoleColor.Yellow);
+                Helper.WriteInColor("3.Search Product", ConsoleColor.Yellow);
                 Helper.WriteInColor("4.Delete Product", ConsoleColor.Yellow);
                 Helper.WriteInColor("5.View Inventory", ConsoleColor.Yellow);
                 Helper.WriteInColor("6.Exit", ConsoleColor.Yellow);

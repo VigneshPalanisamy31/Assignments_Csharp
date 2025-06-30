@@ -34,13 +34,13 @@ namespace LINQ.View
                 bool canExit = false;
                 while (!canExit)
                 {
-                    Helper.WriteInColor("===========Inventory Querying Console Application==========" + "\n1.Product Manager\n2.QueryHandler\n3.Exit",ConsoleColor.Yellow);
+                    Helper.WriteInColor("===========Inventory Querying Console Application==========" + "\n1.Product Manager\n2.QueryHandler\n3.Exit", ConsoleColor.Yellow);
                     int choice = Helper.GetValidNumber(" choice:");
                     switch (choice)
                     {
                         case 1:
                             ProductManagerMenu productMenu = new ProductManagerMenu();
-                                productMenu.DisplayProductManagerMenu(products, suppliers);
+                            productMenu.DisplayProductManagerMenu(products, suppliers);
                             break;
 
                         case 2:

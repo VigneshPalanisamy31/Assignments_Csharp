@@ -11,7 +11,7 @@ namespace LINQ.View
         /// </summary>
         /// <param name="products">List of prodducts</param>
         /// <param name="suppliers">List of suppliers</param>
-        public static void DisplayQueryMenu(List<Product> products,List<Supplier>suppliers)
+        public static void DisplayQueryMenu(List<Product> products, List<Supplier> suppliers)
         {
             QueryBuilder<Product> resultBuilder = new(products);
             Console.Clear();
@@ -34,13 +34,13 @@ namespace LINQ.View
                             {
                                 case 1:
                                     string startsWith = Helper.GetValidName("start string for filtering products :");
-                                    resultBuilder.Filter(p => p.ProductName.StartsWith(startsWith,StringComparison.OrdinalIgnoreCase));
+                                    resultBuilder.Filter(p => p.ProductName.StartsWith(startsWith, StringComparison.OrdinalIgnoreCase));
                                     Helper.WriteInColor("Filter Added Successfully", ConsoleColor.Green);
                                     break;
 
                                 case 2:
                                     string endsWith = Helper.GetValidName("end string for filtering products :");
-                                    resultBuilder.Filter(p => p.ProductName.EndsWith(endsWith,StringComparison.OrdinalIgnoreCase));
+                                    resultBuilder.Filter(p => p.ProductName.EndsWith(endsWith, StringComparison.OrdinalIgnoreCase));
                                     Helper.WriteInColor("Filter Added Successfully", ConsoleColor.Green);
                                     break;
 
@@ -75,9 +75,9 @@ namespace LINQ.View
                     case 2:
                         Console.WriteLine("\n1.Sort By Price\n2.Sort By Product Name");
                         int sortChoice = Helper.GetValidNumber("choice for sorting :");
-                        if (sortChoice == 1||sortChoice==2)
+                        if (sortChoice == 1 || sortChoice == 2)
                         {
-                           
+
                             if (sortChoice == 2)
                                 resultBuilder.SortBy(p => p.ProductName);
                             resultBuilder.SortBy(p => p.Price);
@@ -94,8 +94,8 @@ namespace LINQ.View
 
                     case 4:
                         Helper.WriteInColor("Executing all added queries..... ", ConsoleColor.Green);
-                        var result=resultBuilder.Execute();
-                        if(!result.Any())
+                        var result = resultBuilder.Execute();
+                        if (!result.Any())
                         {
                             Helper.WriteInColor("No matching products...", ConsoleColor.Red);
                         }

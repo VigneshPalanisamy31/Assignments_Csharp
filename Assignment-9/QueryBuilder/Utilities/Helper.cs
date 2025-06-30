@@ -31,11 +31,11 @@ namespace LINQ.Utilities
                     return number;
                 else
                 {
-                    Helper.WriteInColor($"Please enter a valid {displayMessage}",ConsoleColor.Red);
+                    Helper.WriteInColor($"Please enter a valid {displayMessage}", ConsoleColor.Red);
                     canExit = false;
                 }
                 if (displayMessage.Contains("stock quantity"))
-                    Helper.WriteInColor("(Quantity must be a whole number)",ConsoleColor.Yellow);
+                    Helper.WriteInColor("(Quantity must be a whole number)", ConsoleColor.Yellow);
             }
             return 0;
         }

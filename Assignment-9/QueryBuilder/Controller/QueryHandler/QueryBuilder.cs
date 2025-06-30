@@ -5,7 +5,7 @@
         List<Func<T, bool>> filters = new List<Func<T, bool>>();
         Func<IEnumerable<T>, IOrderedEnumerable<T>>? sorter;
         List<T> products;
-        public QueryBuilder(List<T>Products)
+        public QueryBuilder(List<T> Products)
         {
             products = Products;
         }
@@ -63,13 +63,13 @@
         public IEnumerable<T> Execute()
         {
             IEnumerable<T> query = products;
-            foreach(var filter in filters)
+            foreach (var filter in filters)
             {
-                query=query.Where(filter);
+                query = query.Where(filter);
             }
-            if(sorter!=null)
+            if (sorter != null)
             {
-                query=sorter(query);
+                query = sorter(query);
             }
             return query;
         }
