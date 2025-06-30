@@ -11,7 +11,7 @@ namespace DisplayApp
             ConsoleDisplay();
         }
         /// <summary>
-        /// Displays menu to the user
+        /// Displays menu to the user and calls the user requested functions
         /// </summary>
         public void ConsoleDisplay()
         {
