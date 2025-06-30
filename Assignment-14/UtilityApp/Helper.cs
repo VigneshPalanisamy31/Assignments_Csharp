@@ -13,8 +13,7 @@
             while (!float.TryParse(userEnteredNumber, out validNumber))
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Please enter a valid number" +
-                    " ");
+                Console.WriteLine("Please enter a valid number");
                 Console.ResetColor();
                 Console.WriteLine("Enter a number :");
                 userEnteredNumber = Console.ReadLine();
