@@ -1,0 +1,22 @@
+﻿using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace Collections
+{
+    internal class Helper
+    {
+
+        /// <summary>
+        /// Function to display message in given color
+        /// </summary>
+        /// <param name="displayMessage">Message to be displayed in colors</param>
+        /// <param name="color">Console color in which the message is supposed to be displayed</param>
+        public static void WriteInColor(string displayMessage,ConsoleColor color)
+        {
+            Console.ForegroundColor=color;
+            Console.WriteLine(displayMessage);
+            Console.ResetColor();
+        }
+    }
+}
+
+
