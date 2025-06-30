@@ -8,10 +8,10 @@ namespace LINQ.Utilities
         /// Function to get product details from user
         /// </summary>
         /// <param name="Products">List of products</param>
-        /// <returns>A new product with user ggiven details</returns>
+        /// <returns>A new product with user given details</returns>
         public Product? GetProductDetails(List<Product> Products)
         {
-            int productID = Validator.GetUniqueProductID(Helper.GetValidNumber("productid :"), Products);
+            int productID = Validator.GetUniqueProductID(Helper.GetValidNumber("product_id :"), Products);
             if (productID == -1)
                 return null;
             string productName = Validator.GetUniqueProductName(Helper.GetValidName("product name :"), Products);

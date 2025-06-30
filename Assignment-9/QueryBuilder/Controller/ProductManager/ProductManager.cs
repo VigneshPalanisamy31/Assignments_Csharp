@@ -5,14 +5,15 @@ namespace LINQ.Controller.ProductHandler
 {
     internal class ProductManager
     {
-        List<Product> Products;
-        List<Supplier> Suppliers;
+        private List<Product> Products;
+        private List<Supplier> Suppliers;
+        ProductInputHandler inputHandler;
         public ProductManager(List<Product> products, List<Supplier> suppliers)
         {
             Products = products;
             Suppliers = suppliers;
+            inputHandler = new ProductInputHandler();
         }
-        ProductInputHandler inputHandler = new ProductInputHandler();
 
         /// <summary>
         /// Function to add new products
@@ -93,7 +94,7 @@ namespace LINQ.Controller.ProductHandler
                         {
                             case 1:
                                 Supplier? supplierToEdit = FindSupplier(productToEdit);
-                                productToEdit.ProductID = Validator.GetUniqueProductID(Helper.GetValidNumber("new productid :"), Products);
+                                productToEdit.ProductID = Validator.GetUniqueProductID(Helper.GetValidNumber("new product_id :"), Products);
                                 supplierToEdit.SupplierID = productToEdit.ProductID;
                                 supplierToEdit.SupplierName = $"Supplier_{productToEdit.ProductID}";
                                 supplierToEdit.ProductID = productToEdit.ProductID;
@@ -111,7 +112,9 @@ namespace LINQ.Controller.ProductHandler
                             case 5:
                                 canExit = "n";
                                 break;
-                            default: Console.WriteLine("Please enter a valid choice"); break;
+                            default:
+                                Console.WriteLine("Please enter a valid choice");
+                                break;
                         }
                         if (canExit.Equals("y", StringComparison.OrdinalIgnoreCase))
                         {
@@ -138,6 +141,9 @@ namespace LINQ.Controller.ProductHandler
             productTable.Write(Format.Alternative);
         }
 
+        /// <summary>
+        /// Displays products along with their suppliers.
+        /// </summary>
         public void DisplayProductWithSuppliers()
         {
             var productWithSuppliers = from product in Products
@@ -180,13 +186,12 @@ namespace LINQ.Controller.ProductHandler
         {
             Console.WriteLine("--------Deleting Product-------");
             if (!Validator.isEmpty(Products))
-                ViewProducts();
             {
+                ViewProducts();
                 Product? productToDelete = SearchProduct();
                 if (productToDelete != null)
                 {
                     string choice;
-
                     do
                     {
                         Console.WriteLine("Do you wish to delete this product from inventory ?");
@@ -197,11 +202,11 @@ namespace LINQ.Controller.ProductHandler
                             Products.Remove(productToDelete);
                             Suppliers.Remove(FindSupplier(productToDelete));
                         }
-                        else if (choice.Equals("n") || choice.Equals("N"))
+                        else if (choice.Equals("n", StringComparison.OrdinalIgnoreCase))
                         {
                             Console.WriteLine("Canceling delete....");
                         }
-                    } while (!choice.Equals("y") && !choice.Equals("Y") && !choice.Equals("N") && !choice.Equals("n"));
+                    } while (!choice.Equals("y", StringComparison.OrdinalIgnoreCase) && !choice.Equals("N", StringComparison.OrdinalIgnoreCase));
                 }
             }
         }

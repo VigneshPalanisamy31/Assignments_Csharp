@@ -9,15 +9,15 @@ namespace LINQ.View
         /// <summary>
         /// Function to handle all querying tasks (filter,sort,join)
         /// </summary>
-        /// <param name="products">List of prodducts</param>
+        /// <param name="products">List of products</param>
         /// <param name="suppliers">List of suppliers</param>
         public static void DisplayQueryMenu(List<Product> products, List<Supplier> suppliers)
         {
+            bool isJoinApplied = false;
+            bool canExit = false;
             QueryBuilder<Product> resultBuilder = new(products);
             Console.Clear();
             Helper.WriteInColor("Building queries....", ConsoleColor.Green);
-            bool canExit = false;
-            bool isJoinApplied = false;
             while (!canExit)
             {
                 Helper.WriteInColor("\n1.Filter Conditions\n2.Sort Conditions\n3.Join Suppliers\n4.Execute", ConsoleColor.Yellow);
