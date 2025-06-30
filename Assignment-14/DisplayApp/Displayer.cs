@@ -19,17 +19,17 @@ namespace DisplayApp
             float firstNumber;
             float secondNumber;
             while (!canExit)
-            { 
+            {
                 Console.WriteLine("========Basic ArithMetics========");
                 Console.WriteLine("\n\n1.Add\n2.Subtract\n3.Multiply\n4.Divide\n5.Exit\n");
                 Console.WriteLine("Enter your choice:");
-                int choice = Helper.GetValidChoice(Console.ReadLine());
+                int choice = Helper.GetValidChoice();
                 if (choice > 0 && choice < 5)
                 {
                     Console.WriteLine("\n\nEnter Number 1: ");
-                    firstNumber = Helper.GetValidNumber(Console.ReadLine());
+                    firstNumber = Helper.GetValidNumber();
                     Console.WriteLine("\nEnter Number 2: ");
-                    secondNumber = Helper.GetValidNumber(Console.ReadLine());
+                    secondNumber = Helper.GetValidNumber();
                     switch (choice)
                     {
                         case 1:
@@ -50,10 +50,10 @@ namespace DisplayApp
                             break;
                     }
                 }
-                else if(choice==5)
-                   canExit = true;
+                else if (choice == 5)
+                    canExit = true;
                 else
-                   Console.WriteLine("Please enter a valid choice\n");
+                    Console.WriteLine("Please enter a valid choice\n");
                 Console.WriteLine("\nPress any key to continue...");
                 Console.ReadKey();
                 Console.Clear();
