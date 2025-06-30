@@ -37,8 +37,8 @@
         /// </summary>
         public void AddStudentMark()
         {
-            int bookCount = Validator.GetValidInt("number of students");
-            for (int i = 0; i < bookCount; i++)
+            int studentsCount = Validator.GetValidInt("number of students");
+            for (int i = 0; i < studentsCount; i++)
             {
                 marks.Add(Validator.GetValidString($"name of student {i + 1}"),Validator.GetValidInt("mark"));
             }

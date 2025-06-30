@@ -2,7 +2,7 @@
 {
     public class GenericDictionary<TKey, TValue>
     {
-        private Dictionary<TKey, TValue> dict = new();
+        private Dictionary<TKey, TValue> dictionary = new();
 
         /// <summary>
         /// Function to add a key value pair to a generic dictionary.
@@ -11,9 +11,9 @@
         /// <param name="value">Value</param>
         public void Add(TKey key, TValue value)
         {
-            if (!dict.ContainsKey(key))
+            if (!dictionary.ContainsKey(key))
             {
-                dict[key] = value;
+                dictionary[key] = value;
                 Console.WriteLine($"Added: [{key}] = {value}");
             }
             else
@@ -23,10 +23,10 @@
         /// <summary>
         /// Function to remove an entry from the generic dictionary.
         /// </summary>
-        /// <param name="key">Key</param>
+        /// <param name="key">Key of the pair to be removed</param>
         public void Remove(TKey key)
         {
-            if (dict.Remove(key))
+            if (dictionary.Remove(key))
                 Console.WriteLine($"Removed: {key}");
             else
                 Console.WriteLine($"Key not found: {key}");
@@ -35,10 +35,10 @@
         /// <summary>
         /// Function to search for a key in the generic dictionary.
         /// </summary>
-        /// <param name="key">Key</param>
+        /// <param name="key">Key of the pair to be searched</param>
         public void Search(TKey key)
         {
-            if (dict.TryGetValue(key, out var value))
+            if (dictionary.TryGetValue(key, out var value))
                 Console.WriteLine($" Found: [{key}] = {value}");
             else
                 Console.WriteLine($"Key not found: {key}");
@@ -50,7 +50,7 @@
         public void Display()
         {
             Console.WriteLine("DICTIONARY Contents:");
-            foreach (var pair in dict)
+            foreach (var pair in dictionary)
             {
                 Console.WriteLine($"{pair.Key} : {pair.Value}");
             }

@@ -3,6 +3,7 @@
     internal class PeopleQueueManager
     {
         Queue<string> people = new Queue<string>();
+
         /// <summary>
         /// Displays menu to work with queues
         /// </summary>
@@ -69,7 +70,7 @@
                 Helper.WriteInColor("\nQueue is empty", ConsoleColor.Red);
             else
                 Helper.WriteInColor("Queue Of People\n", ConsoleColor.Yellow);
-            foreach (var person in people)
+            foreach (string person in people)
             {
                 Console.WriteLine($"\n{person}");
             }
