@@ -34,7 +34,7 @@ namespace AsyncFileDataProcessor
         /// <returns></returns>
         private static string GetFilePath(FileEndPoint fileEndPoint)
         {
-            Console.Write($"Enter relative file path of {fileEndPoint.ToString()} file (Eg: MainFile.txt): ");
+            Console.Write($"Enter relative file path of {fileEndPoint.ToString()} file (Ex: MainFile.txt): ");
             string filePath = Console.ReadLine();
             if (filePath.Contains(".txt"))
                 return filePath;
