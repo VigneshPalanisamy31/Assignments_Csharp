@@ -2,6 +2,7 @@
 {
     public class ReadOnlyDictionaryViewer
     {
+
         /// <summary>
         /// Function that calculates the sum of elements in the given collection.
         /// </summary>
@@ -55,7 +56,7 @@
         /// <summary>
         /// Function to print a read-only dictionary
         /// </summary>
-        /// <param name="dictionary"></param>
+        /// <param name="dictionary">dictionary whose elements are to be printed</param>
         public static void PrintDictionary(IReadOnlyDictionary<string, int> dictionary)
         {
             foreach (var keyValuePair in dictionary)

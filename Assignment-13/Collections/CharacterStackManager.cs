@@ -12,10 +12,10 @@
             Stack<char> characters = new Stack<char>();
             Console.WriteLine("\nPushing characters onto the stack..");
             Console.ForegroundColor = ConsoleColor.Green;
-            foreach(char c in inputString)
+            foreach(char character in inputString)
             {
-                characters.Push(c);
-                Console.Write(c + " ");
+                characters.Push(character);
+                Console.Write(character + " ");
                 Thread.Sleep(200);
             }
             Console.ResetColor();

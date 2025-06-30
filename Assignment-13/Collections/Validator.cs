@@ -3,8 +3,9 @@ namespace Collections
 {
     internal class Validator
     {
+
         /// <summary>
-        /// Function to validate user-entered integer value.
+        /// Function to get a valid integer from user.
         /// </summary>
         /// <param name="displayMessage">Message to display to the console</param>
         /// <returns>valid integer</returns>
@@ -22,11 +23,10 @@ namespace Collections
         }
 
         /// <summary>
-        /// Function to validate user-entered string value.
+        /// Function to get a valid string from user.
         /// </summary>
         /// <param name="displayMessage">Message to display to the console</param>
         /// <returns>valid string</returns>
-
         public static string GetValidString(string displayMessage)
         {
             while (true)
