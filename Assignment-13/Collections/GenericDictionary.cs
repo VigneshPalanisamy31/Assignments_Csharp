@@ -5,7 +5,7 @@
         private Dictionary<TKey, TValue> dictionary = new();
 
         /// <summary>
-        /// Function to add a key value pair to a generic dictionary.
+        /// Adds a key value pair to a generic dictionary.
         /// </summary>
         /// <param name="key">Key</param>
         /// <param name="value">Value</param>
@@ -21,7 +21,7 @@
         }
 
         /// <summary>
-        /// Function to remove an entry from the generic dictionary.
+        /// Removes an entry from the generic dictionary.
         /// </summary>
         /// <param name="key">Key of the pair to be removed</param>
         public void Remove(TKey key)
@@ -33,7 +33,7 @@
         }
 
         /// <summary>
-        /// Function to search for a key in the generic dictionary.
+        /// Searches for a key in the generic dictionary.
         /// </summary>
         /// <param name="key">Key of the pair to be searched</param>
         public void Search(TKey key)
@@ -45,7 +45,7 @@
         }
 
         /// <summary>
-        /// Function to display all the key value pairs in the generic dictionary.
+        /// Displays all the key value pairs in the generic dictionary.
         /// </summary>
         public void Display()
         {

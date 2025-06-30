@@ -10,7 +10,7 @@
                 {
                     Console.WriteLine("1.Working with Lists\n2.Using Stacks\n3.Working with Queues\n4.Understanding Dictionaries" +
                                       "\n5.Generics \n6.IEnumerable & IReadOnlyDictionary\n7.Exit\n");
-                    int choice = Validator.GetValidInt("choice");
+                    int choice = Validator.GetValidInt("Enter the choice :");
                     switch (choice)
                     {
                         case 1:
@@ -57,7 +57,7 @@
                     Console.Clear();
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine($"Exception: {e.Message}");
             }

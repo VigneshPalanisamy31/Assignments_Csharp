@@ -4,7 +4,7 @@
     {
 
         /// <summary>
-        /// Function that calculates the sum of elements in the given collection.
+        /// Calculates the sum of elements in the given collection.
         /// </summary>
         /// <param name="numbers">List of numbers</param>
         /// <returns>sum of elements</returns>
@@ -14,9 +14,9 @@
         }
 
         /// <summary>
-        /// Function to test the SumOfElements() for various collection inputs.
+        /// Tests the SumOfElements() for various collection inputs.
         /// </summary>
-       public static void TestSumOfElements()
+        public static void TestSumOfElements()
         {
             List<int> integerList = new List<int> { 1, 2, 3, 4 };
             int[] array = { 5, 6, 7 };
@@ -37,14 +37,14 @@
             Console.WriteLine($"Array Sum: {SumOfElements(array)}");
             Console.WriteLine($"Queue Sum: {SumOfElements(queue)}");
         }
-       
+
         /// <summary>
-        /// Function to generate a read-only dictionary
+        /// Generates a read-only dictionary
         /// </summary>
         /// <returns>IReadOnlyDictionary object</returns>
         public static IReadOnlyDictionary<string, int> GenerateDictionary()
         {
-            var dict = new Dictionary<string, int>
+            Dictionary<string, int> dict = new Dictionary<string, int>
         {
             { "Aston Martin", 100 },
             { "BMW", 200 },
@@ -54,7 +54,7 @@
         }
 
         /// <summary>
-        /// Function to print a read-only dictionary
+        /// Prints a read-only dictionary
         /// </summary>
         /// <param name="dictionary">dictionary whose elements are to be printed</param>
         public static void PrintDictionary(IReadOnlyDictionary<string, int> dictionary)
@@ -66,7 +66,7 @@
         }
 
         /// <summary>
-        /// Function to display message that readonly dictionary cannot be modified
+        /// Displays message that readonly dictionary cannot be modified
         /// </summary>
         /// <param name="dictionary">Read-only Dictionary</param>
         public static void AttemptToModifyDictionary(IReadOnlyDictionary<string, int> dictionary)

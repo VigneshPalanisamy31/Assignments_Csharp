@@ -11,15 +11,15 @@ namespace Collections
         /// <returns>valid integer</returns>
         public static int GetValidInt(string displayMessage)
         {
-            while(true)
+            while (true)
             {
-                Console.WriteLine($"\nEnter the {displayMessage} :");
-                string? input=Console.ReadLine();
-                if(int.TryParse(input, out int value)&&value>0 )
+                Console.WriteLine(displayMessage);
+                string? input = Console.ReadLine();
+                if (int.TryParse(input, out int value) && value > 0)
                     return value;
                 else
-                   Helper.WriteInColor($"\nInvalid {displayMessage} (required format:positive integer",ConsoleColor.Red);
-           }
+                    Helper.WriteInColor($"\nInvalid input (required format:positive integer)", ConsoleColor.Red);
+            }
         }
 
         /// <summary>
@@ -31,13 +31,13 @@ namespace Collections
         {
             while (true)
             {
-                Console.WriteLine($"\nEnter the {displayMessage}");
-                string? validName=Console.ReadLine();
-                if (validName!=null&&Regex.IsMatch(validName,@"^[A-Za-z][A-Za-z0-9]{2,}"))
+                Console.WriteLine(displayMessage);
+                string? validName = Console.ReadLine();
+                if (validName != null && Regex.IsMatch(validName, @"^[A-Za-z][A-Za-z0-9]{2,}"))
                     return validName;
                 else
                 {
-                    Helper.WriteInColor("\nInvalid Name", ConsoleColor.Red);
+                    Helper.WriteInColor("\nInvalid Input", ConsoleColor.Red);
                 }
             }
         }

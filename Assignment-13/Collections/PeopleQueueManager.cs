@@ -15,7 +15,7 @@
                 Console.Clear();
                 Helper.WriteInColor("============Queue of People============", ConsoleColor.Yellow);
                 Helper.WriteInColor("\n1.Add\n2.Remove\n3.Display\n4.Exit", ConsoleColor.Yellow);
-                int choice = Validator.GetValidInt("choice");
+                int choice = Validator.GetValidInt("Enter the choice :");
                 switch (choice)
                 {
                     case 1: Enqueue(); break;
@@ -34,21 +34,21 @@
         }
 
         /// <summary>
-        /// Function to add people to the queue
+        /// Adds people to the queue
         /// </summary>
         public void Enqueue()
         {
             Console.WriteLine("Enter the number of people to be queued...");
-            int queueSize = Validator.GetValidInt("size");
+            int queueSize = Validator.GetValidInt("Enter the queue size :");
             for (int i = 0; i < queueSize; i++)
             {
-                people.Enqueue(Validator.GetValidString($"name of person {i + 1}"));
+                people.Enqueue(Validator.GetValidString($"Enter the name of person {i + 1} :"));
             }
             Helper.WriteInColor("\nQueue created successfully..", ConsoleColor.Green);
         }
 
         /// <summary>
-        /// Function to remove people from queue
+        /// Removes people from queue
         /// </summary>
         public void Dequeue()
         {
@@ -62,7 +62,7 @@
         }
 
         /// <summary>
-        /// Function to display people in the queue
+        /// Displays people in the queue
         /// </summary>
         public void DisplayPeople()
         {
