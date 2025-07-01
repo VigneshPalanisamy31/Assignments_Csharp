@@ -2,12 +2,13 @@
 {
     internal class QueryBuilder<T>
     {
-        List<Func<T, bool>> filters = new List<Func<T, bool>>();
-        Func<IEnumerable<T>, IOrderedEnumerable<T>>? sorter;
-        List<T> products;
-        public QueryBuilder(List<T> Products)
+        private List<Func<T, bool>> _filters;
+        private Func<IEnumerable<T>, IOrderedEnumerable<T>>? _sorter;
+        private List<T> _products;
+        public QueryBuilder(List<T> _products)
         {
-            products = Products;
+            this._products = _products;
+            _filters = new List<Func<T, bool>>();
         }
 
         /// <summary>
@@ -17,7 +18,7 @@
         /// <returns>The updated query builder</returns>
         public QueryBuilder<T> Filter(Func<T, bool> filter)
         {
-            filters.Add(filter);
+            _filters.Add(filter);
             return this;
         }
         /// <summary>
@@ -28,7 +29,7 @@
         /// <returns>The updated query builder</returns>
         public QueryBuilder<T> SortBy<Tkey>(Func<T, Tkey> sortcolumn)
         {
-            sorter = products => products.OrderBy(sortcolumn);
+            _sorter = products => products.OrderBy(sortcolumn);
             return this;
         }
         /// <summary>
@@ -48,7 +49,7 @@
         Func<TOther, TKey> innerKeySelector,
         Func<T, TOther, TResult> resultSelector)
         {
-            var joined = from outer in products
+            var joined = from outer in _products
                          join inner in otherCollection
                          on outerKeySelector(outer) equals innerKeySelector(inner)
                          select resultSelector(outer, inner);
@@ -62,14 +63,14 @@
         /// <returns>A collection with all executed filters and sort</returns>
         public IEnumerable<T> Execute()
         {
-            IEnumerable<T> query = products;
-            foreach (var filter in filters)
+            IEnumerable<T> query = _products;
+            foreach (var filter in _filters)
             {
                 query = query.Where(filter);
             }
-            if (sorter != null)
+            if (_sorter != null)
             {
-                query = sorter(query);
+                query = _sorter(query);
             }
             return query;
         }

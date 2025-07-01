@@ -79,7 +79,9 @@ namespace LINQ.View
                         {
 
                             if (sortChoice == 2)
+                            {
                                 resultBuilder.SortBy(p => p.ProductName);
+                            }
                             resultBuilder.SortBy(p => p.Price);
                             Helper.WriteInColor("Filter Added Successfully", ConsoleColor.Green);
                         }

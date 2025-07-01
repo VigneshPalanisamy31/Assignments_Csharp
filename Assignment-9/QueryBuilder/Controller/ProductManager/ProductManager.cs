@@ -5,13 +5,13 @@ namespace LINQ.Controller.ProductHandler
 {
     internal class ProductManager
     {
-        private List<Product> Products;
-        private List<Supplier> Suppliers;
-        ProductInputHandler inputHandler;
+        private List<Product> _products;
+        private List<Supplier> _suppliers;
+        private ProductInputHandler inputHandler;
         public ProductManager(List<Product> products, List<Supplier> suppliers)
         {
-            Products = products;
-            Suppliers = suppliers;
+            _products = products;
+            _suppliers = suppliers;
             inputHandler = new ProductInputHandler();
         }
 
@@ -21,10 +21,10 @@ namespace LINQ.Controller.ProductHandler
         public void AddNewProduct()
         {
             Console.WriteLine("--------Adding New Product-------");
-            Product? product = inputHandler.GetProductDetails(Products);
-            Products.Add(product);
-            Suppliers.Add(new Supplier(Suppliers.Count + 1, $"Supplier_{product.ProductID}", product.ProductID));
-            Products = Products.OrderBy(p => p.ProductID).ToList();
+            Product? product = inputHandler.GetProductDetails(_products);
+            _products.Add(product);
+            _suppliers.Add(new Supplier(_suppliers.Count + 1, $"Supplier_{product.ProductID}", product.ProductID));
+            _products = _products.OrderBy(p => p.ProductID).ToList();
             Helper.WriteInColor("Product added to inventory successfully....", ConsoleColor.Green);
         }
 
@@ -34,7 +34,7 @@ namespace LINQ.Controller.ProductHandler
         /// <returns>an object of matched product</returns>
         public Product? SearchProduct()
         {
-            if (!Validator.isEmpty(Products))
+            if (!Validator.isEmpty(_products))
             {
                 Console.WriteLine("Enter the name or id of the product :(press -1 to exit)");
                 string? key = Console.ReadLine();
@@ -45,7 +45,7 @@ namespace LINQ.Controller.ProductHandler
                 }
                 if (!int.TryParse(key, out int search))
                 {
-                    foreach (Product product in Products)
+                    foreach (Product product in _products)
                     {
                         if (product.ProductName.Equals(key, StringComparison.OrdinalIgnoreCase))
                         {
@@ -56,7 +56,7 @@ namespace LINQ.Controller.ProductHandler
                 }
                 else
                 {
-                    foreach (Product product in Products)
+                    foreach (Product product in _products)
                     {
                         if (product.ProductID == search)
                         {
@@ -75,7 +75,7 @@ namespace LINQ.Controller.ProductHandler
         /// </summary>
         public void EditProduct()
         {
-            if (!Validator.isEmpty(Products))
+            if (!Validator.isEmpty(_products))
             {
                 ViewProducts();
                 Product productToEdit = SearchProduct();
@@ -94,14 +94,14 @@ namespace LINQ.Controller.ProductHandler
                         {
                             case 1:
                                 Supplier? supplierToEdit = FindSupplier(productToEdit);
-                                productToEdit.ProductID = Validator.GetUniqueProductID(Helper.GetValidNumber("new product_id :"), Products);
+                                productToEdit.ProductID = Validator.GetUniqueProductID(Helper.GetValidNumber("new product_id :"), _products);
                                 supplierToEdit.SupplierID = productToEdit.ProductID;
                                 supplierToEdit.SupplierName = $"Supplier_{productToEdit.ProductID}";
                                 supplierToEdit.ProductID = productToEdit.ProductID;
 
                                 break;
                             case 2:
-                                productToEdit.ProductName = Validator.GetUniqueProductName(Helper.GetValidName("new product name :"), Products);
+                                productToEdit.ProductName = Validator.GetUniqueProductName(Helper.GetValidName("new product name :"), _products);
                                 break;
                             case 3:
                                 productToEdit.Price = Helper.GetValidPrice();
@@ -122,7 +122,7 @@ namespace LINQ.Controller.ProductHandler
                             Console.WriteLine("Do you wish to continue editing?");
                             canExit = Helper.GetValidName("[y/n]");
                         }
-                        Products = Products.OrderBy(p => p.ProductID).ToList();
+                        _products = _products.OrderBy(p => p.ProductID).ToList();
                     } while (!canExit.Equals("n", StringComparison.OrdinalIgnoreCase));
                 }
             }
@@ -134,7 +134,7 @@ namespace LINQ.Controller.ProductHandler
         public void ViewProducts()
         {
             ConsoleTable productTable = new("ProductId", "Product Name", "Price", "Category");
-            foreach (Product product in Products)
+            foreach (Product product in _products)
             {
                 productTable.AddRow(product.ProductID, product.ProductName, product.Price, product.Category);
             }
@@ -146,8 +146,8 @@ namespace LINQ.Controller.ProductHandler
         /// </summary>
         public void DisplayProductWithSuppliers()
         {
-            var productWithSuppliers = from product in Products
-                                       join supplier in Suppliers
+            var productWithSuppliers = from product in _products
+                                       join supplier in _suppliers
                                        on product.ProductID equals supplier.ProductID
                                        select new
                                        {
@@ -185,7 +185,7 @@ namespace LINQ.Controller.ProductHandler
         public void DeleteProduct()
         {
             Console.WriteLine("--------Deleting Product-------");
-            if (!Validator.isEmpty(Products))
+            if (!Validator.isEmpty(_products))
             {
                 ViewProducts();
                 Product? productToDelete = SearchProduct();
@@ -199,8 +199,8 @@ namespace LINQ.Controller.ProductHandler
                         if (choice.Equals("y") || choice.Equals("Y"))
                         {
                             Console.WriteLine("Product deleted from inventory successfully");
-                            Products.Remove(productToDelete);
-                            Suppliers.Remove(FindSupplier(productToDelete));
+                            _products.Remove(productToDelete);
+                            _suppliers.Remove(FindSupplier(productToDelete));
                         }
                         else if (choice.Equals("n", StringComparison.OrdinalIgnoreCase))
                         {
@@ -218,10 +218,12 @@ namespace LINQ.Controller.ProductHandler
         /// <returns>Supplier of the given product</returns>
         public Supplier? FindSupplier(Product product)
         {
-            foreach (Supplier supplier in Suppliers)
+            foreach (Supplier supplier in _suppliers)
             {
                 if (supplier.ProductID == product.ProductID)
+                {
                     return supplier;
+                }
             }
             return null;
         }

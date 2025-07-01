@@ -8,16 +8,16 @@ namespace LINQ.Utilities
         /// Function to get unique product name.
         /// </summary>
         /// <param name="productName">Product name to be checked</param>
-        /// <param name="Products">List of products to check from</param>
+        /// <param name="products">List of products to check from</param>
         /// <returns>New unique product name</returns>
-        public static string GetUniqueProductName(string productName, List<Product> Products)
+        public static string GetUniqueProductName(string productName, List<Product> products)
         {
             while (true)
             {
                 bool isUniqueProduct = true;
-                foreach (Product p in Products)
+                foreach (Product product in products)
                 {
-                    if (p.ProductName.Equals(productName, StringComparison.OrdinalIgnoreCase))
+                    if (product.ProductName.Equals(productName, StringComparison.OrdinalIgnoreCase))
                     {
                         Console.WriteLine("A product with same name exists..");
                         isUniqueProduct = false;
@@ -25,9 +25,10 @@ namespace LINQ.Utilities
                     }
                 }
                 if (isUniqueProduct)
+                {
                     return productName;
-                else
-                    productName = Helper.GetValidName("a different product name :");
+                }
+                productName = Helper.GetValidName("a different product name :");
             }
         }
 
@@ -35,19 +36,19 @@ namespace LINQ.Utilities
         /// Function to get unique product id.
         /// </summary>
         /// <param name="productID">Product ID to be checked</param>
-        /// <param name="Products">List of products to check from</param>
+        /// <param name="products">List of products to check from</param>
         /// <returns>New unique product id</returns>
-        public static int GetUniqueProductID(int productID, List<Product> Products)
+        public static int GetUniqueProductID(int productID, List<Product> products)
         {
             bool canExit = false;
             while (!canExit)
             {
-                foreach (Product p in Products)
+                foreach (Product product in products)
                 {
-                    if (p.ProductID == productID)
+                    if (product.ProductID == productID)
                     {
                         Helper.WriteInColor("A product with same id exists..", ConsoleColor.Red);
-                        return GetUniqueProductID(Helper.GetValidNumber("different product id :"), Products);
+                        return GetUniqueProductID(Helper.GetValidNumber("different product id :"), products);
                     }
                 }
                 canExit = true;

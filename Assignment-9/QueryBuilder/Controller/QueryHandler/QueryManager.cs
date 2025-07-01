@@ -66,7 +66,9 @@ namespace LINQ.Controller.QueryHandler
                                    };
             ConsoleTable table = new("ProductId", "Product Name", "Supplier Name");
             foreach (var product in productSuppliers)
-                table.AddRow(product.ProductID, product.ProductName, product.SupplierName); ;
+            {
+                table.AddRow(product.ProductID, product.ProductName, product.SupplierName);
+            }
             Helper.WriteInColor("\nProducts along with their suppliers", ConsoleColor.Yellow);
             table.Write(Format.Alternative);
         }
@@ -117,10 +119,10 @@ namespace LINQ.Controller.QueryHandler
         /// <typeparam name="TKey"></typeparam>
         /// <param name="products">List of products</param>
         /// <param name="category">Category of products to sort</param>
-        /// <param name="KeyField">Key to sort by</param>
-        public void SortProductsOfCategoryByKey<TKey>(List<Product> products, string category, Func<Product, TKey> KeyField)
+        /// <param name="keyField">Key to sort by</param>
+        public void SortProductsOfCategoryByKey<TKey>(List<Product> products, string category, Func<Product, TKey> keyField)
         {
-            List<Product>? books = products.Where(p => p.Category.Equals(category, StringComparison.OrdinalIgnoreCase)).OrderByDescending(KeyField).ToList();
+            List<Product>? books = products.Where(p => p.Category.Equals(category, StringComparison.OrdinalIgnoreCase)).OrderByDescending(keyField).ToList();
             Helper.WriteInColor("Books sorted by price (Highest to Lowest)\n", ConsoleColor.Yellow);
             ConsoleTable table = new("Book Name", "Price");
             foreach (Product book in books)
