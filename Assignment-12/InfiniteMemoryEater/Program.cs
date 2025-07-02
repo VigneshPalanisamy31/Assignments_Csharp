@@ -3,7 +3,7 @@ namespace InfiniteMemoryEater
 {
     public class MemoryEater
     {
-        List<int[]> memoryAllocator = new List<int[]>();
+        private List<int[]> memoryAllocator = new List<int[]>();
 
         /// <summary>
         /// Creates arrays infinitely
@@ -19,7 +19,7 @@ namespace InfiniteMemoryEater
     }
     internal class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             MemoryEater infiniteMemoryEater = new MemoryEater();
             infiniteMemoryEater.Allocate();

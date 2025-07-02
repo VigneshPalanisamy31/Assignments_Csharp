@@ -2,7 +2,7 @@
 {
     public class MemoryEater
     {
-        List<int[]> memoryAllocator = new List<int[]>();
+        private List<int[]> memoryAllocator = new List<int[]>();
 
         /// <summary>
         /// Create List of Arrays infinitely but triggers garbage collection after every 1000 arrays
@@ -25,7 +25,7 @@
     }
     internal class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             MemoryEater restrictedMemoryEater = new MemoryEater();
             restrictedMemoryEater.Allocate();
