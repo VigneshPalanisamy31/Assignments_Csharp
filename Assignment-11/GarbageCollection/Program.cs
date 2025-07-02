@@ -42,7 +42,7 @@
         /// <summary>
         /// Prints current heap memory usage.
         /// </summary>
-        /// <param name="displayMessage">Print message</param>
+        /// <param name="displayMessage">Display message</param>
         public static void PrintMemory(string displayMessage)
         {
             long totalMemory = GC.GetTotalMemory(false);

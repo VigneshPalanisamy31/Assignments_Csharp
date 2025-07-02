@@ -21,7 +21,9 @@
         {
             int[] array = new int[size];
             for (int i = 0; i < size; i++)
+            {
                 array[i] = i;
+            }
         }
 
         /// <summary>
@@ -42,10 +44,10 @@
                 Console.WriteLine($"Values of value type and reference type before modifying :\n");
                 Console.ResetColor();
                 Console.WriteLine($"ValueType (int) : {valueType}\nReferenceType (class) : {referenceType.Name}");
+
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("\nModifying the values....\n");
                 Console.ResetColor();
-
                 Modify(valueType, referenceType);
 
                 Console.ForegroundColor = ConsoleColor.Yellow;
