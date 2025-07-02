@@ -2,7 +2,11 @@
 {
     internal class PeopleQueueManager
     {
-        Queue<string> people = new Queue<string>();
+        private Queue<string> people;
+        public PeopleQueueManager()
+        {
+            people = new();
+        }
 
         /// <summary>
         /// Displays menu to work with queues
@@ -18,12 +22,23 @@
                 int choice = Validator.GetValidInt("Enter the choice :");
                 switch (choice)
                 {
-                    case 1: Enqueue(); break;
-                    case 2: Dequeue(); break;
-                    case 3: DisplayPeople(); break;
+                    case 1:
+                        Enqueue();
+                        break;
+
+                    case 2:
+                        Dequeue();
+                        break;
+
+                    case 3:
+                        DisplayPeople();
+                        break;
+
                     case 4:
                         canExit = true;
-                        Console.WriteLine("Exiting"); break;
+                        Console.WriteLine("Exiting");
+                        break;
+
                     default:
                         Helper.WriteInColor("\nInvalid choice", ConsoleColor.Red);
                         break;
@@ -53,7 +68,9 @@
         public void Dequeue()
         {
             if (people.Count == 0)
+            {
                 Helper.WriteInColor("\nQueue is empty..", ConsoleColor.Red);
+            }
             else
             {
                 Helper.WriteInColor($"Dequeued person : {people.Dequeue().ToString()}", ConsoleColor.Green);
@@ -67,12 +84,16 @@
         public void DisplayPeople()
         {
             if (people.Count == 0)
-                Helper.WriteInColor("\nQueue is empty", ConsoleColor.Red);
-            else
-                Helper.WriteInColor("Queue Of People\n", ConsoleColor.Yellow);
-            foreach (string person in people)
             {
-                Console.WriteLine($"\n{person}");
+                Helper.WriteInColor("\nQueue is empty", ConsoleColor.Red);
+            }
+            else
+            {
+                Helper.WriteInColor("Queue Of People\n", ConsoleColor.Yellow);
+                foreach (string person in people)
+                {
+                    Console.WriteLine($"\n{person}");
+                }
             }
         }
     }

@@ -23,7 +23,8 @@
                     activeType = "stack";
                     break;
                 default:
-                    throw new ArgumentException("Invalid collection type. Choose 'list', 'queue', or 'stack'.");
+                    Console.WriteLine("Invalid collection type. Choose 'list', 'queue', or 'stack'.");
+                    break;
             }
         }
 
@@ -59,13 +60,25 @@
             switch (activeType)
             {
                 case "list":
-                    foreach (var item in list) Console.WriteLine(item);
+                    foreach (var item in list)
+                    {
+                        Console.WriteLine(item);
+                    }
+
                     break;
+
                 case "queue":
-                    foreach (var item in queue) Console.WriteLine(item);
+                    foreach (var item in queue)
+                    {
+                        Console.WriteLine(item);
+                    }
                     break;
+
                 case "stack":
-                    foreach (var item in stack) Console.Write(item);
+                    foreach (var item in stack)
+                    {
+                        Console.Write(item);
+                    }
                     break;
             }
         }
@@ -84,12 +97,14 @@
                         list.RemoveAt(0);
                     }
                     break;
+
                 case "queue":
                     while (queue.Count > 0)
                     {
                         Console.WriteLine($"Removed from queue: {queue.Dequeue()}");
                     }
                     break;
+
                 case "stack":
                     while (stack.Count > 0)
                     {

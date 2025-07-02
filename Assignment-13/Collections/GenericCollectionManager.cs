@@ -46,7 +46,16 @@
                             Console.Write(".");
                         }
                         GenericCollection<char> characterStack = new GenericCollection<char>("stack");
-                        characterStack.Add('G'); characterStack.Add('e'); characterStack.Add('n'); characterStack.Add('e'); characterStack.Add('r'); characterStack.Add('i'); characterStack.Add('c'); characterStack.Add('s');
+
+                        characterStack.Add('G');
+                        characterStack.Add('e');
+                        characterStack.Add('n');
+                        characterStack.Add('e');
+                        characterStack.Add('r');
+                        characterStack.Add('i');
+                        characterStack.Add('c');
+                        characterStack.Add('s');
+
                         Thread.Sleep(1000);
                         Helper.WriteInColor("\nDisplaying characters:\n", ConsoleColor.Yellow);
                         characterStack.Display();

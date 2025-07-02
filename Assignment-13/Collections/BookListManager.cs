@@ -2,7 +2,7 @@
 {
     public class BookListManager
     {
-        List<string> books = new List<string>();
+        private List<string> books = new List<string>();
         /// <summary>
         /// Displays menu to work with lists
         /// </summary>
@@ -17,13 +17,27 @@
                 int choice = Validator.GetValidInt("Enter the choice :");
                 switch (choice)
                 {
-                    case 1: AddBooks(); break;
-                    case 2: RemoveBook(); break;
-                    case 3: SearchBook(); break;
-                    case 4: DisplayBooks(); break;
+                    case 1:
+                        AddBooks();
+                        break;
+
+                    case 2:
+                        RemoveBook();
+                        break;
+
+                    case 3:
+                        SearchBook();
+                        break;
+
+                    case 4:
+                        DisplayBooks();
+                        break;
+
                     case 5:
                         canExit = true;
-                        Console.WriteLine("Exiting"); break;
+                        Console.WriteLine("Exiting");
+                        break;
+
                     default:
                         Helper.WriteInColor("\nInvalid choice", ConsoleColor.Red);
                         break;
@@ -55,13 +69,13 @@
             string bookToSearch = Validator.GetValidString("Enter the name of the book :");
             if (books.Contains(bookToSearch))
             {
-                Helper.WriteInColor("\nBook name available in the list", ConsoleColor.Green);
+                Helper.WriteInColor("\nBook name is available in the list", ConsoleColor.Green);
                 return bookToSearch;
             }
             else
             {
                 Helper.WriteInColor("\nBook name is not available in the list", ConsoleColor.Red);
-                return "";
+                return string.Empty;
             }
         }
 
@@ -71,9 +85,13 @@
         public void RemoveBook()
         {
             if (!SearchBook().Equals(string.Empty))
+            {
                 Helper.WriteInColor("\nBook deleted from List successfully..", ConsoleColor.Green);
+            }
             else
+            {
                 Helper.WriteInColor("\nDelete failed..", ConsoleColor.Red);
+            }
         }
 
         /// <summary>
@@ -82,7 +100,9 @@
         public void DisplayBooks()
         {
             if (books.Count == 0)
-                Helper.WriteInColor("\nNo Books Available", ConsoleColor.Yellow);
+            {
+                Helper.WriteInColor("\nBook list is empty", ConsoleColor.Yellow);
+            }
             else
             {
                 Helper.WriteInColor("List Of Books\n", ConsoleColor.Yellow);
