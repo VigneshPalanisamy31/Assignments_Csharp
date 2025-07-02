@@ -2,9 +2,14 @@
 {
     internal class MarksDictionaryManager
     {
-        Dictionary<string, int> marks = new Dictionary<string, int>();
+        private Dictionary<string, int> marks;
+        public MarksDictionaryManager()
+        {
+            marks = new();
+        }
+
         /// <summary>
-        /// Display menu to work with dictionaries
+        /// Displays menu to work with dictionaries
         /// </summary>
         public void UnderstandingDictionaries()
         {
@@ -17,12 +22,23 @@
                 int choice = Validator.GetValidInt("Enter the choice :");
                 switch (choice)
                 {
-                    case 1: AddStudentMark(); break;
-                    case 2: RemoveStudent(); break;
-                    case 3: DisplayMarks(); break;
+                    case 1:
+                        AddStudentMark();
+                        break;
+
+                    case 2:
+                        RemoveStudent();
+                        break;
+
+                    case 3:
+                        DisplayMarks();
+                        break;
+
                     case 4:
                         canExit = true;
-                        Console.WriteLine("Exiting"); break;
+                        Console.WriteLine("Exiting");
+                        break;
+
                     default:
                         Helper.WriteInColor("\nInvalid choice", ConsoleColor.Red);
                         break;
@@ -58,7 +74,9 @@
                 marks.Remove(nameToBeRemoved);
             }
             else
+            {
                 Helper.WriteInColor("\nStudent not found\nDelete failed...", ConsoleColor.Red);
+            }
         }
 
         /// <summary>
@@ -67,7 +85,9 @@
         public void DisplayMarks()
         {
             if (marks.Count == 0)
+            {
                 Helper.WriteInColor("\nNo marks available", ConsoleColor.Red);
+            }
             else
             {
                 Helper.WriteInColor("Marks of students\n", ConsoleColor.Yellow);

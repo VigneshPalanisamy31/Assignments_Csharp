@@ -20,22 +20,26 @@
 
                         case 2:
                             CharacterStackManager characterManager = new CharacterStackManager();
-                            characterManager.UsingStacks(); break;
+                            characterManager.UsingStacks();
+                            break;
 
                         case 3:
                             PeopleQueueManager peopleManager = new PeopleQueueManager();
-                            peopleManager.WorkingWithQueues(); break;
+                            peopleManager.WorkingWithQueues();
+                            break;
 
                         case 4:
                             MarksDictionaryManager marksManager = new MarksDictionaryManager();
-                            marksManager.UnderstandingDictionaries(); break;
+                            marksManager.UnderstandingDictionaries();
+                            break;
 
                         case 5:
                             GenericCollectionManager genericsManager = new GenericCollectionManager();
-                            genericsManager.GenericCollectionOperations(); break;
+                            genericsManager.GenericCollectionOperations();
+                            break;
 
                         case 6:
-                            Helper.WriteInColor("Testing sum of elements..\n", ConsoleColor.Yellow);
+                            Helper.WriteInColor("Testing sum of elements...\n", ConsoleColor.Yellow);
                             ReadOnlyDictionaryViewer.TestSumOfElements();
                             Thread.Sleep(2000);
                             Helper.WriteInColor("Generate Dictionary...\n", ConsoleColor.Yellow);
