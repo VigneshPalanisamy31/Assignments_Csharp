@@ -2,10 +2,10 @@
 {
     internal class ReferenceType
     {
-        public string ReferenceString { get; set; }
+        public string Name { get; set; }
         public ReferenceType(string name)
         {
-            ReferenceString = name;
+            Name = name;
         }
     }
 }

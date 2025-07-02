@@ -2,10 +2,10 @@
 {
     public class FileWriter : IDisposable
     {
-        StreamWriter streamWriter;
+        private StreamWriter streamWriter;
 
         /// <summary>
-        /// Create a new stream writer for the specific file
+        /// Creates a new stream writer and opens the file to append text
         /// </summary>
         /// <param name="filePath">Path of the file</param>
         public FileWriter(string filePath)
@@ -24,7 +24,7 @@
         }
 
         /// <summary>
-        /// Releases the file
+        /// Closes and disposes the file stream.
         /// </summary>
         public void Dispose()
         {

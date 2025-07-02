@@ -3,7 +3,7 @@
     public class Program
     {
         /// <summary>
-        /// Function to display countdown.
+        /// Displays countdown.
         /// </summary>
         /// <param name="fileOperation">File operation (Reading/Writing)</param>
         public static void CountDown(string fileOperation)
@@ -17,7 +17,7 @@
         }
 
         /// <summary>
-        /// Function to display the completion of the file operation.
+        /// Displays the completion message for the file operation.
         /// </summary>
         /// <param name="fileOperation">File operation (Reading/Writing)</param>
         public static void DisplaySuccessMessage(string fileOperation)

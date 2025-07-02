@@ -1,13 +1,13 @@
 ﻿namespace GarbageCollection
 {
-    class SampleObject
+    internal class SampleObject
     {
         public int[] array = new int[10];
-        public String[] stringarray = new String[10];
+        public String[] stringArray = new String[10];
     }
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             try
             {
@@ -17,7 +17,7 @@
                 PrintMemory("\nAfter object creation");
                 Console.WriteLine("\nTriggering GC.Collect...");
                 GC.Collect();
-                PrintMemory("\nAfter GC.Collect");
+                PrintMemory("\nAfter garbage collection (GC.Collect)");
                 Console.WriteLine("\nPress any key to exit.");
                 Console.ReadKey();
             }
@@ -28,26 +28,26 @@
         }
 
         /// <summary>
-        /// Function to create multiple objects in a for loop.
+        /// Creates multiple objects in a for loop.
         /// </summary>
-        static void CreateObjects()
+        public static void CreateObjects()
         {
             const int objectCount = 10000;
             for (int i = 0; i < objectCount; i++)
             {
-                SampleObject obj = new SampleObject();
+                SampleObject sampleObject = new SampleObject();
             }
         }
 
         /// <summary>
-        /// Function to print current heap memory usage.
+        /// Prints current heap memory usage.
         /// </summary>
-        /// <param name="label">Print message</param>
-        static void PrintMemory(string label)
+        /// <param name="displayMessage">Print message</param>
+        public static void PrintMemory(string displayMessage)
         {
             long totalMemory = GC.GetTotalMemory(false);
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"{label}: {totalMemory / (1024 * 1024)}MB");
+            Console.WriteLine($"{displayMessage}: {totalMemory / (1024 * 1024)}MB");
             Console.ResetColor();
         }
     }

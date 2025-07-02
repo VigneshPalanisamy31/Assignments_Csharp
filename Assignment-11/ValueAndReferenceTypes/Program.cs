@@ -3,29 +3,29 @@
     internal class Program
     {
         /// <summary>
-        /// Function to modify the value-type and reference-type variables.
+        /// Modifies the value-type and reference-type inputs.
         /// </summary>
         /// <param name="valueType">A value type parameter(int)</param>
         /// <param name="referenceType">A reference type </param>
         public static void Modify(int valueType, ReferenceType referenceType)
         {
             valueType = 200;
-            referenceType.ReferenceString = "Double Century";
+            referenceType.Name = "Double Century";
         }
 
         /// <summary>
-        /// Function to create an array of integers.
+        /// Creates an array of integers.
         /// </summary>
         /// <param name="size">Size of an array</param>
         public static void CreateArray(int size)
         {
-            int[] arrray = new int[size];
+            int[] array = new int[size];
             for (int i = 0; i < size; i++)
-                arrray[i] = i;
+                array[i] = i;
         }
 
         /// <summary>
-        /// Function to perform calculations with local value types.
+        /// Performs calculations with local value types.
         /// </summary>
         public static void PerformCalculations()
         {
@@ -39,19 +39,19 @@
                 int valueType = 100;
                 ReferenceType referenceType = new ReferenceType("Century");
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine($"Values of value type and reference type before method call :\n");
+                Console.WriteLine($"Values of value type and reference type before modifying :\n");
                 Console.ResetColor();
-                Console.WriteLine($"ValueType (int) : {valueType}\n" + $"\nReferenceType (class) : {referenceType.ReferenceString}");
+                Console.WriteLine($"ValueType (int) : {valueType}\nReferenceType (class) : {referenceType.Name}");
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("\nCalling method to modify both....\n");
+                Console.WriteLine("\nModifying the values....\n");
                 Console.ResetColor();
 
                 Modify(valueType, referenceType);
 
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine($"Values of value type and reference type before after call :\n");
+                Console.WriteLine($"Values of value type and reference type after modifying :\n");
                 Console.ResetColor();
-                Console.WriteLine($"ValueType (int) : {valueType}\n" + $"\nReferenceType (class) : {referenceType.ReferenceString}");
+                Console.WriteLine($"ValueType (int) : {valueType}\nReferenceType (class) : {referenceType.Name}");
                 CreateArray(1000000);
                 PerformCalculations();
                 Console.ReadKey();
