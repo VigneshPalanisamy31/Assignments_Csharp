@@ -49,12 +49,12 @@
         Func<TOther, TKey> innerKeySelector,
         Func<T, TOther, TResult> resultSelector)
         {
-            var joined = from outer in _products
+            var joinedResult = from outer in _products
                          join inner in otherCollection
                          on outerKeySelector(outer) equals innerKeySelector(inner)
                          select resultSelector(outer, inner);
 
-            return new QueryBuilder<TResult>(joined.ToList());
+            return new QueryBuilder<TResult>(joinedResult.ToList());
         }
 
         /// <summary>

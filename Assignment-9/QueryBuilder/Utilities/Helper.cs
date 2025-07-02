@@ -28,14 +28,18 @@ namespace LINQ.Utilities
             {
                 canExit = int.TryParse(Console.ReadLine(), out int number);
                 if (canExit && number > 0)
+                {
                     return number;
+                }
                 else
                 {
                     Helper.WriteInColor($"Please enter a valid {displayMessage}", ConsoleColor.Red);
                     canExit = false;
                 }
                 if (displayMessage.Contains("stock quantity"))
+                {
                     Helper.WriteInColor("(Quantity must be a whole number)", ConsoleColor.Yellow);
+                }
             }
             return 0;
         }
@@ -55,8 +59,7 @@ namespace LINQ.Utilities
                 canExit = Regex.IsMatch(name, @"^[A-Za-z]+([ '-.]*[A-Za-z0-9]+)*$");
                 if (canExit)
                     return name;
-                else
-                    Helper.WriteInColor($"Please enter a valid {displayMessage}", ConsoleColor.Red);
+                Helper.WriteInColor($"Please enter a valid {displayMessage}", ConsoleColor.Red);
             }
             return string.Empty;
         }
@@ -74,8 +77,7 @@ namespace LINQ.Utilities
                 canExit = decimal.TryParse(Console.ReadLine(), out decimal validPrice);
                 if (canExit)
                     return validPrice;
-                else
-                    Helper.WriteInColor($"Please enter a valid price:", ConsoleColor.Red);
+                Helper.WriteInColor($"Please enter a valid price:", ConsoleColor.Red);
             } while (!canExit);
             return 0;
         }
