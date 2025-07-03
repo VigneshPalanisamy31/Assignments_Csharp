@@ -1,6 +1,6 @@
 ﻿namespace ValueAndReferenceTypes
 {
-    internal class Program
+    public class Program
     {
         /// <summary>
         /// Modifies the value-type and reference-type inputs.

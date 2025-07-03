@@ -1,10 +1,5 @@
 ﻿namespace GarbageCollection
 {
-    internal class SampleObject
-    {
-        public int[] array = new int[10];
-        public String[] stringArray = new String[10];
-    }
     internal class Program
     {
         public static void Main(string[] args)
