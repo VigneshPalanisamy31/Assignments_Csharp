@@ -5,19 +5,18 @@
         /// <summary>
         /// Function to get a valid number from user.
         /// </summary>
-        /// <param name="userEnteredNumber">user entered number</param>
         /// <returns>Validated number</returns>
         public static float GetValidNumber()
         {
-            string inputNumber=Console.ReadLine();
+            string input=Console.ReadLine();
             float validNumber;
-            while (!float.TryParse(inputNumber, out validNumber))
+            while (!float.TryParse(input, out validNumber))
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Please enter a valid number");
                 Console.ResetColor();
                 Console.WriteLine("Enter a number :");
-                inputNumber = Console.ReadLine();
+                input = Console.ReadLine();
             }
             return validNumber;
         }
@@ -25,7 +24,6 @@
         /// <summary>
         /// Function to get a valid choice from user.
         /// </summary>
-        /// <param name="userEnteredChoice">User entered choice</param>
         /// <returns>Validated choice(Integer)</returns>
         public static int GetValidChoice()
         {
