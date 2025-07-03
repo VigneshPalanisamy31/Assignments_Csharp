@@ -1,8 +1,6 @@
-### Understanding Memory Management
+# Understanding Memory Management
 
 ## Implementation Details
-
----
 
 ## 1. Value and Reference Types
 
@@ -19,15 +17,12 @@
 
   ![Heap size for 1000000 elements](finalHeap.png)
 
----
-
 ## 2. Garbage Collection
 
 * Explores memory usage and reclaiming of unused resources.
 * Demonstrates how to use `GC.Collect()` to manually trigger the garbage collector.
 * Observes impact on heap memory and system behavior.
 
----
 
 ## 3. IDisposable
 
@@ -41,4 +36,3 @@
 
 > Implementing IDisposable ensures proper release of file handles, database connections, or any unmanaged memory.
 
----

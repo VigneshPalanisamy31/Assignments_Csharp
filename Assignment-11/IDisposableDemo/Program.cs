@@ -32,20 +32,20 @@
             try
             {
                 string filename = "file.txt";
-                string text = "This is a sample text to write to the file.";
+                string sampleText = "This is a sample text to write to the file.";
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("-------- Handling File Operations --------");
                 Console.ResetColor();
-                Console.WriteLine("\nWriting file...");
+                Console.WriteLine("\nWriting sample text to the file...");
                 CountDown("Writing ");
 
                 using (FileWriter fileWriter = new FileWriter(filename))
                 {
-                    fileWriter.Write(text);
+                    fileWriter.Write(sampleText);
                 }
 
                 DisplaySuccessMessage("Writing");
-                Console.WriteLine("\nReading from a file...");
+                Console.WriteLine("\nReading the contents from a file...");
                 CountDown("Reading");
                 Console.WriteLine("\nFile Contents: ");
                 Console.WriteLine("\n-------- Contents from the file --------\n");
