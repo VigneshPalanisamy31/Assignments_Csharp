@@ -10,6 +10,7 @@ namespace DisplayApp
             mathUtilHelper = mathHelper;
             ConsoleDisplay();
         }
+
         /// <summary>
         /// Displays menu to the user and calls the user requested functions
         /// </summary>
@@ -45,7 +46,6 @@ namespace DisplayApp
                             break;
 
                         case 4:
-                            if (mathUtilHelper.CalculateQuotient(firstNumber, secondNumber) != 0)
                                 Console.WriteLine($"The quotient of {firstNumber} and {secondNumber} is {mathUtilHelper.CalculateQuotient(firstNumber, secondNumber)}");
                             break;
                     }

@@ -48,7 +48,7 @@ namespace MathApp
         /// <param name="firstNumber">First number</param>
         /// <param name="secondNumber">Second number</param>
         /// <returns> Quotient after division</returns>
-        public float CalculateQuotient(float firstNumber, float secondNumber)
+        public float? CalculateQuotient(float firstNumber, float secondNumber)
         {
             try
             {
@@ -57,7 +57,7 @@ namespace MathApp
             catch (Exception e)
             {
                 Console.WriteLine($"Execution interrupted !+\n{e.Message}");
-                return 0;
+                return null;
             }
         }
     }
