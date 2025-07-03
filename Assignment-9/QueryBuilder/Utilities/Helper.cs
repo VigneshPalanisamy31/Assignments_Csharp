@@ -58,7 +58,9 @@ namespace LINQ.Utilities
                 string? name = Console.ReadLine();
                 canExit = Regex.IsMatch(name, @"^[A-Za-z]+([ '-.]*[A-Za-z0-9]+)*$");
                 if (canExit)
+                {
                     return name;
+                }
                 Helper.WriteInColor($"Please enter a valid {displayMessage}", ConsoleColor.Red);
             }
             return string.Empty;
@@ -76,7 +78,9 @@ namespace LINQ.Utilities
             {
                 canExit = decimal.TryParse(Console.ReadLine(), out decimal validPrice);
                 if (canExit)
+                {
                     return validPrice;
+                }
                 Helper.WriteInColor($"Please enter a valid price:", ConsoleColor.Red);
             } while (!canExit);
             return 0;
@@ -95,11 +99,10 @@ namespace LINQ.Utilities
             {
                 canExit = float.TryParse(Console.ReadLine(), out float validNumber);
                 if (canExit && validNumber > 0)
-                    return validNumber;
-                else
                 {
-                    Helper.WriteInColor($"Please enter a valid {displayMessage}", ConsoleColor.Red);
+                    return validNumber;
                 }
+                    Helper.WriteInColor($"Please enter a valid {displayMessage}", ConsoleColor.Red);
             }
             return 0;
         }

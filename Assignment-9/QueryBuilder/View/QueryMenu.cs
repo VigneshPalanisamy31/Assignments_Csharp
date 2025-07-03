@@ -16,7 +16,7 @@ namespace LINQ.View
             while (!canExit)
             {
                 Console.Clear();
-                if (products.Count > 0)
+                if (products.Any())
                 {
                     Helper.WriteInColor("\nQuerying Tasks", ConsoleColor.Yellow);
                     Helper.WriteInColor("1.Electronics greater than $500", ConsoleColor.Yellow);

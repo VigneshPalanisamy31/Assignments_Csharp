@@ -15,7 +15,7 @@ namespace LINQ.Controller.QueryHandler
             IEnumerable<Product> result = products.Where(product => product.Category.Equals("Electronics", StringComparison.OrdinalIgnoreCase) && product.Price > 500)
                                                   .OrderByDescending(product => product.Price);
             decimal averagePrice = result.Average(product => product.Price);
-            Helper.WriteInColor("Electronics with price greater than 500$\n\n", ConsoleColor.Yellow);
+            Helper.WriteInColor($"{category} with price greater than {price}$\n\n", ConsoleColor.Yellow);
             ConsoleTable table = new("Product Name", "Price");
             foreach (Product product in result)
             {
@@ -123,8 +123,8 @@ namespace LINQ.Controller.QueryHandler
         public void SortProductsOfCategoryByKey<TKey>(List<Product> products, string category, Func<Product, TKey> keyField)
         {
             List<Product>? books = products.Where(p => p.Category.Equals(category, StringComparison.OrdinalIgnoreCase)).OrderByDescending(keyField).ToList();
-            Helper.WriteInColor("Books sorted by price (Highest to Lowest)\n", ConsoleColor.Yellow);
-            ConsoleTable table = new("Book Name", "Price");
+            Helper.WriteInColor($"{category} sorted by {keyField} (Highest to Lowest)\n", ConsoleColor.Yellow);
+            ConsoleTable table = new($"{category}", "Price");
             foreach (Product book in books)
             {
                 table.AddRow(book.ProductName, book.Price);

@@ -7,12 +7,12 @@ namespace LINQ.Controller.ProductHandler
     {
         private List<Product> _products;
         private List<Supplier> _suppliers;
-        private ProductInputHandler inputHandler;
+        private ProductInputHandler _inputHandler;
         public ProductManager(List<Product> products, List<Supplier> suppliers)
         {
             _products = products;
             _suppliers = suppliers;
-            inputHandler = new ProductInputHandler();
+            _inputHandler = new ProductInputHandler();
         }
 
         /// <summary>
@@ -21,7 +21,7 @@ namespace LINQ.Controller.ProductHandler
         public void AddNewProduct()
         {
             Console.WriteLine("--------Adding New Product-------");
-            Product? product = inputHandler.GetProductDetails(_products);
+            Product? product = _inputHandler.GetProductDetails(_products);
             _products.Add(product);
             _suppliers.Add(new Supplier(_suppliers.Count + 1, $"Supplier_{product.ProductID}", product.ProductID));
             _products = _products.OrderBy(p => p.ProductID).ToList();
@@ -79,7 +79,7 @@ namespace LINQ.Controller.ProductHandler
             {
                 ViewProducts();
                 Product productToEdit = SearchProduct();
-                string canExit = "y";
+                string canContinueEdit = "y";
                 if (productToEdit != null)
                 {
                     do
@@ -98,32 +98,42 @@ namespace LINQ.Controller.ProductHandler
                                 supplierToEdit.SupplierID = productToEdit.ProductID;
                                 supplierToEdit.SupplierName = $"Supplier_{productToEdit.ProductID}";
                                 supplierToEdit.ProductID = productToEdit.ProductID;
-
                                 break;
+
                             case 2:
                                 productToEdit.ProductName = Validator.GetUniqueProductName(Helper.GetValidName("new product name :"), _products);
                                 break;
+
                             case 3:
                                 productToEdit.Price = Helper.GetValidPrice();
                                 break;
+
                             case 4:
                                 productToEdit.Category = Helper.GetValidName("the new category :");
                                 break;
+
                             case 5:
-                                canExit = "n";
+                                canContinueEdit = "n";
                                 break;
+
                             default:
                                 Console.WriteLine("Please enter a valid choice");
                                 break;
                         }
-                        if (canExit.Equals("y", StringComparison.OrdinalIgnoreCase))
+                        if (canContinueEdit.Equals("y", StringComparison.OrdinalIgnoreCase))
                         {
                             Console.WriteLine("Product details edited successfully..");
                             Console.WriteLine("Do you wish to continue editing?");
-                            canExit = Helper.GetValidName("[y/n]");
+                            canContinueEdit = Helper.GetValidName("[y/n]");
+                            while (!canContinueEdit.Equals("y", StringComparison.OrdinalIgnoreCase) || !canContinueEdit.Equals("n", StringComparison.OrdinalIgnoreCase))
+                            {
+                                Helper.WriteInColor("Invalid Choice. Choose from [y/n]", ConsoleColor.Red);
+                                canContinueEdit = Helper.GetValidName("[y/n]");
+
+                            }
                         }
                         _products = _products.OrderBy(p => p.ProductID).ToList();
-                    } while (!canExit.Equals("n", StringComparison.OrdinalIgnoreCase));
+                    } while (!canContinueEdit.Equals("n", StringComparison.OrdinalIgnoreCase));
                 }
             }
         }
@@ -196,7 +206,7 @@ namespace LINQ.Controller.ProductHandler
                     {
                         Console.WriteLine("Do you wish to delete this product from inventory ?");
                         choice = Helper.GetValidName("[y/n]");
-                        if (choice.Equals("y") || choice.Equals("Y"))
+                        if (choice.Equals("y", StringComparison.OrdinalIgnoreCase))
                         {
                             Console.WriteLine("Product deleted from inventory successfully");
                             _products.Remove(productToDelete);
@@ -218,14 +228,7 @@ namespace LINQ.Controller.ProductHandler
         /// <returns>Supplier of the given product</returns>
         public Supplier? FindSupplier(Product product)
         {
-            foreach (Supplier supplier in _suppliers)
-            {
-                if (supplier.ProductID == product.ProductID)
-                {
-                    return supplier;
-                }
-            }
-            return null;
+            return _suppliers.FirstOrDefault(s => s.ProductID == product.ProductID);
         }
     }
 }

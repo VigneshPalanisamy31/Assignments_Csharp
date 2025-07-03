@@ -12,24 +12,13 @@ namespace LINQ.Utilities
         /// <returns>New unique product name</returns>
         public static string GetUniqueProductName(string productName, List<Product> products)
         {
-            while (true)
+            bool isUniqueProduct = !products.Any(p => p.ProductName.Equals(productName, StringComparison.OrdinalIgnoreCase));
+            if (isUniqueProduct)
             {
-                bool isUniqueProduct = true;
-                foreach (Product product in products)
-                {
-                    if (product.ProductName.Equals(productName, StringComparison.OrdinalIgnoreCase))
-                    {
-                        Console.WriteLine("A product with same name exists..");
-                        isUniqueProduct = false;
-                        break;
-                    }
-                }
-                if (isUniqueProduct)
-                {
-                    return productName;
-                }
-                productName = Helper.GetValidName("a different product name :");
+                return productName;
             }
+            Helper.WriteInColor("A product with same name exists..", ConsoleColor.Red);
+            return GetUniqueProductName(Helper.GetValidName("a different product name :"), products);
         }
 
         /// <summary>
@@ -40,20 +29,14 @@ namespace LINQ.Utilities
         /// <returns>New unique product id</returns>
         public static int GetUniqueProductID(int productID, List<Product> products)
         {
-            bool canExit = false;
-            while (!canExit)
+            bool isUniqueProductID = !products.Any(p => p.ProductID == productID);
+            if (isUniqueProductID)
             {
-                foreach (Product product in products)
-                {
-                    if (product.ProductID == productID)
-                    {
-                        Helper.WriteInColor("A product with same id exists..", ConsoleColor.Red);
-                        return GetUniqueProductID(Helper.GetValidNumber("different product id :"), products);
-                    }
-                }
-                canExit = true;
+                return productID;
             }
-            return productID;
+            Helper.WriteInColor("A product with same id exists..", ConsoleColor.Red);
+            return GetUniqueProductID(Helper.GetValidNumber("different product id :"), products);
+
         }
 
         /// <summary>
@@ -63,7 +46,7 @@ namespace LINQ.Utilities
         /// <returns>True if inventory is is empty and false if not</returns>
         public static bool isEmpty(List<Product> products)
         {
-            if (products.Count == 0)
+            if (!products.Any())
             {
                 Helper.WriteInColor("No products available in the inventory", ConsoleColor.Red);
                 return true;
