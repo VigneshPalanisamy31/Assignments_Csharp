@@ -2,10 +2,10 @@
 {
     internal class MarksDictionaryManager
     {
-        private Dictionary<string, int> marks;
+        private Dictionary<string, int> _marks;
         public MarksDictionaryManager()
         {
-            marks = new();
+            _marks = new();
         }
 
         /// <summary>
@@ -49,29 +49,29 @@
         }
 
         /// <summary>
-        /// Adds student marks to the mark list dictionary.
+        /// Adds student marks to the marks dictionary.
         /// </summary>
         public void AddStudentMark()
         {
             int studentsCount = Validator.GetValidInt("Enter the number of students :");
             for (int i = 0; i < studentsCount; i++)
             {
-                marks.Add(Validator.GetValidString($"Enter the name of student {i + 1} :"), Validator.GetValidInt("Enter the mark :"));
+                _marks.Add(Validator.GetValidString($"Enter the name of student {i + 1} :"), Validator.GetValidInt("Enter the mark :"));
             }
             Helper.WriteInColor("\nStudents added successfully", ConsoleColor.Green);
         }
 
         /// <summary>
-        /// Removes student marks from the mark list dictionary.
+        /// Removes student marks from the marks dictionary.
         /// </summary>
         public void RemoveStudent()
         {
             string nameToBeRemoved = Validator.GetValidString("Enter the name to be removed :");
-            if (marks.TryGetValue(nameToBeRemoved, out int mark))
+            if (_marks.TryGetValue(nameToBeRemoved, out int mark))
             {
                 Helper.WriteInColor($"\n{nameToBeRemoved}  :  {mark}", ConsoleColor.Green);
                 Helper.WriteInColor("\nStudent deleted from List successfully..", ConsoleColor.Green);
-                marks.Remove(nameToBeRemoved);
+                _marks.Remove(nameToBeRemoved);
             }
             else
             {
@@ -80,11 +80,11 @@
         }
 
         /// <summary>
-        /// Displays student marks from the mark list dictionary.
+        /// Displays student marks from the marks dictionary.
         /// </summary>
         public void DisplayMarks()
         {
-            if (marks.Count == 0)
+            if (!_marks.Any())
             {
                 Helper.WriteInColor("\nNo marks available", ConsoleColor.Red);
             }
@@ -92,7 +92,7 @@
             {
                 Helper.WriteInColor("Marks of students\n", ConsoleColor.Yellow);
                 Helper.WriteInColor("\nStudent name :  Mark", ConsoleColor.Yellow);
-                foreach (var mark in marks)
+                foreach (var mark in _marks)
                 {
                     Console.WriteLine($"{mark.Key}  :  {mark.Value}");
                 }

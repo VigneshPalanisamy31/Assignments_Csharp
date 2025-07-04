@@ -2,26 +2,30 @@
 {
     public class GenericCollection<T>
     {
-        private List<T> list;
-        private Queue<T> queue;
-        private Stack<T> stack;
-        private string activeType;
+        private List<T> _list;
+        private Queue<T> _queue;
+        private Stack<T> _stack;
+        private string _activeType;
+
         public GenericCollection(string collectionType)
         {
             switch (collectionType.ToLower())
             {
                 case "list":
-                    list = new List<T>();
-                    activeType = "list";
+                    _list = new List<T>();
+                    _activeType = "list";
                     break;
+
                 case "queue":
-                    queue = new Queue<T>();
-                    activeType = "queue";
+                    _queue = new Queue<T>();
+                    _activeType = "queue";
                     break;
+
                 case "stack":
-                    stack = new Stack<T>();
-                    activeType = "stack";
+                    _stack = new Stack<T>();
+                    _activeType = "stack";
                     break;
+
                 default:
                     Console.WriteLine("Invalid collection type. Choose 'list', 'queue', or 'stack'.");
                     break;
@@ -34,18 +38,20 @@
         /// <param name="item">Item to add to the collection</param>
         public void Add(T item)
         {
-            switch (activeType)
+            switch (_activeType)
             {
                 case "list":
-                    list.Add(item);
+                    _list.Add(item);
                     Console.WriteLine($"Added to List: {item}");
                     break;
+
                 case "queue":
-                    queue.Enqueue(item);
+                    _queue.Enqueue(item);
                     Console.WriteLine($"Enqueued to Queue: {item}");
                     break;
+
                 case "stack":
-                    stack.Push(item);
+                    _stack.Push(item);
                     Console.WriteLine($"Pushed to Stack: {item}");
                     break;
             }
@@ -56,11 +62,11 @@
         /// </summary>
         public void Display()
         {
-            Console.WriteLine($"\nActive collection: {activeType.ToUpper()}");
-            switch (activeType)
+            Console.WriteLine($"\nActive collection: {_activeType.ToUpper()}");
+            switch (_activeType)
             {
                 case "list":
-                    foreach (var item in list)
+                    foreach (var item in _list)
                     {
                         Console.WriteLine(item);
                     }
@@ -68,14 +74,14 @@
                     break;
 
                 case "queue":
-                    foreach (var item in queue)
+                    foreach (var item in _queue)
                     {
                         Console.WriteLine(item);
                     }
                     break;
 
                 case "stack":
-                    foreach (var item in stack)
+                    foreach (var item in _stack)
                     {
                         Console.Write(item);
                     }
@@ -88,27 +94,27 @@
         /// </summary>
         public void Remove()
         {
-            switch (activeType)
+            switch (_activeType)
             {
                 case "list":
-                    while (list.Count > 0)
+                    while (_list.Any())
                     {
-                        Console.WriteLine($"Removed from list: {list[0]}");
-                        list.RemoveAt(0);
+                        Console.WriteLine($"Removed from list: {_list[0]}");
+                        _list.RemoveAt(0);
                     }
                     break;
 
                 case "queue":
-                    while (queue.Count > 0)
+                    while (_queue.Any())
                     {
-                        Console.WriteLine($"Removed from queue: {queue.Dequeue()}");
+                        Console.WriteLine($"Removed from queue: {_queue.Dequeue()}");
                     }
                     break;
 
                 case "stack":
-                    while (stack.Count > 0)
+                    while (_stack.Any())
                     {
-                        Console.WriteLine($"Removed from stack: {stack.Pop()}");
+                        Console.WriteLine($"Removed from stack: {_stack.Pop()}");
                     }
                     break;
             }

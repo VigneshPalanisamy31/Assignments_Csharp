@@ -2,10 +2,10 @@
 {
     public class GenericDictionary<TKey, TValue>
     {
-        private Dictionary<TKey, TValue> dictionary;
+        private Dictionary<TKey, TValue> _dictionary;
         public GenericDictionary()
         {
-            dictionary = new();
+            _dictionary = new();
         }
 
         /// <summary>
@@ -15,9 +15,9 @@
         /// <param name="value">Value</param>
         public void Add(TKey key, TValue value)
         {
-            if (!dictionary.ContainsKey(key))
+            if (!_dictionary.ContainsKey(key))
             {
-                dictionary[key] = value;
+                _dictionary[key] = value;
                 Console.WriteLine($"Added: [{key}] = {value}");
             }
             else
@@ -32,7 +32,7 @@
         /// <param name="key">Key of the pair to be removed</param>
         public void Remove(TKey key)
         {
-            if (dictionary.Remove(key))
+            if (_dictionary.Remove(key))
             {
                 Console.WriteLine($"Removed: {key}");
             }
@@ -48,7 +48,7 @@
         /// <param name="key">Key of the pair to be searched</param>
         public void Search(TKey key)
         {
-            if (dictionary.TryGetValue(key, out var value))
+            if (_dictionary.TryGetValue(key, out var value))
             {
                 Console.WriteLine($" Found: [{key}] = {value}");
             }
@@ -64,7 +64,7 @@
         public void Display()
         {
             Console.WriteLine("DICTIONARY Contents:");
-            foreach (var pair in dictionary)
+            foreach (var pair in _dictionary)
             {
                 Console.WriteLine($"{pair.Key} : {pair.Value}");
             }

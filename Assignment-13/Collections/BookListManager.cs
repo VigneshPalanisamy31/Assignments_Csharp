@@ -2,7 +2,7 @@
 {
     public class BookListManager
     {
-        private List<string> books = new List<string>();
+        private List<string> _books = new List<string>();
         /// <summary>
         /// Displays menu to work with lists
         /// </summary>
@@ -55,7 +55,7 @@
             int bookCount = Validator.GetValidInt("Enter the number of books :");
             for (int i = 0; i < bookCount; i++)
             {
-                books.Add(Validator.GetValidString($"Enter the name of book{i + 1} :"));
+                _books.Add(Validator.GetValidString($"Enter the name of book{i + 1} :"));
             }
             Helper.WriteInColor("\nBooks added successfully", ConsoleColor.Green);
         }
@@ -67,7 +67,7 @@
         public string SearchBook()
         {
             string bookToSearch = Validator.GetValidString("Enter the name of the book :");
-            if (books.Contains(bookToSearch))
+            if (_books.Contains(bookToSearch))
             {
                 Helper.WriteInColor("\nBook name is available in the list", ConsoleColor.Green);
                 return bookToSearch;
@@ -84,7 +84,7 @@
         /// </summary>
         public void RemoveBook()
         {
-            if (!SearchBook().Equals(string.Empty))
+            if (_books.Remove(SearchBook()))
             {
                 Helper.WriteInColor("\nBook deleted from List successfully..", ConsoleColor.Green);
             }
@@ -99,16 +99,16 @@
         /// </summary>
         public void DisplayBooks()
         {
-            if (books.Count == 0)
+            if (!_books.Any())
             {
                 Helper.WriteInColor("\nBook list is empty", ConsoleColor.Yellow);
             }
             else
             {
                 Helper.WriteInColor("List Of Books\n", ConsoleColor.Yellow);
-                for (int i = 0; i < books.Count; i++)
+                for (int i = 0; i < _books.Count; i++)
                 {
-                    Console.WriteLine($"{i + 1}. {books[i]}");
+                    Console.WriteLine($"{i + 1}. {_books[i]}");
                 }
             }
         }
