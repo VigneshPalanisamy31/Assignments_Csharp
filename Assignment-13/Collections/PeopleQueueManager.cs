@@ -2,10 +2,10 @@
 {
     internal class PeopleQueueManager
     {
-        private Queue<string> people;
+        private Queue<string> _people;
         public PeopleQueueManager()
         {
-            people = new();
+            _people = new();
         }
 
         /// <summary>
@@ -57,7 +57,7 @@
             int queueSize = Validator.GetValidInt("Enter the queue size :");
             for (int i = 0; i < queueSize; i++)
             {
-                people.Enqueue(Validator.GetValidString($"Enter the name of person {i + 1} :"));
+                _people.Enqueue(Validator.GetValidString($"Enter the name of person {i + 1} :"));
             }
             Helper.WriteInColor("\nQueue created successfully..", ConsoleColor.Green);
         }
@@ -67,13 +67,13 @@
         /// </summary>
         public void Dequeue()
         {
-            if (people.Count == 0)
+            if (!_people.Any())
             {
                 Helper.WriteInColor("\nQueue is empty..", ConsoleColor.Red);
             }
             else
             {
-                Helper.WriteInColor($"Dequeued person : {people.Dequeue().ToString()}", ConsoleColor.Green);
+                Helper.WriteInColor($"Dequeued person : {_people.Dequeue().ToString()}", ConsoleColor.Green);
                 Helper.WriteInColor("\nDequeue successful..", ConsoleColor.Green);
             }
         }
@@ -83,14 +83,14 @@
         /// </summary>
         public void DisplayPeople()
         {
-            if (people.Count == 0)
+            if (!_people.Any())
             {
                 Helper.WriteInColor("\nQueue is empty", ConsoleColor.Red);
             }
             else
             {
                 Helper.WriteInColor("Queue Of People\n", ConsoleColor.Yellow);
-                foreach (string person in people)
+                foreach (string person in _people)
                 {
                     Console.WriteLine($"\n{person}");
                 }
