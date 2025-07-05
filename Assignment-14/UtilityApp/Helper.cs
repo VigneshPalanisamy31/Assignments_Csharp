@@ -3,12 +3,12 @@
     public class Helper
     {
         /// <summary>
-        /// Function to get a valid number from user.
+        /// Gets a valid number from user.
         /// </summary>
         /// <returns>Validated number</returns>
         public static float GetValidNumber()
         {
-            string input=Console.ReadLine();
+            string input = Console.ReadLine();
             float validNumber;
             while (!float.TryParse(input, out validNumber))
             {
@@ -22,12 +22,12 @@
         }
 
         /// <summary>
-        /// Function to get a valid choice from user.
+        /// Gets a valid choice from user.
         /// </summary>
         /// <returns>Validated choice(Integer)</returns>
         public static int GetValidChoice()
         {
-            string choice=Console.ReadLine();
+            string choice = Console.ReadLine();
             int validChoice;
             while (!int.TryParse(choice, out validChoice))
             {

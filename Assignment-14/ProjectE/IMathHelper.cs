@@ -8,6 +8,6 @@
 
         float CalculateProduct(float firstNumber, float secondNumber);
 
-        float? CalculateQuotient(float firstNumber, float secondNumber);
+        float CalculateQuotient(float firstNumber, float secondNumber);
     }
 }

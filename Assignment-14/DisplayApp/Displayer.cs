@@ -46,7 +46,7 @@ namespace DisplayApp
                             break;
 
                         case 4:
-                                Console.WriteLine($"The quotient of {firstNumber} and {secondNumber} is {mathUtilHelper.CalculateQuotient(firstNumber, secondNumber)}");
+                            Console.WriteLine($"The quotient of {firstNumber} and {secondNumber} is {mathUtilHelper.CalculateQuotient(firstNumber, secondNumber)}");
                             break;
                     }
                 }
