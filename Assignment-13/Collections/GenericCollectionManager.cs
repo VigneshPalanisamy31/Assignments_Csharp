@@ -16,7 +16,7 @@
                 {
                     case 1:
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write("Adding books to the generic list");
+                        Console.Write("Adding books to the list");
                         for (int i = 0; i < 3; i++)
                         {
                             Thread.Sleep(500);
@@ -39,7 +39,7 @@
                         break;
 
                     case 2:
-                        Helper.WriteInColor("Adding characters to the generic stack", ConsoleColor.Green);
+                        Helper.WriteInColor("Adding characters to the stack", ConsoleColor.Green);
                         for (int i = 0; i < 3; i++)
                         {
                             Thread.Sleep(500);
@@ -66,7 +66,7 @@
 
                     case 3:
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Adding people to the generic queue");
+                        Console.WriteLine("Adding people to the queue");
                         for (int i = 0; i < 3; i++)
                         {
                             Thread.Sleep(500);
@@ -89,7 +89,7 @@
 
                     case 4:
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Adding marks to the generic dictionary");
+                        Console.WriteLine("Adding marks to the dictionary");
                         for (int i = 0; i < 3; i++)
                         {
                             Thread.Sleep(500);

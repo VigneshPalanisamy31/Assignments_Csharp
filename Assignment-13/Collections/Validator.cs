@@ -5,7 +5,7 @@ namespace Collections
     {
 
         /// <summary>
-        /// Function to get a valid integer from user.
+        /// Gets a valid integer from user.
         /// </summary>
         /// <param name="displayMessage">Message to display to the console</param>
         /// <returns>valid integer</returns>
@@ -27,7 +27,7 @@ namespace Collections
         }
 
         /// <summary>
-        /// Function to get a valid string from user.
+        /// Gets a valid string from user.
         /// </summary>
         /// <param name="displayMessage">Message to display to the console</param>
         /// <returns>valid string</returns>
