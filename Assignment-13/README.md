@@ -10,18 +10,20 @@ Implemented a program that uses a **List** to store a collection of book titles.
 
 - Created a `List<string>` to hold book titles.
 - Operations:
-  1. **Add** – Add books to the list.
-  2. **Remove** – Remove books from the list.
-  3. **Search** – Search for a book in the list.
-  4. **Display** – Display all books in the list.
+  1. **AddBooks()** – Add books to the list.
+  2. **RemoveBook()** – Remove books from the list.
+  3. **SearchBook()** – Search for a book in the list.
+  4. **DisplayBooks()** – Display all books in the list.
 
 ---
 
 ## Task 2 – Reverse a String Using Stack
 
 Implemented a program that uses a **Stack** to reverse a given string.
-
+  All characters of the inut string are pushed into the stack.
 - Utilized `Stack<char>` for reversing string characters.
+- Characters in the stack are popped out to attain the reverse order of the given string.
+
 
 ---
 
@@ -42,12 +44,13 @@ Implemented a program that simulates a queue of people waiting in line.
 Implemented a program that maps a student's name to their grade using a **Dictionary**.
 
 - Used `Dictionary<string, char>` where key = student name and value = grade.
+- Students and their respective marks appears to be a key value pair within the Dictionary.
 
 ---
 
 ## Task 5 – Generic Collections
 
-Reimplemented all the above tasks using **Generic Collections** for better type safety and flexibility.
+ In this task, I reviewed all the previous implementations to ensure they use generic collections. Since collections like List<T>, Stack<T>, Queue<T>, and Dictionary<TKey, TValue> were already used in Tasks 1–4 there was no need for updations.
 
 ---
 
