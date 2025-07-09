@@ -63,7 +63,7 @@
         /// <summary>
         /// Searches for a book in the list
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Book name or empty string</returns>
         public string SearchBook()
         {
             string bookToSearch = Validator.GetValidString("Enter the name of the book :");
