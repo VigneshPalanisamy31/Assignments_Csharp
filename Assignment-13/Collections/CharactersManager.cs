@@ -1,11 +1,11 @@
 ﻿namespace Collections
 {
-    internal class CharacterStackManager
+    internal class CharactersManager
     {
         /// <summary>
         /// Reverses a string by using stack
         /// </summary>
-        public void UsingStacks()
+        public void ReverseUsingStacks()
         {
             Console.WriteLine("Enter the string to be reversed :");
             string? inputString = Console.ReadLine();

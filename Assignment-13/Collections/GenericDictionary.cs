@@ -17,7 +17,7 @@
         {
             if (!_dictionary.ContainsKey(key))
             {
-                _dictionary[key] = value;
+                _dictionary.Add(key,value);
                 Console.WriteLine($"Added: [{key}] = {value}");
             }
             else

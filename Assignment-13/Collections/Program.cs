@@ -14,22 +14,22 @@
                     switch (choice)
                     {
                         case 1:
-                            BookListManager bookManager = new BookListManager();
+                            BooksManager bookManager = new BooksManager();
                             bookManager.WorkingWithLists();
                             break;
 
                         case 2:
-                            CharacterStackManager characterManager = new CharacterStackManager();
-                            characterManager.UsingStacks();
+                            CharactersManager characterManager = new CharactersManager();
+                            characterManager.ReverseUsingStacks();
                             break;
 
                         case 3:
-                            PeopleQueueManager peopleManager = new PeopleQueueManager();
+                            PeopleManager peopleManager = new PeopleManager();
                             peopleManager.WorkingWithQueues();
                             break;
 
                         case 4:
-                            MarksDictionaryManager marksManager = new MarksDictionaryManager();
+                            MarksManager marksManager = new MarksManager();
                             marksManager.UnderstandingDictionaries();
                             break;
 

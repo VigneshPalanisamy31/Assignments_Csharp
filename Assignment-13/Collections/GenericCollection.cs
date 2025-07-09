@@ -5,25 +5,23 @@
         private List<T> _list;
         private Queue<T> _queue;
         private Stack<T> _stack;
-        private string _activeType;
+        private CollectionType _activeType;
 
-        public GenericCollection(string collectionType)
+        public GenericCollection(CollectionType collectionType)
         {
-            switch (collectionType.ToLower())
+            _activeType = collectionType;
+            switch (collectionType)
             {
-                case "list":
+                case CollectionType.List:
                     _list = new List<T>();
-                    _activeType = "list";
                     break;
 
-                case "queue":
+                case CollectionType.Queue:
                     _queue = new Queue<T>();
-                    _activeType = "queue";
                     break;
 
-                case "stack":
+                case CollectionType.Stack:
                     _stack = new Stack<T>();
-                    _activeType = "stack";
                     break;
 
                 default:
@@ -40,17 +38,17 @@
         {
             switch (_activeType)
             {
-                case "list":
+                case CollectionType.List:
                     _list.Add(item);
                     Console.WriteLine($"Added to List: {item}");
                     break;
 
-                case "queue":
+                case CollectionType.Queue:
                     _queue.Enqueue(item);
                     Console.WriteLine($"Enqueued to Queue: {item}");
                     break;
 
-                case "stack":
+                case CollectionType.Stack:
                     _stack.Push(item);
                     Console.WriteLine($"Pushed to Stack: {item}");
                     break;
@@ -62,25 +60,24 @@
         /// </summary>
         public void Display()
         {
-            Console.WriteLine($"\nActive collection: {_activeType.ToUpper()}");
+            Console.WriteLine($"\nActive collection: {_activeType}");
             switch (_activeType)
             {
-                case "list":
+                case CollectionType.List:
                     foreach (var item in _list)
                     {
                         Console.WriteLine(item);
                     }
-
                     break;
 
-                case "queue":
+                case CollectionType.Queue:
                     foreach (var item in _queue)
                     {
                         Console.WriteLine(item);
                     }
                     break;
 
-                case "stack":
+                case CollectionType.Stack:
                     foreach (var item in _stack)
                     {
                         Console.Write(item);
@@ -92,11 +89,11 @@
         /// <summary>
         /// Removes elements from the generic collections.
         /// </summary>
-        public void Remove()
+        public void RemoveAll()
         {
             switch (_activeType)
             {
-                case "list":
+                case CollectionType.List:
                     while (_list.Any())
                     {
                         Console.WriteLine($"Removed from list: {_list[0]}");
@@ -104,14 +101,14 @@
                     }
                     break;
 
-                case "queue":
+                case CollectionType.Queue:
                     while (_queue.Any())
                     {
                         Console.WriteLine($"Removed from queue: {_queue.Dequeue()}");
                     }
                     break;
 
-                case "stack":
+                case CollectionType.Stack:
                     while (_stack.Any())
                     {
                         Console.WriteLine($"Removed from stack: {_stack.Pop()}");

@@ -1,6 +1,6 @@
 ﻿namespace Collections
 {
-    public class BookListManager
+    public class BooksManager
     {
         private List<string> _books = new List<string>();
         /// <summary>

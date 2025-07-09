@@ -1,9 +1,9 @@
 ﻿namespace Collections
 {
-    internal class MarksDictionaryManager
+    internal class MarksManager
     {
         private Dictionary<string, int> _marks;
-        public MarksDictionaryManager()
+        public MarksManager()
         {
             _marks = new();
         }

@@ -1,9 +1,9 @@
 ﻿namespace Collections
 {
-    internal class PeopleQueueManager
+    internal class PeopleManager
     {
         private Queue<string> _people;
-        public PeopleQueueManager()
+        public PeopleManager()
         {
             _people = new();
         }

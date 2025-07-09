@@ -80,8 +80,9 @@
         /// <param name="dictionary">Read-only Dictionary</param>
         public static void AttemptToModifyDictionary(IReadOnlyDictionary<string, int> dictionary)
         {
-            //try { dictionary["BMW"] = 10; }
-            Console.WriteLine("Cannot modify IReadOnlyDictionary directly.");
+            // Uncommenting the below line will give compile-time error
+            // dictionary["BMW"] = 10;
+            Console.WriteLine("Cannot modify IReadOnlyDictionary directly,it will create a compile time error.");
         }
     }
 }
