@@ -14,8 +14,8 @@
                     switch (choice)
                     {
                         case 1:
-                            BooksManager bookManager = new BooksManager();
-                            bookManager.WorkingWithLists();
+                            BookManagerMenu bookManagerMenu = new BookManagerMenu(); 
+                            bookManagerMenu.WorkingWithLists();
                             break;
 
                         case 2:
@@ -41,13 +41,10 @@
                         case 6:
                             Helper.WriteInColor("Testing sum of elements...\n", ConsoleColor.Yellow);
                             ReadOnlyDictionaryViewer.TestSumOfElements();
-                            Thread.Sleep(2000);
                             Helper.WriteInColor("Generate Dictionary...\n", ConsoleColor.Yellow);
                             IReadOnlyDictionary<string, int> dict = ReadOnlyDictionaryViewer.GenerateDictionary();
-                            Thread.Sleep(2000);
                             Helper.WriteInColor("Print Dictionary...\n", ConsoleColor.Yellow);
                             ReadOnlyDictionaryViewer.PrintDictionary(dict);
-                            Thread.Sleep(2000);
                             ReadOnlyDictionaryViewer.AttemptToModifyDictionary(dict);
                             Console.ReadKey();
                             break;

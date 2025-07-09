@@ -3,49 +3,6 @@
     public class BooksManager
     {
         private List<string> _books = new List<string>();
-        /// <summary>
-        /// Displays menu to work with lists
-        /// </summary>
-        public void WorkingWithLists()
-        {
-            bool canExit = false;
-            while (!canExit)
-            {
-                Console.Clear();
-                Helper.WriteInColor("============List of Books============", ConsoleColor.Yellow);
-                Helper.WriteInColor("\n1.Add\n2.Remove\n3.Search\n4.Display\n5.Exit", ConsoleColor.Yellow);
-                int choice = Validator.GetValidInt("Enter the choice :");
-                switch (choice)
-                {
-                    case 1:
-                        AddBooks();
-                        break;
-
-                    case 2:
-                        RemoveBook();
-                        break;
-
-                    case 3:
-                        SearchBook();
-                        break;
-
-                    case 4:
-                        DisplayBooks();
-                        break;
-
-                    case 5:
-                        canExit = true;
-                        Console.WriteLine("Exiting");
-                        break;
-
-                    default:
-                        Helper.WriteInColor("\nInvalid choice", ConsoleColor.Red);
-                        break;
-                }
-                Console.WriteLine("\nPress any key to continue..");
-                Console.ReadKey();
-            }
-        }
 
         /// <summary>
         /// Adds books to the list

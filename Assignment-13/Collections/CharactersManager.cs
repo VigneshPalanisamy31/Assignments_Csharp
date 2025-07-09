@@ -16,7 +16,6 @@
             {
                 characters.Push(character);
                 Console.Write(character + " ");
-                Thread.Sleep(200);
             }
             Console.ResetColor();
             Console.WriteLine("\nPopping characters from the stack..(reversing string)");
@@ -24,7 +23,6 @@
             while (characters.Count > 0)
             {
                 Console.Write(characters.Pop() + " ");
-                Thread.Sleep(200);
             }
             Console.ResetColor();
             Console.WriteLine("\nPress any key to continue...");
