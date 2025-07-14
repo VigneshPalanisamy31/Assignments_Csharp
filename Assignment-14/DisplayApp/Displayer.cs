@@ -51,9 +51,13 @@ namespace DisplayApp
                     }
                 }
                 else if (choice == 5)
+                {
                     canExit = true;
+                }
                 else
+                {
                     Console.WriteLine("Please enter a valid choice\n");
+                }
                 Console.WriteLine("\nPress any key to continue...");
                 Console.ReadKey();
                 Console.Clear();
