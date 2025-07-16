@@ -17,11 +17,11 @@ namespace DisplayApp
         public void ConsoleDisplay()
         {
             bool canExit = false;
-            float firstNumber;
-            float secondNumber;
+            float firstNumber = 0;
+            float secondNumber = 0;
             while (!canExit)
             {
-                Console.WriteLine("========Basic ArithMetics========");
+                Console.WriteLine("========Basic Arithmetics========");
                 Console.WriteLine("\n\n1.Add\n2.Subtract\n3.Multiply\n4.Divide\n5.Exit\n");
                 Console.WriteLine("Enter your choice:");
                 int choice = Helper.GetValidChoice();
@@ -31,32 +31,32 @@ namespace DisplayApp
                     firstNumber = Helper.GetValidNumber();
                     Console.WriteLine("\nEnter Number 2: ");
                     secondNumber = Helper.GetValidNumber();
-                    switch (choice)
-                    {
-                        case 1:
-                            Console.WriteLine($"The sum of {firstNumber} and {secondNumber} is {mathUtilHelper.CalculateSum(firstNumber, secondNumber)}");
-                            break;
-
-                        case 2:
-                            Console.WriteLine($"The difference between {firstNumber} and {secondNumber} is {mathUtilHelper.CalculateDifference(firstNumber, secondNumber)}");
-                            break;
-
-                        case 3:
-                            Console.WriteLine($"The product of {firstNumber} and {secondNumber} is {mathUtilHelper.CalculateProduct(firstNumber, secondNumber)}");
-                            break;
-
-                        case 4:
-                            Console.WriteLine($"The quotient of {firstNumber} and {secondNumber} is {mathUtilHelper.CalculateQuotient(firstNumber, secondNumber)}");
-                            break;
-                    }
                 }
-                else if (choice == 5)
+                switch (choice)
                 {
-                    canExit = true;
-                }
-                else
-                {
-                    Console.WriteLine("Please enter a valid choice\n");
+                    case 1:
+                        Console.WriteLine($"The sum of {firstNumber} and {secondNumber} is {mathUtilHelper.CalculateSum(firstNumber, secondNumber)}");
+                        break;
+
+                    case 2:
+                        Console.WriteLine($"The difference between {firstNumber} and {secondNumber} is {mathUtilHelper.CalculateDifference(firstNumber, secondNumber)}");
+                        break;
+
+                    case 3:
+                        Console.WriteLine($"The product of {firstNumber} and {secondNumber} is {mathUtilHelper.CalculateProduct(firstNumber, secondNumber)}");
+                        break;
+
+                    case 4:
+                        Console.WriteLine($"The quotient of {firstNumber} and {secondNumber} is {mathUtilHelper.CalculateQuotient(firstNumber, secondNumber)}");
+                        break;
+
+                    case 5:
+                        canExit = true;
+                        break;
+
+                    default:
+                        Console.WriteLine("Please enter a valid choice\n");
+                        break;
                 }
                 Console.WriteLine("\nPress any key to continue...");
                 Console.ReadKey();
