@@ -11,7 +11,7 @@
         /// <summary>
         /// Displays menu to work with queues
         /// </summary>
-        public void WorkingWithQueues()
+        public void ManagePeopleQueue()
         {
             bool canExit = false;
             while (!canExit)

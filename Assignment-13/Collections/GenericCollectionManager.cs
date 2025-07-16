@@ -5,7 +5,7 @@
         /// <summary>
         /// Displays menu to choose the generic collection to work with
         /// </summary>
-        public void GenericCollectionOperations()
+        public void DisplayGenericCollectionOperations()
         {
             while (true)
             {
@@ -76,15 +76,15 @@
                         marks.Add("Student_5", 96);
                         Helper.WriteInColor("\nDisplaying marks of students:\n", ConsoleColor.Yellow);
                         DisplayCollection(marks);
-                        if (marks.Remove(Validator.GetValidString("Enter the student name to be removed :")))
+                        if (marks.Remove(Validator.GetValidString("Enter the student name to remove :")))
                         {
                             Console.WriteLine("Removed Successfully");
                         }
                         else
                         {
-                            Console.WriteLine("Element not found");
+                            Console.WriteLine("Student not found");
                         }
-                        if(marks.ContainsKey(Validator.GetValidString("Enter the student name to be searched :")))
+                        if(marks.ContainsKey(Validator.GetValidString("Enter the student name to search :")))
                         {
                             Console.WriteLine("Student name is available in the dictionary");
                         }
@@ -110,7 +110,7 @@
         /// Displays all elements of a collection
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="collection">Collection to be listed</param>
+        /// <param name="collection">Collection to display</param>
         public void DisplayCollection<T>(IEnumerable<T> collection)
         {
             foreach (T item in collection)

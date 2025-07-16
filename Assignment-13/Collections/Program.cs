@@ -15,7 +15,7 @@
                     {
                         case 1:
                             BookManagerMenu bookManagerMenu = new BookManagerMenu(); 
-                            bookManagerMenu.WorkingWithLists();
+                            bookManagerMenu.ManageBooks();
                             break;
 
                         case 2:
@@ -25,17 +25,17 @@
 
                         case 3:
                             PeopleManager peopleManager = new PeopleManager();
-                            peopleManager.WorkingWithQueues();
+                            peopleManager.ManagePeopleQueue();
                             break;
 
                         case 4:
                             MarksManager marksManager = new MarksManager();
-                            marksManager.UnderstandingDictionaries();
+                            marksManager.ManageMarks();
                             break;
 
                         case 5:
                             GenericCollectionManager genericsManager = new GenericCollectionManager();
-                            genericsManager.GenericCollectionOperations();
+                            genericsManager.DisplayGenericCollectionOperations();
                             break;
 
                         case 6:

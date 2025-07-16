@@ -47,7 +47,7 @@
             }
             else
             {
-                Helper.WriteInColor("\nDelete failed..", ConsoleColor.Red);
+                Helper.WriteInColor("\nCould not find the specified book.", ConsoleColor.Red);
             }
         }
 

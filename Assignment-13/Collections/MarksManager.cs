@@ -11,7 +11,7 @@
         /// <summary>
         /// Displays menu to work with dictionaries
         /// </summary>
-        public void UnderstandingDictionaries()
+        public void ManageMarks()
         {
             bool canExit = false;
             while (!canExit)
@@ -75,7 +75,7 @@
             }
             else
             {
-                Helper.WriteInColor("\nStudent not found\nDelete failed...", ConsoleColor.Red);
+                Helper.WriteInColor("\nStudent not found\nDeletion failed...", ConsoleColor.Red);
             }
         }
 

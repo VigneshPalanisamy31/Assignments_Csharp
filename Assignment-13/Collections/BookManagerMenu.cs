@@ -5,7 +5,7 @@
         /// <summary>
         /// Displays menu to work with lists
         /// </summary>
-        public void WorkingWithLists()
+        public void ManageBooks()
         {
             BooksManager booksManager = new BooksManager();
             bool canExit = false;
