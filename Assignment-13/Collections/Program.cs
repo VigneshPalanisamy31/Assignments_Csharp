@@ -10,7 +10,7 @@
                 {
                     Console.WriteLine("1.Working with Lists\n2.Using Stacks\n3.Working with Queues\n4.Understanding Dictionaries" +
                                       "\n5.Generics \n6.IEnumerable & IReadOnlyDictionary\n7.Exit\n");
-                    int choice = Validator.GetValidInt("Enter the choice :");
+                    int choice = Validator.GetValidInteger("Enter the choice :");
                     switch (choice)
                     {
                         case 1:
@@ -45,7 +45,7 @@
                             IReadOnlyDictionary<string, int> dict = ReadOnlyDictionaryViewer.GenerateDictionary();
                             Helper.WriteInColor("Print Dictionary...\n", ConsoleColor.Yellow);
                             ReadOnlyDictionaryViewer.PrintDictionary(dict);
-                            ReadOnlyDictionaryViewer.AttemptToModifyDictionary(dict);
+                            ReadOnlyDictionaryViewer.ModifyDictionary(dict);
                             Console.ReadKey();
                             break;
 

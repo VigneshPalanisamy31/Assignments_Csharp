@@ -9,7 +9,7 @@
         /// </summary>
         public void AddBooks()
         {
-            int bookCount = Validator.GetValidInt("Enter the number of books :");
+            int bookCount = Validator.GetValidInteger("Enter the number of books :");
             for (int i = 0; i < bookCount; i++)
             {
                 _books.Add(Validator.GetValidString($"Enter the name of book{i + 1} :"));

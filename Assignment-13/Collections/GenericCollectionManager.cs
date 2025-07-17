@@ -11,7 +11,7 @@
             {
                 Console.WriteLine("Choose the generic collection :\n");
                 Helper.WriteInColor("1.List\n2.Stack\n3.Queue\n4.Dictionary\n5.Exit\n", ConsoleColor.Yellow);
-                int choice = Validator.GetValidInt("Enter the choice :");
+                int choice = Validator.GetValidInteger("Enter the choice :");
                 switch (choice)
                 {
                     case 1:

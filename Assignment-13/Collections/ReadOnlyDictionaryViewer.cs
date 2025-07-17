@@ -78,7 +78,7 @@
         /// Displays message that readonly dictionary cannot be modified
         /// </summary>
         /// <param name="dictionary">Read-only Dictionary</param>
-        public static void AttemptToModifyDictionary(IReadOnlyDictionary<string, int> dictionary)
+        public static void ModifyDictionary(IReadOnlyDictionary<string, int> dictionary)
         {
             Console.WriteLine("Cannot modify IReadOnlyDictionary directly,it will create a compile time error.");
         }

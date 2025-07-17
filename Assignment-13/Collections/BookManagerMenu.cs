@@ -14,7 +14,7 @@
                 Console.Clear();
                 Helper.WriteInColor("============List of Books============", ConsoleColor.Yellow);
                 Helper.WriteInColor("\n1.Add\n2.Remove\n3.Search\n4.Display\n5.Exit", ConsoleColor.Yellow);
-                int choice = Validator.GetValidInt("Enter the choice :");
+                int choice = Validator.GetValidInteger("Enter the choice :");
                 switch (choice)
                 {
                     case 1:

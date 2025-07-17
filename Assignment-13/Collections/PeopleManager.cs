@@ -19,7 +19,7 @@
                 Console.Clear();
                 Helper.WriteInColor("============Queue of People============", ConsoleColor.Yellow);
                 Helper.WriteInColor("\n1.Add\n2.Remove\n3.Display\n4.Exit", ConsoleColor.Yellow);
-                int choice = Validator.GetValidInt("Enter the choice :");
+                int choice = Validator.GetValidInteger("Enter the choice :");
                 switch (choice)
                 {
                     case 1:
@@ -54,7 +54,7 @@
         public void Enqueue()
         {
             Console.WriteLine("Enter the number of people to be queued...");
-            int queueSize = Validator.GetValidInt("Enter the queue size :");
+            int queueSize = Validator.GetValidInteger("Enter the queue size :");
             for (int i = 0; i < queueSize; i++)
             {
                 _people.Enqueue(Validator.GetValidString($"Enter the name of person {i + 1} :"));

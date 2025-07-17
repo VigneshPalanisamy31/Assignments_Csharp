@@ -19,7 +19,7 @@
                 Console.Clear();
                 Helper.WriteInColor("============Marks of Students============", ConsoleColor.Yellow);
                 Helper.WriteInColor("\n1.Add\n2.Remove\n3.Display\n4.Exit", ConsoleColor.Yellow);
-                int choice = Validator.GetValidInt("Enter the choice :");
+                int choice = Validator.GetValidInteger("Enter the choice :");
                 switch (choice)
                 {
                     case 1:
@@ -53,10 +53,10 @@
         /// </summary>
         public void AddStudentMark()
         {
-            int studentsCount = Validator.GetValidInt("Enter the number of students :");
+            int studentsCount = Validator.GetValidInteger("Enter the number of students :");
             for (int i = 0; i < studentsCount; i++)
             {
-                _marks.Add(Validator.GetValidString($"Enter the name of student {i + 1} :"), Validator.GetValidInt("Enter the mark :"));
+                _marks.Add(Validator.GetValidString($"Enter the name of student {i + 1} :"), Validator.GetValidInteger("Enter the mark :"));
             }
             Helper.WriteInColor("\nStudents added successfully", ConsoleColor.Green);
         }
@@ -66,12 +66,12 @@
         /// </summary>
         public void RemoveStudent()
         {
-            string nameToBeRemoved = Validator.GetValidString("Enter the name to be removed :");
-            if (_marks.TryGetValue(nameToBeRemoved, out int mark))
+            string name = Validator.GetValidString("Enter the name to be removed :");
+            if (_marks.TryGetValue(name, out int mark))
             {
-                Helper.WriteInColor($"\n{nameToBeRemoved}  :  {mark}", ConsoleColor.Green);
+                Helper.WriteInColor($"\n{name}  :  {mark}", ConsoleColor.Green);
                 Helper.WriteInColor("\nStudent deleted from List successfully..", ConsoleColor.Green);
-                _marks.Remove(nameToBeRemoved);
+                _marks.Remove(name);
             }
             else
             {

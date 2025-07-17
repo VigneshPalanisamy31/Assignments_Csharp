@@ -7,9 +7,9 @@ namespace Collections
         /// <summary>
         /// Gets a valid integer from user.
         /// </summary>
-        /// <param name="displayMessage">Message to display to the console</param>
+        /// <param name="displayMessage">Message to be displayed in the console</param>
         /// <returns>valid integer</returns>
-        public static int GetValidInt(string displayMessage)
+        public static int GetValidInteger(string displayMessage)
         {
             while (true)
             {
@@ -29,7 +29,7 @@ namespace Collections
         /// <summary>
         /// Gets a valid string from user.
         /// </summary>
-        /// <param name="displayMessage">Message to display to the console</param>
+        /// <param name="displayMessage">Message be displayed in the console</param>
         /// <returns>valid string</returns>
         public static string GetValidString(string displayMessage)
         {
