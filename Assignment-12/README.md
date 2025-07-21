@@ -12,7 +12,7 @@
 ---
 ## Issue in the given code :
 ![Code with issues](Profiling/Code_Issues.png)
-- The list grows infinitely.
+- An infinite while loop continuously creates integer objects and adds them to a list.
 - The given code does not have a condition to stop the memory allocation.
 - No cleanup mechanism, the allocated memory is not cleared for further processes to make use of.
 - Leads to unbound memory usage and potential crash.
