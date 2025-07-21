@@ -21,7 +21,7 @@ namespace MathApp
         }
 
         /// <summary>
-        /// Calculates difference of two numbers
+        /// Calculates the difference between two numbers
         /// </summary>
         /// <param name="firstNumber">First number</param>
         /// <param name="secondNumber">Second number</param>

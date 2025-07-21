@@ -4,10 +4,10 @@ namespace DisplayApp
 {
     public class Displayer
     {
-        public IMathHelper mathUtilHelper;
+         IMathHelper _mathUtilHelper;
         public Displayer(IMathHelper mathHelper)
         {
-            mathUtilHelper = mathHelper;
+            _mathUtilHelper = mathHelper;
             ConsoleDisplay();
         }
 
@@ -35,19 +35,19 @@ namespace DisplayApp
                 switch (choice)
                 {
                     case 1:
-                        Console.WriteLine($"The sum of {firstNumber} and {secondNumber} is {mathUtilHelper.CalculateSum(firstNumber, secondNumber)}");
+                        Console.WriteLine($"The sum of {firstNumber} and {secondNumber} is {_mathUtilHelper.CalculateSum(firstNumber, secondNumber)}");
                         break;
 
                     case 2:
-                        Console.WriteLine($"The difference between {firstNumber} and {secondNumber} is {mathUtilHelper.CalculateDifference(firstNumber, secondNumber)}");
+                        Console.WriteLine($"The difference between {firstNumber} and {secondNumber} is {_mathUtilHelper.CalculateDifference(firstNumber, secondNumber)}");
                         break;
 
                     case 3:
-                        Console.WriteLine($"The product of {firstNumber} and {secondNumber} is {mathUtilHelper.CalculateProduct(firstNumber, secondNumber)}");
+                        Console.WriteLine($"The product of {firstNumber} and {secondNumber} is {_mathUtilHelper.CalculateProduct(firstNumber, secondNumber)}");
                         break;
 
                     case 4:
-                        Console.WriteLine($"The quotient of {firstNumber} and {secondNumber} is {mathUtilHelper.CalculateQuotient(firstNumber, secondNumber)}");
+                        Console.WriteLine($"The quotient of {firstNumber} and {secondNumber} is {_mathUtilHelper.CalculateQuotient(firstNumber, secondNumber)}");
                         break;
 
                     case 5:
