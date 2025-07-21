@@ -1,0 +1,43 @@
+﻿namespace UtilityApp
+{
+    public class Helper
+    {
+        /// <summary>
+        /// Gets a valid number from user.
+        /// </summary>
+        /// <returns>Validated number</returns>
+        public static float GetValidNumber()
+        {
+            string input = Console.ReadLine();
+            float validNumber;
+            while (!float.TryParse(input, out validNumber))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Please enter a valid number");
+                Console.ResetColor();
+                Console.WriteLine("Enter a number :");
+                input = Console.ReadLine();
+            }
+            return validNumber;
+        }
+
+        /// <summary>
+        /// Gets a valid choice from user.
+        /// </summary>
+        /// <returns>Validated choice(Integer)</returns>
+        public static int GetValidChoice()
+        {
+            string choice = Console.ReadLine();
+            int validChoice;
+            while (!int.TryParse(choice, out validChoice))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Please enter a valid choice");
+                Console.ResetColor();
+                Console.WriteLine("Enter a number :");
+                choice = Console.ReadLine();
+            }
+            return validChoice;
+        }
+    }
+}

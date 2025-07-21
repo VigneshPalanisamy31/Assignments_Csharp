@@ -1,0 +1,67 @@
+﻿using UtilityApp;
+using ProjectE;
+namespace DisplayApp
+{
+    public class Displayer
+    {
+         IMathHelper _mathUtilHelper;
+        public Displayer(IMathHelper mathHelper)
+        {
+            _mathUtilHelper = mathHelper;
+            ConsoleDisplay();
+        }
+
+        /// <summary>
+        /// Displays menu to the user and calls the user requested functions
+        /// </summary>
+        public void ConsoleDisplay()
+        {
+            bool canExit = false;
+            float firstNumber = 0;
+            float secondNumber = 0;
+            while (!canExit)
+            {
+                Console.WriteLine("========Basic Arithmetics========");
+                Console.WriteLine("\n\n1.Add\n2.Subtract\n3.Multiply\n4.Divide\n5.Exit\n");
+                Console.WriteLine("Enter your choice:");
+                int choice = Helper.GetValidChoice();
+                if (choice > 0 && choice < 5)
+                {
+                    Console.WriteLine("\n\nEnter Number 1: ");
+                    firstNumber = Helper.GetValidNumber();
+                    Console.WriteLine("\nEnter Number 2: ");
+                    secondNumber = Helper.GetValidNumber();
+                }
+                switch (choice)
+                {
+                    case 1:
+                        Console.WriteLine($"The sum of {firstNumber} and {secondNumber} is {_mathUtilHelper.CalculateSum(firstNumber, secondNumber)}");
+                        break;
+
+                    case 2:
+                        Console.WriteLine($"The difference between {firstNumber} and {secondNumber} is {_mathUtilHelper.CalculateDifference(firstNumber, secondNumber)}");
+                        break;
+
+                    case 3:
+                        Console.WriteLine($"The product of {firstNumber} and {secondNumber} is {_mathUtilHelper.CalculateProduct(firstNumber, secondNumber)}");
+                        break;
+
+                    case 4:
+                        Console.WriteLine($"The quotient of {firstNumber} and {secondNumber} is {_mathUtilHelper.CalculateQuotient(firstNumber, secondNumber)}");
+                        break;
+
+                    case 5:
+                        canExit = true;
+                        break;
+
+                    default:
+                        Console.WriteLine("Please enter a valid choice\n");
+                        break;
+                }
+                Console.WriteLine("\nPress any key to continue...");
+                Console.ReadKey();
+                Console.Clear();
+            }
+        }
+    }
+}
