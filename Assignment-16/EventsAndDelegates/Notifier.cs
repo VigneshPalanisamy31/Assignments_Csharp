@@ -2,17 +2,17 @@
 {
     public delegate void Notify(string message);
     internal class Notifier
+    {
+        public event Notify OnAction;
+        public void PerformAction(string actionMessage)
         {
-            public event Notify OnAction;
-            public void PerformAction(string actionMessage)
-            {
-                OnAction?.Invoke(actionMessage);
-            }
+            OnAction?.Invoke(actionMessage);
         }
-        class Program
+    }
+    public class Program
+    {
+        public static void Main(string[] args)
         {
-            static void Main(string[] args)
-            {
             try
             {
                 Notifier notifier = new Notifier();
@@ -31,9 +31,9 @@
         /// Displays notification messages
         /// </summary>
         /// <param name="message">Display message</param>
-            static void DisplayMessage(string message)
-            {
-                Console.WriteLine($"Notification: {message}");
-            }
+        private static void DisplayMessage(string message)
+        {
+            Console.WriteLine($"Notification: {message}");
         }
+    }
 }

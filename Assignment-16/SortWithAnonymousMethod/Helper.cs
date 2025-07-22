@@ -6,7 +6,7 @@
         /// Gets valid number from user
         /// </summary>
         /// <param name="displayMessage">Message to be displayed to the console</param>
-        /// <returns>a valid integer</returns>
+        /// <returns>A valid integer</returns>
         public static int GetValidInteger(string displayMessage)
         {
             Console.WriteLine($"Enter{displayMessage}:");

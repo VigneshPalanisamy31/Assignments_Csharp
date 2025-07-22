@@ -10,7 +10,7 @@
                 var number = 10;
                 Console.WriteLine($"Value: {number}, Type: {number.GetType()}");
                 // number = "Hello"; 
-                //  Cannot implicitly convert type 'string' to 'int'
+                // Cannot implicitly convert type 'string' to 'int'
                 Console.WriteLine("\n=== Using dynamic ===");
                 dynamic value = 10;
                 Console.WriteLine($"Value: {value}, Type: {value.GetType()}");

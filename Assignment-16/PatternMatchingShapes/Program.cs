@@ -25,8 +25,9 @@
                 Console.ReadKey();
             }
         }
+
         /// <summary>
-        /// Displays shape details based on object
+        /// Displays details of the shape based on object
         /// </summary>
         /// <param name="shape"></param>
         static void DisplayShapeDetails(Shape shape)
