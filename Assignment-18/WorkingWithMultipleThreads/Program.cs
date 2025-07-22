@@ -44,7 +44,12 @@ namespace WorkingWithMultipleThreads
                 }
             }
 
-            static void CountPrimes(int limit, out long count)
+            /// <summary>
+            /// Counts the number of prime numbers
+            /// </summary>
+            /// <param name="limit">Maximum limit</param>
+            /// <param name="count">count of prime numbers</param>
+            private static void CountPrimes(int limit, out long count)
             {
                 count = 0;
                 for (int num = 2; num <= limit; num++)
@@ -53,7 +58,13 @@ namespace WorkingWithMultipleThreads
                         count++;
                 }
             }
-            static bool IsPrime(int number)
+
+            /// <summary>
+            /// Finds whether the number is prime or not
+            /// </summary>
+            /// <param name="number">number to be checked</param>
+            /// <returns>True if prime and false if not prime</returns>
+            private static bool IsPrime(int number)
             {
                 if (number <= 1) return false;
                 if (number == 2) return true;

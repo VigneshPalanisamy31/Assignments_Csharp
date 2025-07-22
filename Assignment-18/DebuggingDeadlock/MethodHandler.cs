@@ -15,7 +15,7 @@ namespace DebuggingDeadlock
         //    var result = SomeAsyncOperation().Result;
         //    Console.WriteLine(result.ToString());
         //}
-        public async Task<string> SomeAsyncOperation()
+        public async Task<string> PerformAsyncOperation()
         {
             await Task.Delay(1000);
             return "Hello, World";
@@ -33,7 +33,7 @@ namespace DebuggingDeadlock
         /// <returns></returns>
         public async Task DeadlockMethod()
         {
-            var result = await SomeAsyncOperation();
+            var result = await PerformAsyncOperation();
             Console.WriteLine(result);
         }
     }

@@ -5,7 +5,7 @@ namespace AsyncVoid_vs_AsyncTask
 {
     public class Program
     {
-        static async Task Main(string[] args)
+        public static async Task Main(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("=== Async Void vs Async Task Exception Handling ===");
@@ -38,14 +38,14 @@ namespace AsyncVoid_vs_AsyncTask
         }
 
         // Async void - exception can't be caught outside
-        static async void VoidMethod()
+        private static async void VoidMethod()
         {
             await Task.Delay(500);
             throw new Exception("Exception from async void method");
         }
 
 
-        static async Task TaskMethod()
+        private static async Task TaskMethod()
         {
             await Task.Delay(500);
             throw new Exception("Exception from async Task method");

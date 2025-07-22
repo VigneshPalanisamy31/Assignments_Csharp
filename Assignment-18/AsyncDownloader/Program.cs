@@ -22,9 +22,9 @@
             using (HttpClient client = new HttpClient())
             {
                 Console.WriteLine("Downloading from: " + url);
-                string result = await client.GetStringAsync(url);
+                string response = await client.GetStringAsync(url);
                 Console.WriteLine("Download complete.\n");
-                return result;
+                return response;
             }
         }
     }

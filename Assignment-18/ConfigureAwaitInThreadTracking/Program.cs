@@ -5,7 +5,7 @@
         static async Task Main(string[] args)
         {
             Console.WriteLine($"Main Thread ID: {Thread.CurrentThread.ManagedThreadId}");
-            int result = await ProcessAndDoubleResultAsync();
+            int result = await ProcessDataAsync();
             Console.WriteLine($"Final result: {result}");
             Console.ReadKey();
         }
@@ -33,7 +33,7 @@
             }
             return number;
         }
-        static async Task<int> ProcessAndDoubleResultAsync()
+        static async Task<int> ProcessDataAsync()
         {
             Console.WriteLine($"[MethodB] Before awaiting MethodA - Thread ID: {Thread.CurrentThread.ManagedThreadId}");
 
@@ -42,9 +42,9 @@
             Console.WriteLine($"[MethodB] After awaiting MethodA - Thread ID: {Thread.CurrentThread.ManagedThreadId}");
 
             // Simulate further processing
-            int processed = value * value;
+            int processedValue = value * value;
 
-            return processed;
+            return processedValue;
         }
     }
 }
