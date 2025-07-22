@@ -7,7 +7,7 @@
         /// Gets a positive integer from user.
         /// </summary>
         /// <returns>positive integer</returns>
-        public static int GetValidInt()
+        public static int GetValidInteger()
         {
             while (true)
             {

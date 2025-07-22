@@ -6,7 +6,7 @@ namespace AsyncFileDataProcessor
     internal class AsyncFileDataHandler
     {
         // Buffer size for chunked reading and writing (4KB)
-         const int ChunkSize = 4 * 1024;
+        private const int ChunkSize = 4 * 1024;
 
         /// <summary>
         /// Asynchronously converts the contents of a source file to upper case and writes it to a destination file.
@@ -16,9 +16,7 @@ namespace AsyncFileDataProcessor
             Stopwatch stopwatch = Stopwatch.StartNew();
             try
             {
-                using FileStream sourceStream = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None, bufferSize: ChunkSize, useAsync: true);
-                using FileStream destinationStream = new FileStream(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None, bufferSize: ChunkSize, useAsync: true);
-                await PerformConvertionToUpperCase(sourceStream, destinationStream);
+                await PerformConvertionToUpperCase(sourcePath, destinationPath);
             }
             catch
             {
@@ -33,12 +31,12 @@ namespace AsyncFileDataProcessor
         /// </summary>
         public async Task ProcessMultipleFilesAsync(List<(string sourcePath, string destinationPath)> filePairs)
         {
-            List<Task<long>> processingTasks = new();
+            List<Task<long>> tasks = new();
             foreach (var (source, dest) in filePairs)
             {
-                processingTasks.Add(ConvertToUpperCaseAsync(source, dest));
+                tasks.Add(ConvertToUpperCaseAsync(source, dest));
             }
-            long[] durations = await Task.WhenAll(processingTasks);
+            long[] durations = await Task.WhenAll(tasks);
             for (int i = 0; i < filePairs.Count; i++)
             {
                 Console.WriteLine($"Processed file {filePairs[i].sourcePath} to {filePairs[i].destinationPath} in {durations[i]} ms");
@@ -48,8 +46,10 @@ namespace AsyncFileDataProcessor
         /// <summary>
         /// Reads from the source stream, converts each chunk to upper case, and writes to the destination stream asynchronously.
         /// </summary>
-        private static async Task PerformConvertionToUpperCase(FileStream sourceStream, FileStream destinationStream)
+        private static async Task PerformConvertionToUpperCase(string sourcePath, string destinationPath)
         {
+            using FileStream sourceStream = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None, bufferSize: ChunkSize, useAsync: true);
+            using FileStream destinationStream = new FileStream(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None, bufferSize: ChunkSize, useAsync: true);
             byte[] buffer = new byte[ChunkSize];
             int bytesRead;
             while ((bytesRead = await sourceStream.ReadAsync(buffer, 0, buffer.Length)) > 0)

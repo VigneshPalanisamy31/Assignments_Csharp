@@ -10,18 +10,17 @@ namespace LoggingSystem
                 bool canExit = false;
                 while (!canExit)
                 {
-
                     Console.WriteLine("Choose Logging Method:");
                     Console.WriteLine("1. Shared Log File (thread-safe)");
                     Console.WriteLine("2. Independent Log File Per User");
                     Console.WriteLine("3. Compare Sync and Async Logging");
                     Console.WriteLine("4. Exit");
                     Console.Write("Enter your choice: ");
-                    int choice = LoggerUtils.GetValidInt();
+                    int choice = LoggerUtils.GetValidInteger();
                     if (choice > 0 && choice < 3)
                     {
                         Console.Write("\nEnter number of users to simulate: ");
-                        int userCount = LoggerUtils.GetValidInt();
+                        int userCount = LoggerUtils.GetValidInteger();
                         Console.Write("\nEnter the error message to log: ");
                         string errorMessage = Console.ReadLine() ?? "Default Error Message";
                         Console.Write("\nEnter the file path to log shared log messages: ");
@@ -45,9 +44,13 @@ namespace LoggingSystem
                         Console.WriteLine($"\nDone! Logging completed in {stopwatch.ElapsedMilliseconds} ms.");
                     }
                     else if (choice == 3)
+                    {
                         CompareSyncAndAsyncLoggers();
+                    }
                     else if (choice == 4)
+                    {
                         canExit = true;
+                    }
                     else
                     {
                         Console.WriteLine("Choose from given choices.");
@@ -57,16 +60,17 @@ namespace LoggingSystem
                     Console.Clear();
                 }
             }
-           catch (Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine("Execution interrupted!!!\n" + e.Message);
                 Console.ReadKey();
             }
         }
+
         /// <summary>
         /// Function to compare Synchronous and Asynchronous loggers.
         /// </summary>
-        public static void CompareSyncAndAsyncLoggers()
+        private static void CompareSyncAndAsyncLoggers()
         {
             Console.Write("\nEnter the error message to log: ");
             string errorMessage = Console.ReadLine() ?? "Default Error Message";
@@ -85,7 +89,6 @@ namespace LoggingSystem
             logger.LogErrorEfficiently(errorMessage);
             stopwatch2.Stop();
             Console.WriteLine("TimeTaken: " + stopwatch2.ElapsedMilliseconds + "ms");
-
         }
     }
 }

@@ -6,7 +6,7 @@ namespace LoggingSystem
     /// </summary>
     public class Logger
     {
-        static string logFilePath;
+        private string logFilePath;
 
         /// <summary>
         /// Initializes the logger with a log file path.
@@ -78,7 +78,7 @@ namespace LoggingSystem
         /// <returns>A task representing the async operation.</returns>
         public async Task LogErrorInUserSpecificFile(string userId, string errorMessage)
         {
-            string filePath = $"{userId}Error.log";
+            string filePath = $"{userId}-Error.log";
             byte[] bytes = Encoding.UTF8.GetBytes(errorMessage);
             using (FileStream fileStream = new FileStream(filePath, FileMode.Append, FileAccess.Write, FileShare.None, bufferSize: 4 * 1024, useAsync: true))
             {

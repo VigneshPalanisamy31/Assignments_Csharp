@@ -11,7 +11,7 @@ namespace FileDataProcessor
         public void CreateLargeFile(long size, string filePath)
         {
             long fileSize = size * 1024 * 1024 * 1024;
-            string textToWrite = GetTextFromUser();
+            string textToWrite = GetUserInput();
             using (FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
             using (StreamWriter writer = new StreamWriter(fileStream, Encoding.ASCII))
             {
@@ -31,17 +31,17 @@ namespace FileDataProcessor
         /// <returns>Elapsed time in milliseconds.</returns>
         public long ReadFileUsingFileStream(string sourcePath)
         {
-            using (FileStream fileStreamToRead = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None))
-            using (StreamReader reader = new StreamReader(fileStreamToRead))
+            using (FileStream sourceFileStream = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None))
+            using (StreamReader reader = new StreamReader(sourceFileStream))
             {
                 int chunkSize = 4 * 1024;
-                char[] buffer = new char[chunkSize];
+                char[] characterChunk = new char[chunkSize];
                 int bytesRead = 0;
                 Stopwatch stopWatch = Stopwatch.StartNew();
                 do
                 {
-                    bytesRead = reader.Read(buffer, 0, buffer.Length);
-                    string chunk = new string(buffer, 0, bytesRead);
+                    bytesRead = reader.Read(characterChunk, 0, characterChunk.Length);
+                    string chunk = new string(characterChunk, 0, bytesRead);
                 } while (bytesRead > 0);
                 stopWatch.Stop();
                 return stopWatch.ElapsedMilliseconds;
@@ -56,17 +56,17 @@ namespace FileDataProcessor
         public long ReadFileUsingBufferedStream(string sourcePath)
         {
             using (FileStream fileStreamToRead = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None))
-            using (BufferedStream bufferedInput = new BufferedStream(fileStreamToRead))
-            using (StreamReader reader = new StreamReader(bufferedInput))
+            using (BufferedStream buffer = new BufferedStream(fileStreamToRead))
+            using (StreamReader reader = new StreamReader(buffer))
             {
                 int chunkSize = 4 * 1024;
-                char[] buffer = new char[chunkSize];
+                char[] characterChunk = new char[chunkSize];
                 int bytesRead = 0;
                 Stopwatch stopWatch = Stopwatch.StartNew();
                 do
                 {
-                    bytesRead = reader.Read(buffer, 0, buffer.Length);
-                    string chunk = new string(buffer, 0, bytesRead);
+                    bytesRead = reader.Read(characterChunk, 0, characterChunk.Length);
+                    string chunk = new string(characterChunk, 0, bytesRead);
                 } while (bytesRead > 0);
                 stopWatch.Stop();
                 return stopWatch.ElapsedMilliseconds;
@@ -81,10 +81,10 @@ namespace FileDataProcessor
         /// <returns>Elapsed time in milliseconds.</returns>
         public long ConvertToUpperCaseUsingChunks(string sourcePath, string destinationPath)
         {
-            using (FileStream fileStreamToRead = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None))
-            using (FileStream fileStreamToWrite = new FileStream(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None))
-            using (StreamWriter writer = new StreamWriter(fileStreamToWrite, Encoding.ASCII))
-            using (StreamReader reader = new StreamReader(fileStreamToRead))
+            using (FileStream sourceFileStreaam = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None))
+            using (FileStream destinationFileStream = new FileStream(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None))
+            using (StreamWriter writer = new StreamWriter(destinationFileStream, Encoding.ASCII))
+            using (StreamReader reader = new StreamReader(sourceFileStreaam))
             {
                 int chunkSize = 4 * 1024;
                 char[] buffer = new char[chunkSize];
@@ -109,21 +109,21 @@ namespace FileDataProcessor
         /// <returns>Elapsed time in milliseconds.</returns>
         public long ConvertToUpperCaseUsingBufferStream(string sourcePath, string destinationPath)
         {
-            using (FileStream fileStreamToRead = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None))
-            using (BufferedStream bufferedInput = new BufferedStream(fileStreamToRead))
-            using (FileStream fileStreamToWrite = new FileStream(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None))
-            using (BufferedStream bufferedOutput = new BufferedStream(fileStreamToWrite))
-            using (StreamWriter writer = new StreamWriter(bufferedOutput, Encoding.ASCII))
-            using (StreamReader reader = new StreamReader(bufferedInput))
+            using (FileStream sourceFileStream = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.None))
+            using (BufferedStream sourceBuffer = new BufferedStream(sourceFileStream))
+            using (FileStream destinationFileStream = new FileStream(destinationPath, FileMode.Create, FileAccess.Write, FileShare.None))
+            using (BufferedStream destinationBuffer = new BufferedStream(destinationFileStream))
+            using (StreamWriter writer = new StreamWriter(destinationBuffer, Encoding.ASCII))
+            using (StreamReader reader = new StreamReader(sourceBuffer))
             {
                 int chunkSize = 4 * 1024;
-                char[] buffer = new char[chunkSize];
+                char[] characterChunk = new char[chunkSize];
                 int bytesRead = 0;
                 Stopwatch stopWatch = Stopwatch.StartNew();
                 do
                 {
-                    bytesRead = reader.Read(buffer, 0, buffer.Length);
-                    string chunk = new string(buffer, 0, bytesRead);
+                    bytesRead = reader.Read(characterChunk, 0, characterChunk.Length);
+                    string chunk = new string(characterChunk, 0, bytesRead);
                     writer.Write(chunk.ToUpper());
                 } while (bytesRead > 0);
                 stopWatch.Stop();
@@ -170,7 +170,7 @@ namespace FileDataProcessor
         /// Gets a string from the user to write in the file.
         /// </summary>
         /// <returns>User input string.</returns>
-        private static string GetTextFromUser()
+        private static string GetUserInput()
         {
             Console.Write("Enter a string to write in the file: ");
             return Console.ReadLine();

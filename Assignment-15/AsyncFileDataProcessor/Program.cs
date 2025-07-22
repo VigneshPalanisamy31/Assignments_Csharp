@@ -31,14 +31,29 @@ namespace AsyncFileDataProcessor
         /// Gets file path
         /// </summary>
         /// <param name="fileEndPoint">end point of the file [source or destination]</param>
-        /// <returns></returns>
+        /// <returns>File path with valid extension</returns>
         private static string GetFilePath(FileEndPoint fileEndPoint)
         {
-            Console.Write($"Enter relative file path of {fileEndPoint.ToString()} file (Ex: MainFile.txt): ");
-            string filePath = Console.ReadLine();
-            if (filePath.Contains(".txt"))
-                return filePath;
-            return filePath + ".txt";
+            while (true)
+            {
+                Console.WriteLine($"Enter relative file path of {fileEndPoint.ToString()} file (Ex: MainFile.txt): ");
+                string filePath = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(filePath))
+                {
+                    Console.WriteLine("File path cannot be empty. Please try again.");
+                    continue;
+                }
+                string extension = Path.GetExtension(filePath);
+                if (string.IsNullOrEmpty(extension))
+                {
+                    return filePath + ".txt";
+                }
+                if (extension.Equals(".txt", StringComparison.OrdinalIgnoreCase))
+                {
+                    return filePath;
+                }
+                Console.WriteLine("Invalid file extension. Only .txt files are allowed. Please try again.");
+            }
         }
 
         /// <summary>
@@ -50,8 +65,8 @@ namespace AsyncFileDataProcessor
         private static void HandleMissingFile(string sourceFile, string destinationFile, List<(string, string)> filesToProcess)
         {
             AnsiConsole.MarkupLine($"[red] File not found:[/] [blue]{sourceFile}[/]");
-            bool create = AnsiConsole.Confirm("Would you like to [green]create[/] this file?");
-            if (create)
+            bool isFileCreationRequired = AnsiConsole.Confirm("Would you like to [green]create[/] this file?");
+            if (isFileCreationRequired)
             {
                 CreateNewFileWithRandomData(sourceFile);
                 filesToProcess.Add((sourceFile, destinationFile));
@@ -66,6 +81,7 @@ namespace AsyncFileDataProcessor
                     HandleMissingFile(sourcePath, destinationPath, filesToProcess);
             }
         }
+
         /// <summary>
         /// Creates a 1MB of file. 
         /// </summary>
@@ -73,23 +89,24 @@ namespace AsyncFileDataProcessor
         public static void CreateNewFileWithRandomData(string filePath)
         {
             long fileSize = 1L * 1024 * 1024;
-            string textToWrite = GetTextFromUser();
+            string textToWrite = GetUserInput();
             using (FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None))
             using (StreamWriter writer = new StreamWriter(fileStream, Encoding.ASCII))
             {
-                long totalWritten = 0;
-                while (totalWritten < fileSize)
+                long currentFileSize = 0;
+                while (currentFileSize < fileSize)
                 {
                     writer.Write(textToWrite);
-                    totalWritten += textToWrite.Length;
+                    currentFileSize += textToWrite.Length;
                 }
             }
         }
+
         /// <summary>
         /// Gets a string from the user.
         /// </summary>
         /// <returns>user entered string</returns>
-        private static string GetTextFromUser()
+        private static string GetUserInput()
         {
             Console.Write("Enter a string to write in the file: ");
             return Console.ReadLine();

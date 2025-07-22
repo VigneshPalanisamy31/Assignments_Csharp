@@ -10,7 +10,7 @@ namespace FileUsageIssues
             try
             {
                 string path = GetFilePath();
-                string data = GetTextFromUser();
+                string data = GetUserInput();
                 Console.WriteLine("=== Inefficient File Write and Read ===");
                 Console.WriteLine("Time taken for inefficient file operation: " + InefficientFileWriteAndRead(path, data) + "milliseconds");
                 Console.WriteLine("\n=== Optimized File Write and Read ===");
@@ -18,17 +18,18 @@ namespace FileUsageIssues
             }
             catch (Exception e)
             {
-                Console.WriteLine("Execution interrupted!!!\n"+e.Message);
+                Console.WriteLine("Execution interrupted!!!\n" + e.Message);
                 Console.ReadKey();
             }
         }
+
         /// <summary>
         /// Function that perform read and write inefficiently.
         /// </summary>
         /// <param name="path">Path of the file</param>
         /// <param name="data">Data to write to the file</param>
         /// <returns>Time taken</returns>
-        static long InefficientFileWriteAndRead(string path, string data)
+        private static long InefficientFileWriteAndRead(string path, string data)
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -61,13 +62,14 @@ namespace FileUsageIssues
             stopwatch.Stop();
             return stopwatch.ElapsedMilliseconds;
         }
+
         /// <summary>
         /// Function to perform read and write efficiently.
         /// </summary>
         /// <param name="path">Path of the file</param>
         /// <param name="data">Data to write to the file</param>
         /// <returns>Time taken</returns>
-        static long OptimizedFileWriteAndRead(string path, string data)
+        private static long OptimizedFileWriteAndRead(string path, string data)
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -87,27 +89,43 @@ namespace FileUsageIssues
             stopwatch.Stop();
             return stopwatch.ElapsedMilliseconds;
         }
+
         /// <summary>
         /// Function to get text from user.
         /// </summary>
         /// <returns>User entered string</returns>
-        private static string? GetTextFromUser()
+        private static string? GetUserInput()
         {
-            Console.Write("Enter a string to write in the file: ");
+            Console.Write("Enter the text to write in the file: ");
             return Console.ReadLine();
         }
+
         /// <summary>
         /// Function to get file path from user.
         /// </summary>
         /// <returns>valid file_path(.txt)</returns>
         private static string GetFilePath()
         {
-            Console.Write($"Enter relative file path (Ex: MainFile.txt): ");
-            string filePath = Console.ReadLine();
-            if (filePath.Contains(".txt"))
-                return filePath;
-            else
-                return filePath + ".txt";
+            while (true)
+            {
+                Console.WriteLine("Enter relative file path (Ex: MainFile.txt): ");
+                string filePath = Console.ReadLine();
+                if (string.IsNullOrWhiteSpace(filePath))
+                {
+                    Console.WriteLine("File path cannot be empty. Please try again.");
+                    continue;
+                }
+                string extension = Path.GetExtension(filePath);
+                if (string.IsNullOrEmpty(extension))
+                {
+                    return filePath + ".txt";
+                }
+                if (extension.Equals(".txt", StringComparison.OrdinalIgnoreCase))
+                {
+                    return filePath;
+                }
+                Console.WriteLine("Invalid file extension. Only .txt files are allowed. Please try again.");
+            }
         }
 
     }
