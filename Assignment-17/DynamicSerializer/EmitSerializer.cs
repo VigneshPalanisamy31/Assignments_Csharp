@@ -8,8 +8,8 @@ namespace DynamicSerializer
         /// <summary>
         /// Dynamically creates a serializer for the given type .
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
+        /// <typeparam name="T">Type for which serializer is created</typeparam>
+        /// <returns>A delegate</returns>
         public static Func<T,string>CreateSerializer<T>()
         {
             Type type = typeof(T);

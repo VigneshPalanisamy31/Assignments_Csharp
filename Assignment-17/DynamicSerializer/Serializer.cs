@@ -7,8 +7,8 @@ namespace DynamicSerializer
         /// <summary>
         /// Serializes a given object and returns a string
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
+        /// <param name="obj">object to be serialized</param>
+        /// <returns>A string representing the serialized object</returns>
         public static string Serialize(object obj)
         {
             if (obj == null)

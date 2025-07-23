@@ -2,7 +2,7 @@
 {
     class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             try
             {
@@ -22,11 +22,11 @@
                 Console.WriteLine("\nUpdated object:");
                 ObjectInspector.Inspect(person);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-               Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
             }
             Console.ReadKey();
         }
     }
-    }
+}

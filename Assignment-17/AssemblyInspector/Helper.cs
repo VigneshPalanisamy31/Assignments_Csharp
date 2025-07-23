@@ -9,34 +9,16 @@ namespace AssemblyInspector
     internal class Helper
     {
         /// <summary>
-        /// Writes diplay message in red colour.
+        /// Writes display message in red color.
         /// </summary>
-        /// <param name="displayMessage"></param>
-        public static void WriteInRed(string displayMessage)
+        /// <param name="displayMessage">Message to be displayed in the console</param>
+        /// <param name="color">Console</param>
+        public static void WriteInColor(string displayMessage,ConsoleColor color)
         {
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = color;
             Console.WriteLine(displayMessage);
             Console.ResetColor();
         }
-        /// <summary>
-        /// Writes display message in green.
-        /// </summary>
-        /// <param name="displayMessage"></param>
-        public static void WriteInGreen(string displayMessage)
-        {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(displayMessage);
-            Console.ResetColor();
-        }
-        /// <summary>
-        /// Writes display message in yellow.
-        /// </summary>
-        /// <param name="displayMessage"></param>
-        public static void WriteInYellow(string displayMessage)
-        {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine(displayMessage);
-            Console.ResetColor();
-        }
+
     }
 }

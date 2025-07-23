@@ -5,11 +5,11 @@ namespace SendOffPlugin
     {
         public string Name => "SendoffPlugin";
         /// <summary>
-        /// Prints sendoff message (implementation of IPlugin interface)
+        /// Prints send-off message (implementation of IPlugin interface)
         /// </summary>
         public void Execute()
         {
-            Console.WriteLine("Thank You.. from  Sendoff plugin!");
+            Console.WriteLine("Thank You.. from  Send-off plugin!");
         }
     }
 }

@@ -6,7 +6,7 @@ namespace DynamicObjectInspector
         /// <summary>
         /// Displays properties and their current values
         /// </summary>
-        /// <param name="obj"></param>
+        /// <param name="obj">Object to be inspected</param>
         public static void Inspect(object obj)
         {
             Type type = obj.GetType();
@@ -18,12 +18,13 @@ namespace DynamicObjectInspector
                 Console.WriteLine($"{prop.Name} = {value}");
             }
         }
+
         /// <summary>
         /// Sets a property value dynamically by name
         /// </summary>
-        /// <param name="obj"></param>
-        /// <param name="propertyName"></param>
-        /// <param name="newValue"></param>
+        /// <param name="obj">Object to work on</param>
+        /// <param name="propertyName">Property to be set</param>
+        /// <param name="newValue">new value for the property</param>
         public static void SetProperty(object obj, string propertyName, string newValue)
         {
             Type type = obj.GetType();

@@ -5,23 +5,23 @@ namespace AssemblyInspector
     {
         static void Main(string[] args)
         {
-            Helper.WriteInYellow("=== Assembly Explorer ===\n");
+            Helper.WriteInColor("=== Assembly Explorer ===\n",ConsoleColor.Yellow);
             Console.Write("Enter the full path of the assembly (.dll or .exe): ");
             string? assemblyPath = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(assemblyPath) || !File.Exists(assemblyPath))
             {
-                Helper.WriteInRed("\nInvalid path or file not found.");
+                Helper.WriteInColor("\nInvalid path or file not found.",ConsoleColor.Red);
                 Console.ReadKey();
                 return;
             }
             try
             {
                 Assembly assembly = Assembly.LoadFile(Path.GetFullPath(assemblyPath));
-                Helper.WriteInGreen($"\nAssembly Loaded: {assembly.FullName}");
+                Helper.WriteInColor($"\nAssembly Loaded: {assembly.FullName}",ConsoleColor.Green);
                 Console.WriteLine("\nInspecting types...\n");
                 foreach (Type type in assembly.GetTypes())
                 {
-                    Helper.WriteInYellow($"Type: {type.FullName}");
+                    Helper.WriteInColor($"Type: {type.FullName}", ConsoleColor.Yellow);
                     PrintMembers("Methods", type.GetMethods(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly));
                     PrintMembers("Properties", type.GetProperties(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly));
                     PrintMembers("Fields", type.GetFields(BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly));
@@ -32,10 +32,10 @@ namespace AssemblyInspector
             }
             catch (Exception ex)
             {
-                Helper.WriteInRed($"\nError: {ex.Message}");
+                Helper.WriteInColor($"\nError: {ex.Message}", ConsoleColor.Red);
                 Console.ReadKey();
             }
-            Helper.WriteInYellow("\n=== End of Assembly Inspection ===");
+            Helper.WriteInColor("\n=== End of Assembly Inspection ===", ConsoleColor.Yellow);
             Console.ReadKey();
         }
         /// <summary>
@@ -45,7 +45,7 @@ namespace AssemblyInspector
         /// <param name="members"></param>
         static void PrintMembers(string label, MemberInfo[] members)
         {
-            Helper.WriteInYellow($"  {label}:");
+            Helper.WriteInColor($"  {label}:", ConsoleColor.Yellow);
             if (members.Length == 0)
             {
                 Console.WriteLine($"    - (none)");
